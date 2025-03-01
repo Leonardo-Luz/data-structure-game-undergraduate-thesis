@@ -1,0 +1,108 @@
+\documentclass[12pt, a4paper]{report} % Use 'report' for longer documents like theses
+
+\usepackage[utf8]{inputenc} % For UTF-8 character encoding
+\usepackage{amsmath, amssymb} % For mathematical symbols
+\usepackage{graphicx} % To include images
+\usepackage{geometry} % To adjust page margins
+\usepackage{hyperref} % For hyperlinks in the document (useful for TOC, references, etc.)
+\usepackage{biblatex} % For managing references
+\usepackage{fancyhdr} % For custom headers/footers
+\usepackage{array} % Optional, for advanced table features
+
+% Set page margins
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+% Bibliography file
+\addbibresource{references.bib}
+
+\title{ADS THESIS}
+\author{Leonardo Luz Fachel}
+\date{\today} % Date
+
+% Define custom header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\thepage} % Left-aligned page number in header
+\fancyhead[C]{Thesis Title} % Centered title in header
+
+\begin{document}
+
+% Title page
+\maketitle
+
+% Abstract
+\begin{abstract}
+This is the abstract of your thesis. It provides a brief overview of your work, your methodology, results, and conclusions.
+\end{abstract}
+
+% Acknowledgments
+\chapter*{Acknowledgments}
+I would like to thank...
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Figures and Tables
+\listoffigures
+\listoftables
+\newpage
+
+% Lista de Abreviaturas e Silgas
+% \newpage
+
+% Chapters
+\chapter{Introduction}
+This chapter introduces the topic of the thesis. You would provide an overview of the research area, the problem you are addressing, and the objectives of your research.
+
+\section{Motivation}
+The motivation for this research is...
+
+\section{Referencial Theórico}
+The main research questions are...
+
+\chapter{Trabalhos Correlatos}
+This chapter reviews existing research in the area of information technology and other related fields.
+
+\chapter{Estado da Arte}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Ano & Projeto & Link \\ \hline
+Row 1, Col 1 & Row 1, Col 2 & Row 1, Col 3 \\ \hline
+Row 2, Col 1 & Row 2, Col 2 & Row 2, Col 3 \\ \hline
+Row 3, Col 1 & Row 3, Col 2 & Row 3, Col 3 \\ \hline
+\end{tabular}
+\caption{Example Table}
+\end{table}
+
+
+\section{Topic 1}
+Discussion on the first topic...
+
+\chapter{Metodoligia}
+This chapter describes the methods used to conduct your research.
+
+\chapter{Desenvolvimento}
+Explain how you collected your data...
+
+\chapter{Conclusão}
+Describe the methods used for analyzing the collected data...
+
+\chapter{Referências}
+This chapter presents the findings from your research.
+
+% Appendices
+\appendix
+\chapter{Appendix Title}
+Include any additional information, such as code or raw data, that supports your thesis.
+
+\chapter{Another Appendix}
+More details if necessary...
+
+% Bibliography
+\newpage
+\printbibliography
+
+\end{document}
