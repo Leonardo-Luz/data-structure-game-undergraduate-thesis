@@ -1,73 +1,100 @@
-Leonardo Luz Fachel
+# Leonardo Luz Fachel - Software Analysis and Development Undergraduate Thesis
 
-Software Analisys and Development undergraduate thesis
+## Data Structure Game
 
-# Data Structure Game
-
-**key words:** game, data structure, csharp, c#, cs, monogame, education, code, programming, ...
+**Keywords:** game, data structure, C#, CSharp, CS, MonoGame, education, code, programming, gamedev, tutorial, stack, queue, linked list, binary tree, sorting algorithms
 
 ## Description
 
-This Project aims to create a game that makes learning data structure concepts more easily and in a playfully.
+This project aims to create an educational game that facilitates learning data structure concepts in a fun and engaging way.  Players will learn about various data structures through gameplay mechanics and progressively challenging levels.
 
-## Tecnologies
+## Technologies
 
-* SQLite
-* Engine: Monogame / Unity / godot
+* **Game Engine:** MonoGame (Consideration given to Unity and Godot)
+* **Database:** SQLite
+
+## Features
+
+* **Parallax Backgrounds:**  To enhance visual appeal and immersion.
 
 ## Level Design
 
-**1st Level** (basics tutorial)
+**Level 1: Basics Tutorial**
 
-Your inventory will have only 1 slot in the first level
-
-Teachs basic movement:
-
-* a/left arrow: Move to left
-* d/right arrow: Move to right
-* s: crouch
-* w/space/up arrow: jump
-* 1/2/3: uses item inside target inventory
-* c+(1/2/3): uses consumable in the target inventory // Consumable can be inside inventory ? they slow down time ?
-
-**2st Level** (stack & combos tutorial)
-
-your inventory will become a stack with 5 lenght
-
-Teachs about stack mechanics:
-
-1st comes last goes...
-
-Teachs about element combos
-
-combos stops when items are get or moved (moving linked list also breaks combos ?)
-
-**3st level** (sort consumables tutorial)
-
-basic plataform level
-
-**4st level** (queue & multiple inventory tutorial)
-
-**5st level** (boss fight)
-
-**6st level** (search comsumables tutorial)
-
-**7st level** (linked list tutorial)
-
-**8st level** (boss fight)
-
-**1st post-game level** (double linked list tutorial) ?
-
-**2st post-game level** (binary tree tutorial) ?
-
-**Arena** (post-game)
-
-endless mode
-
-## Art State
+* **Inventory:** 1 slot.
+* **Objective:**  Introduces basic movement and interaction.
+* **Controls:**
+    * A/Left Arrow: Move left
+    * D/Right Arrow: Move right
+    * S: Crouch
+    * W/Space/Up Arrow: Jump
+    * 1/2/3: Use item in the inventory slot.  (Only one slot available in this level)
 
 
+**Level 2: Stack & Combos Tutorial**
 
-## Prototipação
+* **Inventory:** Stack with a capacity of 5 items.
+* **Objective:** Teaches stack mechanics (LIFO - Last-In, First-Out) and item combo effects.
+* **Mechanics:** Combos are activated by using consecutively the same type of items in the inventory stack. The combo is broken if the stack's order is changed (e.g., by adding or removing an item).
 
-#### Banco de Dados ?
+
+**Level 3: Sort Consumables Tutorial**
+
+* **Objective:** Introduces sorting algorithms through the use of consumables.
+* **Mechanics:** Players use consumables (e.g., 'c' + inventory number) to sort elements based on their properties.  A visual representation of the sorting process will be displayed when consumables are used to showcase the chosen sorting algorithm (e.g., bubble sort or similar).
+* **Combo Effects:**
+    * Fire + Fire: 3 Fire Damage
+    * Water + Water: 3 Water Damage
+    * Wind + Wind: 3 Wind Damage
+    * Earth + Earth: 3 Earth Damage
+    * other combination in progress...
+
+
+**Level 4: Queue & Multiple Inventory Tutorial**
+
+* **Objective:** Introduces queue data structures (FIFO - First-In, First-Out) and managing multiple inventories.
+
+
+**Level 5: Boss Fight (Stack/Queue Based)**
+
+* **Objective:** A boss fight utilizing mechanics based on previously introduced stack and queue concepts.
+
+
+**Level 6: Search Consumables Tutorial**
+
+* **Objective:** Introduces searching algorithms through inventory management and finding specific consumables
+
+
+**Level 7: Linked List Tutorial**
+
+* **Objective:**  Introduces the concept of linked lists through gameplay mechanics.
+
+
+**Level 8: Boss Fight (Linked List Based)**
+
+* **Objective:** A boss fight utilizing mechanics based on linked list concepts.
+
+
+**Post-Game Levels:**
+
+* **Level 9: Double Linked List Tutorial**
+* **Level 10: Binary Tree Tutorial**
+* **Arena Mode:** An endless mode challenging the player with increasingly difficult scenarios incorporating all learned data structures.
+
+## Art Style
+
+[Describe your planned art style here.  e.g.,  Pixel art, 2D, 3D, etc.]
+
+## Prototyping
+
+[Describe your prototyping process and tools used here. Include details about database design and implementation if applicable.]
+
+## Future Considerations
+
+* Add more complex data structures (graphs, trees, hash tables)
+* Implement difficulty levels
+* Integrate a scoring system and leaderboards
+* Add more diverse game mechanics and challenges
+
+
+This README will be updated regularly to reflect the project's progress.
