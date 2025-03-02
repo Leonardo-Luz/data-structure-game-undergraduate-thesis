@@ -83,11 +83,11 @@ This project aims to create an educational game that facilitates learning data s
 
 ## Art Style
 
-[Describe your planned art style here.  e.g.,  Pixel art, 2D, 3D, etc.]
+* WIP
 
 ## Prototyping
 
-[Describe your prototyping process and tools used here. Include details about database design and implementation if applicable.]
+* WIP
 
 ## Future Considerations
 
