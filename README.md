@@ -15,183 +15,62 @@ This project aims to create an educational game that facilitates learning data s
 
 ## Features
 
-* **Parallax Backgrounds:**  To enhance visual appeal and immersion.
+* **Engaging Story:** A compelling narrative follows an alchemist recovering their lost bags.
+* **Parallax Backgrounds:** Enhance visual appeal and immersion.
+* **Progressive Difficulty:** Levels introduce new data structures and mechanics gradually.
+* **Combat System:**  Enemies have weaknesses exploitable using crafted elements.
+* **Item Combinations:** Players combine elements to create new ones, showcasing data structure operations.
+* **Visualizations:** Sorting algorithms and other data structure operations are visually represented.
 
-## History
+## Gameplay
 
-The character is a alchemist that lost his bags and all he could found was a damaged bag,
-he can produce some elements from time to time and can use them to defend himself.
-his objective is to recover the bags and finish his research.
+**Story:** The alchemist awakens after an accident, their bags stolen.  They must use a damaged bag and newly-created elements to fight enemies and recover their lost research and bags, each bag introducing a new data structure.
 
-**START AMBIENTATION:** alchemist fainted in the ground in the middle of a forest, a wagon wreckage by his right.
-the alchemist wakes up.
+**Core Mechanics:**
 
-**FIRST DIALOGUE**: What happened here... i can't remember almost anything... wait... MY BAGS. WHERE ARE MY MAGICAL BAGS.
-
-**DIALOGUE: Pass through wagon wreckage:** maybe my bags and research can still be inside that wagon.
-
-**DIALOGUE: interact with wagon:** my research is here but most of the pages are damaged, seems like i will need to start over...My bags seem to be missing too, probaly the same thing that did this to the wagon stole and damaged my items... they left behind a damaged bag.
-
-**DIALOGUE: Found damaged magical bag:** this can be usefull for i while. maybe i can store a element here, but only one... i still need the rest of my bags to complete my research, some monster might have stolen them.
-
-**POPUP: element fabrication:** each x seconds the alchemist will make a new element, if the bag is full the production will stop.
-
-**DIALOGUE: Found first enemy: (red slime, weakness: fire)** maybe i could use some of my elements to defeat it.
-
-**POPUP: combat mechanics:** each enemy has it owns weaknesses and health points...
-
-**MESSAGE: Uses Wrong element:** it seems to be weak to fire.
-
-**found the stack bag dialogue**: Now that i have a bigger bag i can mix some elements. pop combination tutorial.
+* **Element Creation:** The alchemist automatically generates elements at intervals.
+* **Inventory Management:**  Inventories (initially a single slot, then a stack, queue, etc.) manage collected elements.
+* **Combat:** Enemies are defeated by using elements that exploit their weaknesses.
+* **Combos:** Combining elements in specific orders creates powerful effects.
 
 ## Level Design
 
-**Level 1: Basics Tutorial**
+All details about each level can be found [HERE](LEVELS.md)
 
-* **Inventory:** 1 slot.
-* **Objective:** Introduces basic movement, interaction, cast time, and damage mechanics.
+The game features a series of levels, presenting differents data structure and searching/sorting algorithms:
 
-* **Controls:**
-    * A/Left Arrow: Move left
-    * D/Right Arrow: Move right
-    * S: Crouch
-    * W/Space/Up Arrow: Jump
-    * 1/2/3: Use item in the inventory slot.  (Only one slot available in this level)
+**Early Levels (Tutorials):**
 
-* **Mechanics:**: 
-    * After using an item, there will be a timer that, when it reaches 0, will trigger the item’s use.
-    * Enemies take damage only from their elemental weakness.
+* **Level 1 (Basics):** Introduces movement, interaction, and basic combat. Single-slot inventory.
+* **Level 2 (Stack & Combos):** Introduces stack mechanics (LIFO) and item combo effects. 5-slot stack inventory.
+* **Level 3 (Sorting):** Introduces sorting algorithms using consumables.  Visual representation of sorting process.
 
-**Level 2: Stack & Combos Tutorial**
+**Intermediate Levels:**
 
-* **Inventory:** Stack with a capacity of 5 items.
-* **Objective:** Teaches stack mechanics (LIFO - Last-In, First-Out) and item combo effects.
-* **Mechanics:** Combos are activated by using items consecutively in the inventory. If the combo is invalid (e.g., fire + water + water), it gets disrupted, and the player takes damage.
-* **See all combinations in [Combinations](#Combinations)**
+* **Level 4 (Queue & Multiple Inventories):** Introduces queues (FIFO) and managing multiple inventories.
+* **Level 5 (Boss Fight - Stack/Queue):** A boss fight using stack and queue mechanics.
 
-**Level 3: Sort Consumables Tutorial**
+**Advanced Levels:**
 
-* **Objective:** Introduces sorting algorithms through the use of consumables.
-* **Mechanics:** Players use consumables (e.g., 'c' + inventory number) to sort elements based on their properties.  A visual representation of the sorting process will be displayed when consumables are used to showcase the chosen sorting algorithm (e.g., bubble sort or similar).
-
-**Level 4: Queue & Multiple Inventory Tutorial**
-
-* **Objective:** Introduces queue data structures (FIFO - First-In, First-Out) and managing multiple inventories.
-
-
-**Level 5: Boss Fight (Stack/Queue Based)**
-
-* **Objective:** A boss fight utilizing mechanics based on previously introduced stack and queue concepts.
-
-
-**Level 6: Search Consumables Tutorial**
-
-* **Objective:** Introduces searching algorithms through consumables
-
-
-**Level 7: Linked List Tutorial**
-
-* **Objective:**  Introduces the concept of linked lists through gameplay mechanics.
-
-
-**Level 8: Boss Fight (Linked List Based)**
-
-* **Objective:** A boss fight utilizing mechanics based on linked list concepts.
-
+* **Level 6 (Searching):** Introduces searching algorithms.
+* **Level 7 (Linked List):** Introduces linked lists.
+* **Level 8 (Boss Fight - Linked List):** A boss fight using linked list mechanics.
 
 **Post-Game Levels:**
 
-* **Level 9: Double Linked List Tutorial**
-* **Level 10: Binary Tree Tutorial**
+* **Level 9 (Double Linked List):**
+* **Level 10 (Binary Tree):**
 * **Arena Mode:** An endless mode challenging the player with increasingly difficult scenarios incorporating all learned data structures.
 
 ## Research Book
 
-Shows each element with his description and damage dealt. if the combination isnt know will show as ???.
+All details about the Research Book can be found [HERE](RESEARCH.md)
 
-The tutorials are also here.
+Contains the notes of the alchemist, element descriptions, damage values, and combination tutorials.  Unknown combinations are displayed as "???".
 
 ## Combinations
 
-**Basic Combinations**
-
-* Fire
-
-| Element 1 | Element 2 | Result      |
-|-----------|-----------|-------------|
-| Fire      | Fire      | Ember       |
-| Fire      | Water     | Steam       |
-| Fire      | Wind      | Lightning   |
-| Fire      | Earth     | Calcination |
-
-* Water
-
-| Element 1 | Element 2 | Result      |
-|-----------|-----------|-------------|
-| Water     | Fire      | Steam       |
-| Water     | Water     | Wave        |
-| Water     | Wind      |             |
-| Water     | Earth     | Dissolution |
-
-* Wind
-
-| Element 1 | Element 2 | Result     |
-|-----------|-----------|------------|
-| Wind      | Fire      | Lightning  |
-| Wind      | Water     |            |
-| Wind      | Wind      |            |
-| Wind      | Earth     | Separation |
-
-* Earth
-
-| Element 1 | Element 2 | Result      |
-|-----------|-----------|-------------|
-| Earth     | Fire      | Calcination |
-| Earth     | Water     | Dissolution |
-| Earth     | Wind      | Separation  |
-| Earth     | Earth     | Conjuction  |
-
-**Intermediary Combinations**
-
-* Fire + Earth (Calcination)
-
-| Element 1   | Element 2 | Result |
-|-------------|-----------|--------|
-| Calcination | Fire      | Copper |
-| Calcination | Water     | Iron   |
-| Calcination | Wind      | Silver |
-| Calcination | Earth     | Gold   |
-
-* Water + Earth (Dissolution)
-
-| Element 1   | Element 2 | Result |
-|-------------|-----------|--------|
-| Dissolution | Fire      |        |
-| Dissolution | Water     |        |
-| Dissolution | Wind      |        |
-| Dissolution | Earth     |        |
-
-* Wind + Earth (Separation)
-
-| Element 1  | Element 2 | Result |
-|------------|-----------|--------|
-| Separation | Fire      |        |
-| Separation | Water     |        |
-| Separation | Wind      |        |
-| Separation | Earth     |        |
-
-* Earth + Earth (Conjuction)
-
-| Element 1  | Element 2 | Result |
-|------------|-----------|--------|
-| Conjuction | Fire      |        |
-| Conjuction | Water     |        |
-| Conjuction | Wind      |        |
-| Conjuction | Earth     |        |
-
-**Advanced Conbinations**
-
-* WIP
+All details about the Combinations can be found [HERE](COMBINATIONS.md)
 
 ## Concept Arts
 
@@ -204,7 +83,7 @@ The tutorials are also here.
 ## Future Considerations
 
 * Add more complex data structures (graphs, trees, hash tables)
-* Implement difficulty choice. ( Easy, Medium, Hard )
+* Implement difficulty levels (Easy, Medium, Hard)
 * Integrate a scoring system and leaderboards
 * Add more diverse game mechanics and challenges
 
