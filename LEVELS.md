@@ -32,7 +32,6 @@
 
 * **Objective:** Introduces queue data structures (FIFO - First-In, First-Out) and managing multiple inventories.
 
-
 **Level 5: Boss Fight (Stack/Queue Based)**
 
 * **Objective:** A boss fight utilizing mechanics based on previously introduced stack and queue concepts.

@@ -10,7 +10,7 @@ This project aims to create an educational game that facilitates learning data s
 
 ## Technologies
 
-* **Game Engine:** MonoGame (Consideration given to Unity and Godot)
+* **Game Engine:** MonoGame (Consideration given to Unity, LÖVE2D and Godot)
 * **Database:** SQLite
 
 ## Features

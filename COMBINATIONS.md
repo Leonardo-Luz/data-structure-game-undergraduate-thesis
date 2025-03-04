@@ -13,12 +13,12 @@
 
 * Water
 
-| Element 1 | Element 2 | Result      |
-|-----------|-----------|-------------|
-| Water     | Fire      | Steam       |
-| Water     | Water     | Wave        |
-| Water     | Wind      |             |
-| Water     | Earth     | Dissolution |
+| Element 1 | Element 2 | Result       |
+|-----------|-----------|--------------|
+| Water     | Fire      | Steam        |
+| Water     | Water     | Wave         |
+| Water     | Wind      |              |
+| Water     | Earth     | Purification |
 
 * Wind
 
@@ -31,12 +31,12 @@
 
 * Earth
 
-| Element 1 | Element 2 | Result      |
-|-----------|-----------|-------------|
-| Earth     | Fire      | Calcination |
-| Earth     | Water     | Dissolution |
-| Earth     | Wind      | Separation  |
-| Earth     | Earth     | Conjuction  |
+| Element 1 | Element 2 | Result       |
+|-----------|-----------|--------------|
+| Earth     | Fire      | Calcination  |
+| Earth     | Water     | Purification |
+| Earth     | Wind      | Separation   |
+| Earth     | Earth     | Conjuction   |
 
 **Intermediary Combinations**
 
@@ -49,14 +49,14 @@
 | Calcination | Wind      | Silver |
 | Calcination | Earth     | Gold   |
 
-* Water + Earth (Dissolution)
+* Water + Earth (Purification)
 
-| Element 1   | Element 2 | Result |
-|-------------|-----------|--------|
-| Dissolution | Fire      |        |
-| Dissolution | Water     |        |
-| Dissolution | Wind      |        |
-| Dissolution | Earth     |        |
+| Element 1    | Element 2 | Result |
+|--------------|-----------|--------|
+| Purification | Fire      |        |
+| Purification | Water     |        |
+| Purification | Wind      |        |
+| Purification | Earth     |        |
 
 * Wind + Earth (Separation)
 
@@ -78,5 +78,9 @@
 
 **Advanced Conbinations**
 
-* WIP
+
+
+| Element 1    | Element 2 | Result              |
+|--------------|-----------|---------------------|
+| Purification | Gold      | Philosopher's Stone |
 
