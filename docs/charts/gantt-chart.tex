@@ -1,0 +1,49 @@
+\begin{figure}[tbp]
+	\begin{center}
+
+	\begin{ganttchart}[y unit title=0.4cm,
+		y unit chart=1cm,
+		vgrid,hgrid,
+		title label anchor/.style={below=-1.6ex},
+		title left shift=.05,
+		title right shift=-.05,
+		title height=1,
+		progress label text={},
+		bar height=1,
+		group right shift=0,
+		group top shift=.6,
+		group height=1]{1}{31}
+
+	\gantttitle{March}{31} \\
+	\gantttitle{2}{2}
+	\gantttitle{1º Week}{7}
+	\gantttitle{2º Week}{7}
+	\gantttitle{3º Week}{7}
+	\gantttitle{4º Week}{7}
+	\gantttitle{1}{1}
+
+	%tasks
+	\ganttbar{first task}{1}{2} \\
+	\ganttbar{task 2}{3}{8} \\
+	\ganttbar{task 3}{9}{10} \\
+	\ganttbar{task 4}{11}{15} \\
+	\ganttbar[progress=33]{task 5}{20}{22} \\
+	\ganttbar{task 6}{18}{19} \\
+	\ganttbar{task 7}{16}{18} \\
+	\ganttbar[progress=0]{task 8}{21}{24}
+
+	%relations 
+	\ganttlink{elem0}{elem1}
+	\ganttlink{elem0}{elem3}
+	\ganttlink{elem1}{elem2}
+	\ganttlink{elem3}{elem4}
+	\ganttlink{elem1}{elem5}
+	\ganttlink{elem3}{elem5}
+	\ganttlink{elem2}{elem6}
+	\ganttlink{elem3}{elem6}
+	\ganttlink{elem5}{elem7}
+	\end{ganttchart}
+	\end{center}
+	\caption{Gantt Chart}
+
+\end{figure}

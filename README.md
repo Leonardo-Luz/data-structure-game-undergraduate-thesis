@@ -2,7 +2,7 @@
 
 ## Data Structure Game
 
-**Keywords:** game, data structure, C#, CSharp, CS, MonoGame, education, code, programming, gamedev, tutorial, stack, queue, linked list, binary tree, sorting algorithms
+**Keywords:** game, data structure, C#, CSharp, CS, Unity, education, code, programming, gamedev, tutorial, stack, queue, linked list, binary tree, sorting algorithms, search algorithms
 
 ## Description
 
@@ -10,8 +10,7 @@ This project aims to create an educational game that facilitates learning data s
 
 ## Technologies
 
-* **Game Engine:** MonoGame (Consideration given to Unity, LÖVE2D and Godot)
-* **Database:** SQLite
+* **Game Engine:** Unity
 
 ## Features
 
@@ -35,7 +34,7 @@ This project aims to create an educational game that facilitates learning data s
 
 ## Level Design
 
-All details about each level can be found [HERE](LEVELS.md)
+All details about each level can be found [HERE](./docs/_notes/LEVELS.md)
 
 The game features a series of levels, presenting differents data structure and searching/sorting algorithms:
 
@@ -64,13 +63,13 @@ The game features a series of levels, presenting differents data structure and s
 
 ## Research Book
 
-All details about the Research Book can be found [HERE](RESEARCH.md)
+All details about the Research Book can be found [HERE](./docs/_notes/RESEARCH.md)
 
 Contains the notes of the alchemist, element descriptions, damage values, and combination tutorials.  Unknown combinations are displayed as "???".
 
 ## Combinations
 
-All details about the Combinations can be found [HERE](COMBINATIONS.md)
+All details about the Combinations can be found [HERE](./docs/_notes/COMBINATIONS.md)
 
 ## Concept Arts
 

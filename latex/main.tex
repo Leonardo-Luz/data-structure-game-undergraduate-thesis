@@ -1,0 +1,36 @@
+\documentclass[12pt,openright,oneside,a4paper,english,brazil]{abntex2}
+
+% Configuração do documento
+\input{config/packages}
+\input{config/options}
+\input{config/commands}
+\input{config/data}
+
+% Início do documento
+\begin{document}
+
+% Elementos pré-textuais
+\imprimircapa
+\imprimirfolhaderosto
+
+% \input{pretextual/agradecimentos}
+% \input{pretextual/resumo}
+% \input{pretextual/abstract}
+\input{pretextual/listas}
+\input{pretextual/sumario}
+
+% Elementos textuais (capítulos)
+% \include{textual/01-introducao}
+% \include{textual/02-referencial-teorico}
+% \include{textual/03-metodologia}
+\include{textual/04-trabalhos-relacionados}
+% \include{textual/05-desenvolvimento}
+% \include{textual/06-consideracoes-finais}
+
+% Elementos pós-textuais
+\bibliography{references}
+
+% \include{postextual/apendices}
+% \include{postextual/anexos}
+
+\end{document}
