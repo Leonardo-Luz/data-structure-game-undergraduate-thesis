@@ -1,4 +1,14 @@
-\documentclass[12pt,openright,oneside,a4paper,english,brazil]{abntex2}
+\documentclass[
+  12pt,
+  openright,
+  oneside,
+  % twoside,
+  a4paper,
+  english,
+  french,
+  spanish,
+  brazilian
+]{abntex2}
 
 % Configuração do documento
 \input{config/packages}
@@ -9,28 +19,28 @@
 % Início do documento
 \begin{document}
 
-% Elementos pré-textuais
-\imprimircapa
-\imprimirfolhaderosto
+  % Elementos pré-textuais
+  \imprimircapa
+  \imprimirfolhaderosto
 
-\input{pretextual/agradecimentos}
-\input{pretextual/resumo}
-\input{pretextual/abstract}
-\input{pretextual/listas}
-\input{pretextual/sumario}
+  % \input{pretextual/agradecimentos}
+  % \input{pretextual/resumo}
+  % \input{pretextual/abstract}
+  \input{pretextual/listas}
+  \input{pretextual/sumario}
 
-% Elementos textuais (capítulos)
-\include{textual/01-introducao}
-\include{textual/02-referencial-teorico}
-\include{textual/03-metodologia}
-\include{textual/04-trabalhos-relacionados}
-\include{textual/05-desenvolvimento}
-\include{textual/06-consideracoes-finais}
+  % Elementos textuais (capítulos)
+  \include{textual/01-introducao}
+  \include{textual/02-referencial-teorico}
+  \include{textual/03-metodologia}
+  \include{textual/04-trabalhos-relacionados}
+  % \include{textual/05-desenvolvimento}
+  % \include{textual/06-consideracoes-finais}
 
-% Elementos pós-textuais
-\bibliography{references}
+  % Elementos pós-textuais
+  \bibliography{references}
 
-\include{postextual/apendices}
-\include{postextual/anexos}
+  % \include{postextual/apendices/apendice-a}
+  % \include{postextual/anexos/anexo-a}
 
 \end{document}

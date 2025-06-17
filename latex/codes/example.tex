@@ -1,0 +1,36 @@
+\begin{minted}[
+	fontsize=\small,
+	linenos,
+	bgcolor=backcolor,
+	tabsize=2,
+	breaklines=true,
+	numbersep=5pt,
+	showspaces=false,
+	showtabs=false,
+]{c}
+#include <stdio.h>
+
+//struct pessoa p1;
+struct pessoa{
+	char nome[20];
+	char sobreNome[20];
+	unsigned short idade;
+	char cpf[15];
+};
+
+int main(int argc, const char * argv[]) {
+	printf("Digite o nome: ");
+	scanf("%s",p1.nome);
+	printf("Digite o sobrenome: ");
+	scanf("%s",p1.sobreNome);
+	printf("Digite a idade: ");
+	scanf("%hu",&p1.idade);
+	printf("Digite o CPF: ");
+	scanf("%s",p1.cpf);
+
+	printf("\nO nome da pessoa eh: %s", p1.nome);
+	printf("\nO sobrenome da pessoa eh: %s", p1.sobreNome);
+	printf("\nA idade da pessoa eh: %d", p1.idade);
+	printf("\nO CPF da pessoa eh: %s\n", p1.cpf);
+}
+\end{minted}
