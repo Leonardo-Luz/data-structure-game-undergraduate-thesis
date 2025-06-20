@@ -1,0 +1,33 @@
+\newcounter{nfrcount}
+
+\newcommand{\nfrvalue}{\ifnum\value{nfrcount}<10 0\fi\arabic{nfrcount}}
+\newcommand{\nfrid}{NFR-\nfrvalue}
+
+\newcommand{\nfr}[3]{
+  \stepcounter{nfrcount}
+  \begin{table}[H]
+    \caption{Requisito Não Funcionail \nfrvalue}
+    \begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
+      \hline
+      \rowcolor{headergray}
+      \textbf{Identificador} & \textbf{Nome} & \textbf{Categoria} \\
+
+      \hline
+      \nfrid & {#1} & {#2} \\
+
+      \hline
+      \multicolumn{3}{|p{14cm}|}{\textbf{Descrição:}{#3}} \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \vspace{1em}
+}
+
+\section{Requisitos não funcionais}
+
+\nfr{Frames por segundo estáveis}{Performance}
+{
+O sistema deve se manter em um taxa de atualização constante.
+}
+

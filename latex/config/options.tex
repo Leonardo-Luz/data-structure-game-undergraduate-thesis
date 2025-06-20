@@ -1,5 +1,6 @@
 \WarningFilter{latex}{You have requested package}
 \WarningFilter{lipsum}{Unknown language}
+\WarningFilter{fmtcount}{\ordinal already defined}
 
 % Customização Geral
 \linespread{1.25}
@@ -7,21 +8,20 @@
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 
-% \pagestyle{fancy}
-% \fancyhf{}
-% \fancyfoot[C]{Página \thepage\ \pageref{LastPage} } % Adiciona um rodapé com a contagem de páginas. conflita com abntex2
+\titleformat{\chapter}
+  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\MakeUppercase}
+  {\thechapter}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{1.5\baselineskip}{1.5\baselineskip}
 
 \titleformat{\section}
-{\normalfont\normalsize\bfseries\MakeUppercase}
-{\thesection}{1em}{}
+  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{1.5\baselineskip}
 
 \titleformat{\subsection}
-{\normalfont\normalsize\bfseries}
-{\thesubsection}{1em}{}
-
-\titleformat{\chapter}
-{\normalfont\Large\bfseries\MakeUppercase}
-{\thechapter}{1em}{}
+  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1.5\baselineskip}{1.5\baselineskip}
 
 %Configurações do pacote listings
 %New colors defined below
@@ -29,6 +29,8 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codered}{rgb}{0.8,0.1,0.3}
 \definecolor{backcolor}{rgb}{0.80,0.80,0.80}
+
+\definecolor{headergray}{gray}{0.85}
 
 \usemintedstyle{friendly}
 

@@ -1,0 +1,32 @@
+\newcounter{frcount}
+\newcommand{\frvalue}{\ifnum\value{frcount}<10 0\fi\arabic{frcount}}
+\newcommand{\frid}{FR-\frvalue}
+
+\newcommand{\fr}[3]{
+  \stepcounter{frcount}
+
+  \begin{table}[H]
+    \caption{Requisito Funcional \frvalue}
+    \begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
+      \hline
+      \rowcolor{headergray}
+      \textbf{Identificador} & \textbf{Nome} & \textbf{Prioridade} \\
+
+      \hline
+      \frid & {#1} & {#2} \\
+
+      \hline
+      \multicolumn{3}{|p{14cm}|}{\textbf{Descrição:}{#3}} \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \vspace{1em}
+}
+
+\section{Requisitos Funcionais}
+
+\fr{Salvar Progresso}{Alta}
+{
+O sistema deve permitir que os usuários salvem o progresso de suas partidas em multiplas instâncias.
+}
