@@ -6,7 +6,7 @@
 \newcommand{\nfr}[3]{
   \stepcounter{nfrcount}
   \begin{table}[H]
-    \caption{Requisito Não Funcionail \nfrvalue}
+    \caption{Requisito Não Funcional \nfrvalue}
     \begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
       \hline
       \rowcolor{headergray}
@@ -19,6 +19,7 @@
       \multicolumn{3}{|p{14cm}|}{\textbf{Descrição:}{#3}} \\
       \hline
     \end{tabular}
+    \caption*{Fonte: Autor}
   \end{table}
 
   \vspace{1em}
@@ -28,6 +29,25 @@
 
 \nfr{Frames por segundo estáveis}{Performance}
 {
-O sistema deve se manter em um taxa de atualização constante.
+O sistema deve se manter em um taxa de atualização constante e acima de 30 frames por segundo.
 }
 
+\nfr{Multiplos idiomas}{Usabilidade}
+{
+O sistema deve possuir tradução para o português e para o inglês.
+}
+
+\nfr{Paleta de cores}{Acessibilidade}
+{
+O sistema deve possuir uma paleta de cores que não dificulte a visualização de elementos para pessoas daltônicas.
+}
+
+\nfr{Tamanho dos textos}{Acessibilidade}
+{
+O sistema deve possuir opções para alterar o tamanho dos textos.
+}
+
+\nfr{Contraste nos textos}{Acessibilidade}
+{
+O sistema deve possuir uma opção para adicionar contraste aos textos.
+}
