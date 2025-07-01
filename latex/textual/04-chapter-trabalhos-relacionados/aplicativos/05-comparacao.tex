@@ -1,14 +1,31 @@
 \subsection{Comparação}
 
-A análise dos jogos selecionados revela uma variedade de abordagens no uso de jogos sérios voltados ao ensino de lógica de programação. No entanto, observa-se uma presença ainda limitada de propostas que exploram os conceitos de estruturas de dados. A \autoref{tab:cmp_jogos_relatos} apresenta uma síntese comparativa entre essas iniciativas, destacando os principais elementos de cada proposta e evidenciando os aspectos que distinguem o projeto aqui desenvolvido das demais soluções analisadas.
+A análise dos jogos selecionados revela uma variedade de abordagens no uso de jogos sérios voltados ao ensino de lógica de programação. No entanto, observa-se uma presença ainda limitada de propostas que exploram conceitos de estruturas de dados de maneira mais aprofundada. A \autoref{tab:cmp_jogos_relatos} apresenta uma síntese comparativa dessas iniciativas, destacando os principais elementos de cada proposta.
+
+Os critérios utilizados para a comparação foram:
+
+\begin{itemize}
+  \item \textbf{Conceitos de Estrutura de Dados (CED)} - Quais conceitos foram abordados:
+  \begin{itemize}
+    \item Pilha (P)
+    \item Fila (F)
+    \item Lista (L)
+  \end{itemize}
+  \item \textbf{Forma de Abordagem Educacional (Ensino)} - Define se o ensino é tratado de forma explícita ou implícita.
+  \item \textbf{Estilo} - Representação visual do jogo.
+  \item \textbf{Gênero} - Categoria do jogo
+  \item \textbf{Gratuito} - Indica se o jogo está disponível gratuitamente.
+  \item \textbf{Avaliação} - Nota atribuída com base no sistema de avaliação da plataforma onde o jogo é disponibilizado.
+\end{itemize}
+
+Nos casos em que o jogo está disponível em plataformas que não possuem sistema de avaliação integrado (como o itch.io), ou em que não há avaliações registradas, a avaliação é considerada \textit{indefinida}. Para os jogos disponíveis na Steam, foi utilizada uma conversão aproximada baseada na porcentagem de avaliações positivas, conforme mostrado na \autoref{tab:avalicao_steam}.
 
 \input{tables/jogos-relatos-table}
 
 \input{tables/avaliacao-steam-table}
 
-Cálculo de conversão:
+O cálculo utilizado para a conversão é dado pela fórmula:
 
 \[
 	\text{Porcentagem de Avaliações Positivas} \times \frac{5}{100}
 \]
-
