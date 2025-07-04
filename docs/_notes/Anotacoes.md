@@ -1,6 +1,7 @@
 * mendeley, uzotero, faz as referências automaticamente.
 
-* Fazer o combate em turnos
+<!-- * Fazer o combate em turnos -->
+* se segurar um elemento/combinação ativa por um tempo determinado você toma overload (dano e perde os elementos/combinação)
 
 * quantos pessoas da área da informática jogam jogos digitais
 * papert - A Máquina das Crianças
