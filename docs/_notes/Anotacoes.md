@@ -3,7 +3,12 @@
 <!-- * Fazer o combate em turnos -->
 * se segurar um elemento/combinação ativa por um tempo determinado você toma overload (dano e perde os elementos/combinação)
 
+* Final do jogo: ele vai até um cara em uma carroça e pede uma carona para a cidade grande,
+termina com os créditos e a carroça passando por todos os cenários até chegar aos portões da cidade grande,
+termina com a carroça entrando na cidade
+
 * quantos pessoas da área da informática jogam jogos digitais
+* separar o latex e o jogo em dois repositórios
 * papert - A Máquina das Crianças
 
 * REAGENTES
