@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4ac5f8cb8043a6c50b1c0426de95f34f
+guid: 4b3d4e7ccddace284ab37762285c354e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3547284551697272341
-    second: player_squat_0
+      213: 284944545146109204
+    second: rain_sheet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_squat_0
+      name: rain_sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
+        y: 0
         width: 16
-        height: 12
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be17ada9e7385cec0800000000000000
-      internalID: -3547284551697272341
+      spriteID: 41d7e1add8354f300800000000000000
+      internalID: 284944545146109204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rain_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbbfc55cc90de78d2b08389ec403b45c
+      internalID: 1106212733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rain_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a88e7ec2c5c39c9a1dd4c3c7f4810a
+      internalID: 1616188420
       vertices: []
       indices: 
       edges: []
@@ -125,7 +169,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e6496cd22f22faa5a55d055bfae76ea
+    spriteID: 1e55a39bab93c1292bcfac48178adda8
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +179,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      player_squat_0: -3547284551697272341
+      rain_sheet_0: 284944545146109204
+      rain_sheet_1: 1106212733
+      rain_sheet_2: 1616188420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

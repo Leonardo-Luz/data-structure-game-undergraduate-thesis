@@ -2,22 +2,37 @@ using UnityEngine;
 
 public class DustParticle : MonoBehaviour
 {
-  private ParticleSystem dust;
+  [SerializeField] private ParticleSystem dust;
   [SerializeField] private float dustRunTimeThreshold = 1.5f;
   [SerializeField] private float minWalkSpeed = 0.1f;
+  [SerializeField] private float scaleFactor = 1f;
 
+  private float defaultSize = 0f;
   private float walkTimer = 0f;
   private float stopTimer = 0f;
   private bool canPlayDust = false;
+  private float timeout = 0f;
 
   public void Start()
   {
-    dust = gameObject.GetComponent<ParticleSystem>();
+    if (dust == null)
+      dust = GetComponent<ParticleSystem>();
+
+    var main = dust.main;
+    var size = main.startSize;
+    defaultSize = size.constant;
+    size.constant *= scaleFactor;
+    main.startSize = size;
   }
 
   public void UpdateWalkingDust(float horizontalVelocity, bool isRunning, bool isGrounded)
   {
     bool isMoving = Mathf.Abs(horizontalVelocity) > minWalkSpeed;
+
+    if (timeout > 0)
+    {
+      timeout -= Time.deltaTime;
+    }
 
     if (isMoving && isGrounded && isRunning)
     {
@@ -56,6 +71,16 @@ public class DustParticle : MonoBehaviour
     walkTimer = 0f;
   }
 
+  public void TryPlayWalkDust(bool facingRight, bool isGrounded, float timeout)
+  {
+    if (!canPlayDust || dust == null || this.timeout > 0) return;
+
+    if (isGrounded)
+      PlayDust(facingRight);
+
+    this.timeout = timeout;
+  }
+
   public void PlayDust(bool facingRight)
   {
     var shape = dust.shape;
@@ -69,5 +94,16 @@ public class DustParticle : MonoBehaviour
     shape.position = pos;
 
     dust.Play();
+  }
+
+
+  public void setScaleFactor(float scaleFactor)
+  {
+    this.scaleFactor = scaleFactor;
+
+    var main = dust.main;
+    var size = main.startSize;
+    size.constant = defaultSize * scaleFactor;
+    main.startSize = size;
   }
 }

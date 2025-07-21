@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
 {
   [Header("Movement Settings")]
   [SerializeField] private float speed = 3f;
+  [SerializeField] private float crouchSpeed = 1.8f;
   [SerializeField] private float moveSpeed = 3f;
   [SerializeField] private float runSpeed = 5f;
   [SerializeField] private float jumpForce = 6f;
@@ -12,6 +13,8 @@ public class PlayerMove : MonoBehaviour
   [Header("Dependencies")]
   [SerializeField] private Grounded groundedCheck;
   [SerializeField] private DustParticle dustParticle;
+  private GameObject glowCrouch;
+  private GameObject glowIdle;
 
   private Rigidbody2D rb;
   private SpriteRenderer spriteRenderer;
@@ -22,6 +25,9 @@ public class PlayerMove : MonoBehaviour
 
   void Start()
   {
+    glowCrouch = GameObject.FindGameObjectWithTag("GlowCrouch");
+    glowIdle = GameObject.FindGameObjectWithTag("GlowIdle");
+
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     groundedCheck = GetComponent<Grounded>();
@@ -34,13 +40,19 @@ public class PlayerMove : MonoBehaviour
     float horizontalInput = Input.GetAxis("Horizontal");
     float verticalInput = Input.GetAxis("Vertical");
 
-    animator.SetBool("isCrouching", verticalInput < 0);
+    bool isCrouching = verticalInput < 0 && isGrounded;
+
+    animator.SetBool("isCrouching", isCrouching);
 
     isGrounded = groundedCheck.IsGrounded();
 
-    dustParticle.UpdateWalkingDust(rb.linearVelocity.x, speed + 0.001 >= runSpeed, isGrounded);
+    glowCrouch.SetActive(isCrouching);
+    glowIdle.SetActive(!isCrouching);
 
-    // Flip logic
+    dustParticle.UpdateWalkingDust(rb.linearVelocity.x, speed + 0.001 >= runSpeed, isGrounded);
+    dustParticle.setScaleFactor(0.2f);
+    dustParticle.TryPlayWalkDust(!spriteRenderer.flipX, isGrounded, Random.Range(0.6f, 1f));
+
     if (horizontalInput > 0 && spriteRenderer.flipX)
     {
       Flip(false);
@@ -50,27 +62,33 @@ public class PlayerMove : MonoBehaviour
       Flip(true);
     }
 
-    if (Input.GetKeyDown(KeyCode.LeftShift))
+    float curSpeed = speed;
+
+    if (isCrouching)
     {
-        speed = runSpeed;
+        curSpeed = crouchSpeed;
+    }
+    else if (Input.GetKey(KeyCode.LeftShift))
+    {
+        curSpeed = runSpeed;
+    }
+    else
+    {
+        curSpeed = moveSpeed;
     }
 
-    if (Input.GetKeyUp(KeyCode.LeftShift))
-    {
-        speed = moveSpeed;
-    }
+    if(isGrounded)
+      speed = curSpeed;
 
-    // Move
     rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
 
-    // Jump
-    if (Input.GetButtonDown("Jump") && isGrounded)
+    if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
     {
       PlayerJump();
+      dustParticle.setScaleFactor(1f);
       dustParticle.PlayDust(!spriteRenderer.flipX);
     }
 
-    // Cut jump short
     if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
     {
       rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
@@ -79,7 +97,26 @@ public class PlayerMove : MonoBehaviour
 
   void Flip(bool flipX)
   {
+    SpriteRenderer glowIS = glowIdle.GetComponent<SpriteRenderer>();
+    SpriteRenderer glowCS = glowCrouch.GetComponent<SpriteRenderer>();
+
+    glowIS.transform.position = new Vector3(
+        this.transform.position.x + ( flipX ? -0.031f : 0.031f ),
+        this.transform.position.y - 0.0315f,
+        this.transform.position.z
+    );
+
+    glowCS.transform.position = new Vector3(
+        this.transform.position.x + ( flipX ? -0.000f : 0.000f ),
+        this.transform.position.y - 0.01f,
+        this.transform.position.z
+    );
+
+    glowIS.flipX = flipX;
+    glowCS.flipX = flipX;
+
     spriteRenderer.flipX = flipX;
+    dustParticle.setScaleFactor(0.8f);
     dustParticle.TryPlayFlipDust(!flipX, isGrounded);
   }
 
