@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c9747390a863459f0a7dbba1d238cfbf
+guid: cabb918202d86d66e8413ad563b23709
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8577137301895317587
-    second: mush_2_2_0
+      213: -8857846866928009903
+    second: cat_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mush_2_2_0
+      name: cat_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 16
-        height: 13
+        x: 2
+        y: 1
+        width: 12
+        height: 15
       alignment: 9
-      pivot: {x: 0.5, y: 0.53846157}
+      pivot: {x: 0.5, y: 0.53333336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3580935beec180770800000000000000
-      internalID: 8577137301895317587
+      spriteID: 15df2f5943b921580800000000000000
+      internalID: -8857846866928009903
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c1d39c8e402273d43b08ca23d4ff635c
+    spriteID: 9d72818aba72e89968712bb50d5dce70
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mush_2_2_0: 8577137301895317587
+      cat_1_0: -8857846866928009903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
