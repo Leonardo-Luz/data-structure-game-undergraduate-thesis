@@ -30,3 +30,38 @@ termina com a carroça entrando na cidade
     * Passe de (uma, duas, cinco, todas) as fazes em menos de x minutos
 
   * ...
+
+
+  ┌──────────────┐                 ┌──────────────────┐
+  │PlayerCombat  │                 │ Stack            │
+  ├──────────────┤                 ├──────────────────┤
+  │- Stack       ├────────────────►│ - top            │
+  │- Queue       │                 ├──────────────────┤
+  │- LinkedList  │                 │ + pop(): Element │
+  │- elemets[]   │                 │ + push(): Void   │
+  ├──────────────┤                 └──────────────────┘
+  │              │
+  └──────────────┘
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

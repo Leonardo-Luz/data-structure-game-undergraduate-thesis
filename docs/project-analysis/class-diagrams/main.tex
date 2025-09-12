@@ -1,0 +1,99 @@
+\include{config/packages}
+\include{config/data}
+
+\begin{document}
+  \begin{tikzpicture}
+    \begin{class}[text width=4cm]{Player}{-1,0}
+      % Move Variables
+      \attribute{- curSpeed: float}
+      \attribute{- walkSpeed: float}
+      \attribute{- crouchSpeed: float}
+      \attribute{- runSpeed: float}
+
+      % Jump Variables
+      \attribute{- jumpForce: float}
+      \attribute{- isGrounded: bool}
+
+      % Attack Variables
+      \attribute{- reagentCooldown: float}
+      \attribute{- reagentTimer: float}
+      \attribute{- consumable: Consumable}
+
+      % Dependencies
+      \attribute{- rb: Rigidbody2D}
+      \attribute{- groundCheck: Grounded}
+      \attribute{- hpBar: HpBar}
+      \attribute{- stackInventory: StackInventory}
+      \attribute{- queueInventory: QueueInventory}
+      \attribute{- linkedListInventory: LinkedListInventory}
+
+      \operation{+ Start (): void}
+      \operation{+ Update (): void}
+      \operation{- SetDependencies(): void}
+      \operation{- FlipSprite(): void}
+      \operation{- AddReagent(target: Inventory): void}
+      \operation{- UseConsumable(target: Inventory): void}
+    \end{class}
+
+    \begin{class}[text width=4cm]{<<enumeration>> Consumable}{4,0}
+      \attribute{SORT}
+      \attribute{FIND}
+      \attribute{PUSH}
+    \end{class}
+
+    \begin{class}[text width=4cm]{<<enumeration>> Reagent}{4,0}
+      \attribute{FIRE}
+      \attribute{WATER}
+      \attribute{EARTH}
+      \attribute{AIR}
+    \end{class}
+
+    \begin{interface}[text width=4cm]{Inventory}{4,0}
+      \operation{+ Push(reagent: Reagent): void}
+      \operation{+ Push(reagent: Reagent[]): void}
+      \operation{+ Pop(): Reagent}
+      \operation{+ Sort(): void}
+      \operation{+ Find(): Reagent}
+    \end{interface}
+
+    \begin{class}[text width=13cm]{StackInventory}{4.5,-5}
+      \inherit{Inventory}
+      \attribute{- qty: int}
+      \attribute{- max: int}
+      \attribute{- head: Reagent}
+      \attribute{- data: Reagent[3]}
+    \end{class}
+
+    \begin{class}[text width=13cm]{QueueInventory}{4.5,-5}
+      \inherit{Inventory}
+      \attribute{- qty: int}
+      \attribute{- max: int}
+      \attribute{- head: Reagent}
+      \attribute{- data: Reagent[3]}
+    \end{class}
+
+    \begin{class}[text width=13cm]{LinkedListInventory}{4.5,-5}
+      \inherit{Inventory}
+      \attribute{- qty: int}
+      \attribute{- max: int}
+      \attribute{- head: Node}
+      \attribute{- tail: Node}
+    \end{class}
+
+    \begin{class}[text width=13cm]{Node}{4.5,-5}
+      \attribute{- value: Reagent}
+      \attribute{- next: Node}
+      \attribute{- prev: Node}
+    \end{class}
+
+    % Composition
+    \draw[diamond-, shorten >=1pt] (Plano) -- (Matricula);
+    \draw[diamond-, shorten >=1pt] (Aluno) -- (Matricula);
+
+    % Aggregation
+    \draw[open diamond-, shorten >=1pt] (Matricula) -- (Instrutor);
+    \draw[open diamond-, shorten >=1pt] (Treino) -- (Aluno);
+    \draw[open diamond-, shorten >=1pt] (Treino) -- (Instrutor);
+
+  \end{tikzpicture}
+\end{document}

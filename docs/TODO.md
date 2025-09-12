@@ -1,38 +1,135 @@
-# TODO
+## TODO
+- [ ] Thesis
+  - [ ] Gantt chart
+  - [x] Theme (alchemy - data structure)
+  - [x] Scientific methodology
+  - [ ] Development methodology
+  - [x] Art state
+  - [ ] Development
+    - [ ] Functional requirements
+    - [ ] Non functional requirements
 
-* Gantt chart
-* tema
-* metodologia cientifica
-* metodologia de desenvolvimento
-* estado da arte
-* requisitos não funcionais
-* requisitos funcionais
-* desenhar sprites
-* desenhar mapas
-* desenhar hud
-* design de som
-* design dos levels
+- [ ] Game
+  - [ ] Player
+    - [x] Move
+      - [x] Walk
+      - [x] Run
+      - [x] Jump
+    - [ ] Combo/attack mechanic
+      - [ ] Stack(z)
+      - [ ] Queue(x)
+      - [ ] Linked list(c)[shift+c]
+  - [ ] Enemy move/attack
+    - [ ] Flying
+    - [ ] Ranged
+    - [ ] Melee
+    - [ ] Boss
+  - [ ] Menu
+    - [ ] Main menu
+      - [ ] Play
+        - [ ] Map with the levels (1-x)
+      - [ ] Quit
+      - [ ] Options
+      - [ ] Achievements
+      - [ ] (temp) help me with my thesis (goes to a google docs form)
+    - [ ] Pause menu
+      - [ ] Resume
+      - [ ] Options
+      - [ ] Back to main menu
+    - [ ] Options
+      - [ ] Language (pt-en)
+      - [ ] Keymaps
+      - [ ] Volumes
+        - [ ] master
+        - [ ] effects
+        - [ ] music
+      - [ ] Back
+  - [ ] Level Options
+    - [ ] Skip dialog/cutscene when phase already completed
+  - [ ] Save vars
+    - [ ] Phase completed
+    - [ ] Complete time
+    - [ ] Deaths
+  - [ ] achievements
+    - [ ] (secret) stack overflow (use a consumable to add +2 elements in a almost full stack)
+    - [ ] (secret) are u a plumber ? (try to jump in the head of a enemy)
+    - [ ] (secret) hardcore (play all levels in sequence without taking any damage)
+    - [ ] speed runner I II III
+    - [ ] ...
+  - [ ] Misc
+    - [ ] Lock camera to a min y value so it nevers shows below some point (to prevent leaking not made areas when player falls)
+    - [ ] Lock areas until a specified monster is defeated (create an specific indication for that monster?)
+    - [x] Proximity detection
+    - [ ] Health points
 
-## Desenhar
+- [ ] Art
+  - [ ] Player
+    - [x] idle
+    - [ ] jump
+    - [ ] running
+    - [x] crouching
+  - [ ] Particles
+    - [ ] Firefly particles
+    - [ ] Leaves particles
+    - [x] Rain and splash particles
+    - [x] Dust particles (run, jump and flip)
+  - [ ] Foreground items
+    - [ ] Trees
+  - [x] Parallax
+    - [x] Sky
+    - [x] Back trees
+    - [x] Front trees
+  - [ ] Environment
+    - [x] Grass
+    - [ ] Trees
+    - [x] Bushes
+    - [ ] Spiked Bushes
+    - [ ] Broken Carriage
+    - [ ] Board
+    - [x] Bridge Details
+    - [?] Tiles
+      - [x] Grass Floor
+      - [?] Pavement Floor
+      - [?] Cave Floor
+      - [?] Castle/room Floor
+      - [x] Bridge Floor
+  - [ ] NPCs
+    - [x] Cat (the one that teaches the mechanics)
+  - [ ] Enemies
+    - [ ] Normal
+      - [x] (ground-melee)  mushroom
+      - [x] (ground-melee)  slime melee
+      - [x] (ground-ranged) slime ranged
+      - [ ] (flying-melee)  normal bat
+      - [ ] (flying-ranged) one-eyed bat (doesn't move)
+    - [ ] Bosses
+      - [ ] (1) slime king
+      - [ ] (2) ???
+      - [ ] (3) alchemist
+  - [ ] Hud
+    - [ ] HP
+    - [ ] Element cooldown
+    - [ ] Stack       representation
+    - [ ] Queue       representation
+    - [ ] Linked list representation
+  - [ ] Level design
+    - [ ] normal levels
+      - [ ] first
+      - [ ] ...
+    - [ ] challenge levels
+      - [ ] arena
 
-- [ ] Player
-  * Tema: Alquimia, Médicos da Peste Negra
-  * Inspiração: Hollow Knight, ...
-
-- [ ] Inimigos
-  - [ ] Slime
-  - [ ] Cogumelo
-  - [ ] Goblin ?
-  - [ ] Archer ?
-  - [ ] Flying ?
-
-- [ ] Bosses
-  - [ ] Slime King
-  - [ ] Mid Boss?
-  - [ ] Alquimista
-
-## Game
-
-- [ ] Util: Proximity detection
-- [ ] Util: Health Bar
-- [ ] Feat: Inventories
+- [ ] Sound design
+  - [ ] Player
+    - [ ] Running
+    - [ ] Casting
+      - [ ] Fire
+      - [ ] Water
+      - [ ] Earth
+      - [ ] Air
+  - [ ] Enemies
+  - [ ] Environment
+    - [ ] Step on Grass
+    - [ ] Crickets
+    - [ ] Rain
+  - [ ] Music
