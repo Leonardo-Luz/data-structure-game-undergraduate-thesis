@@ -10,6 +10,9 @@ public class PlayerMove : MonoBehaviour
   [SerializeField] private float runSpeed = 5f;
   [SerializeField] private float jumpForce = 6f;
 
+  [Header("Accessibility Settings")]
+  [SerializeField] private bool glow = false;
+
   [Header("Dependencies")]
   [SerializeField] private Grounded groundedCheck;
   [SerializeField] private DustParticle dustParticle;
@@ -46,8 +49,13 @@ public class PlayerMove : MonoBehaviour
 
     isGrounded = groundedCheck.IsGrounded();
 
-    glowCrouch.SetActive(isCrouching);
-    glowIdle.SetActive(!isCrouching);
+    if(glow){
+      glowCrouch.SetActive(isCrouching);
+      glowIdle.SetActive(!isCrouching);
+    } else {
+      glowCrouch.SetActive(false);
+      glowIdle.SetActive(false);
+    }
 
     dustParticle.UpdateWalkingDust(rb.linearVelocity.x, speed + 0.001 >= runSpeed, isGrounded);
     dustParticle.setScaleFactor(0.2f);
