@@ -7,7 +7,7 @@
   english,
   french,
   spanish,
-  brazilian
+  brazil
 ]{abntex2}
 
 % Configuração do documento
@@ -19,29 +19,39 @@
 % Início do documento
 \begin{document}
 
-  % Elementos pré-textuais
-  \imprimircapa
-  \imprimirfolhaderosto
+\selectlanguage{brazil}
+\frenchspacing
 
-  % \input{pretextual/agradecimentos}
-  % \input{pretextual/resumo}
-  % \input{pretextual/abstract}
-  \input{pretextual/listas}
-  \input{pretextual/sumario}
+% Elementos pré-textuais
+\pretextual
+\imprimircapa
+\imprimirfolhaderosto*
 
-  % Elementos textuais (capítulos)
-  \include{textual/01-introducao}
-  \include{textual/02-referencial-teorico}
-  \include{textual/03-metodologia}
-  \include{textual/04-trabalhos-relacionados}
-  % \include{textual/05-desenvolvimento}
-  % \include{textual/06-consideracoes-finais}
+\input{pretextual/agradecimentos}
+\input{pretextual/resumo}
+\input{pretextual/abstract}
+\input{pretextual/listas}
+\input{pretextual/sumario}
 
-  % Elementos pós-textuais
-  \bibliography{references}
+% Elementos textuais (capítulos)
+\textual
+\include{textual/01-introducao}
+\include{textual/02-referencial-teorico}
+\include{textual/03-metodologia}
+\include{textual/04-trabalhos-relacionados}
+\include{textual/05-desenvolvimento}
+\include{textual/06-consideracoes-finais}
 
-  % \include{postextual/apendices/apendice-a}
-  % \include{postextual/anexos/anexo-a}
+% Elementos pós-textuais
+\postextual
+
+\bibliography{references}
+
+% \include{postextual/apendices/apendice-a}
+% \include{postextual/anexos/anexo-a}
+
+\phantompart
+\printindex
 
 \end{document}
 

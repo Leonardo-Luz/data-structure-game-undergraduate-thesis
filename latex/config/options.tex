@@ -8,51 +8,66 @@
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 
-\titleformat{\chapter}
-  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\MakeUppercase}
-  {\thechapter}{0.5em}{}
-\titlespacing*{\chapter}{0pt}{1.5\baselineskip}{1.5\baselineskip}
+% Your chapter formatting
+\titleformat{\chapter}[block]
+  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
+  {\thechapter}{0.5em}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{-2em}{2.25\baselineskip}
 
 \titleformat{\section}
   {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
-  {\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{1.5\baselineskip}{1.5\baselineskip}
+  {\thesection}{1em}{\MakeUppercase}
 
-\titleformat{\subsection}
-  {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
-  {\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{1.5\baselineskip}{1.5\baselineskip}
+\makeatletter
+\makeatletter
+\renewcommand{\l@chapter}[2]{%
+  % #1 = chapter title, #2 = page number
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \noindent
+    \bfseries
+    \ifnum \c@secnumdepth >\m@ne
+      \@dottedtocline{0}{0em}{5em}{\MakeTextUppercase{#1}}{\bfseries #2}%
+    \else
+      \@dottedtocline{0}{5em}{0em}{\MakeTextUppercase{#1}}{\normalfont #2}%
+    \fi
+  \fi
+}
+\makeatother
+\makeatother
+
 
 %Configurações do pacote listings
 %New colors defined below
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codered}{rgb}{0.8,0.1,0.3}
-\definecolor{backcolor}{rgb}{0.80,0.80,0.80}
+\definecolor{backcolor}{rgb}{0.90,0.90,0.90}
 
 \definecolor{headergray}{gray}{0.85}
 
 \usemintedstyle{friendly}
 
-%Code listing style named "mystyle"
-% \lstdefinestyle{mystyle}{
-% 	backgroundcolor=\color{backcolour},
-% 	commentstyle=\color{codegreen},
-% 	keywordstyle=\bfseries\color{blue},
-% 	numberstyle=\tiny\color{codegray},
-% 	methodstyle=\tiny\color{codegray},
-% 	stringstyle=\color{codered},
-% 	basicstyle=\footnotesize\ttfamily,
-% 	breakatwhitespace=false,
-% 	breaklines=true,
-% 	captionpos=t,
-% 	keepspaces=true,
-% 	numbers=left,
-% 	numbersep=5pt,
-% 	showspaces=false,
-% 	showstringspaces=false,
-% 	showtabs=false,
-% 	tabsize=2,
-% 	numberbychapter=false
-% }
-% \lstset{style=mystyle}
+\definecolor{blue}{RGB}{41,5,195}
+
+\makeatletter
+\hypersetup{
+  pdftitle={\texorpdfstring{\@title}{Título do documento}},
+  pdfauthor={\texorpdfstring{\@author}{Seu Nome}},
+  pdfsubject={\texorpdfstring{\imprimirpreambulo}{Resumo do preâmbulo}},
+  pdfcreator={LaTeX with abnTeX2},
+  pdfkeywords={trabalho de conclusão de curso, ifrs, campus osório, ads, análise e desenvolvimento de sistemas},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+  bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+\makeindex

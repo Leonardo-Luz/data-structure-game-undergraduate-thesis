@@ -1,0 +1,55 @@
+\begin{listing}[H]
+\label{code:stack}
+\caption{Exemplo de um código de Pilha em C}
+\begin{minted}[
+fontsize=\small,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{c}
+ int MAX = 6
+
+ typedef struct = {
+   int qty;
+   int* values;
+ }Stack;
+
+ Stack* startStack() {
+   Stack* stack = (Stack*)malloc(sizeof(Stack));
+   stack->values = (int*)malloc(MAX * sizeof(int));
+   stack->qty = 0;
+
+   return stack;
+ }
+
+ bool push(Stack* stack, int value) {
+   if(isFull(stack)) return false;
+
+   stack->values[stack->qty] = value;
+   stack->qty++;
+
+   return true;
+ }
+
+ bool pop(Stack* stack, int* value) {
+   if(isEmpty(stack)) return false;
+
+   stack->qty--;
+   *value = stack->values[stack->qty];
+
+   return true;
+ }
+
+ bool isEmpty(Stack* stack){
+   return (stack->qty == 0)
+ }
+
+ bool isFull(Stack* stack){
+   return stack->qty == MAX-1
+ }
+\end{minted}
+\end{listing}
