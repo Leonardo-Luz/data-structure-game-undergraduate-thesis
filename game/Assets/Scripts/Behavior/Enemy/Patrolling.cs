@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PatrollingEnemy : MonoBehaviour
 {
   [Header("Patrol Settings")]
+  private float defaultSpeed = 2f;
   [SerializeField] private float speed = 2f;
+  [SerializeField] private float staggerDuration = 0.5f;
   [SerializeField] private Transform groundCheck;
   [SerializeField] private LayerMask groundLayer;
   [SerializeField] private float groundCheckDistance = 0.5f;
@@ -17,6 +20,7 @@ public class PatrollingEnemy : MonoBehaviour
   private void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
+    defaultSpeed = speed;
   }
 
   private void FixedUpdate()
@@ -58,5 +62,18 @@ public class PatrollingEnemy : MonoBehaviour
       Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y) + Vector2.right * wallCheckDistance);
     }
   }
+
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+    if (collision.collider.CompareTag("Player")) StartCoroutine(StaggerRoutine());
+  }
+
+
+    private IEnumerator StaggerRoutine()
+    {
+      speed = 0f;
+      yield return new WaitForSeconds(staggerDuration);
+      speed = defaultSpeed;
+    }
 }
 
