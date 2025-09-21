@@ -1,24 +1,47 @@
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int max;
-    private int current;
+  [SerializeField] private int maxHP = 100;
+  private int currentHP;
 
-    private void Start()
-    {
-        this.current = this.max;
-    }
+  // Events
+  public event Action<int, int> OnHealthChanged;
+  public event Action OnDeath;
 
-    public void Damage(int value)
-    {
-        if ((this.current -= value) < 0)
-            this.current = 0;
-    }
+  private void Awake()
+  {
+    currentHP = maxHP;
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+  }
 
-    public void Heal(int value)
+  public void TakeDamage(int amount)
+  {
+    if (currentHP <= 0) return;
+
+    currentHP = Mathf.Max(currentHP - amount, 0);
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+
+    if (currentHP <= 0)
     {
-        if ((this.current += value) > this.max)
-            this.current = this.max;
+      Die();
     }
+  }
+
+  public void Heal(int amount)
+  {
+    if (currentHP <= 0) return;
+
+    currentHP = Mathf.Min(currentHP + amount, maxHP);
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+  }
+
+  private void Die()
+  {
+    OnDeath?.Invoke();
+  }
+
+  public int GetHP() => currentHP;
+  public int GetMaxHP() => maxHP;
 }

@@ -16,8 +16,11 @@ public class PlayerMove : MonoBehaviour
   [Header("Dependencies")]
   [SerializeField] private Grounded groundedCheck;
   [SerializeField] private DustParticle dustParticle;
+  private Health health;
+  private PlayerCollisions playerCollisions;
   private GameObject glowCrouch;
   private GameObject glowIdle;
+  private Knockback knockback;
 
   private Rigidbody2D rb;
   private SpriteRenderer spriteRenderer;
@@ -36,12 +39,23 @@ public class PlayerMove : MonoBehaviour
     groundedCheck = GetComponent<Grounded>();
     dustParticle = GetComponent<DustParticle>();
     animator = GetComponent<Animator>();
+    health = GetComponent<Health>();
+    knockback = GetComponent<Knockback>();
+    playerCollisions = GetComponent<PlayerCollisions>();
+
+    playerCollisions.OnEnemyHit += health.TakeDamage;
   }
 
   void Update()
   {
-    float horizontalInput = Input.GetAxis("Horizontal");
-    float verticalInput = Input.GetAxis("Vertical");
+    float horizontalInput = 0;
+    float verticalInput = 0;
+
+    if (!knockback.IsKnockedBack)
+    {
+      horizontalInput = Input.GetAxis("Horizontal");
+      verticalInput = Input.GetAxis("Vertical");
+    }
 
     bool isCrouching = verticalInput < 0 && isGrounded;
 
@@ -49,10 +63,13 @@ public class PlayerMove : MonoBehaviour
 
     isGrounded = groundedCheck.IsGrounded();
 
-    if(glow){
+    if (glow)
+    {
       glowCrouch.SetActive(isCrouching);
       glowIdle.SetActive(!isCrouching);
-    } else {
+    }
+    else
+    {
       glowCrouch.SetActive(false);
       glowIdle.SetActive(false);
     }
@@ -74,21 +91,22 @@ public class PlayerMove : MonoBehaviour
 
     if (isCrouching)
     {
-        curSpeed = crouchSpeed;
+      curSpeed = crouchSpeed;
     }
     else if (Input.GetKey(KeyCode.LeftShift))
     {
-        curSpeed = runSpeed;
+      curSpeed = runSpeed;
     }
     else
     {
-        curSpeed = moveSpeed;
+      curSpeed = moveSpeed;
     }
 
-    if(isGrounded)
+    if (isGrounded)
       speed = curSpeed;
 
-    rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+    if (!knockback.IsKnockedBack)
+      rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
 
     if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
     {
@@ -109,13 +127,13 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer glowCS = glowCrouch.GetComponent<SpriteRenderer>();
 
     glowIS.transform.position = new Vector3(
-        this.transform.position.x + ( flipX ? -0.031f : 0.031f ),
+        this.transform.position.x + (flipX ? -0.031f : 0.031f),
         this.transform.position.y - 0.0315f,
         this.transform.position.z
     );
 
     glowCS.transform.position = new Vector3(
-        this.transform.position.x + ( flipX ? -0.000f : 0.000f ),
+        this.transform.position.x + (flipX ? -0.000f : 0.000f),
         this.transform.position.y - 0.01f,
         this.transform.position.z
     );
