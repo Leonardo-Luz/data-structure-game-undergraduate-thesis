@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Outline : MonoBehaviour
 {
-  [SerializeField] private Color outlineColor = Color.black;
+  [SerializeField] private Color outlineColor = Color.white;
   [SerializeField]
   private Vector2Int[] outlineOffsets = new Vector2Int[]
   {
@@ -46,7 +46,7 @@ public class Outline : MonoBehaviour
     sr.color = outlineColor;
 
     Material newMat = new Material(Shader.Find("Sprites/FlickShader"));
-    newMat.color = Color.white;
+    newMat.color = outlineColor;
 
     sr.material = newMat;
     sr.sortingLayerID = originalSprite.sortingLayerID;
@@ -73,8 +73,15 @@ public class Outline : MonoBehaviour
       outlines[i].transform.localPosition = new Vector3(offset.x / 16f, offset.y / 16f, 1);
       SpriteRenderer sr = outlines[i].GetComponent<SpriteRenderer>();
       sr.sprite = originalSprite.sprite;
+      sr.material.color = outlineColor;
       sr.flipX = originalSprite.flipX;
       sr.sortingOrder = originalSprite.sortingOrder;
+
+      if (!isOutlined)
+      {
+        sr.enabled = false;
+        continue;
+      }
     }
   }
 }

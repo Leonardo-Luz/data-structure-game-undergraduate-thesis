@@ -2798,6 +2798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  staggerDuration: 0.5
   groundCheck: {fileID: 701337770}
   groundLayer:
     serializedVersion: 2
@@ -27053,6 +27054,7 @@ GameObject:
   - component: {fileID: 651606522}
   - component: {fileID: 651606524}
   - component: {fileID: 651606523}
+  - component: {fileID: 651606525}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -32237,6 +32239,25 @@ MonoBehaviour:
   OriginalMaterial: {fileID: 0}
   WhiteMaterial: {fileID: 0}
   FlickDuration: 0.1
+--- !u!114 &651606525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651606507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d476d06cb8cadd75abb93b08d838535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineOffsets:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  isOutlined: 1
 --- !u!1 &654989233
 GameObject:
   m_ObjectHideFlags: 0
@@ -45384,6 +45405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  staggerDuration: 0.5
   groundCheck: {fileID: 673852936}
   groundLayer:
     serializedVersion: 2

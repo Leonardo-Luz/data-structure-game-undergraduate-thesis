@@ -3,6 +3,7 @@ Shader "Sprites/FlickShader"
     Properties
     {
         _MainTex ("Sprite Texture", 2D) = "white" {}
+        _Color ("Tint", Color) = (1,1,1,1)
     }
     SubShader
     {
@@ -32,6 +33,7 @@ Shader "Sprites/FlickShader"
             };
 
             sampler2D _MainTex;
+            fixed4 _Color;
 
             v2f vert(appdata_t v)
             {
@@ -44,7 +46,7 @@ Shader "Sprites/FlickShader"
             fixed4 frag(v2f i) : SV_Target
             {
                 fixed4 texColor = tex2D(_MainTex, i.texcoord);
-                return fixed4(1, 1, 1, texColor.a); // pure white, keep alpha
+                return fixed4(_Color.rgb, texColor.a * _Color.a);
             }
             ENDCG
         }
