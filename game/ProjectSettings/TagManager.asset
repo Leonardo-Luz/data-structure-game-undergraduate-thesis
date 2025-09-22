@@ -8,6 +8,10 @@ TagManager:
   - GlowCrouch
   - GlowIdle
   - Enemy
+  - Air
+  - Fire
+  - Water
+  - Earth
   layers:
   - Default
   - TransparentFX

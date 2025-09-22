@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8629947908159946499}
   - component: {fileID: 3538885466135611087}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Air
+  m_Name: Projectile 1
+  m_TagString: Earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 200
   m_Sprite: {fileID: -8990929674756197408, guid: dac9b5782e7f917df83e4ac74feac1e4, type: 3}
-  m_Color: {r: 0.3254717, g: 1, b: 0.4822211, a: 1}
+  m_Color: {r: 0.46226418, g: 0.30744928, b: 0.30744928, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
