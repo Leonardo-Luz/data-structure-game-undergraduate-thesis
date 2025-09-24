@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Water
   - Earth
+  - Cam
   layers:
   - Default
   - TransparentFX

@@ -32,16 +32,16 @@ public class EnemyDamage : MonoBehaviour
       switch (weaknesses[i])
       {
         case Element.FIRE:
-          if (collider.CompareTag("Water")) health.TakeDamage(1);
-          break;
-        case Element.WATER:
-          if (collider.CompareTag("Air")) health.TakeDamage(1);
-          break;
-        case Element.AIR:
           if (collider.CompareTag("Fire")) health.TakeDamage(1);
           break;
-        case Element.EARTH:
+        case Element.WATER:
           if (collider.CompareTag("Water")) health.TakeDamage(1);
+          break;
+        case Element.AIR:
+          if (collider.CompareTag("Air")) health.TakeDamage(1);
+          break;
+        case Element.EARTH:
+          if (collider.CompareTag("Earth")) health.TakeDamage(1);
           break;
       }
     }

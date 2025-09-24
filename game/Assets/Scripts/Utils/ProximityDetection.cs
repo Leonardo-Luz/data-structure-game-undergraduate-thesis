@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class ProximityDetection : MonoBehaviour
 {
@@ -11,9 +11,8 @@ public class ProximityDetection : MonoBehaviour
   public bool detectOnce = false;
   public bool checkEveryFrame = true;
 
-  [Header("Events")]
-  public UnityEvent onEnterProximity;
-  public UnityEvent onExitProximity;
+  public event Action onEnterProximity;
+  public event Action onExitProximity;
 
   private bool isTargetInRange = false;
 

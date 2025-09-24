@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
 
   private bool isGrounded;
 
-  void Start()
+  private void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     playerCollisions.OnEnemyHit += health.TakeDamage;
   }
 
-  void Update()
+  private void Update()
   {
     float horizontalInput = 0;
     float verticalInput = 0;
@@ -57,54 +57,46 @@ public class PlayerMove : MonoBehaviour
 
     isGrounded = groundedCheck.IsGrounded();
 
+    // INFO: Particles logic
     dustParticle.UpdateWalkingDust(rb.linearVelocity.x, speed + 0.001 >= runSpeed, isGrounded);
     dustParticle.setScaleFactor(0.2f);
     dustParticle.TryPlayWalkDust(!spriteRenderer.flipX, isGrounded, Random.Range(0.6f, 1f));
 
-    if (horizontalInput > 0 && spriteRenderer.flipX)
-    {
-      Flip(false);
-    }
-    else if (horizontalInput < 0 && !spriteRenderer.flipX)
-    {
-      Flip(true);
-    }
+    if (horizontalInput > 0 && spriteRenderer.flipX) Flip(false);
+    else if (horizontalInput < 0 && !spriteRenderer.flipX) Flip(true);
 
-    float curSpeed = speed;
+    // INFO: Reset auxiliar variable to default
+    float auxSpeed = speed;
 
-    if (isCrouching)
-    {
-      curSpeed = crouchSpeed;
-    }
-    else if (Input.GetKey(KeyCode.LeftShift))
-    {
-      curSpeed = runSpeed;
-    }
-    else
-    {
-      curSpeed = moveSpeed;
-    }
+    // INFO: Changes speeds based on current player state
+    if (isCrouching) auxSpeed = crouchSpeed;
+    else if (Input.GetKey(KeyCode.LeftShift)) auxSpeed = runSpeed;
+    else auxSpeed = moveSpeed;
 
+    // INFO: Locks player speed if jumping
     if (isGrounded)
-      speed = curSpeed;
+      speed = auxSpeed;
 
+    // INFO: Locks player move when casting or knocked back
     if (!knockback.IsKnockedBack && !playerCombat.isCasting)
       rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
 
+    // INFO: Applies friction to player when casting
+    if (playerCombat.isCasting) rb.sharedMaterial.friction = 0.5f;
+    else rb.sharedMaterial.friction = 0f;
+
     if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching && !playerCombat.isCasting)
     {
-      PlayerJump();
+      Jump();
       dustParticle.setScaleFactor(1f);
       dustParticle.PlayDust(!spriteRenderer.flipX);
     }
 
-    if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
-    {
-      rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-    }
+    bool isMidAir = rb.linearVelocity.y > 0;
+    if (Input.GetButtonUp("Jump") && isMidAir) CancelJump();
   }
 
-  void Flip(bool flipX)
+  private void Flip(bool flipX)
   {
     spriteRenderer.flipX = flipX;
     dustParticle.setScaleFactor(0.8f);
@@ -113,8 +105,13 @@ public class PlayerMove : MonoBehaviour
     playerCombat.flipShootPoint(flipX);
   }
 
-  void PlayerJump()
+  private void Jump()
   {
     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+  }
+
+  private void CancelJump()
+  {
+    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
   }
 }

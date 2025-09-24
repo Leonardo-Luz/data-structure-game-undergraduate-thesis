@@ -34,7 +34,7 @@ public class Outline : MonoBehaviour
 
   private void CreateOutline(ref GameObject outlineObj, Vector2Int offset)
   {
-    if (!isOutlined || outlineObj != null) return;
+    if (outlineObj != null) return;
 
     outlineObj = new GameObject("Outline");
     outlineObj.transform.parent = transform;
@@ -80,7 +80,10 @@ public class Outline : MonoBehaviour
       if (!isOutlined)
       {
         sr.enabled = false;
-        continue;
+      }
+      else
+      {
+        sr.enabled = true;
       }
     }
   }

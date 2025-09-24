@@ -28,24 +28,22 @@ public class PlayerCombat : MonoBehaviour
   [SerializeField] private float verticalCooldown = 0.2f;
   private float verticalTimer = 0f;
 
+  public Grounded grounded;
+
   private void Start()
   {
     stackInventory = GetComponent<StackInventory>();
     queueInventory = GetComponent<QueueInventory>();
     linkedListInventory = GetComponent<LinkedListInventory>();
 
+    grounded = GetComponent<Grounded>();
     flick = GetComponent<Flick>();
-
     health = GetComponent<Health>();
   }
 
   private void Update()
   {
-    // Start casting from inventories
-    if (Input.GetKeyDown(KeyCode.Alpha1)) AddElementFromStack();
-    if (Input.GetKeyDown(KeyCode.Alpha2)) AddElementFromQueue();
-    if (Input.GetKeyDown(KeyCode.Alpha3)) AddElementFromLinkedList();
-
+    // INFO: Cycle inside linked list elements
     verticalTimer -= Time.deltaTime;
     float vertical = Input.GetAxisRaw("Vertical");
     if (verticalTimer <= 0f)
@@ -57,11 +55,16 @@ public class PlayerCombat : MonoBehaviour
       }
     }
 
-    // Finish casting
-    if (Input.GetKeyDown(KeyCode.Return))
-    {
-      FinishCasting();
-    }
+    // INFO: Locks casting mid-air
+    if(!grounded.IsGrounded()) return;
+
+    // INFO: Start casting from inventories
+    if (Input.GetKeyDown(KeyCode.Alpha1)) AddElementFromStack();
+    if (Input.GetKeyDown(KeyCode.Alpha2)) AddElementFromQueue();
+    if (Input.GetKeyDown(KeyCode.Alpha3)) AddElementFromLinkedList();
+
+    // INFO: Finish casting
+    if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump")) FinishCasting();
   }
 
   private void MoveLinkedSelection(int direction)
