@@ -15,11 +15,10 @@ MonoBehaviour:
   lines:
   - englishText: Hello!
     portugueseText: Ola!
-  - englishText: 'How youre doing ?
-
-      Should i spell my name ?
-
-      im Robert,
-      u ?'
-    portugueseText: "Como voc\xEA est\xE1 ?\nEu deveria soletrar meu nome ?\nSou
-      o Roberto, e voc\xEA ?"
+  - englishText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+      risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies
+      sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a,
+      semper congue, euismod non, mi. '
+    portugueseText: 'Proin porttitor, orci nec nonummy molestie, enim est eleifend
+      mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque
+      vitae, consequat in, pretium a, enim. Pellentesque congue. '

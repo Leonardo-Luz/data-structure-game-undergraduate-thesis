@@ -3752,7 +3752,7 @@ GameObject:
   - component: {fileID: 102410028}
   - component: {fileID: 102410027}
   - component: {fileID: 102410026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: paralaxx_sky (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33825,6 +33825,7 @@ MonoBehaviour:
   projectileSpeed: 10
   isCasting: 0
   verticalCooldown: 0.2
+  grounded: {fileID: 0}
 --- !u!114 &651606531
 MonoBehaviour:
   m_ObjectHideFlags: 0
