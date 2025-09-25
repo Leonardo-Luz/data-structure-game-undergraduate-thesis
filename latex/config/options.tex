@@ -8,7 +8,6 @@
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 
-% Your chapter formatting
 \titleformat{\chapter}[block]
   {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
   {\thechapter}{0.5em}{\MakeUppercase}
@@ -18,7 +17,6 @@
   {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
   {\thesection}{1em}{\MakeUppercase}
 
-\makeatletter
 \makeatletter
 \renewcommand{\l@chapter}[2]{%
   % #1 = chapter title, #2 = page number
@@ -30,11 +28,10 @@
     \ifnum \c@secnumdepth >\m@ne
       \@dottedtocline{0}{0em}{5em}{\MakeTextUppercase{#1}}{\bfseries #2}%
     \else
-      \@dottedtocline{0}{5em}{0em}{\MakeTextUppercase{#1}}{\normalfont #2}%
+      \@dottedtocline{0}{5em}{0em}{\MakeUppercase{#1}}{\normalfont #2}%
     \fi
   \fi
 }
-\makeatother
 \makeatother
 
 
