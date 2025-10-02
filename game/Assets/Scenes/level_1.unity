@@ -79800,6 +79800,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1399098965}
     m_Modifications:
+    - target: {fileID: 687294698313287024, guid: fe5aae9c642d651c5a251c1b54b6f51b, type: 3}
+      propertyPath: crouchSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1647380578523382932, guid: fe5aae9c642d651c5a251c1b54b6f51b, type: 3}
       propertyPath: m_Name
       value: player
