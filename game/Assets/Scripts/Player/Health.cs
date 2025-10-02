@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 
   // Events
   public event Action<int, int> OnHealthChanged;
+  public event Action OnHealthDecreased;
   public event Action OnDeath;
 
   private void Awake()
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
 
     currentHP = Mathf.Max(currentHP - amount, 0);
     OnHealthChanged?.Invoke(currentHP, maxHP);
+    OnHealthDecreased?.Invoke();
 
     if (currentHP <= 0)
     {
