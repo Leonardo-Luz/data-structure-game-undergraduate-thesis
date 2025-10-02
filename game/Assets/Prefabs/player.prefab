@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  crouchSpeed: 1.8
+  crouchSpeed: 1
   moveSpeed: 3
   runSpeed: 5
   jumpForce: 6
@@ -5239,6 +5239,7 @@ MonoBehaviour:
   isCasting: 0
   isInvulnerable: 0
   verticalCooldown: 0.2
+  chargeParticles: {fileID: 1344417133156304458}
   grounded: {fileID: 0}
 --- !u!114 &4907259075850122342
 MonoBehaviour:
@@ -5296,7 +5297,7 @@ MonoBehaviour:
   queueInventory: {fileID: 0}
   linkedListInventory: {fileID: 0}
   inventoriesUI: {fileID: 0}
-  cooldown: 3
+  cooldown: 2
   chargeParticles: {fileID: 1344417133156304458}
   inventoryIndex: 0
 --- !u!114 &4533602604923899491
@@ -10256,6 +10257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8982f2be038d1b1cfbb7c625800496b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEmission: 100
-  minEmission: 10
-  chargeDuration: 3
+  maxEmission: 30
+  minEmission: 4
+  chargeDuration: 2
+  chargingColor: {r: 1, g: 1, b: 1, a: 1}
+  castingColor: {r: 0, g: 1, b: 1, a: 1}
