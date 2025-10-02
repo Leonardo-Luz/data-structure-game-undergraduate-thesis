@@ -5,25 +5,33 @@ public class ChargeParticlesController : MonoBehaviour
 {
   private ParticleSystem ps;
   private ParticleSystem.EmissionModule emission;
+  private ParticleSystem.MainModule main;
+  private ParticleSystem.VelocityOverLifetimeModule velocity;
 
-  [Header("Charge Settings")]
-  public float maxEmission = 60f;   // max particles per second
-  public float minEmission = 20f;     // starting particles per second
-  public float chargeDuration = 3f;  // full charge time (same as cooldown)
+  [Header("Particle Settings")]
+  public float maxEmission = 30f;
+  public float minEmission = 4f;
+  public float chargeDuration = 2f;
+  public Color chargingColor = Color.white;
+  public Color castingColor = Color.cyan;
 
   private float chargeTimer = 0f;
   private bool isCharging = false;
+  private bool isCasting = false;
 
   void Awake()
   {
     ps = GetComponent<ParticleSystem>();
     emission = ps.emission;
+    main = ps.main;
+    velocity = ps.velocityOverLifetime;
+    velocity.enabled = true;
     ps.Stop();
   }
 
   void Update()
   {
-    if (isCharging)
+    if (isCharging || isCasting)
     {
       chargeTimer += Time.deltaTime;
       float t = Mathf.Clamp01(chargeTimer / chargeDuration);
@@ -43,15 +51,44 @@ public class ChargeParticlesController : MonoBehaviour
     }
   }
 
+  // --------------------------
+  // Charging (inward)
+  // --------------------------
   public void StartCharging(float duration)
   {
     isCharging = true;
-    chargeDuration = duration; // optionally adjust dynamically
+    isCasting = false;
+    chargeDuration = duration;
+    main.startColor = chargingColor;
+    SetParticlesDirection(true);
   }
 
   public void StopCharging()
   {
     isCharging = false;
   }
-}
 
+  // --------------------------
+  // Casting (outward)
+  // --------------------------
+  public void StartCasting(float duration)
+  {
+    isCasting = true;
+    isCharging = false;
+    chargeDuration = duration;
+    main.startColor = castingColor;
+    SetParticlesDirection(false);
+  }
+
+  public void StopCasting()
+  {
+    isCasting = false;
+  }
+
+  // Helper: set particle velocity toward center (inward) or away (outward)
+  private void SetParticlesDirection(bool inward)
+  {
+    float speed = 0.3f; // adjust as needed
+    velocity.radial = inward ? new ParticleSystem.MinMaxCurve(-speed) : new ParticleSystem.MinMaxCurve(speed);
+  }
+}
