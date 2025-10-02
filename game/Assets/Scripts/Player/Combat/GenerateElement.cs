@@ -9,7 +9,7 @@ public class GenerateElement : MonoBehaviour
   public Inventories inventoriesUI; // reference to HUD
 
   [Header("Settings")]
-  [SerializeField] private float cooldown = 3f;
+  [SerializeField] private float cooldown = 2f;
   [SerializeField] private ChargeParticlesController chargeParticles;
 
   public int inventoryIndex = 0; // 0 = stack, 1 = queue, 2 = linkedlist
