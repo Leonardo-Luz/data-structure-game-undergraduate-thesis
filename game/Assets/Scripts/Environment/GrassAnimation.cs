@@ -3,40 +3,50 @@ using UnityEngine;
 
 public class GrassAnimation : MonoBehaviour
 {
+  [Header("Animation")]
   public Animator animator;
-
-  public bool isMoving = false;
-
   public float duration = 0.6f;
-
   public float speed = 8f;
+
+  [Header("Fireflies")]
+  [SerializeField] private ParticleSystem fireflyParticles;
+  [Range(0f, 1f)][SerializeField] private float fireflyChance = 0.1f;
+
+  private bool isMoving = false;
   private float originalSpeed;
 
   void Start()
   {
-    animator = gameObject.GetComponent<Animator>();
-    if(animator != null)
-    {
+    if (animator == null)
+      animator = GetComponent<Animator>();
+
+    if (animator != null)
       originalSpeed = animator.speed;
+
+    fireflyParticles = GetComponent<ParticleSystem>();
+  }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (!isMoving && other.CompareTag("Player") && animator != null)
+    {
+      StartCoroutine(TemporarilyBoostSpeed());
+
+      if (fireflyParticles != null && Random.value < fireflyChance)
+      {
+        fireflyParticles.Play();
+      }
     }
   }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!isMoving && other.CompareTag("Player") && animator != null)
-        {
-            StartCoroutine(TemporarilyBoostSpeed());
-        }
-    }
+  IEnumerator TemporarilyBoostSpeed()
+  {
+    isMoving = true;
+    animator.speed = speed;
 
-    IEnumerator TemporarilyBoostSpeed()
-    {
-        isMoving = true;
-        animator.speed = speed;
+    yield return new WaitForSeconds(duration);
 
-        yield return new WaitForSeconds(duration);
-
-        animator.speed = originalSpeed;
-        isMoving = false;
-    }
+    animator.speed = originalSpeed;
+    isMoving = false;
+  }
 }
