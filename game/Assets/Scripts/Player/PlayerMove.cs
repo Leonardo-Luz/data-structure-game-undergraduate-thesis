@@ -5,7 +5,7 @@ public class PlayerMove : MonoBehaviour
 {
   [Header("Movement Settings")]
   [SerializeField] private float speed = 3f;
-  [SerializeField] private float crouchSpeed = 1.8f;
+  [SerializeField] private float crouchSpeed = 1.0f;
   [SerializeField] private float moveSpeed = 3f;
   [SerializeField] private float runSpeed = 5f;
   [SerializeField] private float jumpForce = 6f;
