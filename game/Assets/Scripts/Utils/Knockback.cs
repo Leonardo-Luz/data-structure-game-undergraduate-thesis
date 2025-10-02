@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-  [SerializeField] private float knockbackStrength = 5f;
+  [SerializeField] private float knockbackStrength = 10f;
   [SerializeField] private float knockbackDuration = 0.2f;
   private Rigidbody2D rb;
   private bool isKnockedBack = false;

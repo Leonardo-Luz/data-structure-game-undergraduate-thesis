@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerCombat : MonoBehaviour
   private Health health;
 
   public bool isCasting = false;
+  public bool isInvulnerable = false;
   private List<Element> castingList = new List<Element>();
 
   [SerializeField] private float verticalCooldown = 0.2f;
@@ -56,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     // INFO: Locks casting mid-air
-    if(!grounded.IsGrounded()) return;
+    if (!grounded.IsGrounded()) return;
 
     // INFO: Start casting from inventories
     if (Input.GetKeyDown(KeyCode.Alpha1)) AddElementFromStack();
@@ -165,5 +167,17 @@ public class PlayerCombat : MonoBehaviour
 
       Debug.Log($"Shot {element} projectile!");
     }
+  }
+
+  public void setInvulnerability(int damage)
+  {
+    StartCoroutine(invulnerability(damage * 0.5f));
+  }
+
+  IEnumerator invulnerability(float invTime)
+  {
+    isInvulnerable = true;
+    yield return new WaitForSeconds(invTime);
+    isInvulnerable = false;
   }
 }
