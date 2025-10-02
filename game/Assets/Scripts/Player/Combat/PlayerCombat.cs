@@ -30,6 +30,8 @@ public class PlayerCombat : MonoBehaviour
   [SerializeField] private float verticalCooldown = 0.2f;
   private float verticalTimer = 0f;
 
+  [SerializeField] private ChargeParticlesController chargeParticles;
+
   public Grounded grounded;
 
   private void Start()
@@ -41,6 +43,8 @@ public class PlayerCombat : MonoBehaviour
     grounded = GetComponent<Grounded>();
     flick = GetComponent<Flick>();
     health = GetComponent<Health>();
+
+    health.OnHealthDecreased += CleanCasting;
   }
 
   private void Update()
@@ -74,6 +78,8 @@ public class PlayerCombat : MonoBehaviour
     if (linkedListInventory.Count == 0) return;
 
     linkedListInventory.selectedIndex += direction;
+    if(linkedListInventory.selectedIndex > linkedListInventory.Count-1) linkedListInventory.selectedIndex = 0;
+
     linkedListInventory.selectedIndex = Mathf.Clamp(linkedListInventory.selectedIndex, 0, linkedListInventory.Count - 1);
   }
 
@@ -91,7 +97,7 @@ public class PlayerCombat : MonoBehaviour
       Element element = stackInventory.Pop();
       castingList.Add(element);
       isCasting = true;
-      Debug.Log("Casting from Stack: " + element);
+      chargeParticles.StartCasting(0.5f);
     }
   }
 
@@ -102,7 +108,7 @@ public class PlayerCombat : MonoBehaviour
       Element element = queueInventory.Dequeue();
       castingList.Add(element);
       isCasting = true;
-      Debug.Log("Casting from Queue: " + element);
+      chargeParticles.StartCasting(0.5f);
     }
   }
 
@@ -117,15 +123,13 @@ public class PlayerCombat : MonoBehaviour
 
       linkedListInventory.selectedIndex = 0;
 
-      Debug.Log("Casting from LinkedList: " + element);
+      chargeParticles.StartCasting(0.5f);
     }
   }
 
   private void FinishCasting()
   {
     if (!isCasting) return;
-
-    Debug.Log("Finishing cast with elements: " + string.Join(", ", castingList));
 
     // Check for combination
     if (castingList.Count >= 2 && castingList[0] == castingList[1])
@@ -136,11 +140,16 @@ public class PlayerCombat : MonoBehaviour
     {
       health.TakeDamage(1);
       flick.StartFlick();
-      Debug.Log("Invalid combination, player took damage!");
     }
 
+    CleanCasting();
+  }
+
+  private void CleanCasting()
+  {
     castingList.Clear();
     isCasting = false;
+    chargeParticles.StopCasting();
   }
 
   private void ShootProjectile(Element element)
