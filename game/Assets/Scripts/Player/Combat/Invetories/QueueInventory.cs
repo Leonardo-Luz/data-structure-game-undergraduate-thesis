@@ -28,4 +28,6 @@ public class QueueInventory : MonoBehaviour
   public void Clear() => queue.Clear();
 
   public Element[] ToArray() => queue.ToArray();
+
+  public bool IsFull() => queue.Count == maxSize;
 }

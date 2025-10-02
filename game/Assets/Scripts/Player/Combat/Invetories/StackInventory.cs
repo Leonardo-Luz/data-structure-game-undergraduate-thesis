@@ -33,4 +33,6 @@ public class StackInventory : MonoBehaviour
     System.Array.Reverse(array);
     return array;
   }
+
+  public bool IsFull() => stack.Count == maxSize;
 }

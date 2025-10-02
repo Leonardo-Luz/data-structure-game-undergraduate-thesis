@@ -51,4 +51,6 @@ public class LinkedListInventory : MonoBehaviour
     linkedList.CopyTo(array, 0);
     return array;
   }
+
+  public bool IsFull() => linkedList.Count == maxSize;
 }

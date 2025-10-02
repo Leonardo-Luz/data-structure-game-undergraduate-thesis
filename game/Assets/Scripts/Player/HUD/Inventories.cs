@@ -24,8 +24,13 @@ public class Inventories : MonoBehaviour
   public Image[] stackBorders;
   public Image[] queueBorders;
   public Image[] linkedBorders;
-  public Color highlightColor = Color.yellow;
+  public Color highlightColor = Color.yellow;   // currently selected
+  public Color generationColor = Color.cyan;    // next generation
   public Color defaultColor = Color.clear;
+
+  // values injected from GenerateElement
+  [HideInInspector] public int nextInventoryIndex = -1;
+  [HideInInspector] public int nextSlotIndex = -1;
 
   private void Start()
   {
@@ -41,21 +46,23 @@ public class Inventories : MonoBehaviour
 
   private void RefreshHUD()
   {
-    UpdateInventoryUI(stackInventory.ToArray(), stackSlots, stackBorders, stackInventory.MaxSize, highlight: stackInventory.Count - 1);
-    UpdateInventoryUI(queueInventory.ToArray(), queueSlots, queueBorders, queueInventory.MaxSize, highlight: 0, invertVertical: true);
-    UpdateInventoryUI(linkedListInventory.ToArray(), linkedSlots, linkedBorders, linkedListInventory.MaxSize, highlight: linkedListInventory.selectedIndex);
+    UpdateInventoryUI(stackInventory.ToArray(), stackSlots, stackBorders, stackInventory.MaxSize, stackInventory.Count - 1, 0);
+    UpdateInventoryUI(queueInventory.ToArray(), queueSlots, queueBorders, queueInventory.MaxSize, 0, 1, invertVertical: true);
+    UpdateInventoryUI(linkedListInventory.ToArray(), linkedSlots, linkedBorders, linkedListInventory.MaxSize, linkedListInventory.selectedIndex, 2);
   }
 
-  private void UpdateInventoryUI(Element[] elements, Image[] slots, Image[] borders, int maxSize, int highlight, bool invertVertical = false)
+  private void UpdateInventoryUI(
+      Element[] elements,
+      Image[] slots,
+      Image[] borders,
+      int maxSize,
+      int highlight,
+      int inventoryIndex,
+      bool invertVertical = false)
   {
     for (int i = 0; i < maxSize; i++)
     {
-      int index = i;
-
-      if (invertVertical)
-      {
-        index = maxSize - 1 - i;
-      }
+      int index = invertVertical ? maxSize - 1 - i : i;
 
       if (i < elements.Length)
       {
@@ -71,14 +78,18 @@ public class Inventories : MonoBehaviour
       borders[index].color = defaultColor;
     }
 
-    if (elements.Length > 0)
+    // highlight (e.g. currently active/selected element)
+    if (elements.Length > 0 && highlight >= 0 && highlight < maxSize)
     {
-      int highlightIndex = highlight;
-
-      if (invertVertical)
-        highlightIndex = maxSize - 1 - highlightIndex;
-
+      int highlightIndex = invertVertical ? maxSize - 1 - highlight : highlight;
       borders[highlightIndex].color = highlightColor;
+    }
+
+    // show pointer for next generation slot
+    if (nextInventoryIndex == inventoryIndex && nextSlotIndex >= 0 && nextSlotIndex < maxSize)
+    {
+      int pointerIndex = invertVertical ? maxSize - 1 - nextSlotIndex : nextSlotIndex;
+      borders[pointerIndex].color = generationColor;
     }
   }
 
@@ -94,4 +105,3 @@ public class Inventories : MonoBehaviour
     }
   }
 }
-
