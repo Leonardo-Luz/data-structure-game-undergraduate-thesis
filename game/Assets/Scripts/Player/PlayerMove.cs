@@ -81,9 +81,11 @@ public class PlayerMove : MonoBehaviour
     if (!knockback.IsKnockedBack && !playerCombat.isCasting)
       rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
 
+    // INFO: Stops player movement when casting
+    if (playerCombat.isCasting) rb.linearVelocity = Vector2.zero;
     // INFO: Applies friction to player when casting
-    if (playerCombat.isCasting) rb.sharedMaterial.friction = 0.5f;
-    else rb.sharedMaterial.friction = 0f;
+    //   rb.sharedMaterial.friction = 0.8f;
+    // else rb.sharedMaterial.friction = 0f;
 
     if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching && !playerCombat.isCasting)
     {
