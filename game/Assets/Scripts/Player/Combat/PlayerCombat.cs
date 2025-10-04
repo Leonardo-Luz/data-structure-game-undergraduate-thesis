@@ -34,6 +34,8 @@ public class PlayerCombat : MonoBehaviour
 
   public Grounded grounded;
 
+  private GameObject fallDamageRebound;
+
   private void Start()
   {
     stackInventory = GetComponent<StackInventory>();
@@ -49,6 +51,8 @@ public class PlayerCombat : MonoBehaviour
 
   private void Update()
   {
+    if(transform.position.y < -2.6) FallDamage();
+
     // INFO: Cycle inside linked list elements
     verticalTimer -= Time.deltaTime;
     float vertical = Input.GetAxisRaw("Vertical");
@@ -70,7 +74,7 @@ public class PlayerCombat : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.Alpha3)) AddElementFromLinkedList();
 
     // INFO: Finish casting
-    if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump")) FinishCasting();
+    if (Input.GetKeyDown(KeyCode.Return)) FinishCasting();
   }
 
   private void MoveLinkedSelection(int direction)
@@ -176,6 +180,40 @@ public class PlayerCombat : MonoBehaviour
 
       Debug.Log($"Shot {element} projectile!");
     }
+  }
+
+  public void SetupRebound()
+  {
+      DeleteRebound();
+
+      fallDamageRebound = new GameObject("ReboundPoint");
+      fallDamageRebound.transform.position = transform.position;
+  }
+
+  public void DeleteRebound()
+  {
+      if (fallDamageRebound != null)
+      {
+          Destroy(fallDamageRebound);
+          fallDamageRebound = null;
+      }
+  }
+
+  private void Rebound()
+  {
+      if (fallDamageRebound != null)
+          transform.position = fallDamageRebound.transform.position;
+  }
+
+  public void FallDamage()
+  {
+      if (health != null)
+          health.TakeDamage(1);
+
+      if (flick != null)
+          flick.StartFlick();
+
+      Rebound();
   }
 
   public void setInvulnerability(int damage)

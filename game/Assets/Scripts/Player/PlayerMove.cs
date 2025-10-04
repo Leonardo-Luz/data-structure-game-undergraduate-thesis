@@ -25,6 +25,10 @@ public class PlayerMove : MonoBehaviour
 
   private bool isGrounded;
 
+  /// NOTE: Rebound Timeout
+  private float reboundTimer = 0f;
+  private float reboundTimeout = 2f;
+
   private void Start()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -74,8 +78,18 @@ public class PlayerMove : MonoBehaviour
     else auxSpeed = moveSpeed;
 
     // INFO: Locks player speed if jumping
+
     if (isGrounded)
+    {
+      reboundTimer += Time.deltaTime;
       speed = auxSpeed;
+
+      if (reboundTimer >= reboundTimeout)
+      {
+        playerCombat.SetupRebound();
+        reboundTimer = 0;
+      }
+    }
 
     // INFO: Locks player move when casting or knocked back
     if (!knockback.IsKnockedBack && !playerCombat.isCasting)
