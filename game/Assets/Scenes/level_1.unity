@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 25757056}
   - component: {fileID: 25757055}
   - component: {fileID: 25757054}
+  - component: {fileID: 25757058}
   m_Layer: 0
   m_Name: rain (1)
   m_TagString: Untagged
@@ -876,7 +877,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5600,6 +5601,19 @@ Transform:
   - {fileID: 584540108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &25757058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25757053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ad9cad4245756aaa726135712f7dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fowardTime: 5
 --- !u!1 &25766024
 GameObject:
   m_ObjectHideFlags: 0
@@ -23722,6 +23736,7 @@ GameObject:
   - component: {fileID: 583992686}
   - component: {fileID: 583992685}
   - component: {fileID: 583992684}
+  - component: {fileID: 583992688}
   m_Layer: 0
   m_Name: rain
   m_TagString: Untagged
@@ -23839,7 +23854,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -28563,6 +28578,19 @@ Transform:
   - {fileID: 1294771090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583992688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583992683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ad9cad4245756aaa726135712f7dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fowardTime: 5
 --- !u!1 &584540105
 GameObject:
   m_ObjectHideFlags: 0

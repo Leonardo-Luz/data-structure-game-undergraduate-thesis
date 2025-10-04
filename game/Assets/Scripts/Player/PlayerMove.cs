@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
   private bool isGrounded;
 
   /// NOTE: Rebound Timeout
-  private float reboundTimer = 0f;
+  private float reboundTimer = 2f;
   private float reboundTimeout = 2f;
 
   private void Start()
@@ -79,9 +79,9 @@ public class PlayerMove : MonoBehaviour
 
     // INFO: Locks player speed if jumping
 
+    reboundTimer += Time.deltaTime;
     if (isGrounded)
     {
-      reboundTimer += Time.deltaTime;
       speed = auxSpeed;
 
       if (reboundTimer >= reboundTimeout)

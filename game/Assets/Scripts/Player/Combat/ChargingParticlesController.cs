@@ -11,7 +11,7 @@ public class ChargeParticlesController : MonoBehaviour
   [Header("Particle Settings")]
   public float maxEmission = 30f;
   public float minEmission = 4f;
-  public float chargeDuration = 2f;
+  public float chargeDuration = 1f;
   public Color chargingColor = Color.white;
   public Color castingColor = Color.cyan;
 
