@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-  [SerializeField] private Canvas pausePanel;
+  [SerializeField] private CanvasGroup pausePanel;
   private bool isPaused = false;
 
   void Start()
   {
-    pausePanel.enabled = false;
+    HidePauseMenu();
   }
 
   void Update()
@@ -19,7 +19,11 @@ public class PauseMenu : MonoBehaviour
   public void TogglePause()
   {
     isPaused = !isPaused;
-    pausePanel.enabled = isPaused;
+
+    if (isPaused)
+      ShowPauseMenu();
+    else
+      HidePauseMenu();
 
     Time.timeScale = isPaused ? 0f : 1f;
   }
@@ -27,18 +31,30 @@ public class PauseMenu : MonoBehaviour
   public void ResumeGame()
   {
     isPaused = false;
-    pausePanel.enabled = false;
+    HidePauseMenu();
     Time.timeScale = 1f;
   }
 
   public void QuitGame()
   {
-    // For editor
 #if UNITY_EDITOR
     UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
   }
-}
 
+  private void ShowPauseMenu()
+  {
+    pausePanel.alpha = 1f;
+    pausePanel.interactable = true;
+    pausePanel.blocksRaycasts = true;
+  }
+
+  private void HidePauseMenu()
+  {
+    pausePanel.alpha = 0f;
+    pausePanel.interactable = false;
+    pausePanel.blocksRaycasts = false;
+  }
+}

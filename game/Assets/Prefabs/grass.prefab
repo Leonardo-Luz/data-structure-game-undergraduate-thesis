@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8419559186020355315}
   - component: {fileID: -7682895216553842805}
   - component: {fileID: 1809093453425112945}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  isMoving: 0
   duration: 0.6
   speed: 8
+  fireflyParticles: {fileID: 0}
+  fireflyChance: 0.1
 --- !u!61 &8419559186020355315
 BoxCollider2D:
   m_ObjectHideFlags: 0

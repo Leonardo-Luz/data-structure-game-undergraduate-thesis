@@ -44,6 +44,13 @@ public class Health : MonoBehaviour
     OnDeath?.Invoke();
   }
 
+  public void SetMaxHP(int value)
+  {
+    maxHP = value;
+    currentHP = maxHP;
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+  }
+
   public int GetHP() => currentHP;
   public int GetMaxHP() => maxHP;
 }

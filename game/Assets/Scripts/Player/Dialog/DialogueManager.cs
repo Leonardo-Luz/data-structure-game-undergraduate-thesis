@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 
 public enum Language
 {
@@ -10,99 +11,116 @@ public enum Language
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Canvas dialogueHud;
+  [SerializeField] private TextMeshProUGUI dialogueText;
+  [SerializeField] private CanvasGroup dialogueHud;
 
-    [SerializeField] private Dialogue currentDialogue;
-    [SerializeField] private Language currentLanguage = Language.English;
+  [SerializeField] private Dialogue currentDialogue;
+  [SerializeField] public Language currentLanguage = Language.English;
 
-    [Header("Typing Settings")]
-    public float letterDelay = 0.05f;
+  public event Action onLanguageChange;
 
-    private int currentIndex = 0;
-    public bool isActive = false;
-    private bool isTyping = false;
-    private Coroutine typingCoroutine;
+  [Header("Typing Settings")]
+  public float letterDelay = 0.05f;
 
-    private void Start()
-    {
-        dialogueHud.enabled = false;
-    }
+  private int currentIndex = 0;
+  public bool isActive = false;
+  private bool isTyping = false;
+  private Coroutine typingCoroutine;
 
-    public void StartDialogue(Dialogue dialogue)
-    {
-        currentDialogue = dialogue;
-        currentIndex = 0;
-        isActive = true;
-        GameObject.FindGameObjectWithTag("Cam").GetComponent<Fov>().toggleZoom();
-        dialogueHud.enabled = true;
-        ShowLine();
-    }
+  private void Start()
+  {
+    HideDialogue();
+  }
 
-    public void NextLine()
-    {
-        if (!isActive) return;
+  public void StartDialogue(Dialogue dialogue)
+  {
+      currentDialogue = dialogue;
+      currentIndex = 0;
+      isActive = true;
+      GameObject.FindGameObjectWithTag("Cam").GetComponent<Fov>().toggleZoom();
+      ShowDialogue();
+      ShowLine();
+  }
 
-        if (isTyping)
-        {
-            StopCoroutine(typingCoroutine);
-            ShowFullLine();
-            return;
-        }
+  public void NextLine()
+  {
+      if (!isActive) return;
 
-        currentIndex++;
-        if (currentDialogue != null && currentIndex < currentDialogue.lines.Length)
-        {
-            ShowLine();
-        }
-        else
-        {
-            EndDialogue();
-        }
-    }
+      if (isTyping)
+      {
+          StopCoroutine(typingCoroutine);
+          ShowFullLine();
+          return;
+      }
 
-    private void ShowLine()
-    {
-        DialogueLine line = currentDialogue.lines[currentIndex];
-        string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
+      currentIndex++;
+      if (currentDialogue != null && currentIndex < currentDialogue.lines.Length)
+      {
+          ShowLine();
+      }
+      else
+      {
+          EndDialogue();
+      }
+  }
 
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeLine(text));
-    }
+  private void ShowLine()
+  {
+      DialogueLine line = currentDialogue.lines[currentIndex];
+      string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
 
-    private IEnumerator TypeLine(string text)
-    {
-        isTyping = true;
-        dialogueText.text = "";
+      if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+      typingCoroutine = StartCoroutine(TypeLine(text));
+  }
 
-        foreach (char c in text)
-        {
-            dialogueText.text += c;
-            yield return new WaitForSeconds(letterDelay);
-        }
+  private IEnumerator TypeLine(string text)
+  {
+      isTyping = true;
+      dialogueText.text = "";
 
-        isTyping = false;
-    }
+      foreach (char c in text)
+      {
+          dialogueText.text += c;
+          yield return new WaitForSeconds(letterDelay);
+      }
 
-    private void ShowFullLine()
-    {
-        DialogueLine line = currentDialogue.lines[currentIndex];
-        string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
-        dialogueText.text = text;
-        isTyping = false;
-    }
+      isTyping = false;
+  }
 
-    public void EndDialogue()
-    {
-        isActive = false;
-        dialogueText.text = "";
-        Debug.Log("Dialogue ended");
-        dialogueHud.enabled = false;
-        GameObject.FindGameObjectWithTag("Cam").GetComponent<Fov>().toggleZoom();
-    }
+  private void ShowFullLine()
+  {
+      DialogueLine line = currentDialogue.lines[currentIndex];
+      string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
+      dialogueText.text = text;
+      isTyping = false;
+  }
 
-    public void SetLanguage(Language lang)
-    {
-        currentLanguage = lang;
-    }
+  public void EndDialogue()
+  {
+      isActive = false;
+      dialogueText.text = "";
+      Debug.Log("Dialogue ended");
+      HideDialogue();
+      GameObject.FindGameObjectWithTag("Cam").GetComponent<Fov>().toggleZoom();
+  }
+
+  public void SetLanguage(Language lang)
+  {
+      currentLanguage = lang;
+      onLanguageChange?.Invoke();
+  }
+
+  private void ShowDialogue()
+  {
+    dialogueHud.alpha = 1f;
+    dialogueHud.interactable = true;
+    dialogueHud.blocksRaycasts = true;
+  }
+
+  private void HideDialogue()
+  {
+    dialogueHud.alpha = 0f;
+    dialogueHud.interactable = false;
+    dialogueHud.blocksRaycasts = false;
+  }
 }

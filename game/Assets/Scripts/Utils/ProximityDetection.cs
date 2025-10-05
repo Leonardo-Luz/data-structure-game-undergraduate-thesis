@@ -14,7 +14,7 @@ public class ProximityDetection : MonoBehaviour
   public event Action onEnterProximity;
   public event Action onExitProximity;
 
-  private bool isTargetInRange = false;
+  public bool isTargetInRange = false;
 
   void Start()
   {

@@ -13,6 +13,7 @@ TagManager:
   - Water
   - Earth
   - Cam
+  - DialogueManager
   layers:
   - Default
   - TransparentFX
@@ -23,11 +24,11 @@ TagManager:
   - Wall
   - Player
   - Enemy
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grass
+  - Projectile
+  - Rain
+  - Arena
+  - Feet
   - 
   - 
   - 

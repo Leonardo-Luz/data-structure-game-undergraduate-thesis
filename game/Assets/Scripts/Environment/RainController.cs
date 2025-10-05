@@ -14,7 +14,8 @@ public class RainController : MonoBehaviour
     ps = GetComponent<ParticleSystem>();
     followTarget = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
 
-    ps.Simulate(forwardTime, true, true, true);
+    // FIX: Simulate is used to foward the particle system start time, not working...
+    // ps.Simulate(forwardTime, true, true, true);
     ps.Play(false);
   }
 
@@ -25,5 +26,15 @@ public class RainController : MonoBehaviour
       ParticleSystem.ShapeModule shape = ps.shape;
       shape.position = new Vector3(followTarget.position.x + offset.x, followTarget.position.y + offset.y, 0);
     }
+  }
+
+  private void StopRain()
+  {
+    ps.Stop(false);
+  }
+
+  private void StartRain()
+  {
+    ps.Play(false);
   }
 }

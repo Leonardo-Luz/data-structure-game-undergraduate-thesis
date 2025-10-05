@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9074035283726314251}
   - component: {fileID: 8629947908159946499}
   - component: {fileID: 3538885466135611087}
-  - component: {fileID: 3862427044087970165}
+  - component: {fileID: 190779786891257591}
   m_Layer: 10
-  m_Name: Projectile
-  m_TagString: Air
+  m_Name: Enemy Projectile
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 200
   m_Sprite: {fileID: -8990929674756197408, guid: dac9b5782e7f917df83e4ac74feac1e4, type: 3}
-  m_Color: {r: 0.3254717, g: 1, b: 0.4822211, a: 1}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +163,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &3862427044087970165
+--- !u!114 &190779786891257591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

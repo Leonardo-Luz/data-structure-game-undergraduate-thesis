@@ -25,7 +25,7 @@ public class PlayerCombat : MonoBehaviour
 
   public bool isCasting = false;
   public bool isInvulnerable = false;
-  private List<Element> castingList = new List<Element>();
+  public List<Element> castingList = new List<Element>();
 
   [SerializeField] private float verticalCooldown = 0.2f;
   private float verticalTimer = 0f;
@@ -35,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
   public Grounded grounded;
 
   private GameObject fallDamageRebound;
+  private ElementsIndicator indicator;
 
   private void Start()
   {
@@ -46,12 +47,16 @@ public class PlayerCombat : MonoBehaviour
     flick = GetComponent<Flick>();
     health = GetComponent<Health>();
 
+    indicator = GetComponentInChildren<ElementsIndicator>();
+
     health.OnHealthDecreased += CleanCasting;
   }
 
   private void Update()
   {
-    if(transform.position.y < -2.6) FallDamage();
+    indicator.SetElements(castingList);
+
+    if (transform.position.y < -2.6) FallDamage();
 
     // INFO: Cycle inside linked list elements
     verticalTimer -= Time.deltaTime;
@@ -69,9 +74,36 @@ public class PlayerCombat : MonoBehaviour
     if (!grounded.IsGrounded()) return;
 
     // INFO: Start casting from inventories
-    if (Input.GetKeyDown(KeyCode.Alpha1)) AddElementFromStack();
-    if (Input.GetKeyDown(KeyCode.Alpha2)) AddElementFromQueue();
-    if (Input.GetKeyDown(KeyCode.Alpha3)) AddElementFromLinkedList();
+    if (Input.GetKeyDown(KeyCode.Alpha1))
+    {
+      AddElementFromStack();
+      if (!ValidCombination())
+      {
+        health.TakeDamage(1);
+        flick.StartFlick();
+        CleanCasting();
+      }
+    }
+    if (Input.GetKeyDown(KeyCode.Alpha2))
+    {
+      AddElementFromQueue();
+      if (!ValidCombination())
+      {
+        health.TakeDamage(1);
+        flick.StartFlick();
+        CleanCasting();
+      }
+    }
+    if (Input.GetKeyDown(KeyCode.Alpha3))
+    {
+      AddElementFromLinkedList();
+      if (!ValidCombination())
+      {
+        health.TakeDamage(1);
+        flick.StartFlick();
+        CleanCasting();
+      }
+    }
 
     // INFO: Finish casting
     if (Input.GetKeyDown(KeyCode.Return)) FinishCasting();
@@ -82,7 +114,7 @@ public class PlayerCombat : MonoBehaviour
     if (linkedListInventory.Count == 0) return;
 
     linkedListInventory.selectedIndex += direction;
-    if(linkedListInventory.selectedIndex > linkedListInventory.Count-1) linkedListInventory.selectedIndex = 0;
+    if (linkedListInventory.selectedIndex > linkedListInventory.Count - 1) linkedListInventory.selectedIndex = 0;
 
     linkedListInventory.selectedIndex = Mathf.Clamp(linkedListInventory.selectedIndex, 0, linkedListInventory.Count - 1);
   }
@@ -136,7 +168,7 @@ public class PlayerCombat : MonoBehaviour
     if (!isCasting) return;
 
     // Check for combination
-    if (castingList.Count >= 2 && castingList[0] == castingList[1])
+    if (castingList.Count >= 2 && ValidCombination())
     {
       ShootProjectile(castingList[0]);
     }
@@ -147,6 +179,16 @@ public class PlayerCombat : MonoBehaviour
     }
 
     CleanCasting();
+  }
+
+  private bool ValidCombination()
+  {
+    for (int i = 1; i < castingList.Count; i++)
+    {
+      if (castingList[0] != castingList[i]) return false;
+    }
+
+    return true;
   }
 
   private void CleanCasting()
@@ -171,6 +213,7 @@ public class PlayerCombat : MonoBehaviour
     if (prefab != null)
     {
       GameObject proj = Instantiate(prefab, shootPoint.position, Quaternion.identity);
+      proj.GetComponent<ProjectileController>().damage = castingList.Count - 1;
       Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
       if (rb != null)
       {
@@ -184,36 +227,36 @@ public class PlayerCombat : MonoBehaviour
 
   public void SetupRebound()
   {
-      DeleteRebound();
+    DeleteRebound();
 
-      fallDamageRebound = new GameObject("ReboundPoint");
-      fallDamageRebound.transform.position = transform.position;
+    fallDamageRebound = new GameObject("ReboundPoint");
+    fallDamageRebound.transform.position = transform.position;
   }
 
   public void DeleteRebound()
   {
-      if (fallDamageRebound != null)
-      {
-          Destroy(fallDamageRebound);
-          fallDamageRebound = null;
-      }
+    if (fallDamageRebound != null)
+    {
+      Destroy(fallDamageRebound);
+      fallDamageRebound = null;
+    }
   }
 
   private void Rebound()
   {
-      if (fallDamageRebound != null)
-          transform.position = fallDamageRebound.transform.position;
+    if (fallDamageRebound != null)
+      transform.position = fallDamageRebound.transform.position;
   }
 
   public void FallDamage()
   {
-      if (health != null)
-          health.TakeDamage(1);
+    if (health != null)
+      health.TakeDamage(1);
 
-      if (flick != null)
-          flick.StartFlick();
+    if (flick != null)
+      flick.StartFlick();
 
-      Rebound();
+    Rebound();
   }
 
   public void setInvulnerability(int damage)

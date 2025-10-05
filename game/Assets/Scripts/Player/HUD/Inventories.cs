@@ -7,6 +7,8 @@ public class Inventories : MonoBehaviour
   public StackInventory stackInventory;
   public QueueInventory queueInventory;
   public LinkedListInventory linkedListInventory;
+  public HudText[] InventoriesTexts;
+  public Dialogue[] InventoriesNames;
 
   [Header("HUD Slots (3 for each inventory)")]
   public Image[] stackSlots;
@@ -37,6 +39,9 @@ public class Inventories : MonoBehaviour
     stackInventory = GetComponent<StackInventory>();
     queueInventory = GetComponent<QueueInventory>();
     linkedListInventory = GetComponent<LinkedListInventory>();
+
+    for (int i = 0; i < InventoriesTexts.Length; i++)
+      InventoriesTexts[i].SetDialogue(InventoriesNames[i]);
   }
 
   private void Update()
