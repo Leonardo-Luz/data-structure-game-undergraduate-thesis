@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LinkedListInventory : MonoBehaviour
+public class LinkedListInventory : MonoBehaviour, IInventory
 {
   [SerializeField] private int maxSize = 3;
   private LinkedList<Element> linkedList = new LinkedList<Element>();
 
   public int selectedIndex = 0;
+  public InventoryType Type => InventoryType.LinkedList;
 
   public void Add(Element element)
   {

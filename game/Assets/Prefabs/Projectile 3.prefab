@@ -176,5 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tangibilityTimeout: 0.03
-  deathTimeout: 0
+  deathTimeout: 0.05
   lifetime: 6
+  damage: 1

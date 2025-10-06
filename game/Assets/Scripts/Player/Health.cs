@@ -39,6 +39,14 @@ public class Health : MonoBehaviour
     OnHealthChanged?.Invoke(currentHP, maxHP);
   }
 
+  public void FullHeal()
+  {
+    if (currentHP <= 0) return;
+
+    currentHP = maxHP;
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+  }
+
   private void Die()
   {
     OnDeath?.Invoke();

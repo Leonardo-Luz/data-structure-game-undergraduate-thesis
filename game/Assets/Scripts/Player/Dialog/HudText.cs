@@ -20,7 +20,7 @@ public class HudText : MonoBehaviour
   public void UpdateText()
   {
     DialogueLine line = dialogue.lines[0];
-    string text = dialogueManager.currentLanguage == Language.English ? line.englishText : line.portugueseText;
+    string text = dialogueManager != null && dialogueManager.currentLanguage == Language.English ? line.englishText : line.portugueseText;
     hudText.text = text;
   }
 

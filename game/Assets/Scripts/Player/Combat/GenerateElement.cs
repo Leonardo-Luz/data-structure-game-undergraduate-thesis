@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class GenerateElement : MonoBehaviour
 {
-  [Header("Inventories")]
-  public StackInventory stackInventory;
-  public QueueInventory queueInventory;
-  public LinkedListInventory linkedListInventory;
-  public Inventories inventoriesUI; // reference to HUD
+  [Header("References")]
+  [SerializeField] private Inventories inventoriesUI;
+  [SerializeField] private ChargeParticlesController chargeParticles;
 
   [Header("Settings")]
   [SerializeField] private float cooldown = 1f;
-  [SerializeField] private ChargeParticlesController chargeParticles;
 
-  public int inventoryIndex = 0; // 0 = stack, 1 = queue, 2 = linkedlist
+  private IInventory[] inventories;
+  private int inventoryIndex = 0; // index into inventories[]
   private bool isCharging = false;
   private float chargeTimer = 0f;
 
@@ -20,25 +18,26 @@ public class GenerateElement : MonoBehaviour
 
   private void Start()
   {
-    stackInventory = GetComponent<StackInventory>();
-    queueInventory = GetComponent<QueueInventory>();
-    linkedListInventory = GetComponent<LinkedListInventory>();
-    inventoriesUI = GetComponent<Inventories>();
+    inventories = GetComponents<IInventory>();
 
+    if (inventoriesUI == null) inventoriesUI = GetComponent<Inventories>();
+    if (chargeParticles == null) chargeParticles = GetComponent<ChargeParticlesController>();
     grounded = GetComponent<Grounded>();
   }
 
   private void Update()
   {
+    if (inventories == null || inventories.Length == 0) return;
+
     bool holdingDown = Input.GetAxis("Vertical") < 0;
 
-    if (holdingDown && grounded.IsGrounded())
+    if (holdingDown && (grounded == null || grounded.IsGrounded()))
     {
       if (!isCharging)
       {
         isCharging = true;
         chargeTimer = 0f;
-        chargeParticles.StartCharging(cooldown);
+        if (chargeParticles != null) chargeParticles.StartCharging(cooldown);
       }
 
       chargeTimer += Time.deltaTime;
@@ -46,14 +45,17 @@ public class GenerateElement : MonoBehaviour
       if (chargeTimer >= cooldown)
       {
         TryGenerateElement();
-        chargeTimer = 0f; // reset
+        chargeTimer = 0f;
       }
     }
     else
     {
-      isCharging = false;
-      chargeTimer = 0f;
-      chargeParticles.StopCharging();
+      if (isCharging)
+      {
+        isCharging = false;
+        chargeTimer = 0f;
+        if (chargeParticles != null) chargeParticles.StopCharging();
+      }
     }
 
     UpdateNextSlotPointer();
@@ -61,53 +63,49 @@ public class GenerateElement : MonoBehaviour
 
   private void TryGenerateElement()
   {
-    int attempts = 0;
-    int startIndex = inventoryIndex;
+    if (inventories == null || inventories.Length == 0) return;
 
-    while (attempts < 3)
+    int attempts = 0;
+    int startIndex = inventoryIndex % inventories.Length;
+
+    while (attempts < inventories.Length)
     {
-      if (CanAddToInventory(inventoryIndex))
+      int idx = inventoryIndex % inventories.Length;
+      var inv = inventories[idx];
+      if (inv != null && !inv.IsFull())
       {
-        AddToInventory(GetRandomElement(), inventoryIndex);
-        inventoryIndex = (inventoryIndex + 1) % 3;
+        AddToInventory(GetRandomElement(), idx);
+        inventoryIndex = (idx + 1) % inventories.Length;
         return;
       }
 
-      inventoryIndex = (inventoryIndex + 1) % 3;
+      inventoryIndex = (idx + 1) % inventories.Length;
       attempts++;
-
-      if (inventoryIndex == startIndex) break;
+      if (inventoryIndex % inventories.Length == startIndex) break;
     }
 
-    // All inventories full → lock generation
     Debug.Log("All inventories are full! Cannot generate.");
-  }
-
-  private bool CanAddToInventory(int index)
-  {
-    switch (index)
-    {
-      case 0: return !stackInventory.IsFull();
-      case 1: return !queueInventory.IsFull();
-      case 2: return !linkedListInventory.IsFull();
-    }
-    return false;
   }
 
   private void AddToInventory(Element element, int index)
   {
-    switch (index)
+    if (inventories == null || index < 0 || index >= inventories.Length) return;
+
+    var inv = inventories[index];
+    if (inv == null) return;
+
+    switch (inv.Type)
     {
-      case 0:
-        stackInventory.Push(element);
+      case InventoryType.Stack:
+        (inv as StackInventory)?.Push(element);
         Debug.Log($"Generated {element} in STACK");
         break;
-      case 1:
-        queueInventory.Enqueue(element);
+      case InventoryType.Queue:
+        (inv as QueueInventory)?.Enqueue(element);
         Debug.Log($"Generated {element} in QUEUE");
         break;
-      case 2:
-        linkedListInventory.Add(element);
+      case InventoryType.LinkedList:
+        (inv as LinkedListInventory)?.Add(element);
         Debug.Log($"Generated {element} in LINKED LIST");
         break;
     }
@@ -121,6 +119,9 @@ public class GenerateElement : MonoBehaviour
 
   private void UpdateNextSlotPointer()
   {
+    if (inventoriesUI == null)
+      return;
+
     int target = FindNextAvailableInventory();
     if (target == -1)
     {
@@ -135,34 +136,32 @@ public class GenerateElement : MonoBehaviour
 
   private int FindNextAvailableInventory()
   {
-    for (int i = 0; i < 3; i++)
+    if (inventories == null || inventories.Length == 0) return -1;
+
+    for (int i = 0; i < inventories.Length; i++)
     {
-      int idx = (inventoryIndex + i) % 3;
-      if (!IsInventoryFull(idx))
+      int idx = (inventoryIndex + i) % inventories.Length;
+      var inv = inventories[idx];
+      if (inv != null && !inv.IsFull())
         return idx;
     }
-    return -1; // all full
+    return -1;
   }
 
   private bool IsInventoryFull(int idx)
   {
-    switch (idx)
-    {
-      case 0: return stackInventory.Count >= stackInventory.MaxSize;
-      case 1: return queueInventory.Count >= queueInventory.MaxSize;
-      case 2: return linkedListInventory.Count >= linkedListInventory.MaxSize;
-    }
-    return true;
+    if (inventories == null || idx < 0 || idx >= inventories.Length) return true;
+    var inv = inventories[idx];
+    return inv == null || inv.IsFull();
   }
 
   private int GetNextSlotIndex(int idx)
   {
-    switch (idx)
-    {
-      case 0: return stackInventory.Count;        // next push on top
-      case 1: return queueInventory.Count;        // next enqueue at end
-      case 2: return linkedListInventory.Count;   // append at end
-      default: return -1;
-    }
+    if (inventories == null || idx < 0 || idx >= inventories.Length) return -1;
+    var inv = inventories[idx];
+    if (inv == null) return -1;
+
+    // For all inventory types here we append at the end, so next slot is Count
+    return inv.Count;
   }
 }

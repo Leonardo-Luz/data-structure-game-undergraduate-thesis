@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4521605553141314196}
   - component: {fileID: 7318073013003136982}
   - component: {fileID: 4279251490818480212}
+  - component: {fileID: 8894599406063763956}
   m_Layer: 0
   m_Name: PatrollingEnemy
   m_TagString: Enemy
@@ -359,6 +360,20 @@ MonoBehaviour:
   OriginalMaterial: {fileID: 0}
   WhiteMaterial: {fileID: 0}
   FlickDuration: 0.1
+--- !u!114 &8894599406063763956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033894951591388123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61db16098d44f4eeb9ee90e378c3f848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 2243215151538129470, guid: 9cb29811b75a8bc0998e8a0a39a95d0e, type: 3}
+  offset: {x: 0, y: -0.6, z: 0}
 --- !u!1 &3301261329561143244
 GameObject:
   m_ObjectHideFlags: 0

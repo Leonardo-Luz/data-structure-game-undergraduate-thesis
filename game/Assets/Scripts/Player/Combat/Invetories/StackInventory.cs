@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StackInventory : MonoBehaviour
+public class StackInventory : MonoBehaviour, IInventory
 {
   [SerializeField] public int maxSize = 3;
   private Stack<Element> stack = new Stack<Element>();
+
+  public InventoryType Type => InventoryType.Stack;
 
   public void Push(Element element)
   {

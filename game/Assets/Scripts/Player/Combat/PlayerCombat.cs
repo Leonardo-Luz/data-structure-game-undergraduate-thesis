@@ -5,9 +5,8 @@ using System.Collections;
 public class PlayerCombat : MonoBehaviour
 {
   [Header("Inventories")]
-  public StackInventory stackInventory;
-  public QueueInventory queueInventory;
-  public LinkedListInventory linkedListInventory;
+  private IInventory[] inventories;
+  private LinkedListInventory linkedListInventory; // only 1 allowed
 
   [Header("Projectile Prefabs")]
   public GameObject fireProjectile;
@@ -15,38 +14,34 @@ public class PlayerCombat : MonoBehaviour
   public GameObject earthProjectile;
   public GameObject airProjectile;
 
-  private Flick flick;
-
   [Header("Combat Settings")]
   public Transform shootPoint;
   public float projectileSpeed = 10f;
-
-  private Health health;
-
-  public bool isCasting = false;
-  public bool isInvulnerable = false;
-  public List<Element> castingList = new List<Element>();
 
   [SerializeField] private float verticalCooldown = 0.2f;
   private float verticalTimer = 0f;
 
   [SerializeField] private ChargeParticlesController chargeParticles;
 
-  public Grounded grounded;
+  private Flick flick;
+  private Health health;
+  private ElementsIndicator indicator;
+  private Grounded grounded;
+
+  public bool isCasting = false;
+  public bool isInvulnerable = false;
+  public List<Element> castingList = new List<Element>();
 
   private GameObject fallDamageRebound;
-  private ElementsIndicator indicator;
 
   private void Start()
   {
-    stackInventory = GetComponent<StackInventory>();
-    queueInventory = GetComponent<QueueInventory>();
+    inventories = GetComponents<IInventory>();
     linkedListInventory = GetComponent<LinkedListInventory>();
 
-    grounded = GetComponent<Grounded>();
     flick = GetComponent<Flick>();
     health = GetComponent<Health>();
-
+    grounded = GetComponent<Grounded>();
     indicator = GetComponentInChildren<ElementsIndicator>();
 
     health.OnHealthDecreased += CleanCasting;
@@ -58,7 +53,14 @@ public class PlayerCombat : MonoBehaviour
 
     if (transform.position.y < -2.6) FallDamage();
 
-    // INFO: Cycle inside linked list elements
+    HandleLinkedListSelection();
+    HandleCastingInput();
+  }
+
+  private void HandleLinkedListSelection()
+  {
+    if (linkedListInventory == null) return;
+
     verticalTimer -= Time.deltaTime;
     float vertical = Input.GetAxisRaw("Vertical");
     if (verticalTimer <= 0f)
@@ -69,14 +71,15 @@ public class PlayerCombat : MonoBehaviour
         verticalTimer = verticalCooldown;
       }
     }
+  }
 
-    // INFO: Locks casting mid-air
+  private void HandleCastingInput()
+  {
     if (!grounded.IsGrounded()) return;
 
-    // INFO: Start casting from inventories
     if (Input.GetKeyDown(KeyCode.Alpha1))
     {
-      AddElementFromStack();
+      AddFromInventory(InventoryType.Stack);
       if (!ValidCombination())
       {
         health.TakeDamage(1);
@@ -86,7 +89,8 @@ public class PlayerCombat : MonoBehaviour
     }
     if (Input.GetKeyDown(KeyCode.Alpha2))
     {
-      AddElementFromQueue();
+      AddFromInventory(InventoryType.Queue);
+
       if (!ValidCombination())
       {
         health.TakeDamage(1);
@@ -96,7 +100,8 @@ public class PlayerCombat : MonoBehaviour
     }
     if (Input.GetKeyDown(KeyCode.Alpha3))
     {
-      AddElementFromLinkedList();
+      AddFromInventory(InventoryType.LinkedList);
+
       if (!ValidCombination())
       {
         health.TakeDamage(1);
@@ -105,8 +110,37 @@ public class PlayerCombat : MonoBehaviour
       }
     }
 
-    // INFO: Finish casting
     if (Input.GetKeyDown(KeyCode.Return)) FinishCasting();
+  }
+
+  private void AddFromInventory(InventoryType type)
+  {
+    foreach (var inv in inventories)
+    {
+      if (inv.Type != type) continue;
+
+      Element element = default;
+      switch (type)
+      {
+        case InventoryType.Stack:
+          if (inv.Count > 0) element = (inv as StackInventory).Pop();
+          break;
+        case InventoryType.Queue:
+          if (inv.Count > 0) element = (inv as QueueInventory).Dequeue();
+          break;
+        case InventoryType.LinkedList:
+          if (linkedListInventory.Count > 0)
+          {
+            element = linkedListInventory.Remove(linkedListInventory.selectedIndex);
+            linkedListInventory.selectedIndex = 0;
+          }
+          break;
+      }
+
+      castingList.Add(element);
+      isCasting = true;
+      chargeParticles.StartCasting(0.5f);
+    }
   }
 
   private void MoveLinkedSelection(int direction)
@@ -114,64 +148,18 @@ public class PlayerCombat : MonoBehaviour
     if (linkedListInventory.Count == 0) return;
 
     linkedListInventory.selectedIndex += direction;
-    if (linkedListInventory.selectedIndex > linkedListInventory.Count - 1) linkedListInventory.selectedIndex = 0;
-
-    linkedListInventory.selectedIndex = Mathf.Clamp(linkedListInventory.selectedIndex, 0, linkedListInventory.Count - 1);
-  }
-
-  public void flipShootPoint(bool flipX)
-  {
-    Vector3 localPos = shootPoint.localPosition;
-    localPos.x = Mathf.Abs(localPos.x) * (flipX ? -1 : 1);
-    shootPoint.localPosition = localPos;
-  }
-
-  private void AddElementFromStack()
-  {
-    if (stackInventory.Count > 0)
-    {
-      Element element = stackInventory.Pop();
-      castingList.Add(element);
-      isCasting = true;
-      chargeParticles.StartCasting(0.5f);
-    }
-  }
-
-  private void AddElementFromQueue()
-  {
-    if (queueInventory.Count > 0)
-    {
-      Element element = queueInventory.Dequeue();
-      castingList.Add(element);
-      isCasting = true;
-      chargeParticles.StartCasting(0.5f);
-    }
-  }
-
-  private void AddElementFromLinkedList()
-  {
-    if (linkedListInventory.Count > 0)
-    {
-      int index = linkedListInventory.selectedIndex;
-      Element element = linkedListInventory.Remove(index);
-      castingList.Add(element);
-      isCasting = true;
-
+    if (linkedListInventory.selectedIndex > linkedListInventory.Count - 1)
       linkedListInventory.selectedIndex = 0;
 
-      chargeParticles.StartCasting(0.5f);
-    }
+    linkedListInventory.selectedIndex = Mathf.Clamp(linkedListInventory.selectedIndex, 0, linkedListInventory.Count - 1);
   }
 
   private void FinishCasting()
   {
     if (!isCasting) return;
 
-    // Check for combination
     if (castingList.Count >= 2 && ValidCombination())
-    {
       ShootProjectile(castingList[0]);
-    }
     else
     {
       health.TakeDamage(1);
@@ -184,9 +172,7 @@ public class PlayerCombat : MonoBehaviour
   private bool ValidCombination()
   {
     for (int i = 1; i < castingList.Count; i++)
-    {
       if (castingList[0] != castingList[i]) return false;
-    }
 
     return true;
   }
@@ -200,35 +186,34 @@ public class PlayerCombat : MonoBehaviour
 
   private void ShootProjectile(Element element)
   {
-    GameObject prefab = null;
-
-    switch (element)
+    GameObject prefab = element switch
     {
-      case Element.FIRE: prefab = fireProjectile; break;
-      case Element.WATER: prefab = waterProjectile; break;
-      case Element.EARTH: prefab = earthProjectile; break;
-      case Element.AIR: prefab = airProjectile; break;
+      Element.FIRE => fireProjectile,
+      Element.WATER => waterProjectile,
+      Element.EARTH => earthProjectile,
+      Element.AIR => airProjectile,
+      _ => null,
+    };
+
+    if (prefab == null) return;
+
+    GameObject proj = Instantiate(prefab, shootPoint.position, Quaternion.identity);
+    proj.GetComponent<ProjectileController>().damage = castingList.Count - 1;
+
+    Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+    if (rb != null)
+    {
+      float direction = GetComponent<SpriteRenderer>().flipX ? -1f : 1f;
+      rb.linearVelocity = transform.right * projectileSpeed * direction;
     }
 
-    if (prefab != null)
-    {
-      GameObject proj = Instantiate(prefab, shootPoint.position, Quaternion.identity);
-      proj.GetComponent<ProjectileController>().damage = castingList.Count - 1;
-      Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-      if (rb != null)
-      {
-        float direction = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX ? -1f : 1f;
-        rb.linearVelocity = transform.right * projectileSpeed * direction;
-      }
-
-      Debug.Log($"Shot {element} projectile!");
-    }
+    Debug.Log($"Shot {element} projectile!");
   }
 
+  // --- Rebound / fall damage ---
   public void SetupRebound()
   {
     DeleteRebound();
-
     fallDamageRebound = new GameObject("ReboundPoint");
     fallDamageRebound.transform.position = transform.position;
   }
@@ -250,12 +235,8 @@ public class PlayerCombat : MonoBehaviour
 
   public void FallDamage()
   {
-    if (health != null)
-      health.TakeDamage(1);
-
-    if (flick != null)
-      flick.StartFlick();
-
+    health?.TakeDamage(1);
+    flick?.StartFlick();
     Rebound();
   }
 
@@ -269,5 +250,14 @@ public class PlayerCombat : MonoBehaviour
     isInvulnerable = true;
     yield return new WaitForSeconds(invTime);
     isInvulnerable = false;
+  }
+
+  public void FlipShootPoint(bool flipX)
+  {
+    if (shootPoint == null) return;
+
+    Vector3 localPos = shootPoint.localPosition;
+    localPos.x = Mathf.Abs(localPos.x) * (flipX ? -1 : 1);
+    shootPoint.localPosition = localPos;
   }
 }

@@ -118,7 +118,7 @@ public class PlayerMove : MonoBehaviour
     dustParticle.setScaleFactor(0.8f);
     dustParticle.TryPlayFlipDust(!flipX, isGrounded);
 
-    playerCombat.flipShootPoint(flipX);
+    playerCombat.FlipShootPoint(flipX);
   }
 
   private void Jump()

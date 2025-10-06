@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QueueInventory : MonoBehaviour
+public class QueueInventory : MonoBehaviour, IInventory
 {
   [SerializeField] public int maxSize = 3;
   private Queue<Element> queue = new Queue<Element>();
+
+  public InventoryType Type => InventoryType.Queue;
 
   public void Enqueue(Element element)
   {
