@@ -15,10 +15,7 @@ MonoBehaviour:
   lines:
   - englishText: Hello!
     portugueseText: Ola!
-  - englishText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-      risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies
-      sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a,
-      semper congue, euismod non, mi. '
-    portugueseText: 'Proin porttitor, orci nec nonummy molestie, enim est eleifend
-      mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque
-      vitae, consequat in, pretium a, enim. Pellentesque congue. '
+  - englishText: 'Advance with caution,
+
+      You wont be able to come back!'
+    portugueseText: "Avan\xE7e com cuidado,\nVoc\xEA n\xE3o consiguir\xE1 retornar!"

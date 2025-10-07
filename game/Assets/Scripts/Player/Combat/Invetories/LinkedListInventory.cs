@@ -54,4 +54,16 @@ public class LinkedListInventory : MonoBehaviour, IInventory
   }
 
   public bool IsFull() => linkedList.Count == maxSize;
+
+  public void Sort()
+  {
+    List<Element> elements = new List<Element>(linkedList);
+
+    elements.Sort();
+
+    linkedList.Clear();
+    foreach (var element in elements) linkedList.AddLast(element);
+
+    selectedIndex = Mathf.Clamp(selectedIndex, 0, linkedList.Count - 1);
+  }
 }

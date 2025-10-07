@@ -87,7 +87,7 @@ public class GenerateElement : MonoBehaviour
     Debug.Log("All inventories are full! Cannot generate.");
   }
 
-  private void AddToInventory(Element element, int index)
+  public void AddToInventory(Element element, int index)
   {
     if (inventories == null || index < 0 || index >= inventories.Length) return;
 
@@ -111,9 +111,9 @@ public class GenerateElement : MonoBehaviour
     }
   }
 
-  private Element GetRandomElement()
+  public Element GetRandomElement()
   {
-    int count = System.Enum.GetValues(typeof(Element)).Length;
+    int count = System.Enum.GetValues(typeof(Element)).Length - 1;
     return (Element)Random.Range(0, count);
   }
 
@@ -148,7 +148,7 @@ public class GenerateElement : MonoBehaviour
     return -1;
   }
 
-  private bool IsInventoryFull(int idx)
+  public bool IsInventoryFull(int idx)
   {
     if (inventories == null || idx < 0 || idx >= inventories.Length) return true;
     var inv = inventories[idx];

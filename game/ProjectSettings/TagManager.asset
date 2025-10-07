@@ -29,7 +29,7 @@ TagManager:
   - Rain
   - Arena
   - Feet
-  - 
+  - Drop
   - 
   - 
   - 
@@ -50,6 +50,36 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Parallax Background
+    uniqueID: 3796297923
+    locked: 0
+  - name: Wall
+    uniqueID: 1495264145
+    locked: 0
+  - name: Scene
+    uniqueID: 1718532247
+    locked: 0
+  - name: Enviroment Background
+    uniqueID: 1794131065
+    locked: 0
+  - name: NPC
+    uniqueID: 2590468597
+    locked: 0
+  - name: Player
+    uniqueID: 3180337
+    locked: 0
+  - name: Enemy
+    uniqueID: 1184436717
+    locked: 0
+  - name: Effect
+    uniqueID: 1000104819
+    locked: 0
+  - name: Enviroment Foreground
+    uniqueID: 1178643333
+    locked: 0
+  - name: Parallax Foreground
+    uniqueID: 1002781849
     locked: 0
   m_RenderingLayers:
   - Default

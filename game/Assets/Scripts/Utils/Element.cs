@@ -1,4 +1,4 @@
 public enum Element
 {
-  FIRE, WATER, AIR, EARTH
+  FIRE, WATER, AIR, EARTH, NONE
 }

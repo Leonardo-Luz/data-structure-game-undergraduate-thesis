@@ -32,4 +32,14 @@ public class QueueInventory : MonoBehaviour, IInventory
   public Element[] ToArray() => queue.ToArray();
 
   public bool IsFull() => queue.Count == maxSize;
+
+  public void Sort()
+  {
+    List<Element> elements = new List<Element>(queue);
+
+    elements.Sort();
+
+    queue.Clear();
+    foreach (var element in elements) queue.Enqueue(element);
+  }
 }

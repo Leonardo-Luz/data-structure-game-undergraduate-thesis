@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerCombat : MonoBehaviour
 {
   [Header("Inventories")]
-  private IInventory[] inventories;
+  [HideInInspector] public IInventory[] inventories;
   private LinkedListInventory linkedListInventory; // only 1 allowed
 
   [Header("Projectile Prefabs")]
@@ -22,6 +22,10 @@ public class PlayerCombat : MonoBehaviour
   private float verticalTimer = 0f;
 
   [SerializeField] private ChargeParticlesController chargeParticles;
+
+  [SerializeField] private UseConsumable consumables;
+
+  [SerializeField] private float fallHeight = 3f;
 
   private Flick flick;
   private Health health;
@@ -51,7 +55,7 @@ public class PlayerCombat : MonoBehaviour
   {
     indicator.SetElements(castingList);
 
-    if (transform.position.y < -2.6) FallDamage();
+    if (transform.position.y < -fallHeight) FallDamage();
 
     HandleLinkedListSelection();
     HandleCastingInput();
@@ -75,7 +79,7 @@ public class PlayerCombat : MonoBehaviour
 
   private void HandleCastingInput()
   {
-    if (!grounded.IsGrounded()) return;
+    if (consumables.isConsuming || !grounded.IsGrounded()) return;
 
     if (Input.GetKeyDown(KeyCode.Alpha1))
     {
@@ -119,28 +123,36 @@ public class PlayerCombat : MonoBehaviour
     {
       if (inv.Type != type) continue;
 
-      Element element = default;
-      switch (type)
-      {
-        case InventoryType.Stack:
-          if (inv.Count > 0) element = (inv as StackInventory).Pop();
-          break;
-        case InventoryType.Queue:
-          if (inv.Count > 0) element = (inv as QueueInventory).Dequeue();
-          break;
-        case InventoryType.LinkedList:
-          if (linkedListInventory.Count > 0)
-          {
-            element = linkedListInventory.Remove(linkedListInventory.selectedIndex);
-            linkedListInventory.selectedIndex = 0;
-          }
-          break;
-      }
+      Element element = RemoveOfInventory(inv, type);
+
+      if (element == Element.NONE) return;
 
       castingList.Add(element);
       isCasting = true;
       chargeParticles.StartCasting(0.5f);
     }
+  }
+
+  public Element RemoveOfInventory(IInventory inv, InventoryType type)
+  {
+    Element element = Element.NONE;
+    switch (type)
+    {
+      case InventoryType.Stack:
+        if (inv.Count > 0) element = (inv as StackInventory).Pop();
+        break;
+      case InventoryType.Queue:
+        if (inv.Count > 0) element = (inv as QueueInventory).Dequeue();
+        break;
+      case InventoryType.LinkedList:
+        if (linkedListInventory.Count > 0)
+        {
+          element = linkedListInventory.Remove(linkedListInventory.selectedIndex);
+          linkedListInventory.selectedIndex = 0;
+        }
+        break;
+    }
+    return element;
   }
 
   private void MoveLinkedSelection(int direction)

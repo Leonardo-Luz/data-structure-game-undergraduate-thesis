@@ -13,6 +13,7 @@ public class ProximityDetection : MonoBehaviour
 
   public event Action onEnterProximity;
   public event Action onExitProximity;
+  public event Action onStayProximity;
 
   public bool isTargetInRange = false;
 
@@ -34,6 +35,8 @@ public class ProximityDetection : MonoBehaviour
 
     float distance = Vector3.Distance(transform.position, target.position);
     bool currentlyInRange = distance <= detectionRadius;
+
+    if (currentlyInRange) onStayProximity?.Invoke();
 
     if (currentlyInRange && !isTargetInRange)
     {

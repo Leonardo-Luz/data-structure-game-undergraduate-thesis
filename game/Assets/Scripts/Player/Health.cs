@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
   {
     if (currentHP <= 0) return;
 
-    currentHP = Mathf.Min(currentHP + amount, maxHP);
+    currentHP = currentHP + amount > maxHP ? maxHP : currentHP + amount;
     OnHealthChanged?.Invoke(currentHP, maxHP);
   }
 

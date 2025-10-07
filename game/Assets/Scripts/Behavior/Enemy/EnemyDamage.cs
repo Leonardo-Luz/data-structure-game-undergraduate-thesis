@@ -11,6 +11,8 @@ public class EnemyDamage : MonoBehaviour
   [SerializeField] private BoxCollider2D HitBox;
   [SerializeField] private BoxCollider2D HurtBox;
   [SerializeField] private float hitCooldown = 0.1f;
+  [SerializeField] private ConsumableObject consumablePrefab;
+  [Range(0, 100)][SerializeField] private int dropChance = 20;
 
   private Health health;
   private ElementsIndicator indicator;
@@ -63,7 +65,12 @@ public class EnemyDamage : MonoBehaviour
   private Element[] GenerateRandomWeaknesses(out int rarity)
   {
     // Get all possible elements
-    Element[] allElements = (Element[])System.Enum.GetValues(typeof(Element));
+    List<Element> rawElements = new List<Element>((Element[])System.Enum.GetValues(typeof(Element)));
+
+    // Remove Invalid Element
+    if (rawElements.Contains(Element.NONE)) rawElements.Remove(Element.NONE);
+
+    Element[] allElements = rawElements.ToArray();
 
     // Pick rarity
     rarity = 1; // default common
@@ -97,6 +104,7 @@ public class EnemyDamage : MonoBehaviour
 
   private void DeathHandler()
   {
+    if (Random.Range(0, 100) < dropChance) Instantiate(consumablePrefab, transform.position, Quaternion.identity);
     Destroy(gameObject);
   }
 

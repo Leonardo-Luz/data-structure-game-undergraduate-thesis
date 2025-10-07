@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: ExpositiveTutorial
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: 'Hello, Wellcome to the Tutorial,
+
+      You can press E to continue
+      the dialogue.'
+    portugueseText: 
+  - englishText: You can also use E to speed up the current message or interact with
+      some objects.
+    portugueseText: 
+  - englishText: 'Hold Downwards to generate elements.
+
+      These Elements can
+      be combined to cast spells'
+    portugueseText: 
+  - englishText: Combinatios are made with 2 or more of the same element.
+    portugueseText: 
+  - englishText: Each element more than the first two will add an extra damage to
+      the spell
+    portugueseText: 
+  - englishText: Be carefull when combining elements, if missmatched elemets are
+      combined you will take damage and lose your elements.
+    portugueseText: 

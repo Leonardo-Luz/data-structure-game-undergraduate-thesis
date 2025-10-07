@@ -37,4 +37,14 @@ public class StackInventory : MonoBehaviour, IInventory
   }
 
   public bool IsFull() => stack.Count == maxSize;
+
+  public void Sort()
+  {
+    List<Element> elements = new List<Element>(stack);
+
+    elements.Sort();
+
+    stack.Clear();
+    for (int i = elements.Count - 1; i >= 0; i--) stack.Push(elements[i]);
+  }
 }

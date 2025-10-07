@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,16 +10,18 @@ public class FollowingEnemy : MonoBehaviour
   [SerializeField] private float followRange = 5f;
 
   private Rigidbody2D rb;
+  [HideInInspector] public bool isStaggered = false;
 
   private void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
     target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    StaggerHandler(0.5f);
   }
 
   private void FixedUpdate()
   {
-    if (target == null) return;
+    if (isStaggered || target == null) return;
 
     float distance = Vector2.Distance(transform.position, target.position);
 
@@ -50,5 +53,16 @@ public class FollowingEnemy : MonoBehaviour
     Gizmos.color = Color.yellow;
     Gizmos.DrawWireSphere(transform.position, followRange);
   }
-}
 
+  public void StaggerHandler(float delay)
+  {
+    StartCoroutine(StaggerRoutine(delay));
+  }
+
+  private IEnumerator StaggerRoutine(float delay)
+  {
+    isStaggered = true;
+    yield return new WaitForSeconds(delay);
+    isStaggered = false;
+  }
+}

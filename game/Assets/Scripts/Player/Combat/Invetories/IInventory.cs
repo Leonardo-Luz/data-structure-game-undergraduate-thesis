@@ -7,5 +7,6 @@ public interface IInventory
   int MaxSize { get; }
   bool IsFull();
   void Clear();
+  void Sort();
   Element[] ToArray();
 }

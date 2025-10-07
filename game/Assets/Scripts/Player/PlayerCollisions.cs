@@ -21,9 +21,14 @@ public class PlayerCollisions : MonoBehaviour
   {
     if (!playerCombat.isInvulnerable && collider.CompareTag("Enemy"))
     {
-      OnEnemyHit?.Invoke(1);
-      knockbackPlayer.ApplyKnockback(collider.GetComponent<Transform>());
-      flick.StartFlick();
+      PlayerDamage(collider.gameObject);
     }
+  }
+
+  public void PlayerDamage(GameObject collider)
+  {
+    OnEnemyHit?.Invoke(1);
+    knockbackPlayer.ApplyKnockback(collider.transform);
+    flick.StartFlick();
   }
 }

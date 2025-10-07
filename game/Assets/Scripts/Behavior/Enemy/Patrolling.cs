@@ -63,17 +63,17 @@ public class PatrollingEnemy : MonoBehaviour
     }
   }
 
+  // FIX: collision between player - enemy changed in commit d301b78
   void OnCollisionEnter2D(Collision2D collision)
   {
     if (collision.collider.CompareTag("Player")) StartCoroutine(StaggerRoutine());
   }
 
-
-    private IEnumerator StaggerRoutine()
-    {
-      speed = 0f;
-      yield return new WaitForSeconds(staggerDuration);
-      speed = defaultSpeed;
-    }
+  private IEnumerator StaggerRoutine()
+  {
+    speed = 0f;
+    yield return new WaitForSeconds(staggerDuration);
+    speed = defaultSpeed;
+  }
 }
 
