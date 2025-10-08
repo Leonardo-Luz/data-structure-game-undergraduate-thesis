@@ -13,8 +13,9 @@ public class UseConsumable : MonoBehaviour
 
   public void Update()
   {
-    if (isConsuming) Consume(curConsumable);
-    else if (Input.GetKeyDown(KeyCode.Q) && curConsumable != Consumable.NONE) isConsuming = true;
+    if (isConsuming && Input.GetKeyDown(KeyCode.Q) && curConsumable != Consumable.NONE) isConsuming = false;
+    else if (isConsuming) Consume(curConsumable);
+    else if (!isConsuming && Input.GetKeyDown(KeyCode.Q) && curConsumable != Consumable.NONE) isConsuming = true;
   }
 
   private void Consume(Consumable consumable)
