@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class ConsumableObject : MonoBehaviour
 {
+  [Header("Settings")]
   [SerializeField] private Consumable consumable = Consumable.NONE;
-  [SerializeField] private float deathTimeout = 10f;
+  [SerializeField] private bool despawn = true;
+  [SerializeField] private float despawnTimeout = 10f;
 
   [Header("Sprites")]
   [SerializeField] private Sprite healSprite;
@@ -14,7 +16,25 @@ public class ConsumableObject : MonoBehaviour
 
   private void Start()
   {
-    SetConsumable();
+    if(consumable == Consumable.NONE) SetConsumable();
+
+    if(despawn) StartCoroutine(DeathTimeoutRoutine());
+
+    switch (consumable)
+    {
+      case Consumable.HEAL:
+        GetComponent<SpriteRenderer>().sprite = healSprite;
+        break;
+      case Consumable.INSERT:
+        GetComponent<SpriteRenderer>().sprite = insertSprite;
+        break;
+      case Consumable.REMOVE:
+        GetComponent<SpriteRenderer>().sprite = removeSprite;
+        break;
+      case Consumable.SORT:
+        GetComponent<SpriteRenderer>().sprite = sortSprite;
+        break;
+    }
   }
 
   private void SetConsumable()
@@ -30,19 +50,15 @@ public class ConsumableObject : MonoBehaviour
     {
       case 1:
         consumable = Consumable.HEAL;
-        GetComponent<SpriteRenderer>().sprite = healSprite;
         break;
       case 2:
         consumable = Consumable.INSERT;
-        GetComponent<SpriteRenderer>().sprite = insertSprite;
         break;
       case 3:
         consumable = Consumable.REMOVE;
-        GetComponent<SpriteRenderer>().sprite = removeSprite;
         break;
       case 4:
         consumable = Consumable.SORT;
-        GetComponent<SpriteRenderer>().sprite = sortSprite;
         break;
     }
   }
@@ -56,7 +72,7 @@ public class ConsumableObject : MonoBehaviour
 
   private IEnumerator DeathTimeoutRoutine()
   {
-    yield return new WaitForSeconds(deathTimeout);
+    yield return new WaitForSeconds(despawnTimeout);
     Destroy(gameObject);
   }
 }
