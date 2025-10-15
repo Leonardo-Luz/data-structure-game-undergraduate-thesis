@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: Inventories
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: Elements are added on top of each other.
+    portugueseText: "Os elementos s\xE3o adicionados uns sobre os outros."
+  - englishText: 'Stack
+
+
+      The last element you put in will be the first one
+      you take out.'
+    portugueseText: "Pilha\n\nO \xFAltimo elemento que voc\xEA colocou ser\xE1 o
+      primeiro a ser retirado."
+  - englishText: 'Queue
+
+
+      The first element you put in will be the first one
+      you take out.'
+    portugueseText: "Fila\n\nO primeiro elemento que voc\xEA colocou ser\xE1 o primeiro
+      a ser retirado."
+  - englishText: 'List
+
+
+      You can choose which element to take out. Move up
+      to change the selection. After removing an element, the selection goes back
+      to the first one.'
+    portugueseText: "Fila\n\nVoc\xEA pode escolher qual elemento retirar. Use cima
+      para mudar a sele\xE7\xE3o. Depois de retirar um elemento, a sele\xE7\xE3o
+      volta para o primeiro."

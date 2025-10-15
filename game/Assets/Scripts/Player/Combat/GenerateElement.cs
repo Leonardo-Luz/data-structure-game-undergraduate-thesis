@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GenerateElement : MonoBehaviour
@@ -5,9 +6,19 @@ public class GenerateElement : MonoBehaviour
   [Header("References")]
   [SerializeField] private Inventories inventoriesUI;
   [SerializeField] private ChargeParticlesController chargeParticles;
+  [SerializeField] private GameObject outOfManaAlert;
+  [SerializeField] private PlayerAudioController sfx;
+  [SerializeField] private GenericBar manaBar;
 
   [Header("Settings")]
   [SerializeField] private float cooldown = 1f;
+  [SerializeField] public float maxMana = 4.5f;
+  [SerializeField] public float ManaRegen = 2f;
+  [SerializeField] public float outOfManaDelay = 0.5f;
+
+  [HideInInspector] public float curMana;
+  private float delay = 1.5f;
+  private bool infiniteMana = false;
 
   private IInventory[] inventories;
   private int inventoryIndex = 0; // index into inventories[]
@@ -16,25 +27,39 @@ public class GenerateElement : MonoBehaviour
 
   private Grounded grounded;
 
+  public bool isLocked = false;
+
   private void Start()
   {
+    curMana = maxMana;
+
     inventories = GetComponents<IInventory>();
 
     if (inventoriesUI == null) inventoriesUI = GetComponent<Inventories>();
     if (chargeParticles == null) chargeParticles = GetComponent<ChargeParticlesController>();
     grounded = GetComponent<Grounded>();
+
+    manaBar.AttachTo(chargeTimer, cooldown);
   }
 
   private void Update()
   {
-    if (inventories == null || inventories.Length == 0) return;
+    if (isLocked || inventories == null || inventories.Length == 0) return;
 
     bool holdingDown = Input.GetAxis("Vertical") < 0;
 
-    if (holdingDown && (grounded == null || grounded.IsGrounded()))
+    if (!outOfManaAlert.activeInHierarchy && (curMana < cooldown - 0.5f))
+      sfx.PlayFailAudio();
+
+    outOfManaAlert.SetActive(curMana < cooldown - 0.5f);
+
+    if (delay >= outOfManaDelay && curMana > 0 && holdingDown && (grounded == null || grounded.IsGrounded()))
     {
+      if (curMana <= 0.1f) delay = 0;
+
       if (!isCharging)
       {
+        sfx.PlayChargeAudio();
         isCharging = true;
         chargeTimer = 0f;
         if (chargeParticles != null) chargeParticles.StartCharging(cooldown);
@@ -42,28 +67,49 @@ public class GenerateElement : MonoBehaviour
 
       chargeTimer += Time.deltaTime;
 
+      manaBar.UpdateBar(chargeTimer, cooldown);
+
+      if (!infiniteMana) curMana -= Time.deltaTime;
+
       if (chargeTimer >= cooldown)
       {
-        TryGenerateElement();
+        if (TryGenerateElement())
+        {
+          // PLAY GENERATED AUDIO
+        }
+        else
+        {
+          delay = 0;
+          sfx.StopChargeAudio();
+          sfx.PlayFailAudio();
+        }
         chargeTimer = 0f;
       }
     }
     else
     {
+      delay += Time.deltaTime;
+
+      if (curMana < maxMana)
+        curMana += Time.deltaTime * ManaRegen;
+
       if (isCharging)
       {
+        sfx.StopChargeAudio();
         isCharging = false;
         chargeTimer = 0f;
         if (chargeParticles != null) chargeParticles.StopCharging();
       }
+
+      manaBar.UpdateBar(chargeTimer, cooldown);
     }
 
     UpdateNextSlotPointer();
   }
 
-  private void TryGenerateElement()
+  private bool TryGenerateElement()
   {
-    if (inventories == null || inventories.Length == 0) return;
+    if (inventories == null || inventories.Length == 0) return false;
 
     int attempts = 0;
     int startIndex = inventoryIndex % inventories.Length;
@@ -76,7 +122,7 @@ public class GenerateElement : MonoBehaviour
       {
         AddToInventory(GetRandomElement(), idx);
         inventoryIndex = (idx + 1) % inventories.Length;
-        return;
+        return true;
       }
 
       inventoryIndex = (idx + 1) % inventories.Length;
@@ -84,7 +130,7 @@ public class GenerateElement : MonoBehaviour
       if (inventoryIndex % inventories.Length == startIndex) break;
     }
 
-    Debug.Log("All inventories are full! Cannot generate.");
+    return false;
   }
 
   public void AddToInventory(Element element, int index)
@@ -111,10 +157,24 @@ public class GenerateElement : MonoBehaviour
     }
   }
 
+  private int prev = -1;
+  private int repeat = 0;
   public Element GetRandomElement()
   {
-    int count = System.Enum.GetValues(typeof(Element)).Length - 1;
-    return (Element)Random.Range(0, count);
+    int count = 0;
+    int result = 0;
+    do
+    {
+      count = System.Enum.GetValues(typeof(Element)).Length - 1;
+      result = Random.Range(0, count);
+
+      if (result == prev) repeat++;
+      else repeat = 0;
+
+      prev = result;
+    } while (repeat >= 2);
+
+    return (Element)result;
   }
 
   private void UpdateNextSlotPointer()
@@ -163,5 +223,13 @@ public class GenerateElement : MonoBehaviour
 
     // For all inventory types here we append at the end, so next slot is Count
     return inv.Count;
+  }
+
+  public IEnumerator InfiniteManaRoutine(float duration)
+  {
+    infiniteMana = true;
+    yield return new WaitForSeconds(duration);
+
+    infiniteMana = false;
   }
 }

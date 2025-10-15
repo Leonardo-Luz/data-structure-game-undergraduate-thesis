@@ -3,29 +3,36 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
   [SerializeField] private CanvasGroup pausePanel;
-  private bool isPaused = false;
+  public bool isPaused = false;
+  public bool isPauseMenuOpen = false;
 
   void Start()
   {
     HidePauseMenu();
+    isPauseMenuOpen = false;
+    isPaused = false;
+    Time.timeScale = 1f;
   }
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Escape))
+    if ((isPauseMenuOpen || !isPaused) && Input.GetKeyDown(KeyCode.Escape))
       TogglePause();
+  }
+
+  public void ToggleTime()
+  {
+    isPaused = !isPaused;
+    Time.timeScale = isPaused ? 0f : 1f;
   }
 
   public void TogglePause()
   {
-    isPaused = !isPaused;
-
+    ToggleTime();
     if (isPaused)
       ShowPauseMenu();
     else
       HidePauseMenu();
-
-    Time.timeScale = isPaused ? 0f : 1f;
   }
 
   public void ResumeGame()
@@ -35,17 +42,14 @@ public class PauseMenu : MonoBehaviour
     Time.timeScale = 1f;
   }
 
-  public void QuitGame()
+  public void MainMenu()
   {
-#if UNITY_EDITOR
-    UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+    GameManager.Instance.LoadMainMenu();
   }
 
   private void ShowPauseMenu()
   {
+    isPauseMenuOpen = true;
     pausePanel.alpha = 1f;
     pausePanel.interactable = true;
     pausePanel.blocksRaycasts = true;
@@ -53,6 +57,7 @@ public class PauseMenu : MonoBehaviour
 
   private void HidePauseMenu()
   {
+    isPauseMenuOpen = false;
     pausePanel.alpha = 0f;
     pausePanel.interactable = false;
     pausePanel.blocksRaycasts = false;

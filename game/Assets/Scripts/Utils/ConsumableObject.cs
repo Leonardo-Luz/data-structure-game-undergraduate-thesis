@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ConsumableObject : MonoBehaviour
 {
@@ -7,18 +9,25 @@ public class ConsumableObject : MonoBehaviour
   [SerializeField] private Consumable consumable = Consumable.NONE;
   [SerializeField] private bool despawn = true;
   [SerializeField] private float despawnTimeout = 10f;
+  [SerializeField] private AudioSource sfx;
 
   [Header("Sprites")]
   [SerializeField] private Sprite healSprite;
   [SerializeField] private Sprite insertSprite;
   [SerializeField] private Sprite removeSprite;
+  [SerializeField] private Sprite manaSprite;
   [SerializeField] private Sprite sortSprite;
+  [SerializeField] private Sprite lifeSprite;
+
+  public event Action onPickup;
+
+  private bool picked = false;
 
   private void Start()
   {
-    if(consumable == Consumable.NONE) SetConsumable();
+    if (consumable == Consumable.NONE) SetConsumable();
 
-    if(despawn) StartCoroutine(DeathTimeoutRoutine());
+    if (despawn) StartCoroutine(DeathTimeoutRoutine(despawnTimeout));
 
     switch (consumable)
     {
@@ -31,8 +40,14 @@ public class ConsumableObject : MonoBehaviour
       case Consumable.REMOVE:
         GetComponent<SpriteRenderer>().sprite = removeSprite;
         break;
+      case Consumable.MANA:
+        GetComponent<SpriteRenderer>().sprite = manaSprite;
+        break;
       case Consumable.SORT:
         GetComponent<SpriteRenderer>().sprite = sortSprite;
+        break;
+      case Consumable.LIFE:
+        GetComponent<SpriteRenderer>().sprite = lifeSprite;
         break;
     }
   }
@@ -41,10 +56,20 @@ public class ConsumableObject : MonoBehaviour
   {
     int rarity = 1; // default common
     int roll = Random.Range(0, 100); // roll for rarity
-    if (roll < 40) rarity = 1;       // 40% chance → Common
-    else if (roll < 70) rarity = 2;  // 30% chance → Common
-    else if (roll < 90) rarity = 3;  // 20% chance → Uncommon
-    else rarity = 4;                 // 10% chance → Rare
+
+    int first = 30;
+    int second = first + 25;
+    int third = second + 20;
+    int fourth = third + 10;
+    int fifth = fourth + 10;
+    int sixth = third + 5;
+
+    if (roll < first) rarity = 1;
+    else if (roll < second) rarity = 2;
+    else if (roll < third) rarity = 3;
+    else if (roll < fourth) rarity = 4;
+    else if (roll < fifth) rarity = 5;
+    else if (roll < sixth) rarity = 6;
 
     switch (rarity)
     {
@@ -58,21 +83,37 @@ public class ConsumableObject : MonoBehaviour
         consumable = Consumable.REMOVE;
         break;
       case 4:
+        consumable = Consumable.MANA;
+        break;
+      case 5:
         consumable = Consumable.SORT;
+        break;
+      case 6:
+        consumable = Consumable.LIFE;
         break;
     }
   }
 
-  void OnTriggerEnter2D(Collider2D collider)
+  void OnTriggerStay2D(Collider2D collider)
   {
-    if (collider.CompareTag("Player"))
+    if (!picked && collider.CompareTag("Player"))
       if (collider.GetComponentInChildren<UseConsumable>().SetConsumable(consumable))
-        Destroy(gameObject);
+      {
+        picked = true;
+
+        sfx.Play();
+
+        onPickup?.Invoke();
+
+        if (onPickup == null)
+          StartCoroutine(DeathTimeoutRoutine(0.2f));
+      }
   }
 
-  private IEnumerator DeathTimeoutRoutine()
+
+  private IEnumerator DeathTimeoutRoutine(float delay)
   {
-    yield return new WaitForSeconds(despawnTimeout);
+    yield return new WaitForSeconds(delay);
     Destroy(gameObject);
   }
 }

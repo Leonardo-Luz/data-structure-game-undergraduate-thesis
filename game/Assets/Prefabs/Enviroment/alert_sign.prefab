@@ -302,6 +302,7 @@ MonoBehaviour:
   detectionRadius: 2
   detectOnce: 0
   checkEveryFrame: 1
+  detectOnAir: 0
   isTargetInRange: 0
 --- !u!114 &5001263209015262739
 MonoBehaviour:

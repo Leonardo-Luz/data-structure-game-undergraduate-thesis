@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5185316241992208397}
   - component: {fileID: 549348615499177435}
   - component: {fileID: 4305754516090062134}
+  - component: {fileID: 3886682623315505193}
   m_Layer: 0
   m_Name: campfire_unlit_0
   m_TagString: Untagged
@@ -104,9 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  detectionRadius: 5
+  detectionRadius: 3
   detectOnce: 0
   checkEveryFrame: 1
+  detectOnAir: 0
   isTargetInRange: 0
 --- !u!114 &4305754516090062134
 MonoBehaviour:
@@ -123,6 +125,27 @@ MonoBehaviour:
   interactionBubble: {fileID: 4393076135836930208}
   litCampfire: {fileID: 5478792864379623488}
   dialogue: {fileID: 11400000, guid: 1ccf0368e68fb860faeaacc1c03a45fb, type: 2}
+  outline: {fileID: 3886682623315505193}
+  playerDeath: {fileID: 0}
+--- !u!114 &3886682623315505193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417114997931582960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d476d06cb8cadd75abb93b08d838535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineOffsets:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  isOutlined: 0
 --- !u!1 &4393076135836930208
 GameObject:
   m_ObjectHideFlags: 0

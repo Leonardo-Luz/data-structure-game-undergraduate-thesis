@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
   // Events
   public event Action<int, int> OnHealthChanged;
   public event Action OnHealthDecreased;
+  public event Action OnHealthIncreased;
   public event Action OnDeath;
 
   private void Awake()
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour
 
     currentHP = currentHP + amount > maxHP ? maxHP : currentHP + amount;
     OnHealthChanged?.Invoke(currentHP, maxHP);
+    OnHealthIncreased?.Invoke();
   }
 
   public void FullHeal()
@@ -45,6 +47,7 @@ public class Health : MonoBehaviour
 
     currentHP = maxHP;
     OnHealthChanged?.Invoke(currentHP, maxHP);
+    OnHealthIncreased?.Invoke();
   }
 
   private void Die()
@@ -55,6 +58,12 @@ public class Health : MonoBehaviour
   public void SetMaxHP(int value)
   {
     maxHP = value;
+    currentHP = maxHP;
+    OnHealthChanged?.Invoke(currentHP, maxHP);
+  }
+
+  public void ResetHP()
+  {
     currentHP = maxHP;
     OnHealthChanged?.Invoke(currentHP, maxHP);
   }

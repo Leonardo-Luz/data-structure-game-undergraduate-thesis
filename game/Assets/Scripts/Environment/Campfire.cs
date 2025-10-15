@@ -6,17 +6,24 @@ public class Campfire : MonoBehaviour
   [SerializeField] private GameObject interactionBubble;
   [SerializeField] private GameObject litCampfire;
   [SerializeField] private Dialogue dialogue;
+  [SerializeField] private Outline outline;
+  [SerializeField] private DeathManager playerDeath;
 
   private ProximityDetection proxDetect;
   private DialogueManager dialogueManager;
   private bool actived = false;
 
+  private GameObject player;
+
   private void Start()
   {
     litCampfire.SetActive(false);
     proxDetect = GetComponent<ProximityDetection>();
+    outline = GetComponent<Outline>();
 
-    proxDetect.target = GameObject.FindGameObjectWithTag("Player").transform;
+    player = GameObject.FindGameObjectWithTag("Player");
+
+    proxDetect.target = player.transform;
 
     proxDetect.onEnterProximity += ProximityEnterHandler;
     proxDetect.onExitProximity += ProximityExitHandler;
@@ -30,7 +37,13 @@ public class Campfire : MonoBehaviour
   {
     if (!actived && proxDetect.isTargetInRange)
     {
-      if (!dialogueManager.isActive && Input.GetKeyDown(KeyCode.E))
+      if (dialogue == null && Input.GetKeyDown(KeyCode.E))
+      {
+        HealPlayer();
+        LitCampfire();
+        CleanupEvents();
+      }
+      else if (!dialogueManager.isActive && Input.GetKeyDown(KeyCode.E))
         dialogueManager.StartDialogue(dialogue);
       else if (dialogueManager.isActive && Input.GetKeyDown(KeyCode.E))
         dialogueManager.NextLine();
@@ -41,10 +54,10 @@ public class Campfire : MonoBehaviour
   {
     if (!actived)
     {
+      outline.isOutlined = true;
+
       interactionBubble.SetActive(true);
-      dialogueManager.onDialogueEnd += HealPlayer;
-      dialogueManager.onDialogueEnd += LitCampfire;
-      dialogueManager.onDialogueEnd += CleanupEvents;
+      dialogueManager.onDialogueEnd += OneTimeEvents;
     }
   }
 
@@ -52,14 +65,22 @@ public class Campfire : MonoBehaviour
   {
     if (!actived)
     {
+      outline.isOutlined = false;
+
       interactionBubble.SetActive(false);
-      dialogueManager.onDialogueEnd -= HealPlayer;
-      dialogueManager.onDialogueEnd -= LitCampfire;
-      dialogueManager.onDialogueEnd -= CleanupEvents;
+      dialogueManager.onDialogueEnd -= OneTimeEvents;
     }
 
     if (dialogueManager.isActive)
       dialogueManager.EndDialogue();
+  }
+
+  private void OneTimeEvents()
+  {
+    HealPlayer();
+    IncreaseLifePlayer();
+    LitCampfire();
+    CleanupEvents();
   }
 
   private void LitCampfire()
@@ -70,15 +91,19 @@ public class Campfire : MonoBehaviour
 
   private void HealPlayer()
   {
-    Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+    Health playerHealth = player.GetComponent<Health>();
     playerHealth.FullHeal();
+  }
+
+  private void IncreaseLifePlayer()
+  {
+    playerDeath.IncreaseLifes();
+    playerDeath.SetAnchor(transform);
   }
 
   private void CleanupEvents()
   {
     actived = true;
-    dialogueManager.onDialogueEnd -= HealPlayer;
-    dialogueManager.onDialogueEnd -= LitCampfire;
-    dialogueManager.onDialogueEnd -= CleanupEvents;
+    dialogueManager.onDialogueEnd -= OneTimeEvents;
   }
 }

@@ -14,7 +14,9 @@ public class ConsumableHUD : MonoBehaviour
   [SerializeField] private Sprite healSprite;
   [SerializeField] private Sprite insertSprite;
   [SerializeField] private Sprite removeSprite;
+  [SerializeField] private Sprite manaSprite;
   [SerializeField] private Sprite sortSprite;
+  [SerializeField] private Sprite lifeSprite;
 
   private void Start()
   {
@@ -45,9 +47,17 @@ public class ConsumableHUD : MonoBehaviour
           filledHUD();
           slot.sprite = removeSprite;
           break;
+        case Consumable.MANA:
+          filledHUD();
+          slot.sprite = manaSprite;
+          break;
         case Consumable.SORT:
           filledHUD();
           slot.sprite = sortSprite;
+          break;
+        case Consumable.LIFE:
+          filledHUD();
+          slot.sprite = lifeSprite;
           break;
       }
     }

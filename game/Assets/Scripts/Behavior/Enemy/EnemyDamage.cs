@@ -8,11 +8,15 @@ public class EnemyDamage : MonoBehaviour
   [SerializeField] private Element[] weaknesses;
   [SerializeField] private float invulnerabilityTimeout = 0.2f;
   [SerializeField] private bool randomizeStats = true;
+  [SerializeField] private bool changeWeaknesses = false;
+  [SerializeField] private float  changeWeaknessesDelay;
+  [SerializeField] private Vector2  changeWeaknessesDelayRange = new Vector2(2f, 12f);
   [SerializeField] private BoxCollider2D HitBox;
   [SerializeField] private BoxCollider2D HurtBox;
   [SerializeField] private float hitCooldown = 0.1f;
   [SerializeField] private ConsumableObject consumablePrefab;
   [Range(0, 100)][SerializeField] private int dropChance = 20;
+  [SerializeField] private float fallHeight = 3f;
 
   private Health health;
   private ElementsIndicator indicator;
@@ -21,9 +25,13 @@ public class EnemyDamage : MonoBehaviour
 
   private float lastHitTime;
 
+  private float changeWeaknessesTime = 0f;
+
   private void Start()
   {
     flick = GetComponent<Flick>();
+
+    changeWeaknessesDelay = Random.Range(changeWeaknessesDelayRange.x, changeWeaknessesDelayRange.y);
 
     health = GetComponent<Health>();
     if (health != null)
@@ -60,6 +68,31 @@ public class EnemyDamage : MonoBehaviour
       indicator.followTarget = transform;
       indicator.SetElements(weaknesses);
     }
+  }
+
+  private void Update()
+  {
+    if (transform.position.y < -fallHeight) FallDamage();
+
+    if (changeWeaknesses)
+    {
+      changeWeaknessesTime += Time.deltaTime;
+      if (changeWeaknessesTime >= changeWeaknessesDelay)
+      {
+        changeWeaknessesTime = 0;
+
+        int trash;
+        weaknesses = GenerateRandomWeaknesses(out trash);
+        indicator.SetElements(weaknesses);
+
+        changeWeaknessesDelay = Random.Range(changeWeaknessesDelayRange.x, changeWeaknessesDelayRange.y);
+      }
+    }
+  }
+
+  private void FallDamage()
+  {
+    health?.TakeDamage(999);
   }
 
   private Element[] GenerateRandomWeaknesses(out int rarity)

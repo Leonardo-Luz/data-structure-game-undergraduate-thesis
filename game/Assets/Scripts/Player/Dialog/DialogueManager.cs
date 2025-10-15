@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System;
@@ -12,7 +13,9 @@ public enum Language
 public class DialogueManager : MonoBehaviour
 {
   [SerializeField] private TextMeshProUGUI dialogueText;
+  [SerializeField] private Image dialogueInteraction;
   [SerializeField] private CanvasGroup dialogueHud;
+  [SerializeField] private AudioSource dialogueAudio;
 
   [SerializeField] private Dialogue currentDialogue;
   [SerializeField] public Language currentLanguage = Language.English;
@@ -79,7 +82,9 @@ public class DialogueManager : MonoBehaviour
 
   private IEnumerator TypeLine(string text)
   {
+    dialogueAudio.Play();
     isTyping = true;
+    dialogueInteraction.enabled = false;
     dialogueText.text = "";
 
     foreach (char c in text)
@@ -89,6 +94,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     isTyping = false;
+    dialogueInteraction.enabled = true;
+    dialogueAudio.Stop();
   }
 
   private void ShowFullLine()
@@ -97,6 +104,8 @@ public class DialogueManager : MonoBehaviour
     string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
     dialogueText.text = text;
     isTyping = false;
+    dialogueInteraction.enabled = true;
+    dialogueAudio.Stop();
   }
 
   public void EndDialogue()

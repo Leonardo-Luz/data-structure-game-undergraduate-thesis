@@ -21,11 +21,17 @@ public class PlayerCombat : MonoBehaviour
   [SerializeField] private float verticalCooldown = 0.2f;
   private float verticalTimer = 0f;
 
+  [SerializeField] private PlayerAudioController sfx;
+
+  [SerializeField] private PauseMenu pause;
+
   [SerializeField] private ChargeParticlesController chargeParticles;
 
   [SerializeField] private UseConsumable consumables;
 
   [SerializeField] private float fallHeight = 3f;
+
+  public bool isLocked = false;
 
   private Flick flick;
   private Health health;
@@ -53,6 +59,8 @@ public class PlayerCombat : MonoBehaviour
 
   private void Update()
   {
+    if (isLocked || pause.isPaused) return;
+
     indicator.SetElements(castingList);
 
     if (transform.position.y < -fallHeight) FallDamage();
@@ -81,37 +89,28 @@ public class PlayerCombat : MonoBehaviour
   {
     if (consumables.isConsuming || !grounded.IsGrounded()) return;
 
+    bool addedToInv = false;
     if (Input.GetKeyDown(KeyCode.Alpha1))
     {
       AddFromInventory(InventoryType.Stack);
-      if (!ValidCombination())
-      {
-        health.TakeDamage(1);
-        flick.StartFlick();
-        CleanCasting();
-      }
+      addedToInv = true;
     }
     if (Input.GetKeyDown(KeyCode.Alpha2))
     {
       AddFromInventory(InventoryType.Queue);
-
-      if (!ValidCombination())
-      {
-        health.TakeDamage(1);
-        flick.StartFlick();
-        CleanCasting();
-      }
+      addedToInv = true;
     }
     if (Input.GetKeyDown(KeyCode.Alpha3))
     {
       AddFromInventory(InventoryType.LinkedList);
+      addedToInv = true;
+    }
 
-      if (!ValidCombination())
-      {
-        health.TakeDamage(1);
-        flick.StartFlick();
-        CleanCasting();
-      }
+    if (addedToInv && !ValidCombination())
+    {
+      health.TakeDamage(Mathf.Clamp(castingList.Count - 2, 1, 3));
+      flick.StartFlick();
+      CleanCasting();
     }
 
     if (Input.GetKeyDown(KeyCode.Return)) FinishCasting();
@@ -128,6 +127,8 @@ public class PlayerCombat : MonoBehaviour
       if (element == Element.NONE) return;
 
       castingList.Add(element);
+      float pitch = Mathf.Clamp(0.7f + castingList.Count * 0.1f, 0.8f, 1.6f);
+      if (ValidCombination()) sfx.PlayInsertAudio(pitch);
       isCasting = true;
       chargeParticles.StartCasting(0.5f);
     }
@@ -271,5 +272,21 @@ public class PlayerCombat : MonoBehaviour
     Vector3 localPos = shootPoint.localPosition;
     localPos.x = Mathf.Abs(localPos.x) * (flipX ? -1 : 1);
     shootPoint.localPosition = localPos;
+  }
+
+  public void ResetPlayerCombat()
+  {
+    if (inventories == null) return;
+
+    foreach (var inv in inventories)
+      inv.Clear();
+
+    linkedListInventory.selectedIndex = 0;
+
+    castingList.Clear();
+    isCasting = false;
+    chargeParticles.StopCasting();
+
+    SetupRebound();
   }
 }

@@ -9,11 +9,12 @@ public class ChargeParticlesController : MonoBehaviour
   private ParticleSystem.VelocityOverLifetimeModule velocity;
 
   [Header("Particle Settings")]
-  public float maxEmission = 30f;
-  public float minEmission = 4f;
-  public float chargeDuration = 1f;
-  public Color chargingColor = Color.white;
-  public Color castingColor = Color.cyan;
+  [SerializeField] private float maxEmission = 30f;
+  [SerializeField] private float minEmission = 4f;
+  [SerializeField] private float chargeDuration = 1f;
+  [SerializeField] private Color chargingColor = Color.white;
+  [SerializeField] private Color castingColor = Color.cyan;
+  [SerializeField] private float speed = 0.2f;
 
   private float chargeTimer = 0f;
   private bool isCharging = false;
@@ -88,7 +89,6 @@ public class ChargeParticlesController : MonoBehaviour
   // Helper: set particle velocity toward center (inward) or away (outward)
   private void SetParticlesDirection(bool inward)
   {
-    float speed = 0.3f; // adjust as needed
     velocity.radial = inward ? new ParticleSystem.MinMaxCurve(-speed) : new ParticleSystem.MinMaxCurve(speed);
   }
 }

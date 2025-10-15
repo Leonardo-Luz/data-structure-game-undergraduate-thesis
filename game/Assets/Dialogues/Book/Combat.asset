@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: Combat
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: 'Element Generation
+
+
+      Hold Downwards to generate elements.
+      This will use mana, when mana is fully depleted you can''t generate more elements.
+      Wait for a few seconds to regenerate your mana.'
+    portugueseText: "Gera\xE7\xE3o de Elementos\n\nSegure para baixo para gerar elementos.
+      Isso usar\xE1 mana, quando a mana estiver totalmente esgotada voc\xEA n\xE3o
+      poder\xE1 gerar mais elementos. Espere alguns segundos para regenerar sua mana."
+  - englishText: 'Element Generation
+
+
+      Consumables can also generate elements
+      or mana. See more in the Consumables Chapter.'
+    portugueseText: "Gera\xE7\xE3o de Elementos\n\nConsum\xEDveis tamb\xE9m podem
+      gerar elementos ou mana. Veja mais no Cap\xEDtulo de Consum\xEDveis."
+  - englishText: 'Element Placement
+
+
+      Generated elements will be placed in
+      one of your inventories automatically, going left to right and circling. If
+      an inventory is full, it will try to place the element in the next one. See
+      the Inventories Chapter for more details.'
+    portugueseText: "Posicionamento de Elementos\n\nElementos gerados ser\xE3o colocados
+      automaticamente em um dos seus invent\xE1rios, indo da esquerda para a direita
+      e circulando. Se um invent\xE1rio estiver cheio, tentar\xE1 colocar o elemento
+      no pr\xF3ximo. Veja o Cap\xEDtulo de Invent\xE1rios para mais detalhes."
+  - englishText: 'Combining Elements
+
+
+      Press a number between 1 and 3 to remove
+      an element from one of your inventories. This will automatically place that
+      element in your combining list.'
+    portugueseText: "Combina\xE7\xE3o de Elementos\n\nPressione um n\xFAmero entre
+      1 e 3 para remover um elemento de um dos seus invent\xE1rios. Isso colocar\xE1
+      automaticamente o elemento na sua lista de combina\xE7\xE3o."
+  - englishText: 'Combining Elements
+
+
+      Combine 2 or more of the same element
+      and press Enter to cast a spell of that element. '
+    portugueseText: "Combina\xE7\xE3o de Elementos\n\nCombine 2 ou mais do mesmo
+      elemento e pressione Enter para lan\xE7ar uma magia desse elemento. "
+  - englishText: 'Fail Combining
+
+
+      If you combine different elements, you will
+      take damage according to the complexity of the spell and lose the elements
+      in your combining list. Example: if you had a fire element and tried to add
+      a water element, you would take 1 damage. If you had 2 fire elements and added
+      a water element, you would take 2 damage, and so on.'
+    portugueseText: "Combina\xE7\xE3o Falha\n\nSe voc\xEA combinar elementos diferentes,
+      sofrer\xE1 dano de acordo com a complexidade do feiti\xE7o e perder\xE1 os
+      elementos da sua lista de combina\xE7\xE3o. Exemplo: se voc\xEA tinha um elemento
+      de fogo e tentou adicionar um elemento de \xE1gua, receber\xE1 1 de dano. Se
+      tinha 2 elementos de fogo e adicionou um de \xE1gua, receber\xE1 2 de dano,
+      e assim sucessivamente."
+  - englishText: "Damage\n\nA spell created with 2 of the same element will deal
+      1 damage. Each identical element added increases the spell\u2019s damage by
+      1."
+    portugueseText: "Dano\n\nUm feiti\xE7o criado com 2 elementos iguais causar\xE1
+      1 de dano. Cada elemento id\xEAntico adicionado aumenta o dano do feiti\xE7o
+      em 1."
+  - englishText: 'Damage
+
+
+      Each enemy has its own weaknesses and properties.
+      See more in the Bestiary Chapter.'
+    portugueseText: "Dano\n\nCada inimigo possui suas pr\xF3prias fraquezas e propriedades.
+      Veja mais no Cap\xEDtulo de Besti\xE1rio."

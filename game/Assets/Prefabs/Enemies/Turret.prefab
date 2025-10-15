@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1184436717
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 1213264957794674762, guid: 7966d4ce7aca6f07586d8a16f5aae775, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -204,7 +204,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1184436717
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: -112968808170193824, guid: ace54ef3fe3e9e1719ba0ddb85ac2229, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1184436717
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -4574885025991634032, guid: 8d4cd2f8948b5e1b78303598ff867ad0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -330,8 +330,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4762083820898870425, guid: 2c689a059575fa855870e2b8378d506a, type: 3}
   fireRateRange: {x: 1, y: 1.6}
   projectileSpeedRange: {x: 6, y: 10}
+  ammoRange: {x: 4, y: 12}
+  range: {fileID: 0}
+  infiniteAmmo: 0
   randomizeStats: 1
-  proximity: {fileID: 8080259732656896044}
+  ammoBar: {fileID: 907269535703111441}
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &2100799907402089687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 2243215151538129470, guid: 9cb29811b75a8bc0998e8a0a39a95d0e, type: 3}
   offset: {x: 0, y: -0.6, z: 0}
+  dontSpawn: 0
 --- !u!114 &8262282996041086467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +478,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1184436717
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 1213264957794674762, guid: 7966d4ce7aca6f07586d8a16f5aae775, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -9,10 +9,14 @@ public class PlayerMove : MonoBehaviour
   [SerializeField] private float moveSpeed = 3f;
   [SerializeField] private float runSpeed = 5f;
   [SerializeField] private float jumpForce = 6f;
+  [SerializeField] private float jumpTolerance = 0.16f;
+  private float jumpToleranceTime = 0;
 
   [Header("Dependencies")]
+  [SerializeField] private PlayerAudioController audioController;
   [SerializeField] private Grounded groundedCheck;
   [SerializeField] private DustParticle dustParticle;
+  [SerializeField] private PauseMenu pause;
   private Health health;
   private PlayerCollisions playerCollisions;
   private Knockback knockback;
@@ -24,10 +28,15 @@ public class PlayerMove : MonoBehaviour
   [SerializeField] private Animator animator;
 
   private bool isGrounded;
+  private bool isLanding;
+
+  private bool doubleJump = false;
+  public bool isLocked = false;
 
   /// NOTE: Rebound Timeout
   private float reboundTimer = 2f;
   private float reboundTimeout = 2f;
+  private float lastVelocityY = 0f;
 
   private void Start()
   {
@@ -42,10 +51,18 @@ public class PlayerMove : MonoBehaviour
     playerCombat = GetComponent<PlayerCombat>();
 
     playerCollisions.OnEnemyHit += health.TakeDamage;
+
+    health.OnDeath += () => rb.linearVelocity = Vector2.zero;
   }
 
   private void Update()
   {
+    if (isLocked || pause.isPaused)
+    {
+      rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+      return;
+    }
+
     float horizontalInput = 0;
     float verticalInput = 0;
 
@@ -55,11 +72,16 @@ public class PlayerMove : MonoBehaviour
       verticalInput = Input.GetAxis("Vertical");
     }
 
+    isGrounded = groundedCheck.IsGrounded();
+
+    animator.SetBool("isGrounded", isGrounded);
+    animator.SetBool("isRunning", isGrounded && speed == runSpeed);
+    animator.SetFloat("speed", speed);
+    animator.SetFloat("verticalVelocity", rb.linearVelocity.y);
+
     bool isCrouching = verticalInput < 0 && isGrounded;
 
     animator.SetBool("isCrouching", isCrouching);
-
-    isGrounded = groundedCheck.IsGrounded();
 
     // INFO: Particles logic
     dustParticle.UpdateWalkingDust(rb.linearVelocity.x, speed + 0.001 >= runSpeed, isGrounded);
@@ -82,6 +104,17 @@ public class PlayerMove : MonoBehaviour
     reboundTimer += Time.deltaTime;
     if (isGrounded)
     {
+      jumpToleranceTime = 0f;
+
+      if (isLanding)
+      {
+        if(lastVelocityY <= -5.5f)
+        audioController.PlayLandingAudio();
+        isLanding = false;
+      }
+
+      doubleJump = false;
+
       speed = auxSpeed;
 
       if (reboundTimer >= reboundTimeout)
@@ -90,6 +123,12 @@ public class PlayerMove : MonoBehaviour
         reboundTimer = 0;
       }
     }
+    else
+    {
+      jumpToleranceTime += Time.deltaTime;
+      isLanding = true;
+      lastVelocityY = rb.linearVelocity.y;
+    }
 
     // INFO: Locks player move when casting or knocked back
     if (!knockback.IsKnockedBack && !playerCombat.isCasting)
@@ -97,15 +136,18 @@ public class PlayerMove : MonoBehaviour
 
     // INFO: Stops player movement when casting
     if (playerCombat.isCasting) rb.linearVelocity = Vector2.zero;
-    // INFO: Applies friction to player when casting
-    //   rb.sharedMaterial.friction = 0.8f;
-    // else rb.sharedMaterial.friction = 0f;
 
-    if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching && !playerCombat.isCasting)
+    if (Input.GetButtonDown("Jump")
+        && ((isGrounded && !isCrouching && !playerCombat.isCasting) ||
+        (!isGrounded && (doubleJump || (jumpToleranceTime <= jumpTolerance && rb.linearVelocity.y <= 0))))
+    )
     {
       Jump();
+
       dustParticle.setScaleFactor(1f);
       dustParticle.PlayDust(!spriteRenderer.flipX);
+
+      if (doubleJump) doubleJump = false;
     }
 
     bool isMidAir = rb.linearVelocity.y > 0;
@@ -123,11 +165,17 @@ public class PlayerMove : MonoBehaviour
 
   private void Jump()
   {
+    audioController.PlayJumpAudio();
     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
   }
 
   private void CancelJump()
   {
     rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+  }
+
+  public void EnableDoubleJump()
+  {
+    doubleJump = true;
   }
 }

@@ -4,17 +4,19 @@ using UnityEngine;
 public class UseConsumable : MonoBehaviour
 {
   [HideInInspector] public bool isConsuming = false;
+  [HideInInspector] public bool consumade = false;
   [HideInInspector] public Consumable curConsumable = Consumable.NONE;
 
   [Header("Settings")]
   [SerializeField] private Health health;
   [SerializeField] private GenerateElement elementGenerator;
   [SerializeField] private PlayerCombat playerCombat;
+  [SerializeField] private DeathManager deathManager;
 
   public void Update()
   {
     if (isConsuming && Input.GetKeyDown(KeyCode.Q) && curConsumable != Consumable.NONE) isConsuming = false;
-    else if (isConsuming) Consume(curConsumable);
+    else if (isConsuming && !consumade) Consume(curConsumable);
     else if (!isConsuming && Input.GetKeyDown(KeyCode.Q) && curConsumable != Consumable.NONE) isConsuming = true;
   }
 
@@ -25,7 +27,9 @@ public class UseConsumable : MonoBehaviour
       case Consumable.HEAL: Heal(); break;
       case Consumable.INSERT: Insert(); break;
       case Consumable.REMOVE: Remove(); break;
+      case Consumable.MANA: Mana(); break;
       case Consumable.SORT: Sort(); break;
+      case Consumable.LIFE: Life(); break;
     }
   }
 
@@ -48,21 +52,21 @@ public class UseConsumable : MonoBehaviour
       Element element = elementGenerator.GetRandomElement();
       elementGenerator.AddToInventory(element, 0);
       elementGenerator.AddToInventory(element, 0);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
     else if (Input.GetKeyDown(KeyCode.Alpha2))
     {
       Element element = elementGenerator.GetRandomElement();
       elementGenerator.AddToInventory(element, 1);
       elementGenerator.AddToInventory(element, 1);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
     else if (Input.GetKeyDown(KeyCode.Alpha3))
     {
       Element element = elementGenerator.GetRandomElement();
       elementGenerator.AddToInventory(element, 2);
       elementGenerator.AddToInventory(element, 2);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
   }
 
@@ -71,17 +75,17 @@ public class UseConsumable : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.Alpha1))
     {
       playerCombat.RemoveOfInventory(playerCombat.inventories[0], InventoryType.Stack);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
     else if (Input.GetKeyDown(KeyCode.Alpha2))
     {
       playerCombat.RemoveOfInventory(playerCombat.inventories[1], InventoryType.Queue);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
     else if (Input.GetKeyDown(KeyCode.Alpha3))
     {
       playerCombat.RemoveOfInventory(playerCombat.inventories[2], InventoryType.LinkedList);
-      StartCoroutine(ConsumableClear(0.15f));
+      ConsumableClear();
     }
   }
 
@@ -89,13 +93,32 @@ public class UseConsumable : MonoBehaviour
   {
     foreach (IInventory inv in playerCombat.inventories) inv.Sort();
 
-    StartCoroutine(ConsumableClear(0.15f));
+    ConsumableClear();
   }
 
-  private IEnumerator ConsumableClear(float delay)
+  private void Mana()
+  {
+    StartCoroutine(elementGenerator.InfiniteManaRoutine(6f));
+    ConsumableClear();
+  }
+
+  private void Life()
+  {
+    deathManager.lives++;
+    ConsumableClear();
+  }
+
+  private void ConsumableClear()
+  {
+    consumade = true;
+    StartCoroutine(ConsumableClearRoutine(0.05f));
+  }
+
+  private IEnumerator ConsumableClearRoutine(float delay)
   {
     yield return new WaitForSeconds(delay);
     isConsuming = false;
+    consumade = false;
     curConsumable = Consumable.NONE;
   }
 

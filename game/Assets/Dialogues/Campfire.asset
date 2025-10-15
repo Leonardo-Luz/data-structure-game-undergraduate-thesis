@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Campfire
   m_EditorClassIdentifier: 
   lines:
-  - englishText: banana
-    portugueseText: banana
+  - englishText: This campifire will heal you and change your respawn to here after
+      u interact with it.
+    portugueseText: sofa

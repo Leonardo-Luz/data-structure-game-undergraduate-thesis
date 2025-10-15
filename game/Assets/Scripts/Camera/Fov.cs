@@ -42,11 +42,10 @@ public class Fov : MonoBehaviour
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.F)) toggleZoom();
-
     if (hudCanvasGroup != null)
     {
-      hudCanvasGroup.alpha = Mathf.MoveTowards(hudCanvasGroup.alpha, targetAlpha, Time.deltaTime / fadeDuration);
+      // hudCanvasGroup.alpha = Mathf.MoveTowards(hudCanvasGroup.alpha, targetAlpha, Time.deltaTime / fadeDuration);
+      hudCanvasGroup.alpha = targetAlpha;
       hudCanvasGroup.interactable = hudCanvasGroup.alpha > 0.95f;
       hudCanvasGroup.blocksRaycasts = hudCanvasGroup.alpha > 0.95f;
     }

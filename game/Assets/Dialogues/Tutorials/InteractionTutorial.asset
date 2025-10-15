@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: InteractionTutorial
   m_EditorClassIdentifier: 
   lines:
-  - englishText: This symbol mean that you can interact with something, press E to
-      do it.
-    portugueseText: "Esse simbolo significa que voc\xEA pode interagir com algo,
-      pressione E para o fazer."
+  - englishText: Press E to Interact
+    portugueseText: Pressione E para Interagir

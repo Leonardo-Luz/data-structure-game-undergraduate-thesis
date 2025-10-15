@@ -19,7 +19,7 @@ public class ProximityTalk : MonoBehaviour
 
   private void Update()
   {
-    if (proxDetect.enabled && dialogueManager.isActive && Input.GetKeyDown(KeyCode.E)) dialogueManager.NextLine();
+    if (proxDetect.enabled && proxDetect.isTargetInRange && dialogueManager.isActive && Input.GetKeyDown(KeyCode.E)) dialogueManager.NextLine();
   }
 
   private void ProximityEnterHandler()
@@ -27,5 +27,3 @@ public class ProximityTalk : MonoBehaviour
     if (!dialogueManager.isActive) dialogueManager.StartDialogue(dialogue);
   }
 }
-
-
