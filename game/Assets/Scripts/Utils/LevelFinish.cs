@@ -68,7 +68,7 @@ public class LevelFinish : MonoBehaviour
     while (timer < moveDuration)
     {
       timer += Time.deltaTime;
-      rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+      rb.linearVelocity = new Vector2(moveSpeed, 0);
       yield return null;
     }
 
