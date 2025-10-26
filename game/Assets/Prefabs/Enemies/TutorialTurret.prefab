@@ -230,8 +230,8 @@ GameObject:
   - component: {fileID: 4381311922141398262}
   - component: {fileID: 2100799907402089687}
   - component: {fileID: 8080259732656896044}
-  - component: {fileID: 907269535703111441}
   - component: {fileID: 8262282996041086467}
+  - component: {fileID: -45394356935198766}
   m_Layer: 8
   m_Name: TutorialTurret
   m_TagString: Untagged
@@ -334,7 +334,7 @@ MonoBehaviour:
   range: {fileID: 0}
   infiniteAmmo: 0
   randomizeStats: 0
-  ammoBar: {fileID: 907269535703111441}
+  ammoBar: {fileID: -45394356935198766}
   obstructionMask:
     serializedVersion: 2
     m_Bits: 8
@@ -367,22 +367,8 @@ MonoBehaviour:
   detectionRadius: 20
   detectOnce: 0
   checkEveryFrame: 1
+  detectOnAir: 1
   isTargetInRange: 0
---- !u!114 &907269535703111441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7865855296703654336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61db16098d44f4eeb9ee90e378c3f848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 2243215151538129470, guid: 9cb29811b75a8bc0998e8a0a39a95d0e, type: 3}
-  offset: {x: 0, y: -0.6, z: 0}
-  dontSpawn: 0
 --- !u!114 &8262282996041086467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +388,21 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
   isOutlined: 1
+--- !u!114 &-45394356935198766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865855296703654336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6301e4e78181ae3b1a28c219a2270ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentedHealthBarPrefab: {fileID: 610745705095855368, guid: 582d51bfe7fcaa9d097a8dc0952dabec, type: 3}
+  offset: {x: 0, y: -0.6, z: 0}
+  dontSpawn: 0
 --- !u!1 &8589258059090141194
 GameObject:
   m_ObjectHideFlags: 0

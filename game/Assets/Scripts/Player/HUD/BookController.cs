@@ -7,19 +7,18 @@ public class BookController : MonoBehaviour
   public static BookController Instance { get; private set; }
 
   [Header("UI References")]
-  [SerializeField] private CanvasGroup book;                 // The whole book UI group
-  [SerializeField] private RectTransform overlayParent;      // Tabs overlay container
+  [SerializeField] private CanvasGroup book;
+  [SerializeField] private RectTransform overlayParent;
   [SerializeField] private GameObject bookButtonBorder;
-  [SerializeField] private List<BookmarkButton> tabButtons;   // Tabs list
+  [SerializeField] private List<BookmarkButton> tabButtons;
 
   [Header("Content")]
   [SerializeField] private TextMeshProUGUI contentText;
   [SerializeField] private TextMeshProUGUI pageText;
   [SerializeField] private List<Dialogue> sections;
-  [SerializeField] private DialogueManager dialogueManager;
 
   [Header("Dependencies")]
-  [SerializeField] private PauseMenu pause;                      // Reference to your Pause script
+  [SerializeField] private PauseMenu pause;
 
   private int currentSection = 0;
   private int currentPage = 0;
@@ -33,15 +32,11 @@ public class BookController : MonoBehaviour
 
   private void Start()
   {
-    if (dialogueManager == null)
-      dialogueManager = FindFirstObjectByType<DialogueManager>();
-
     if (pause == null)
       pause = FindFirstObjectByType<PauseMenu>();
 
-    HideBooks(); // Start hidden
+    HideBooks();
 
-    // Ensure overlay exists
     if (overlayParent == null)
     {
       Canvas canvas = GetComponentInParent<Canvas>();
@@ -57,11 +52,9 @@ public class BookController : MonoBehaviour
       }
     }
 
-    // Reset all tabs
     foreach (var t in tabButtons)
       t.ForceReset();
 
-    // Select first tab
     if (tabButtons.Count > 0)
       SelectTab(tabButtons[0]);
 
@@ -75,10 +68,6 @@ public class BookController : MonoBehaviour
     if (!pause.isPauseMenuOpen && Input.GetKeyDown(KeyCode.B))
       ToggleBooks();
   }
-
-  // =========================
-  // BOOK UI VISIBILITY LOGIC
-  // =========================
 
   private void ShowBooks()
   {
@@ -106,10 +95,6 @@ public class BookController : MonoBehaviour
     else
       ShowBooks();
   }
-
-  // =========================
-  // TAB + PAGE MANAGEMENT
-  // =========================
 
   public void SelectTab(BookmarkButton tab)
   {
@@ -147,7 +132,7 @@ public class BookController : MonoBehaviour
     }
 
     var line = d.lines[Mathf.Clamp(currentPage, 0, d.lines.Length - 1)];
-    contentText.text = (dialogueManager != null && dialogueManager.currentLanguage == Language.English)
+    contentText.text = (LanguageManager.Instance.GetLanguage() == Language.English)
         ? line.englishText
         : line.portugueseText;
   }

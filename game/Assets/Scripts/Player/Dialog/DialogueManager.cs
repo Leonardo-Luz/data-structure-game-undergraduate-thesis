@@ -18,9 +18,6 @@ public class DialogueManager : MonoBehaviour
   [SerializeField] private AudioSource dialogueAudio;
 
   [SerializeField] private Dialogue currentDialogue;
-  [SerializeField] public Language currentLanguage = Language.English;
-
-  public event Action onLanguageChange;
 
   public event Action onDialogueStart;
   public event Action onDialogueEnd;
@@ -74,7 +71,7 @@ public class DialogueManager : MonoBehaviour
   private void ShowLine()
   {
     DialogueLine line = currentDialogue.lines[currentIndex];
-    string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
+    string text = LanguageManager.Instance.GetLanguage() == Language.English ? line.englishText : line.portugueseText;
 
     if (typingCoroutine != null) StopCoroutine(typingCoroutine);
     typingCoroutine = StartCoroutine(TypeLine(text));
@@ -101,7 +98,7 @@ public class DialogueManager : MonoBehaviour
   private void ShowFullLine()
   {
     DialogueLine line = currentDialogue.lines[currentIndex];
-    string text = currentLanguage == Language.English ? line.englishText : line.portugueseText;
+    string text = LanguageManager.Instance.GetLanguage() == Language.English ? line.englishText : line.portugueseText;
     dialogueText.text = text;
     isTyping = false;
     dialogueInteraction.enabled = true;
@@ -116,12 +113,6 @@ public class DialogueManager : MonoBehaviour
     HideDialogue();
     GameObject.FindGameObjectWithTag("Cam").GetComponent<Fov>().toggleZoom();
     onDialogueEnd?.Invoke();
-  }
-
-  public void SetLanguage(Language lang)
-  {
-    currentLanguage = lang;
-    onLanguageChange?.Invoke();
   }
 
   private void ShowDialogue()

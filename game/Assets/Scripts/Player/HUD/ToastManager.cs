@@ -7,7 +7,6 @@ public class ToastManager : MonoBehaviour
   [Header("References")]
   [SerializeField] private CanvasGroup toastCanvas;
   [SerializeField] private TextMeshProUGUI toastText;
-  [SerializeField] private DialogueManager languageManager;
 
   [Header("Settings")]
   [SerializeField] private float toastTime = 3f;
@@ -17,15 +16,12 @@ public class ToastManager : MonoBehaviour
 
   private void Start()
   {
-    if (languageManager == null)
-      languageManager = FindFirstObjectByType<DialogueManager>();
-
     HideInstant();
   }
 
   public void Toast(DialogueLine line)
   {
-    string text = languageManager.currentLanguage == Language.English
+    string text = LanguageManager.Instance.GetLanguage() == Language.English
         ? line.englishText
         : line.portugueseText;
 

@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
   [Header("Settings")]
   [SerializeField] private bool infiniteAmmo = false;
   [SerializeField] private bool randomizeStats = true;
-  [SerializeField] private HealthBarSpawner ammoBar;
+  [SerializeField] private SegmentedHealthBarSpawner ammoBar;
   [SerializeField] private LayerMask obstructionMask;
 
   private float fireCooldown = 0f;

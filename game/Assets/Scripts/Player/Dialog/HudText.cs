@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class HudText : MonoBehaviour
 {
-  [SerializeField] private DialogueManager dialogueManager;
   [SerializeField] private Dialogue dialogue;
   [SerializeField] private TextMeshProUGUI hudText;
 
@@ -11,16 +10,20 @@ public class HudText : MonoBehaviour
   {
     hudText = GetComponent<TextMeshProUGUI>();
 
-    dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-    dialogueManager.onLanguageChange += UpdateText;
+    LanguageManager.Instance.onLanguageChange += UpdateText;
 
     if (dialogue != null) UpdateText();
+  }
+
+  private void OnDestroy()
+  {
+    LanguageManager.Instance.onLanguageChange -= UpdateText;
   }
 
   public void UpdateText()
   {
     DialogueLine line = dialogue.lines[0];
-    string text = dialogueManager != null && dialogueManager.currentLanguage == Language.English ? line.englishText : line.portugueseText;
+    string text = LanguageManager.Instance.GetLanguage() == Language.English ? line.englishText : line.portugueseText;
     hudText.text = text;
   }
 

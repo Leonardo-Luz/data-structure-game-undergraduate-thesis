@@ -5001,9 +5001,9 @@ GameObject:
   - component: {fileID: 5155135045058883434}
   - component: {fileID: 4510103737768993356}
   - component: {fileID: 4035815126252961840}
-  - component: {fileID: 6751928628482074853}
   - component: {fileID: 7926162799352635814}
   - component: {fileID: 1287395168572427975}
+  - component: {fileID: 9197679829072347366}
   m_Layer: 8
   m_Name: mushroom
   m_TagString: Enemy
@@ -5165,11 +5165,15 @@ MonoBehaviour:
   weaknesses: 
   invulnerabilityTimeout: 0.2
   randomizeStats: 1
+  changeWeaknesses: 0
+  changeWeaknessesDelay: 0
+  changeWeaknessesDelayRange: {x: 2, y: 12}
   HitBox: {fileID: 4035815126252961840}
   HurtBox: {fileID: 0}
   hitCooldown: 0.1
   consumablePrefab: {fileID: 4008784865343452950, guid: 52ed7af5f80124794bf98bfede357e7a, type: 3}
   dropChance: 20
+  fallHeight: 3
 --- !u!61 &4035815126252961840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5216,20 +5220,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.875}
   m_EdgeRadius: 0
---- !u!114 &6751928628482074853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5733348833427547831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61db16098d44f4eeb9ee90e378c3f848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 2243215151538129470, guid: 9cb29811b75a8bc0998e8a0a39a95d0e, type: 3}
-  offset: {x: 0, y: -1, z: 0}
 --- !u!114 &7926162799352635814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5262,6 +5252,21 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
   isOutlined: 1
+--- !u!114 &9197679829072347366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733348833427547831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6301e4e78181ae3b1a28c219a2270ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentedHealthBarPrefab: {fileID: 610745705095855368, guid: 582d51bfe7fcaa9d097a8dc0952dabec, type: 3}
+  offset: {x: 0, y: -0.6, z: 0}
+  dontSpawn: 0
 --- !u!1 &6975431853225592759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5380,4 +5385,5 @@ MonoBehaviour:
   detectionRadius: 2
   detectOnce: 0
   checkEveryFrame: 1
+  detectOnAir: 1
   isTargetInRange: 0

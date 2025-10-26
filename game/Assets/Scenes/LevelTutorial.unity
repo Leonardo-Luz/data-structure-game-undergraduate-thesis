@@ -13733,6 +13733,10 @@ PrefabInstance:
       propertyPath: 'weaknesses.Array.data[3]'
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4673716447654354598, guid: a3e639622d865f7119bca589a56a05de, type: 3}
+      propertyPath: maxHP
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5226431052860717938, guid: a3e639622d865f7119bca589a56a05de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.865124
@@ -17375,6 +17379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 733165999}
     m_Modifications:
+    - target: {fileID: -1192571473157063166, guid: 97559cc17d3ca7f17903a206052a6771, type: 3}
+      propertyPath: dontSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2100799907402089687, guid: 97559cc17d3ca7f17903a206052a6771, type: 3}
       propertyPath: maxHP
       value: 20
@@ -21606,7 +21614,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cbe1f061717117e0a9ace6d7e3580b63, type: 2}
   - {fileID: 11400000, guid: 5c92f9ca9863ea190b44eddd93cab711, type: 2}
   - {fileID: 11400000, guid: e936d38bfdea87f30b0a7ec3544c4fe5, type: 2}
-  dialogueManager: {fileID: 1862328771}
   pause: {fileID: 1368970779}
 --- !u!1 &1179111824
 GameObject:
@@ -23501,6 +23508,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 733165999}
     m_Modifications:
+    - target: {fileID: -1192571473157063166, guid: 97559cc17d3ca7f17903a206052a6771, type: 3}
+      propertyPath: dontSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2100799907402089687, guid: 97559cc17d3ca7f17903a206052a6771, type: 3}
       propertyPath: maxHP
       value: 20
