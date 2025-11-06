@@ -1,0 +1,153 @@
+\chapter{Desenvolvimento}
+
+Este capítulo descreve o processo de desenvolvimento do jogo educacional,
+estruturado com base na metodologia ENgAGED \cite{battistella2016engaged}. O
+processo orienta a construção de jogos educativos de forma sistemática,
+equilibrando aspectos instrucionais e de design de jogos.
+
+\section{Fase 1 – Análise da Unidade Instrucional (UI)}
+
+\subsection{A1.1 Especificar a UI do jogo}
+
+Nesta etapa, define-se o contexto instrucional em que o jogo será aplicado.  O
+jogo é voltado ao ensino de \textbf{estruturas de dados} (pilha, fila e lista)
+no contexto de cursos de graduação em Análise e Desenvolvimento de Sistemas.
+Os objetivos de aprendizagem incluem:
+
+\begin{itemize}
+  \item Compreender o funcionamento das estruturas de dados lineares;
+  \item Aplicar conceitos de inserção, remoção e ordenação em situações lúdicas;
+\end{itemize}
+
+\subsection{A1.2 Caracterizar os aprendizes}
+
+% o jogo foi projetado para um público
+% amplo, incluindo estudantes e jogadores casuais, sem exigir conhecimento
+% prévio sobre estruturas de dados;
+
+O público-alvo são estudantes de graduação em Computação, geralmente entre 18 e
+30 anos, familiarizados com jogos digitais e programação básica.
+
+O jogo foi projetado para execução em computadores pessoais com sistema Linux,
+utilizando teclado como principal meio de interação.
+
+Os aprendizes demonstram afinidade com jogos de plataforma clássicos (como
+\textit{Mega Man} e \textit{Super Mario Bros.}), justificando a escolha do
+gênero.
+
+\subsection{A1.3 Definir objetivos de desempenho}
+
+O objetivo de desempenho do jogo é que, ao final da experiência, o jogador seja
+capaz de identificar e aplicar corretamente os conceitos de estruturas de dados
+para resolver desafios práticos representados no ambiente do jogo.
+
+\section{Fase 2 – Projeto da Unidade Instrucional}
+
+\subsection{A2.1 Definir a avaliação do aluno}
+
+A avaliação é integrada ao próprio jogo por meio das regras de combinação de
+elementos alquímicos.
+
+Ao realizar combinações corretas (elementos iguais na estrutura adequada), o
+jogador obtém sucesso e causa dano ao inimigo.
+
+Combinações incorretas resultam em penalidade (perda de vida).
+
+Esse mecanismo atua como avaliação formativa, permitindo ao aluno aprender com
+o erro.
+
+\subsection{A2.2 Definir o conteúdo da estratégia instrucional}
+
+O conteúdo é distribuído em níveis que representam o domínio gradual das estruturas:
+
+\begin{itemize}
+  \item \textbf{Nível 1 – Pilha:} o jogador aprende o funcionamento LIFO (último a entrar, primeiro a sair);
+  \item \textbf{Nível 2 – Fila:} apresenta o conceito FIFO (primeiro a entrar, primeiro a sair);
+  \item \textbf{Nível 3 – Lista:} introduz manipulações dinâmicas (inserção, remoção e ordenação);
+  \item \textbf{Nível 4 – Integração:} combinação das estruturas para formar ataques complexos.
+\end{itemize}
+
+\subsection{A2.3 Decidir pelo desenvolvimento ou reutilização}
+
+Optou-se pelo \textbf{desenvolvimento do jogo} do zero, utilizando o motor
+\textit{Unity} e \textit{pixel art} autoral.
+
+A decisão baseou-se na inexistência de jogos previamente disponíveis que
+integrem a mecânica de estruturas de dados com temática de alquimia.
+
+\subsection{A2.4 Revisar o modelo de avaliação do jogo}
+
+O modelo de avaliação segue os princípios do \textbf{MEEGA+}
+\cite{savi2011meega}, abordando usabilidade, engajamento e aprendizagem
+percebida.
+
+Os feedbacks são implementados de forma imediata no jogo, reforçando o
+aprendizado.
+
+\section{Fase 3 – Desenvolvimento do Jogo Educacional}
+
+\subsection{A3.1 Análise do Jogo – Levantamento de requisitos}
+
+Foram definidos os requisitos funcionais e não funcionais:
+
+% \input{textual/03-chapter-metodologia/requisitos/requisitos-funcionais}
+
+% \input{textual/03-chapter-metodologia/requisitos/requisitos-funcionais}
+
+\subsection{A3.2 Concepção do jogo}
+
+O jogo é um \textit{platformer} 2D fantasioso.
+
+O protagonista é um \textit{plague doctor} que busca recuperar sua pesquisa
+sobre a pedra filosofal, roubada por um alquimista rival.
+
+O jogador avança por fases derrotando inimigos ao combinar elementos alquímicos
+de acordo com regras de estruturas de dados.
+
+Erros de combinação causam dano ao personagem.
+
+Consumíveis especiais, como o \textbf{item de ordenação}, reorganizam as
+estruturas e ajudam na progressão.
+
+\subsection{A3.3 Design do jogo}
+\begin{itemize}
+  \item \textbf{Narrativa:} jornada do alquimista em busca da pedra filosofal;
+  \item \textbf{Regras:} combinação correta = ataque bem-sucedido; combinação incorreta = penalidade;
+  \item \textbf{Mecânicas:} movimentação lateral, salto, uso de inventários estruturados (pilha, fila, lista) e consumíveis;
+  \item \textbf{Elementos visuais:} cenário em pixel art, interface minimalista e leitura clara dos elementos;
+  \item \textbf{Pontuação:} baseada em eficiência de combinações e tempo de conclusão;
+  \item \textbf{Feedback educacional:} explicação visual dos erros, reforçando o conceito de estrutura utilizada.
+\end{itemize}
+
+\subsection{A3.4 Implementação}
+O desenvolvimento foi realizado no motor \textit{Unity}, utilizando linguagem
+\texttt{C\#}.
+
+Os sprites e animações foram criados em pixel art utilizando a ferramenta GIMP.
+
+Os inventários (pilha, fila e lista) foram implementados como classes
+independentes, permitindo reaproveitamento e clareza didática.
+
+\subsection{A3.5 Testes do jogo}
+
+Foram conduzidos testes funcionais e educacionais com alunos do curso de
+Análise e Desenvolvimento de Sistemas, pessoas entusiastas e pessoas que não
+possuem conhecimento da área.
+
+Os resultados preliminares indicaram boa compreensão dos conceitos e
+engajamento com a temática.
+
+\section{Fase 4 – Execução da Unidade Instrucional}
+
+Nesta fase o jogo será aplicado em sala de aula, integrando-se a atividades
+práticas de revisão sobre estruturas de dados.
+
+O professor poderá observar o desempenho dos alunos a partir das métricas de
+progresso e pontuação.
+
+\section{Fase 5 – Avaliação da Unidade Instrucional}
+Serão coletados dados de engajamento e aprendizagem com base nos critérios do
+MEEGA+.
+
+Os resultados serão analisados para verificar a efetividade do jogo como
+ferramenta de apoio ao ensino de estruturas de dados.

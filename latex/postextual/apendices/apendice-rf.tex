@@ -1,0 +1,51 @@
+\newcounter{frcount}
+\newcommand{\frvalue}{\ifnum\value{frcount}<10 0\fi\arabic{frcount}}
+\newcommand{\frid}{FR-\frvalue}
+
+\newcommand{\fr}[3]{
+  \stepcounter{frcount}
+
+  \begin{table}[H]
+    \caption{Requisito Funcional \frvalue}
+    \begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
+      \hline
+      \rowcolor{headergray}
+      \textbf{Identificador} & \textbf{Nome} & \textbf{Prioridade} \\
+
+      \hline
+      \frid & {#1} & {#2} \\
+
+      \hline
+      \multicolumn{3}{|p{14cm}|}{\textbf{Descrição:}{#3}} \\
+      \hline
+    \end{tabular}
+    \caption*{Fonte: Autor}
+  \end{table}
+
+  \vspace{1em}
+}
+
+\begin{apendicesenv}
+
+\chapter{Requisitos Funcionais} \label{apd:rf}
+
+Este apêndice documenta todos os requisitos funcionais identificados durante a fase de análise da metodologia ENgAGED. Os requisitos funcionais definem as funcionalidades específicas que o sistema deve implementar para atender aos objetivos do jogo educacional.
+
+Cada requisito é identificado por um código único (FR-XX), possui um nome descritivo, uma prioridade (Alta, Média ou Baixa) e uma descrição detalhada de sua funcionalidade e critérios de aceitação.
+
+\fr{Salvar progresso}{Alta}
+{
+O sistema deve permitir que os usuários salvem o progresso de suas partidas em multiplas instâncias.
+}
+
+
+\fr{Ponto de controle}{Médio}
+{
+O sistema deve possuir um ponto de controle no meio de cada fase, onde o usuário poderá retornar caso falhe.
+}
+
+\fr{Manipular inventários}{Alta}
+{
+O sistema deve permitir que os usuários manipulem seus inventários apartir ações.
+}
+\end{apendicesenv}

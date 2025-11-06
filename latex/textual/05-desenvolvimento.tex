@@ -1,7 +1,436 @@
 \chapter{Desenvolvimento}
 
-\fixme{\lipsum[2]}
+Este capítulo descreve o processo de desenvolvimento do jogo educacional seguindo a metodologia ENgAGED. O desenvolvimento foi estruturado em fases práticas, com foco no que foi efetivamente implementado durante este trabalho.
 
-\input{codes/example}
+\section{Arquitetura e Estrutura do Projeto}
 
-\input{codes/example-java}
+O projeto foi desenvolvido utilizando o motor de jogo \textit{Unity 2022 LTS} com linguagem de programação \textit{C\#}, garantindo compatibilidade e suporte a longo prazo. A estrutura do projeto segue padrões de organização profissionais, separando assets visuais, scripts, cenas, prefabs e recursos.
+
+\subsection{Estruturas de Dados Implementadas}
+
+As três estruturas de dados fundamentais foram implementadas como classes independentes em \textit{C\#}, refletindo com precisão os conceitos teóricos:
+
+\subsubsection*{Pilha (Stack)}
+
+A implementação da pilha segue o padrão LIFO (Last In, First Out). As operações principais implementadas são:
+
+\begin{itemize}
+  \item \texttt{Push(element)}: insere um elemento no topo da pilha;
+  \item \texttt{Pop()}: remove e retorna o elemento do topo;
+  \item \texttt{Peek()}: retorna o elemento do topo sem remover;
+  \item \texttt{IsEmpty()}: verifica se a pilha está vazia.
+\end{itemize}
+
+Esta estrutura representa o inventário da pilha no jogo, onde elementos só podem ser removidos do topo, refletindo a ordem LIFO durante o combate.
+
+\subsubsection*{Fila (Queue)}
+
+A implementação da fila segue o padrão FIFO (First In, First Out). As operações principais são:
+
+\begin{itemize}
+  \item \texttt{Enqueue(element)}: insere um elemento no final da fila;
+  \item \texttt{Dequeue()}: remove e retorna o primeiro elemento;
+  \item \texttt{Peek()}: retorna o primeiro elemento sem remover;
+  \item \texttt{IsEmpty()}: verifica se a fila está vazia.
+\end{itemize}
+
+Este inventário representa a fila no jogo, onde elementos devem ser removidos na ordem em que foram adicionados, essencial para desafios que exigem sequência ordenada.
+
+\subsubsection*{Lista (Linked List)}
+
+A implementação da lista encadeada permite acesso livre em qualquer posição. As operações principais são:
+
+\begin{itemize}
+  \item \texttt{Add(element)}: adiciona um elemento ao final da lista;
+  \item \texttt{Insert(index, element)}: insere um elemento em posição específica;
+  \item \texttt{RemoveAt(index)}: remove o elemento na posição especificada;
+  \item \texttt{Get(index)}: retorna o elemento na posição especificada;
+  \item \texttt{Size()}: retorna o tamanho da lista.
+\end{itemize}
+
+Este inventário oferece máxima flexibilidade, permitindo ao jogador acessar qualquer elemento independentemente de sua posição.
+
+\section{Sistemas Principais do Jogo}
+
+\subsection{Sistema de Movimento}
+
+O sistema de movimento implementa controles responsivos para o protagonista \textit{plague doctor}. Através de entrada de teclado, o jogador pode:
+
+\begin{itemize}
+  \item Movimentar-se horizontalmente (esquerda e direita);
+  \item Pular com física realística de plataforma;
+  \item Interagir com elementos do ambiente.
+\end{itemize}
+
+O sistema inclui detecção de colisão com plataformas, paredes e inimigos, garantindo movimento suave e previsível.
+
+\subsection{Sistema de Combate}
+
+O sistema de combate é central à mecânica educacional do jogo. Funciona através de:
+
+\begin{enumerate}
+  \item \textbf{Seleção de Elementos}: o jogador remove elementos de seus inventários respeitando as regras de cada estrutura;
+  
+  \item \textbf{Combinação}: elementos iguais são combinados para formar um ataque (ex.: dois elementos fogo geram ataque de fogo);
+  
+  \item \textbf{Validação}: o sistema verifica se o elemento do ataque corresponde à fraqueza do inimigo;
+  
+  \item \textbf{Aplicação de Dano}: ataques corretos causam dano ao inimigo; ataques incorretos causam dano ao jogador.
+\end{enumerate}
+
+Este sistema reforça implicitamente o aprendizado das estruturas de dados, pois o sucesso depende diretamente de operações corretas.
+
+\subsection{Sistema de Inventário}
+
+Cada um dos três inventários é gerenciado independentemente, refletindo as características de sua estrutura:
+
+\begin{itemize}
+  \item \textbf{Inventário de Pilha}: display visual mostra elementos em ordem LIFO, com remoção apenas do topo;
+  
+  \item \textbf{Inventário de Fila}: display visual mostra elementos em ordem FIFO, com remoção apenas do primeiro;
+  
+  \item \textbf{Inventário de Lista}: display visual permite visualizar todos os elementos com acesso livre a qualquer posição.
+\end{itemize}
+
+O sistema inclui geração contínua de elementos alquímicos (fogo, água, ar, terra) durante o jogo, preenchendo os inventários.
+
+\subsection{Sistema de Vida e Penalidades}
+
+O jogador inicia cada fase com quantidade determinada de vidas. Penalidades são aplicadas em casos de:
+
+\begin{itemize}
+  \item Combinação incorreta de elementos (culpa didática);
+  \item Contato com inimigos ou obstáculos;
+  \item Queda fora dos limites do mapa.
+\end{itemize}
+
+Quando a vida atinge zero, o jogador retorna ao último checkpoint (ponto de controle), sem necessidade de reiniciar toda a fase.
+
+\subsection{Sistema de Progresso e Salvamento}
+
+O sistema gerencia:
+
+\begin{itemize}
+  \item \textbf{Checkpoints}: posições de salvamento automático distribuídas estrategicamente;
+  
+  \item \textbf{Salvamento de Estado}: persistência de inventários, vida, fases desbloqueadas;
+  
+  \item \textbf{Métricas de Desempenho}: registro de tempo de conclusão, tentativas, acertos e erros de combinação.
+\end{itemize}
+
+Dados são salvos em arquivo local, permitindo continuação de partidas.
+
+\subsection{Sistema de Feedback}
+
+O jogo fornece feedback contínuo através de múltiplos canais:
+
+\subsubsection*{Feedback Visual}
+
+\begin{itemize}
+  \item Animações do personagem indicando sucesso ou erro;
+  \item Mudanças de cor (avermelhamento ao tomar dano);
+  \item Efeitos particulares em ataques bem-sucedidos;
+  \item Display visual dos elementos nos inventários.
+\end{itemize}
+
+\subsubsection*{Feedback Sonoro}
+
+\begin{itemize}
+  \item Sons de sucesso em combinações corretas;
+  \item Sons de erro em combinações incorretas;
+  \item Trilha sonora adaptativa ao contexto.
+\end{itemize}
+
+\subsubsection*{Feedback Textual}
+
+\begin{itemize}
+  \item Mensagens contextualizadas explicando erros;
+  \item Indicadores de status (falta de mana, vida baixa);
+  \item Descrições de inimigos e suas fraquezas.
+\end{itemize}
+
+\section{Interface de Usuário}
+
+\subsection{Layout Principal do Jogo}
+
+A interface foi projetada com princípios de minimalismo, evitando sobrecarga visual. O layout principal inclui:
+
+\begin{itemize}
+  \item \textbf{Área de Jogo}: centro da tela, ocupando a maior parte do espaço;
+  
+  \item \textbf{Inventários}: localizado na parte inferior direita, mostrando os três inventários lado a lado;
+  
+  \item \textbf{Barra de Vida}: indica a vida atual do jogador de forma clara;
+  
+  \item \textbf{Indicador de Inimigos}: mostra quantos inimigos restam na arena.
+\end{itemize}
+
+\subsection{Menus Implementados}
+
+\subsubsection*{Menu Principal}
+
+Permite ao jogador:
+\begin{itemize}
+  \item Iniciar novo jogo;
+  \item Carregar jogo salvo;
+  \item Acessar configurações;
+  \item Sair do jogo.
+\end{itemize}
+
+\subsubsection*{Menu de Pausa}
+
+Disponível durante o jogo, permitindo:
+\begin{itemize}
+  \item Retomar jogo;
+  \item Acessar configurações;
+  \item Voltar ao menu principal.
+\end{itemize}
+
+\subsubsection*{Telas de Livros}
+
+Livros informativos integrados, incluindo:
+\begin{itemize}
+  \item \textbf{Livro de Tutorial}: explica mecânicas do jogo;
+  \item \textbf{Livro de Inventários}: detalha cada estrutura de dados;
+  \item \textbf{Livro de Combate}: documenta tipos de ataques e estratégias;
+  \item \textbf{Livro de Consumíveis}: lista itens especiais disponíveis;
+  \item \textbf{Bestiário}: informações sobre inimigos e fraquezas.
+\end{itemize}
+
+\section{Implementação de Fases}
+
+Cada fase foi implementada para enfatizar uma estrutura de dados específica:
+
+\subsection{Fase 1 - Pilha}
+
+Inimigos simples com uma única vulnerabilidade. Mecânica focada em:
+\begin{itemize}
+  \item Compreensão do conceito LIFO;
+  \item Remoção de elementos apenas do topo;
+  \item Construção de confiança básica.
+\end{itemize}
+
+\subsection{Fase 2 - Fila}
+
+Inimigos com padrões de movimento previsíveis. Mecânica focada em:
+\begin{itemize}
+  \item Compreensão do conceito FIFO;
+  \item Sequência ordenada obrigatória;
+  \item Planejamento de ataques.
+\end{itemize}
+
+\subsection{Fase 3 - Lista}
+
+Inimigos mais desafiadores com múltiplas fraquezas. Mecânica focada em:
+\begin{itemize}
+  \item Flexibilidade de acesso à estrutura;
+  \item Seleção estratégica de elementos;
+  \item Adaptabilidade em combate.
+\end{itemize}
+
+\subsection{Fase 4 - Consumíveis e Ordenação}
+
+Introduz itens especiais que modificam estruturas. Inclui:
+\begin{itemize}
+  \item Item de Ordenação: reorganiza a estrutura de dados;
+  \item Item de Inserção: adiciona elementos específicos;
+  \item Item de Remoção: remove elementos específicos;
+  \item Conceitos de algoritmos de ordenação aplicados implicitamente.
+\end{itemize}
+
+\subsection{Fase 5 - Integração}
+
+Desafios finais combinando todas as estruturas. Requer:
+\begin{itemize}
+  \item Domínio de todas as estruturas;
+  \item Decisão de qual estrutura usar para cada ataque;
+  \item Coordenação complexa de estratégias.
+\end{itemize}
+
+\section{Implementação de Inimigos}
+
+\subsection{Tipos de Inimigos}
+
+Diversos tipos foram implementados, cada um ensinando conceitos específicos:
+
+\begin{itemize}
+  \item \textbf{Inimigo Melee}: aproxima-se do jogador para atacar;
+  
+  \item \textbf{Inimigo Ranged}: atira projéteis à distância;
+  
+  \item \textbf{Inimigo com Múltiplas Fraquezas}: requer combinações mais complexas;
+  
+  \item \textbf{Inimigo Blindado}: requer ataques mais poderosos (combinações longas).
+\end{itemize}
+
+\subsection{Sistema de Vulnerabilidades}
+
+Cada inimigo possui vulnerabilidades definidas (fogo, água, ar, ou terra). Ataques com elemento correto causam dano multiplicado; ataques com elemento incorreto causam dano ao jogador, reforçando a necessidade de planejamento.
+
+\subsection{Estatísticas Randomizadas}
+
+Para aumentar rejogabilidade, inimigos podem ter variações aleatórias em:
+\begin{itemize}
+  \item Vida total;
+  \item Velocidade de movimento;
+  \item Cadência de ataque;
+  \item Dano causado.
+\end{itemize}
+
+\section{Implementação de Consumíveis}
+
+Seis tipos de consumíveis foram implementados:
+
+\subsection{Ordenação}
+
+Reorganiza a estrutura de dados ativa, servindo como auxílio estratégico quando elementos desejáveis estão em posições inacessíveis.
+
+\subsection{Insert}
+
+Adiciona dois elementos iguais ao inventário especificado, útil quando o jogador precisa de elementos específicos rapidamente.
+
+\subsection{Remove}
+
+Remove um elemento específico de um inventário, liberando espaço ou removendo obstáculos.
+
+\subsection{Mana}
+
+Concede mana infinita por tempo determinado, permitindo uso ilimitado de ataques durante o período.
+
+\subsection{Cura}
+
+Restaura 1 ponto de vida, fornecendo segunda chance quando vida está crítica.
+
+\subsection{Vida Extra}
+
+Aumenta a quantidade de tentativas em 1, estendendo a capacidade do jogador em uma fase.
+
+\section{Desenvolvimentos Técnicos Realizados}
+
+\subsection{Persistência de Dados}
+
+Sistema de salvamento implementado utilizando serialização JSON, permitindo:
+\begin{itemize}
+  \item Salvamento automático em checkpoints;
+  \item Carregamento de partidas anterior;
+  \item Registro de métricas de desempenho.
+\end{itemize}
+
+\subsection{Gerenciamento de Câmera}
+
+Camera com pixel-perfect para manter qualidade artística do pixel art:
+\begin{itemize}
+  \item Seguimento suave do personagem;
+  \item Parallax visual com backgrounds;
+  \item Limites de câmera para não revelar áreas não prontas.
+\end{itemize}
+
+\subsection{Sistema de Diálogos}
+
+Sistema robusto de diálogos implementado, permitindo:
+\begin{itemize}
+  \item Narrativa contextualizada;
+  \item Interações com NPCs;
+  \item Feedback narrativo sobre progresso.
+\end{itemize}
+
+\subsection{Animações e Efeitos Visuais}
+
+Implementação completa de:
+\begin{itemize}
+  \item Animações de movimento do personagem;
+  \item Animações de ataque e dano;
+  \item Efeitos particulares de elementos alquímicos;
+  \item Transições e fade-outs.
+\end{itemize}
+
+\section{Desafios Enfrentados e Soluções}
+
+\subsection{Balanceamento de Dificuldade}
+
+\textbf{Desafio}: Manter dificuldade progressiva sem frustrar o jogador.
+
+\textbf{Solução}: Testes iterativos com diferentes públicos, ajustando vida de inimigos, velocidade e frequência de ataques baseado em feedback.
+
+\subsection{Clareza das Mecânicas}
+
+\textbf{Desafio}: Comunicar regras de estruturas de dados implicitamente.
+
+\textbf{Solução}: Feedback visual claro e progressão cuidadosa, introduzindo um conceito por fase.
+
+\subsection{Performance}
+
+\textbf{Desafio}: Manter 60 FPS em máquinas variadas.
+
+\textbf{Solução}: Otimização de sprites, redução de efeitos particulares em plataformas menos potentes, uso de object pooling para inimigos e projéteis.
+
+\subsection{Tratamento de Estados}
+
+\textbf{Desafio}: Gerenciar múltiplos estados do jogador (movimento, combate, diálogo, pausa).
+
+\textbf{Solução}: Implementação de state machine para transições limpas entre estados.
+
+\section{Testes Realizados}
+
+\subsection{Testes Funcionais}
+
+Validaram a corretude de todas as funcionalidades:
+\begin{itemize}
+  \item Operações de estruturas funcionam conforme especificado;
+  \item Lógica de combate resolve corretamente;
+  \item Salvamento e carregamento preservam estado;
+  \item Interface responde adequadamente.
+\end{itemize}
+
+\subsection{Testes de Usabilidade}
+
+Realizados com público diverso:
+\begin{itemize}
+  \item Estudantes do curso de ADS;
+  \item Entusiastas de jogos;
+  \item Pessoas sem experiência em programação.
+\end{itemize}
+
+Feedback indicou:
+\begin{itemize}
+  \item Interface é intuitiva;
+  \item Mecânicas são compreensíveis;
+  \item Narrativa engaja os jogadores;
+  \item Dificuldade é bem equilibrada.
+\end{itemize}
+
+\subsection{Testes Educacionais}
+
+Avaliaram eficácia pedagógica:
+\begin{itemize}
+  \item Compreensão implícita dos conceitos foi validada;
+  \item Participantes conseguiram explicar comportamentos das estruturas;
+  \item Interesse em estruturas de dados aumentou;
+  \item Reconhecem aplicações práticas dos conceitos.
+\end{itemize}
+
+\section{Conformidade com Requisitos}
+
+O desenvolvimento seguiu rigorosamente os requisitos funcionais e não-funcionais definidos na metodologia, detalhados nos \autoref{apd:rf} e \autoref{apd:nrf} (Apêndices A e B).
+
+Todos os requisitos de alta prioridade foram implementados, grande maioria dos requisitos de média prioridade foi atendida, e alguns requisitos de baixa prioridade ficaram para futuras versões.
+
+\section{Resultados do Desenvolvimento}
+
+O desenvolvimento resultou em um jogo funcional, educacionalmente efetivo e visualmente coerente que:
+
+\begin{itemize}
+  \item Ensina implicitamente conceitos de estruturas de dados através de mecânicas engajantes;
+  
+  \item Mantém coerência narrativa com temática de alquimia e plague doctor;
+  
+  \item Oferece experiência visual coerente em pixel art;
+  
+  \item Fornece feedback imediato e contextualizado para aprendizado;
+  
+  \item Permite progressão clara em dificuldade através das fases;
+  
+  \item Suporta reusabilidade de código em futuras extensões.
+\end{itemize}
+
+O jogo está pronto para integração em ambientes educacionais e validação de eficácia pedagógica junto a maior população de alunos.

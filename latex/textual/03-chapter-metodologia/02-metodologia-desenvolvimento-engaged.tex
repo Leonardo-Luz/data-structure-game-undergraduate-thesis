@@ -1,13 +1,13 @@
 \chapter{Metodologia de Desenvolvimento}
 
-Para o desenvolvimento do jogo educacional foi adotada a metodologia ENgAGED,
-proposta por \citeonline{battistella2016engaged}. O processo integra princípios
-de design instrucional com design de jogos, estruturando o desenvolvimento em
-fases sistemáticas que asseguram coerência pedagógica, engajamento sustentado e
-avaliação contínua. Essa abordagem é particularmente adequada para projetos que
-buscam equilibrar objetivos educacionais com experiências lúdicas envolventes,
-evitando a falha comum de priorizar apenas um dos aspectos em detrimento do
-outro.
+Para o desenvolvimento do jogo educacional foi adotada a metodologia
+ENgAGED, proposta por \citeonline{battistella2016engaged}. O processo
+integra princípios de design instrucional com design de jogos, estruturando
+o desenvolvimento em fases sistemáticas que asseguram coerência pedagógica,
+engajamento sustentado e avaliação contínua. Essa abordagem é
+particularmente adequada para projetos que buscam equilibrar objetivos
+educacionais com experiências lúdicas envolventes, evitando a falha comum de
+priorizar apenas um dos aspectos em detrimento do outro.
 
 \section{Fases do Processo ENgAGED}
 
@@ -55,12 +55,11 @@ dados.
 
 \subsubsection*{A1.3 - Definição dos Objetivos de Desempenho}
 
-O objetivo de desempenho do jogo é que, ao final da experiência, o jogador seja
-capaz de:
+O objetivo de desempenho do jogo é que, ao final da experiência, o jogador seja capaz de:
 
 \begin{itemize}
   \item Executar operações de inserção e remoção respeitando as regras de cada estrutura;
-  \item Entender e Aplicar conceitos de ordenação;
+  \item Entender e aplicar conceitos de ordenação;
   \item Reconhecer padrões de funcionamento das estruturas através da interação implícita com o jogo.
 \end{itemize}
 
@@ -72,8 +71,7 @@ pedagógicas serão empregadas.
 
 \subsubsection*{A2.1 - Definição da Avaliação do Aprendiz}
 
-A avaliação é incorporada diretamente nas mecânicas do jogo, funcionando como
-mecanismo de feedback contínuo:
+A avaliação é incorporada diretamente nas mecânicas do jogo, funcionando como mecanismo de feedback contínuo:
 
 \begin{itemize}
   \item \textbf{Avaliação Formativa Implícita}: ao realizar combinações corretas de elementos alquímicos, o jogador recebe feedback positivo instantâneo (sucesso na ação);
@@ -91,28 +89,15 @@ O conteúdo é distribuído progressivamente através de fases de dificuldade
 crescente:
 
 \begin{itemize}
-  \item \textbf{Fase 1 - Pilha}: introduz o conceito LIFO. O jogador manipula
-    uma estrutura de pilha para combinar elementos de fogo, água, ar ou terra.
-    Apenas a remoção de elementos do topo é permitida, refletindo o
-    comportamento de uma pilha.
+  \item \textbf{Fase 1 - Pilha}: introduz o conceito LIFO. O jogador manipula uma estrutura de pilha para combinar elementos de fogo, água, ar ou terra. Apenas a remoção de elementos do topo é permitida, refletindo o comportamento de uma pilha.
 
-  \item \textbf{Fase 2 - Fila}: apresenta o conceito FIFO. O jogador utiliza
-    uma estrutura de fila, onde os elementos devem ser removidos na ordem em
-    que foram inseridos, integrando novos inimigos com vulnerabilidades
-    específicas.
+  \item \textbf{Fase 2 - Fila}: apresenta o conceito FIFO. O jogador utiliza uma estrutura de fila, onde os elementos devem ser removidos na ordem em que foram inseridos, integrando novos inimigos com vulnerabilidades específicas.
 
-  \item \textbf{Fase 3 - Lista}: introduz manipulações mais dinâmicas. O
-    jogador pode inserir e remover elementos em qualquer posição, representando
-    a flexibilidade de uma lista encadeada.
+  \item \textbf{Fase 3 - Lista}: introduz manipulações mais dinâmicas. O jogador pode inserir e remover elementos em qualquer posição, representando a flexibilidade de uma lista encadeada.
 
-  \item \textbf{Fase 4 - Consumíveis e Ordenação}: apresenta o item de
-    ordenação, que reorganiza a estrutura, e outros consumíveis que auxiliam na
-    progressão. Integra conceitos de algoritmos de ordenação de forma
-    implícita.
+  \item \textbf{Fase 4 - Consumíveis e Ordenação}: apresenta o item de ordenação, que reorganiza a estrutura, e outros consumíveis que auxiliam na progressão. Integra conceitos de algoritmos de ordenação de forma implícita.
 
-  \item \textbf{Fase 5 - Integração}: os desafios finais combinam as três
-    estruturas simultaneamente, exigindo que o jogador compreenda quando
-    aplicar cada uma e como coordenar ataques complexos.
+  \item \textbf{Fase 5 - Integração}: os desafios finais combinam as três estruturas simultaneamente, exigindo que o jogador compreenda quando aplicar cada uma e como coordenar ataques complexos.
 \end{itemize}
 
 A estratégia instrucional priorizará o \textbf{aprendizado implícito}: os
@@ -123,19 +108,13 @@ construcionista.
 
 \subsubsection*{A2.3 - Decisão sobre Desenvolvimento ou Reutilização}
 
-Optou-se pelo \textbf{desenvolvimento original do jogo}. Essa decisão baseou-se
-em:
+Optou-se pelo \textbf{desenvolvimento original do jogo}. Essa decisão baseou-se em:
 
 \begin{itemize}
-  \item Inexistência de jogos disponíveis que integrem a mecânica de estruturas
-    de dados com temática de alquimia e estilo visual de pixel art inspirado em
-    clássicos como Mario e Mega Man;
-  \item Necessidade de controle total sobre a implementação das estruturas de
-    dados para garantir precisão pedagógica;
-  \item Oportunidade de customizar completamente a narrativa, visual e
-    mecânicas para alinhar com os objetivos educacionais específicos;
-  \item Potencial de reaproveitamento futuro do código e assets desenvolvidos
-    em outros projetos.
+  \item Inexistência de jogos disponíveis que integrem a mecânica de estruturas de dados com temática de alquimia e estilo visual de pixel art inspirado em clássicos como Mario e Mega Man;
+  \item Necessidade de controle total sobre a implementação das estruturas de dados para garantir precisão pedagógica;
+  \item Oportunidade de customizar completamente a narrativa, visual e mecânicas para alinhar com os objetivos educacionais específicos;
+  \item Potencial de reaproveitamento futuro do código e assets desenvolvidos em outros projetos.
 \end{itemize}
 
 \subsubsection*{A2.4 - Revisão do Modelo de Avaliação}
@@ -150,8 +129,7 @@ para Avaliação de Jogos Educacionais), abordando dimensões de:
   \item \textbf{Experiência do Usuário}: satisfação geral, disposição para recomendação do jogo.
 \end{itemize}
 
-Os feedbacks são implementados de forma imediata no jogo, reforçando a
-aprendizagem e orientando o jogador através de:
+Os feedbacks são implementados de forma imediata no jogo, reforçando a aprendizagem e orientando o jogador através de:
 
 \begin{itemize}
   \item Feedback visual (mudanças de cor, animações, efeitos particulares);
@@ -167,23 +145,21 @@ técnica.
 
 \subsubsection*{A3.1 - Análise do Jogo e Levantamento de Requisitos}
 
-Os requisitos foram estruturados em duas categorias: funcionais e
-não-funcionais.
+Os requisitos foram estruturados em duas categorias: funcionais e não-funcionais.
 
 \paragraph*{Requisitos Funcionais}
 
 Os requisitos funcionais definem as funcionalidades que o sistema deve
-implementar. Esses requisitos estão detalhados no documento separado
-\textit{requisitos-funcionais.pdf} e incluem aspectos como manipulação de
-inventários, sistema de combate, progresso do jogador, salvamento de partida e
-geração de feedback educacional.
+implementar. Esses requisitos estão detalhados no \autoref{apd:rf}
+e incluem aspectos como manipulação de inventários, sistema de combate,
+progresso do jogador, salvamento de partida e geração de feedback educacional.
 
 \paragraph*{Requisitos Não-Funcionais}
 
 Os requisitos não-funcionais especificam características de qualidade e
-restrições técnicas. Esses requisitos estão detalhados no documento separado
-\textit{requisitos-nao-funcionais.pdf} e abrangem aspectos como performance,
-compatibilidade, segurança, mantibilidade e acessibilidade.
+restrições técnicas. Esses requisitos estão detalhados no \autoref{apd:nrf}
+ e abrangem aspectos como performance, compatibilidade, segurança,
+mantibilidade e acessibilidade.
 
 \subsubsection*{A3.2 - Concepção do Jogo}
 
@@ -200,13 +176,12 @@ A narrativa é ambientada em um universo de \textbf{alquimia} mística e
 medieval. O protagonista é um \textit{plague doctor} (doutor da peste) que teve
 sua pesquisa sobre a \textbf{pedra filosofal} roubada por um alquimista rival
 enquanto viajava para a capital para apresentá-la. Seu objetivo é recuperar a
-pesquisa, navegando por diferentes regiões e enfrentando adversários
-durante a sua jornada.
+pesquisa, navegando por diferentes regiões e enfrentando adversários durante a
+sua jornada.
 
 Essa narrativa fornece contexto e motivação para as ações do jogador,
 aumentando o engajamento e criando imersão. O enredo também justifica a
-presença dos elementos alquímicos como mecanismo
-central de combate.
+presença dos elementos alquímicos como mecanismo central de combate.
 
 \paragraph*{Mecânicas Centrais}
 
@@ -228,12 +203,12 @@ As mecânicas principais do jogo são:
 
   \item \textbf{Consumíveis}: itens especiais encontrados durante o jogo auxiliam na progressão:
   \begin{itemize}
-    \item \textit{\fixme{Ordenação}}: ordena a estrutura de dados, permitindo reorganizar elementos;
-    \item \textit{\fixme{Insert}}: Insere dois elementos iguais em um inventário específico;
-    \item \textit{\fixme{Remove}}: remove um elemento de um inventário específico.
-    \item \textit{\fixme{Mana}}: Concede mana infinita por um tempo determinado.
-    \item \textit{\fixme{Cura}}: Cura 1 ponto de vida;
-    \item \textit{\fixme{Vida Extra}}: Aumenta a quantidade de tentativas em 1;
+    \item \textbf{Ordenação}: ordena a estrutura de dados, permitindo reorganizar elementos;
+    \item \textbf{Insert}: insere dois elementos iguais em um inventário específico;
+    \item \textbf{Remove}: remove um elemento de um inventário específico;
+    \item \textbf{Mana}: concede mana infinita por um tempo determinado;
+    \item \textbf{Cura}: cura 1 ponto de vida;
+    \item \textbf{Vida Extra}: aumenta a quantidade de tentativas em 1.
   \end{itemize}
 \end{itemize}
 
@@ -257,17 +232,11 @@ A interface foi projetada com princípios de \textbf{minimalismo} e
 \textbf{clareza}, evitando sobrecarga visual:
 
 \begin{itemize}
-  \item \textbf{Inventário Visual}: os inventários são exibidos na parte
-    inferior à direita, mostrando os elementos armazenados em cada
-    estrutura através de representações visuais claras;
+  \item \textbf{Inventário Visual}: os inventários são exibidos na parte inferior à direita, mostrando os elementos armazenados em cada estrutura através de representações visuais claras;
 
-  \item \textbf{Feedback Visual de Erros}: quando uma combinação incorreta é
-    realizada, o jogo exibe feedback visual (mudança de cor do jogador e efeito
-    de penalidade) sem interromper a fluidez do \textit{gameplay};
+  \item \textbf{Feedback Visual de Erros}: quando uma combinação incorreta é realizada, o jogo exibe feedback visual (mudança de cor do jogador e efeito de penalidade) sem interromper a fluidez do \textit{gameplay};
 
-  \item \textbf{Indicadores de Vulnerabilidade}: inimigos exibem visualmente
-    seus elementos de vulnerabilidade através de ícones, permitindo que o
-    jogador identifique rapidamente a estratégia apropriada.
+  \item \textbf{Indicadores de Vulnerabilidade}: inimigos exibem visualmente seus elementos de vulnerabilidade através de ícones, permitindo que o jogador identifique rapidamente a estratégia apropriada.
 \end{itemize}
 
 \paragraph*{Sistema de Pontuação e Progressão}
@@ -289,21 +258,13 @@ perda de progresso.
 \paragraph*{Ferramentas e Tecnologias}
 
 \begin{itemize}
-  \item \textbf{Motor de Jogo}: Unity 2022 LTS, selecionada por sua robustez,
-    suporte multiplataforma e capacidade de criar jogos de performance
-    eficiente;
+  \item \textbf{Motor de Jogo}: Unity 2022 LTS, selecionada por sua robustez, suporte multiplataforma e capacidade de criar jogos de performance eficiente;
 
-  \item \textbf{Linguagem de Programação}: C\#, linguagem nativa da Unity,
-    utilizada para implementar toda a lógica do jogo, incluindo estruturas de
-    dados e sistemas de \textit{gameplay};
+  \item \textbf{Linguagem de Programação}: C\#, linguagem nativa da Unity, utilizada para implementar toda a lógica do jogo, incluindo estruturas de dados e sistemas de \textit{gameplay};
 
-  \item \textbf{Criação de Assets Visuais}: GIMP (GNU Image Manipulation
-    Program), software livre utilizado para criar e editar sprites em pixel
-    art;
+  \item \textbf{Criação de Assets Visuais}: GIMP (GNU Image Manipulation Program), software livre utilizado para criar e editar sprites em pixel art;
 
-  \item \textbf{Controle de Versão}: Git com repositório remoto, garantindo
-    rastreamento de alterações e possibilidade de recuperação de versões
-    anteriores.
+  \item \textbf{Controle de Versão}: Git com repositório remoto, garantindo rastreamento de alterações e possibilidade de recuperação de versões anteriores.
 \end{itemize}
 
 \paragraph*{Arquitetura de Código}
@@ -320,43 +281,27 @@ independentes em C\#, permitindo:
 Cada classe implementa operações fundamentais:
 
 \begin{itemize}
-  \item \textbf{Stack (Pilha)}:
-    \texttt{Push()},
-    \texttt{Pop()},
-    \texttt{Peek()}. Respeitando a ordem LIFO.
+  \item \textbf{Stack (Pilha)}: \texttt{Push()}, \texttt{Pop()}, \texttt{Peek()}. Respeitando a ordem LIFO.
 
-  \item \textbf{Queue (Fila)}:
-    \texttt{Enqueue()},
-    \texttt{Dequeue()},
-    \texttt{Peek()}. Respeitando a ordem FIFO.
+  \item \textbf{Queue (Fila)}: \texttt{Enqueue()}, \texttt{Dequeue()}, \texttt{Peek()}. Respeitando a ordem FIFO.
 
-  \item \textbf{List (Lista)}:
-    \texttt{Add()},
-    \texttt{Insert()},
-    \texttt{RemoveAt()},
-    \texttt{Get()}. Permitindo acesso livre em qualquer posição.
+  \item \textbf{List (Lista)}: \texttt{Add()}, \texttt{Insert()}, \texttt{RemoveAt()}, \texttt{Get()}. Permitindo acesso livre em qualquer posição.
 \end{itemize}
 
 \paragraph*{Sistemas de Jogo Implementados}
 
 \begin{itemize}
-  \item \textbf{Sistema de Movimento}: controle do personagem (esquerda,
-    direita, pulo), colisão com plataformas e inimigos;
+  \item \textbf{Sistema de Movimento}: controle do personagem (esquerda, direita, pulo), colisão com plataformas e inimigos;
 
-  \item \textbf{Sistema de Combate}: detecção de combinações de elementos,
-    validação contra regras de estruturas, cálculo de dano;
+  \item \textbf{Sistema de Combate}: detecção de combinações de elementos, validação contra regras de estruturas, cálculo de dano;
 
-  \item \textbf{Sistema de Inventário}: gerenciamento de elementos nos
-    inventários, suporte a operações específicas de cada estrutura;
+  \item \textbf{Sistema de Inventário}: gerenciamento de elementos nos inventários, suporte a operações específicas de cada estrutura;
 
-  \item \textbf{Sistema de Vida}: rastreamento da vida do jogador, aplicação de
-    penalidades, condição de derrota;
+  \item \textbf{Sistema de Vida}: rastreamento da vida do jogador, aplicação de penalidades, condição de derrota;
 
-  \item \textbf{Sistema de Progresso}: salvamento e carregamento de estado,
-    gestão de fases desbloqueadas, registro de pontuação;
+  \item \textbf{Sistema de Progresso}: salvamento e carregamento de estado, gestão de fases desbloqueadas, registro de pontuação;
 
-  \item \textbf{Sistema de Feedback}: implementação de mensagens visuais,
-    sonoras e textuais que reforçam o aprendizado.
+  \item \textbf{Sistema de Feedback}: implementação de mensagens visuais, sonoras e textuais que reforçam o aprendizado.
 \end{itemize}
 
 \subsubsection*{A3.5 - Testes do Jogo}
@@ -380,16 +325,11 @@ especificado:
 Testes com usuários reais para validar a eficácia pedagógica:
 
 \begin{itemize}
-  \item \textbf{Participantes}: estudantes do curso de Análise e
-    Desenvolvimento de Sistemas (conhecimento prévio de programação),
-    entusiastas de jogos (sem conhecimento específico de estruturas de dados) e
-    pessoas leigas (sem conhecimento técnico);
+  \item \textbf{Participantes}: estudantes do curso de Análise e Desenvolvimento de Sistemas (conhecimento prévio de programação), entusiastas de jogos (sem conhecimento específico de estruturas de dados) e pessoas leigas (sem conhecimento técnico);
 
-  \item \textbf{Instrumentos}: observação direta, questionários pós-jogo,
-    análise de métricas de desempenho (tempo, tentativas, acertos);
+  \item \textbf{Instrumentos}: observação direta, questionários pós-jogo, análise de métricas de desempenho (tempo, tentativas, acertos);
 
-  \item \textbf{Focos de Avaliação}: compreensão implícita dos conceitos,
-    engajamento, diversão, clareza das mecânicas, dificuldade progressiva.
+  \item \textbf{Focos de Avaliação}: compreensão implícita dos conceitos, engajamento, diversão, clareza das mecânicas, dificuldade progressiva.
 \end{itemize}
 
 \paragraph*{Resultados Preliminares}
@@ -397,12 +337,10 @@ Testes com usuários reais para validar a eficácia pedagógica:
 Os testes iniciais indicaram:
 
 \begin{itemize}
-  \item Boa compreensão dos mecanismos de estruturas de dados mesmo entre
-    participantes sem conhecimento prévio;
+  \item Boa compreensão dos mecanismos de estruturas de dados mesmo entre participantes sem conhecimento prévio;
   \item Engajamento sustentado com a temática alquímica e narrativa do \textit{plague doctor};
   \item Feedback visual e mecânicas intuitivas facilitando a adoção;
-  \item Necessidade de ajustes na dificuldade de certas fases e clareza de
-    alguns consumíveis.
+  \item Necessidade de ajustes na dificuldade de certas fases e clareza de alguns consumíveis.
 \end{itemize}
 
 \subsection{Fase 4 - Execução da Unidade Instrucional}
@@ -427,36 +365,27 @@ Estruturas de Dados de cursos de Computação. Os docentes poderão:
 Durante a execução, serão coletados:
 
 \begin{itemize}
-  \item Métricas de jogo: tempo de conclusão, tentativas, acertos de
-    combinação;
-  \item Feedback dos participantes: satisfação, percepção de aprendizado,
-    dificuldades encontradas;
-  \item Observações qualitativas: comportamento durante o jogo, discussões com
-    pares, reações emocionais.
+  \item Métricas de jogo: tempo de conclusão, tentativas, acertos de combinação;
+  \item Feedback dos participantes: satisfação, percepção de aprendizado, dificuldades encontradas;
+  \item Observações qualitativas: comportamento durante o jogo, discussões com pares, reações emocionais.
 \end{itemize}
 
 \subsection{Fase 5 - Avaliação da Unidade Instrucional}
 
-A avaliação final mede a efetividade global do jogo como ferramenta
-educacional.
+A avaliação final mede a efetividade global do jogo como ferramenta educacional.
 
 \subsubsection*{Metodologia de Avaliação}
 
 Os dados coletados serão analisados de acordo com critérios baseados no MEEGA+:
 
 \begin{itemize}
-  \item \textbf{Usabilidade}: clareza da interface, facilidade de aprender,
-    ausência de bugs que interfiram na experiência;
+  \item \textbf{Usabilidade}: clareza da interface, facilidade de aprender, ausência de bugs que interfiram na experiência;
 
-  \item \textbf{Engajamento}: engajamento emocional, diversão, imersão,
-    motivação intrínseca;
+  \item \textbf{Engajamento}: engajamento emocional, diversão, imersão, motivação intrínseca;
 
-  \item \textbf{Aprendizagem Percebida}: percepção do jogador sobre aprendizado
-    obtido, aplicabilidade dos conceitos, confiança em usar estruturas de
-    dados;
+  \item \textbf{Aprendizagem Percebida}: percepção do jogador sobre aprendizado obtido, aplicabilidade dos conceitos, confiança em usar estruturas de dados;
 
-  \item \textbf{Experiência Geral}: satisfação, disposição para recomendação,
-    intenção de uso futuro.
+  \item \textbf{Experiência Geral}: satisfação, disposição para recomendação, intenção de uso futuro.
 \end{itemize}
 
 \subsubsection*{Análise de Resultados}
@@ -464,14 +393,11 @@ Os dados coletados serão analisados de acordo com critérios baseados no MEEGA+
 Os resultados serão analisados através de:
 
 \begin{itemize}
-  \item \textbf{Análise Quantitativa}: estatísticas descritivas das métricas de
-    desempenho, correlações entre tempo de jogo e compreensão de conceitos;
+  \item \textbf{Análise Quantitativa}: estatísticas descritivas das métricas de desempenho, correlações entre tempo de jogo e compreensão de conceitos;
 
-  \item \textbf{Análise Qualitativa}: análise temática de respostas abertas,
-    observações de comportamento, entrevistas;
+  \item \textbf{Análise Qualitativa}: análise temática de respostas abertas, observações de comportamento, entrevistas;
 
-  \item \textbf{Triangulação}: cruzamento de dados quantitativos e qualitativos
-    para validação de resultados.
+  \item \textbf{Triangulação}: cruzamento de dados quantitativos e qualitativos para validação de resultados.
 \end{itemize}
 
 Os resultados serão cotejados com os objetivos de aprendizagem definidos na
@@ -480,8 +406,7 @@ ensino e aprendizagem de estruturas de dados.
 
 \subsubsection*{Iterações e Melhorias}
 
-Com base nos resultados da avaliação, serão identificadas oportunidades de
-melhoria:
+Com base nos resultados da avaliação, serão identificadas oportunidades de melhoria:
 
 \begin{itemize}
   \item Ajustes nas mecânicas e balanceamento de dificuldade;
@@ -499,21 +424,15 @@ definidas, com artefatos claros e objetivos específicos em cada etapa, a
 metodologia assegura que:
 
 \begin{itemize}
-  \item O conteúdo educacional está solidamente fundamentado em objetivos de
-    aprendizagem bem definidos;
+  \item O conteúdo educacional está solidamente fundamentado em objetivos de aprendizagem bem definidos;
 
-  \item As mecânicas do jogo refletem os conceitos de estruturas de dados de
-    forma implícita, promovendo aprendizado significativo;
+  \item As mecânicas do jogo refletem os conceitos de estruturas de dados de forma implícita, promovendo aprendizado significativo;
 
-  \item A experiência lúdica é priorizada, mantendo o jogo divertido e
-    engajador;
+  \item A experiência lúdica é priorizada, mantendo o jogo divertido e engajador;
 
-  \item A avaliação é contínua e sistemática, fornecendo retroalimentação para
-    iterações futuras;
+  \item A avaliação é contínua e sistemática, fornecendo retroalimentação para iterações futuras;
 
-  \item O resultado final é uma ferramenta educacional robusta, testada e
-    validada para contribuir efetivamente ao processo de ensino e aprendizagem
-    de estruturas de dados.
+  \item O resultado final é uma ferramenta educacional robusta, testada e validada para contribuir efetivamente ao processo de ensino e aprendizagem de estruturas de dados.
 \end{itemize}
 
 Dessa forma, o presente trabalho posiciona-se não apenas como um exercício

@@ -1,0 +1,255 @@
+\documentclass{beamer}
+
+% ---------------------------------------------------
+% Configurações Gerais
+% ---------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\usetheme{default}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% ---------------------------------------------------
+% Cores e estilo minimalista claro
+% ---------------------------------------------------
+\definecolor{ifrsGreen}{RGB}{0,128,0}
+\setbeamercolor{title}{fg=ifrsGreen}
+\setbeamercolor{frametitle}{fg=ifrsGreen}
+\setbeamercolor{structure}{fg=ifrsGreen}
+\setbeamercolor{section in toc}{fg=ifrsGreen}
+
+\setbeamertemplate{footline}[frame number]
+
+% ---------------------------------------------------
+% Informações do Trabalho
+% ---------------------------------------------------
+\title[Desenvolvimento de Jogo Sério]{Desenvolvimento de Jogo Sério para Auxílio no Ensino de Conceitos de Estruturas de Dados}
+\author[Leonardo Luz Fachel]{\textbf{Leonardo Luz Fachel}}
+\institute[IFRS]{Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul \\ Campus Osório \\ Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas}
+\date[2025]{Orientador: Prof. Bruno Chagas Alves Fernandes \\ Osório, 2025}
+
+% ---------------------------------------------------
+\begin{document}
+
+% ---------------------------------------------------
+% CAPA INSTITUCIONAL
+% ---------------------------------------------------
+\begin{frame}[plain]
+    \centering
+    \vspace{0.5cm}
+    \includegraphics[width=2cm]{images/ifrs-logo.png}\\[0.7cm]
+    {\textbf{Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul}}\\
+    {Campus Osório}\\[2cm]
+
+    {\textbf{\inserttitle}}\\[1cm]
+    {\textbf{Aluno:} \insertauthor}\\[0.3cm]
+    {\textbf{Orientador:} Prof. Bruno Chagas Alves Fernandes}\\[2cm]
+    {Osório, 2025}
+\end{frame}
+
+% ---------------------------------------------------
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+% ---------------------------------------------------
+\section{Introdução}
+\begin{frame}{Introdução}
+  \begin{itemize}
+    \item O ensino de \textbf{Estruturas de Dados} é um desafio recorrente, com altos índices de reprovação e evasão.
+    \item Conceitos abstratos e ensino tradicional reduzem a motivação dos alunos.
+    \item \textbf{Jogos Sérios} surgem como alternativa promissora, promovendo o aprendizado ativo e engajado.
+    \item Fundamentação no \textbf{Construcionismo de Papert (1993)}: o conhecimento é construído pela ação.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Objetivos}
+\begin{frame}{Objetivo Geral}
+  \begin{block}{}
+    Desenvolver um jogo sério que aborde conceitos fundamentais de estruturas de dados de forma implícita, por meio de mecânicas lúdicas e interativas.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Objetivos Específicos}
+  \begin{itemize}
+    \item Investigar modelos de jogos sérios aplicados ao ensino de computação.
+    \item Projetar e implementar um jogo educacional fundamentado na metodologia \textbf{GAMED}.
+    \item Incorporar representações implícitas de estruturas como \textbf{pilhas, filas e listas}.
+    \item Avaliar a eficácia e a usabilidade do jogo.
+    \item Analisar o feedback dos usuários e propor melhorias.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Justificativa}
+\begin{frame}{Justificativa}
+  \begin{itemize}
+    \item Dificuldade no ensino de conteúdos abstratos e baixa retenção de aprendizado.
+    \item Necessidade de tornar o ensino mais motivador e interativo.
+    \item Jogos sérios permitem contextualizar conceitos em narrativas envolventes.
+    \item A metodologia \textbf{GAMED} garante equilíbrio entre aprendizagem e diversão.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Referencial Teórico}
+\begin{frame}{Referencial Teórico}
+  \begin{itemize}
+    \item \textbf{Estruturas de Dados:} essenciais na Computação, mas de difícil compreensão (Cormen, 2022).
+    \item \textbf{Jogos Sérios:} aplicam design de jogos com objetivos educacionais (Mouaheb, 2012).
+    \item \textbf{Game-Based Learning (GBL):} aprendizagem emergente da interação com o jogo (Malone \& Lepper, 2021).
+    \item \textbf{Construcionismo:} aprendizado pela criação e exploração de artefatos (Papert, 1993).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ferramenta de Desenvolvimento}
+  \begin{itemize}
+    \item A \textbf{Unity} foi escolhida como engine principal.
+    \item Permite mecânicas avançadas e integração eficiente de estruturas de dados.
+    \item Suporte multiplataforma e comunidade ampla de desenvolvedores.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Metodologia}
+\begin{frame}{Metodologia Científica}
+  \begin{itemize}
+    \item Pesquisa \textbf{aplicada}, de caráter \textbf{experimental} e abordagem \textbf{mista}.
+    \item Combina métodos qualitativos e quantitativos.
+    \item Instrumentos:
+    \begin{itemize}
+      \item Questionários estruturados e testes de desempenho.
+      \item Observações e entrevistas durante o uso do jogo.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metodologia de Desenvolvimento}
+  \begin{itemize}
+    \item Baseada no processo \textbf{ENgAGED} (Battistella e Wangenheim, 2016).
+    \item Integra design instrucional e design de jogos.
+    \item Estruturada em 5 fases:
+      \begin{enumerate}
+        \item Análise da Unidade Instrucional
+        \item Projeto do Jogo
+        \item Desenvolvimento do Protótipo
+        \item Testes com Usuários
+        \item Avaliação da Aprendizagem
+      \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fases do Processo ENgAGED}
+  \begin{columns}
+  \column{0.5\textwidth}
+    \textbf{Análise e Projeto}
+    \begin{itemize}
+      \item Definição de objetivos e público-alvo.
+      \item Criação de narrativa, regras e mecânicas.
+    \end{itemize}
+
+  \column{0.5\textwidth}
+    \textbf{Desenvolvimento e Avaliação}
+    \begin{itemize}
+      \item Protótipo funcional e testes com estudantes.
+      \item Avaliação de engajamento e aprendizagem.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Trabalhos Relacionados}
+\begin{frame}{Trabalhos Relacionados — Artigos}
+  \begin{itemize}
+    \item \textbf{CondigJob} (Costa, 2023): ensino de C, abordagem explícita.
+    \item \textbf{CodeBô} (Araujo \& Silva, 2025): ensino implícito de pilhas, filas e listas.
+    \item \textbf{Prog-Poly} (Nascimento, 2022): tabuleiro baseado em Monopoly.
+    \item \textbf{Glatz et al. (2023):} jogo mobile sobre busca e ordenação.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Trabalhos Relacionados — Aplicativos}
+  \begin{itemize}
+    \item \textbf{Human Resource Machine} (2015): lógica de programação.
+    \item \textbf{AlgoBot} (2018): puzzles e automação.
+    \item \textbf{MOP’N SPARK} (2025): puzzles e ambientação fantasiosa.
+    \item \textbf{Iron Ears} (2020): estruturas de dados em mecânicas produtivas.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Desenvolvimento}
+\begin{frame}{Desenvolvimento do Jogo}
+  \begin{itemize}
+    \item Gênero: \textbf{plataforma 2D}.
+    \item Estilo visual: \textbf{pixel art}.
+    \item Linguagem: \textbf{C\# com Unity}.
+    \item Estruturas abordadas: \textbf{pilha, fila e lista}.
+    \item Mecânicas educativas integradas de forma implícita às ações do jogador.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Design e Fases}
+  \begin{itemize}
+    \item Fases planejadas:
+      \begin{itemize}
+        \item Tutorial introdutório.
+        \item Fase 1 — Boss Slime.
+        \item Fase 2 — Mid Boss.
+        \item Fase 3 — Boss Final (Alquimista rival).
+      \end{itemize}
+    \item Sons e feedbacks:
+      \begin{itemize}
+        \item Passos, pulos, conjuração, dano, HUD, progressão.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section{Resultados e Conclusões}
+\begin{frame}{Resultados Parciais}
+  \begin{itemize}
+    \item Protótipo funcional com todas as mecânicas centrais.
+    \item Feedback positivo dos primeiros usuários.
+    \item Indícios de aumento no engajamento e compreensão.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Trabalhos Futuros}
+  \begin{itemize}
+    \item Implementar novas estruturas: \textbf{árvores} e \textbf{grafos}.
+    \item Sistema de \textbf{conquistas} e \textbf{modo arcade}.
+    \item Versão \textbf{multijogador e PVP}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusão}
+  \begin{itemize}
+    \item O jogo proposto é uma ferramenta promissora para o ensino de estruturas de dados.
+    \item A integração entre entretenimento e aprendizado é essencial.
+    \item Jogos sérios podem transformar a aprendizagem em uma experiência envolvente e significativa.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------
+\section*{Referências}
+\begin{frame}[allowframebreaks]{Referências}
+  \tiny
+  \bibliographystyle{apalike}
+  \bibliography{refs}
+\end{frame}
+
+% ---------------------------------------------------
+\begin{frame}
+  \centering
+  \Huge{\textbf{Obrigado!}}\\[0.5cm]
+  \Large{Dúvidas e Perguntas?}
+\end{frame}
+
+\end{document}

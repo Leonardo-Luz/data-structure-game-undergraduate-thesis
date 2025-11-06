@@ -1,0 +1,155 @@
+\section{Metodologia de Desenvolvimento}
+\label{sec:metodologia-desenvolvimento}
+
+A metodologia de desenvolvimento adotada neste projeto baseia-se no processo
+ENgAGED (\textit{EducatioNAl GamEs Development}), proposto por
+\citeonline{battistella2016engaged}. Esse processo combina princípios de design
+instrucional e design de jogos, estruturando o desenvolvimento em etapas
+claras, com foco tanto na experiência do jogador quanto na coerência conceitual
+do conteúdo representado.  No presente trabalho, o modelo foi adaptado para um
+contexto em que o ensino não é explícito, mas ocorre de forma implícita por
+meio da mecânica e das interações do jogador com o sistema.
+
+O produto desenvolvido é um jogo eletrônico 2D no estilo \textit{platformer},
+com estética em \textit{pixel art} e ambientação inspirada na alquimia
+clássica. O jogador assume o papel de um \textit{plague doctor} em uma jornada
+para recuperar sua pesquisa sobre a pedra filosofal, roubada por um alquimista
+rival. Para enfrentar os inimigos e superar os desafios, o jogador deve
+combinar corretamente elementos alquímicos armazenados em diferentes estruturas
+de dados (pilhas, filas e listas). Cada estrutura define restrições próprias de
+manipulação, e o jogador precisa raciocinar sobre a ordem de acesso e
+combinação dos elementos para realizar ataques eficazes. Combinações incorretas
+resultam em falhas ou dano ao personagem.
+
+Adicionalmente, os inimigos apresentam fraquezas elementais específicas. Um
+inimigo vulnerável ao elemento fogo, por exemplo, só sofre dano quando atacado
+com esse elemento, podendo haver múltiplas fraquezas combinadas. Isso reforça a
+necessidade de planejar as manipulações das estruturas antes da execução dos
+ataques. Também há consumíveis que auxiliam o jogador, com destaque para o
+\textit{item de ordenação}, capaz de reorganizar os elementos dentro das
+estruturas, criando oportunidades estratégicas para ataques mais eficientes.
+
+Com base no modelo ENgAGED, o processo foi estruturado em cinco fases
+principais, inspiradas no ciclo ADDIE (Análise, Projeto, Desenvolvimento,
+Implementação e Avaliação), adaptadas para o contexto de um jogo sério
+voltado à integração conceitual e ao engajamento lúdico.
+
+\begin{enumerate}
+    \item Análise do contexto e definição dos objetivos;
+    \item Projeto do jogo e integração conceitual;
+    \item Desenvolvimento do protótipo e iterações de refinamento;
+    \item Implementação e testes com jogadores;
+    \item Avaliação da experiência e da aplicabilidade conceitual.
+\end{enumerate}
+
+\subsection{Fase 1 - Análise do Contexto e Definição dos Objetivos}
+
+Nesta fase, foi realizada a caracterização do público e dos objetivos gerais do
+projeto:
+
+\begin{itemize}
+    \item \textbf{A1.1 Contextualização:} o jogo foi projetado para um público
+      amplo, incluindo estudantes e jogadores casuais, sem exigir conhecimento
+      prévio sobre estruturas de dados;
+    \item \textbf{A1.2 Delimitação conceitual:} os conceitos de pilha, fila e
+      lista são representados simbolicamente por inventários alquímicos, cujas
+      regras de acesso e combinação simulam suas propriedades computacionais;
+    \item \textbf{A1.3 Objetivos gerais:} promover uma experiência envolvente
+      que incentive o raciocínio lógico e a compreensão implícita da
+      manipulação de dados.
+\end{itemize}
+
+\subsection{Fase 2 - Projeto do Jogo e Integração Conceitual}
+
+Com base na análise inicial, foi desenvolvido o projeto conceitual e estético
+do jogo, buscando o equilíbrio entre narrativa, jogabilidade e integração
+conceitual:
+
+\begin{itemize}
+    \item \textbf{P2.1 Design narrativo e temático:} o enredo acompanha a busca
+      do protagonista por sua pesquisa roubada, dentro de um universo regido
+      pelos quatro elementos da alquimia;
+    \item \textbf{P2.2 Mecânica principal:} ataques são realizados pela
+      combinação de elementos retirados de estruturas de dados. Combinações
+      corretas geram ataques alquímicos eficazes, enquanto erros causam dano ao
+      jogador;
+    \item \textbf{P2.3 Sistema de fraquezas:} inimigos possuem vulnerabilidades
+      elementais, exigindo que o jogador escolha e combine elementos adequados
+      ao tipo de inimigo enfrentado. Alguns possuem múltiplas fraquezas,
+      incentivando experimentação e planejamento;
+    \item \textbf{P2.4 Consumíveis e estratégia:} há itens que influenciam as
+      estruturas de dados, como o consumível de ordenação, que reordena os
+      elementos internos, permitindo ao jogador ajustar a sequência de acesso e
+      criar combinações mais vantajosas;
+    \item \textbf{P2.5 Integração pedagógica implícita:} a manipulação dos
+      elementos no inventário reproduz operações típicas de estruturas de
+      dados, incentivando o jogador a compreender suas restrições e
+      possibilidades por meio da prática lúdica;
+    \item \textbf{P2.6 Documentação:} elaboração do
+      \textit{Game Design Document} (GDD), storyboards e mapa de progressão,
+      detalhando a relação entre os conceitos computacionais e as mecânicas de
+      jogo.
+\end{itemize}
+
+\subsection{Fase 3 - Desenvolvimento e Iterações de Refinamento}
+
+Esta etapa compreendeu a construção do protótipo e o processo iterativo de
+testes e aprimoramentos:
+
+\begin{itemize}
+    \item \textbf{D3.1 Protótipo funcional:} desenvolvimento de uma versão
+      jogável mínima (\textit{MVP}) com movimentação, ataques e inventários
+      baseados em estruturas de dados;
+    \item \textbf{D3.2 Testes de jogabilidade:} experimentação de mecânicas,
+      feedbacks e níveis de dificuldade, com foco na clareza das respostas do
+      sistema e equilíbrio entre desafio e diversão;
+    \item \textbf{D3.3 Iterações de refinamento:} ajustes visuais, sonoros e de
+      balanceamento, otimizando a fluidez das ações e a coerência entre
+      jogabilidade e conceito;
+    \item \textbf{D3.4 Controle de versão e documentação técnica:} uso de
+      versionamento para registro de melhorias e rastreabilidade das decisões
+      de design.
+\end{itemize}
+
+\subsection{Fase 4 - Implementação e Testes com Jogadores}
+
+Com o protótipo consolidado, foram conduzidos testes exploratórios com
+jogadores de diferentes perfis:
+
+\begin{itemize}
+    \item \textbf{I4.1 Seleção do público-teste:} inclusão de jogadores
+      familiarizados e não familiarizados com estruturas de dados;
+    \item \textbf{I4.2 Avaliação de usabilidade e engajamento:} observação da
+      curva de aprendizado, da compreensão das regras implícitas e da resposta
+      emocional às mecânicas de combinação e fraquezas;
+    \item \textbf{I4.3 Ajustes finais:} aprimoramentos em interface, tempo de
+      resposta e balanceamento de inimigos e consumíveis.
+\end{itemize}
+
+\subsection{Fase 5 - Avaliação da Experiência e da Aplicabilidade Conceitual}
+
+A fase final consistiu na análise da experiência do jogador e da assimilação
+dos conceitos implícitos:
+
+\begin{itemize}
+    \item \textbf{E5.1 Avaliação de experiência:} aplicação de questionários de
+      satisfação e motivação (como o MEEGA) para mensurar imersão, diversão e
+      desafio;
+    \item \textbf{E5.2 Observação da aplicação conceitual:} análise qualitativa
+      sobre a capacidade dos jogadores em reconhecer padrões operacionais
+      semelhantes às estruturas de dados representadas;
+    \item \textbf{E5.3 Planejamento de melhorias futuras:} proposição de
+      aprimoramentos para reforçar a relação entre mecânicas e conceitos
+      computacionais.
+\end{itemize}
+
+\subsection{Síntese da Metodologia}
+
+Em síntese, o processo ENgAGED foi adaptado para um contexto de aprendizagem
+implícita, em que conceitos de estruturas de dados são explorados dentro de uma
+experiência lúdica e narrativa. O modelo permitiu estruturar o desenvolvimento
+em etapas claras e iterativas, garantindo o equilíbrio entre jogabilidade,
+imersão e aplicabilidade conceitual. O resultado buscado é um jogo que, sem
+ensinar diretamente, estimule o pensamento lógico e a intuição sobre operações
+de manipulação de dados, dentro de um universo envolvente e esteticamente
+coeso.
