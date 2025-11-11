@@ -63,18 +63,18 @@
     - [ ] Health points
 
 - [ ] Art
-  - [ ] Player
+  - [x] Player
     - [x] idle
-    - [ ] jump
-    - [ ] running
+    - [x] jump
+    - [x] running
     - [x] crouching
   - [ ] Particles
-    - [ ] Firefly particles
+    - [x] Firefly particles
     - [ ] Leaves particles
     - [x] Rain and splash particles
     - [x] Dust particles (run, jump and flip)
   - [ ] Foreground items
-    - [ ] Trees
+    - [x] Trees
   - [x] Parallax
     - [x] Sky
     - [x] Back trees
@@ -101,7 +101,7 @@
       - [x] (ground-melee)  slime melee
       - [x] (ground-ranged) slime ranged
       - [ ] (flying-melee)  normal bat
-      - [ ] (flying-ranged) one-eyed bat (doesn't move)
+      - [x] (flying-ranged) one-eyed bat (doesn't move)
     - [ ] Bosses
       - [ ] (1) slime king
       - [ ] (2) ???

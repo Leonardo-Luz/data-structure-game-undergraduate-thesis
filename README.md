@@ -1,89 +1,76 @@
-# Leonardo Luz Fachel - Software Analysis and Development Undergraduate Thesis
+# Trabalho de Conclusão de Curso
 
-## Data Structure Game
+**Tema:** Desenvolvimento de um Jogo Sério para o Ensino de Conceitos de Estrutura de Dados
 
-**Keywords:** game, data structure, C#, CSharp, CS, Unity, education, code, programming, gamedev, tutorial, stack, queue, linked list, binary tree, sorting algorithms, search algorithms
+* **Autor:** *Leonardo Luz Fachel*  
+* **Instituição:** *Instituto Federal do Rio Grande do Sul*  
+* **Curso:** *Análise e Desenvolvimento de Sistemas*
+* **Ano:** *2025*
 
-## Description
+* [Jogue Agora](https://play.unity.com/en/games/98bb4067-113f-4850-84d7-1bd15b186e0f/alchemy-game)
+* [Responda este Formulário após Jogar - WIP](#)
+* [TCC](latex/main.pdf)
 
-This project aims to create an educational game that facilitates learning data structure concepts in a fun and engaging way.  Players will learn about various data structures through gameplay mechanics and progressively challenging levels that incorporate alchemical themes.
+## Motivação
 
-## Technologies
+> A ideia deste trabalho surgiu após observar, de forma holística, que a
+> disciplina de **Estrutura de Dados** era considerada uma das mais
+> desafiadoras do curso. Diversos alunos compartilhavam essa percepção.  
+>
+> A partir disso, foi realizada uma pesquisa para verificar se essa dificuldade
+> era comum em outras instituições de ensino. Os resultados confirmaram que
+> **Estrutura de Dados** é amplamente reconhecida como uma disciplina complexa.  
+>
+> Diante desse cenário, buscou-se uma alternativa para tornar o aprendizado
+> mais **prático**, **interativo** e **motivador**, resultando no
+> desenvolvimento de um **Jogo Sério** voltado para o ensino desses conceitos.
 
-* **Game Engine:** Unity
+## O que é um Jogo Sério?
 
-## Features
+> Um **Jogo Sério** é aquele que, além de entreter, possui objetivos
+> educativos, de treinamento ou de sensibilização sobre determinado tema.
 
-* **Engaging Story:** A compelling narrative follows an alchemist recovering their lost bags.
-* **Parallax Backgrounds:** Enhance visual appeal and immersion.
-* **Progressive Difficulty:** Levels introduce new data structures and mechanics gradually.
-* **Combat System:**  Enemies have weaknesses exploitable using crafted elements.
-* **Item Combinations:** Players combine elements to create new ones, showcasing data structure operations.
-* **Visualizations:** Sorting algorithms and other data structure operations are visually represented.
+No contexto deste trabalho, o jogo foi desenvolvido como uma ferramenta para
+tornar o ensino de **Estrutura de Dados** mais **motivador** e **concreto**,
+enfrentando as duas principais dificuldades relatadas pelos alunos dessa
+disciplina.
 
-## Gameplay
+## Detalhes do Jogo
 
-**Story:** The alchemist awakens after an accident, their bags stolen.  They must use a damaged bag and newly-created elements to fight enemies and recover their lost research and bags, each bag introducing a new data structure.
+- **Tema:** Fantasia Medieval  
+- **Gênero:** Plataforma 2D  
 
-**Core Mechanics:**
+### Enredo
 
-* **Element Creation:** The alchemist automatically generates elements at intervals.
-* **Inventory Management:**  Inventories (initially a single slot, then a stack, queue, etc.) manage collected elements.
-* **Combat:** Enemies are defeated by using elements that exploit their weaknesses.
-* **Combos:** Combining elements in specific orders creates powerful effects.
+O jogo se passa em um mundo fantasioso onde **monstros** existem e **misturas alquímicas** são utilizadas como armas.  
+O personagem principal teve sua pesquisa sobre a **Pedra Filosofal** roubada por um alquimista rival e agora precisa recuperá-la.  
+Durante a jornada, o jogador enfrentará inimigos e desafios utilizando conceitos de **Estrutura de Dados** para progredir.
 
-## Level Design
+## Mecânicas Centrais
 
-All details about each level can be found [HERE](./docs/_notes/LEVELS.md)
+| Mecânica                   | Descrição |
+|-----------------------------|------------|
+| **Geração de Elementos**       | Elementos são gerados ao gastar mana e posicionados automaticamente em um inventário livre, da esquerda para a direita. |
+| **Misturar Elementos**         | Elementos do mesmo tipo podem ser combinados para gerar ataques. Quanto maior a quantidade de elementos iguais na combinação, maior o dano. É necessário removê-los dos inventários para realizar a mistura. |
+| **Manipulação de Inventários** | Os inventários são baseados em **estruturas de dados**, permitindo operações como **inserir**, **remover**, **ordenar** e **mover o ponteiro** (no caso de listas). Cada estrutura mantém suas características próprias. |
+| **Consumíveis**                | Diversos consumíveis estão disponíveis, sendo os principais: **Inserir**, **Remover** e **Ordenar**. |
+| **Fraquezas**                  | Cada inimigo possui fraquezas específicas; o jogador deve combinar elementos corretos para causar dano efetivo. |
+| **Pontuação**                  | A pontuação final considera combinações corretas, combinações erradas, mortes e o tempo total para completar a fase. |
 
-The game features a series of levels, presenting differents data structure and searching/sorting algorithms:
+---
 
-**Early Levels (Tutorials):**
+## Mecânicas Genéricas
 
-* **Level 1 (Basics):** Introduces movement, interaction, and basic combat. Single-slot inventory.
-* **Level 2 (Stack & Combos):** Introduces stack mechanics (LIFO) and item combo effects. 5-slot stack inventory.
-* **Level 3 (Sorting):** Introduces sorting algorithms using consumables.  Visual representation of sorting process.
+- Movimentação 2D  
+- Pulo Responsivo  
+- Corrida  
+- Pontos de Controle (Checkpoints)  
+- Tentativas Limitadas  
+- Pontos de Vida (HP)  
+- Mana  
+- Pulo Duplo Situacional  
+- Capacidade de Aparar Certos Ataques  
 
-**Intermediate Levels:**
+---
 
-* **Level 4 (Queue & Multiple Inventories):** Introduces queues (FIFO) and managing multiple inventories.
-* **Level 5 (Boss Fight - Stack/Queue):** A boss fight using stack and queue mechanics.
-
-**Advanced Levels:**
-
-* **Level 6 (Searching):** Introduces searching algorithms.
-* **Level 7 (Linked List):** Introduces linked lists.
-* **Level 8 (Boss Fight - Linked List):** A boss fight using linked list mechanics.
-
-**Post-Game Levels:**
-
-* **Level 9 (Double Linked List):**
-* **Level 10 (Binary Tree):**
-* **Arena Mode:** An endless mode challenging the player with increasingly difficult scenarios incorporating all learned data structures.
-
-## Research Book
-
-All details about the Research Book can be found [HERE](./docs/_notes/RESEARCH.md)
-
-Contains the notes of the alchemist, element descriptions, damage values, and combination tutorials.  Unknown combinations are displayed as "???".
-
-## Combinations
-
-All details about the Combinations can be found [HERE](./docs/_notes/COMBINATIONS.md)
-
-## Concept Arts
-
-* These arts can be changed
-
-## Prototyping
-
-* WIP
-
-## Future Considerations
-
-* Add more complex data structures (graphs, trees, hash tables)
-* Implement difficulty levels (Easy, Medium, Hard)
-* Integrate a scoring system and leaderboards
-* Add more diverse game mechanics and challenges
-
-This README will be updated regularly to reflect the project's progress.
+> “Ensinar com jogos é transformar o desafio em motivação e o aprendizado em conquista.”
