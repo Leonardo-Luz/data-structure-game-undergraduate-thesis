@@ -6,6 +6,7 @@ using System.Linq;
 public class HUDLanguageManager : MonoBehaviour
 {
   [SerializeField] private TMP_Dropdown languages;
+  [SerializeField] private Sprite image;
 
   private void Start()
   {
@@ -19,6 +20,8 @@ public class HUDLanguageManager : MonoBehaviour
     languages.RefreshShownValue();
 
     languages.onValueChanged.AddListener(OnLanguageChanged);
+
+    languages.options.ForEach(opt => opt.image = image);
   }
 
   private void OnDestroy()

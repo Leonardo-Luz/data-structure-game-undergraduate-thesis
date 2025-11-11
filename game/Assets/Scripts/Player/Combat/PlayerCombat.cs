@@ -108,6 +108,7 @@ public class PlayerCombat : MonoBehaviour
 
     if (addedToInv && !ValidCombination())
     {
+      Score.Instance.AddWrongInfusion();
       health.TakeDamage(Mathf.Clamp(castingList.Count - 2, 1, 3));
       flick.StartFlick();
       CleanCasting();

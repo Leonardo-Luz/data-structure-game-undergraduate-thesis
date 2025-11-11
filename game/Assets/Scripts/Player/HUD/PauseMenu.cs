@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
     GameManager.Instance.LoadMainMenu();
   }
 
-  private void ShowPauseMenu()
+  public void ShowPauseMenu()
   {
     isPauseMenuOpen = true;
     pausePanel.alpha = 1f;
@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
     pausePanel.blocksRaycasts = true;
   }
 
-  private void HidePauseMenu()
+  public void HidePauseMenu()
   {
     isPauseMenuOpen = false;
     pausePanel.alpha = 0f;

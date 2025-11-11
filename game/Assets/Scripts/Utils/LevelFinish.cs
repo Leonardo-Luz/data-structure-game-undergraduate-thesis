@@ -10,6 +10,8 @@ public class LevelFinish : MonoBehaviour
   [SerializeField] private ToastManager toast;
   [SerializeField] private Dialogue dialogue;
   [SerializeField] private int levelIndex = 0;
+  [SerializeField] private PauseMenu pauseMenu;
+  [SerializeField] private LevelMenuManager finishPanel;
 
   [Header("Audio")]
   [SerializeField] private AudioSource music;
@@ -39,7 +41,6 @@ public class LevelFinish : MonoBehaviour
     if (proxDetect.isTargetInRange && Input.GetKeyDown(KeyCode.E))
     {
       levelEnding = true;
-      toast.Toast(dialogue.lines[0]);
       music.Stop();
       sfx.Play();
       StartCoroutine(LevelEndSequence());
@@ -58,10 +59,14 @@ public class LevelFinish : MonoBehaviour
       combatScript.enabled = false;
     if (moveScript != null)
       moveScript.enabled = false;
+    if (BookController.Instance != null)
+      BookController.Instance.enabled = false;
+    if (pauseMenu != null)
+      pauseMenu.enabled = false;
 
     Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
     rb.gravityScale = 0f;
-    float moveDuration = 4f;
+    float moveDuration = 3f;
     float moveSpeed = 3f;
 
     float timer = 0f;
@@ -73,9 +78,8 @@ public class LevelFinish : MonoBehaviour
     }
 
     rb.linearVelocity = Vector2.zero;
-    yield return new WaitForSeconds(0.1f);
 
-    GameManager.Instance.CompleteLevel(levelIndex);
+    finishPanel.UpdateEndHUD();
   }
 
   private void ProximityEnterHandler()
@@ -88,5 +92,10 @@ public class LevelFinish : MonoBehaviour
   {
     outline.isOutlined = false;
     interactionBubble.SetActive(false);
+  }
+
+  public void ExitLevel()
+  {
+    GameManager.Instance.CompleteLevel(levelIndex);
   }
 }

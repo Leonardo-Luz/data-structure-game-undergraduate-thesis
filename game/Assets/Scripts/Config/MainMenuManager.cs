@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
   private void Update()
   {
-    if (!gameStarted && Input.anyKeyDown && !IsMouseInput())
+    if (!gameStarted && Input.GetKeyDown(KeyCode.E) && !IsMouseInput())
     {
       gameStarted = true;
       OnPressAnyKey();

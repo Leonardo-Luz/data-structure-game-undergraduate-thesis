@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DeathManager : MonoBehaviour
@@ -8,6 +7,8 @@ public class DeathManager : MonoBehaviour
   [SerializeField] private Health health;
   [SerializeField] private Transform player;
   [SerializeField] private TextMeshProUGUI livesTxt;
+  [SerializeField] private GameOver gameOver;
+  [SerializeField] private PauseMenu pauseMenu;
 
   [Header("Settings")]
   [SerializeField] private Transform respawnAnchor;
@@ -27,6 +28,7 @@ public class DeathManager : MonoBehaviour
   {
     if (lives > 0)
     {
+      Score.Instance.AddDeath();
       lives--;
       livesTxt.text = "x" + lives;
 
@@ -40,19 +42,35 @@ public class DeathManager : MonoBehaviour
       if (controller != null)
         controller.SoftReset();
     }
-    else ReloadScene();
+    else
+    {
+      GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+      var moveScript = player.GetComponent<PlayerMove>();
+      var combatScript = player.GetComponent<PlayerCombat>();
+      var boxColl = player.GetComponent<BoxCollider2D>();
+
+      if (boxColl != null)
+        boxColl.enabled = false;
+      if (combatScript != null)
+        combatScript.enabled = false;
+      if (moveScript != null)
+        moveScript.enabled = false;
+      if (BookController.Instance != null)
+        BookController.Instance.enabled = false;
+      if (pauseMenu != null)
+        pauseMenu.enabled = false;
+
+      player.SetActive(false);
+
+      gameOver.GameOverMenu();
+    }
   }
 
   public void IncreaseLifes()
   {
     lives++;
     livesTxt.text = "x" + lives;
-  }
-
-  private void ReloadScene()
-  {
-    Scene currentScene = SceneManager.GetActiveScene();
-    SceneManager.LoadScene(currentScene.buildIndex);
   }
 
   public void SetAnchor(Transform respawn)

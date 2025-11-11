@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: ConsumibleTutorial
   m_EditorClassIdentifier: 
   lines:
-  - englishText: Press Q to use the consumible.
-    portugueseText: 
-  - englishText: 'When the border is showing you can press from 1 to 3,
-
-      this
-      will generate 2 elements inside one of you inventories'
-    portugueseText: 
-  - englishText: 'There''re multiple types of consumibles,
-
-      learn about them
-      trying it.'
-    portugueseText: 
-  - englishText: Combine the elements that u generated to defeat the enemy ahead
-      of you.
-    portugueseText: 
+  - englishText: "Hmm... an element generator consumable. I haven\u2019t used one
+      of these in a while."
+    portugueseText: "Hmm... um consum\xEDvel gerador de elementos. Faz tempo que
+      n\xE3o uso um desses."
+  - englishText: Press Q to use a consumable.
+    portugueseText: "Pressione Q para usar um consum\xEDvel."
+  - englishText: When the border appears, I can press 1, 2, or 3 to choose which
+      inventory to infuse it into.
+    portugueseText: "Quando a borda aparecer, posso pressionar 1, 2 ou 3 para escolher
+      em qual invent\xE1rio vou infundi-lo."
+  - englishText: Using the same inventory again extracts the element. Do it twice
+      to form a mixture.
+    portugueseText: "Usar o mesmo invent\xE1rio novamente extrai o elemento. Fa\xE7a
+      isso duas vezes para formar uma mistura."
+  - englishText: "Once it\u2019s ready, I can press Enter to release the reaction."
+    portugueseText: "Quando estiver pronto, pressione Enter para liberar a rea\xE7\xE3o."
+  - englishText: That should be enough to deal with that slime.
+    portugueseText: Isso deve bastar para lidar com aquela gosma.

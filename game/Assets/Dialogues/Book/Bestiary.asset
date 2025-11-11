@@ -13,37 +13,18 @@ MonoBehaviour:
   m_Name: Bestiary
   m_EditorClassIdentifier: 
   lines:
-  - englishText: wip
-    portugueseText: wip
-  - englishText: 'Slime
-
-
-      hp: 1-3
-
-      weaknesses: 1-3 (random)
-
-      move:
-      patrolling'
-    portugueseText: wip
-  - englishText: 'Mushroom
-
-
-      hp: 1-3
-
-      weaknesses: 1-3 (random)
-
-      move:
-      follow
-
-      property: shoots spores when close to the player'
-    portugueseText: wip
-  - englishText: 'Winged Eye
-
-
-      ammo: 6-12, can be infinite
-
-      move: static
-
-      property:
-      shoots projectiles towards the player, its destroyed when its out of ammo.'
-    portugueseText: wip
+  - englishText: "Slime\n\nHP: 1\u20133\nWeakness: 1\u20133 (any element)\nMove:
+      Patrolling\nProperty: None"
+    portugueseText: "Gosma\n\nHP: 1\u20133\nFraqueza: 1\u20133 (qualquer elemento)\nMovimento:
+      Patrulha\nPropriedade: Nenhuma"
+  - englishText: "Mushroom\n\nHP: 1\u20133\nWeakness: 1\u20133 (any element)\nMove:
+      Follows player\nProperty: Shoots spores when in range"
+    portugueseText: "Cogumelo\n\nHP: 1\u20133\nFraqueza: 1\u20133 (qualquer elemento)\nMovimento:
+      Segue o jogador\nPropriedade: Dispara esporos quando est\xE1 ao alcance"
+  - englishText: "Winged Eye\n\nHP: Dies when out of ammo\nWeakness: \u2014\nMove:
+      Static\nProperty: Shoots projectiles toward the player when in line of sight;
+      ammo 6\u201312 (can be infinite in some cases)"
+    portugueseText: "Olho Alado\n\nHP: Morre quando fica sem muni\xE7\xE3o\nFraqueza:
+      \u2014\nMovimento: Est\xE1tico\nPropriedade: Dispara proj\xE9teis em dire\xE7\xE3o
+      ao jogador quando est\xE1 em linha de vis\xE3o; muni\xE7\xE3o de 6 a 12 (pode
+      ser infinita em alguns casos)"

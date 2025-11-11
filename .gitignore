@@ -2,6 +2,11 @@
 #
 #
 #
+# WebGL
+WebGL Builds/
+webgl_sharing
+connectwebgl.zip
+
 # enviroment variables
 .env
 

@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
-  m_Name: CatDialogue
+  m_Name: Back
   m_EditorClassIdentifier: 
   lines:
-  - englishText: Hello!
-    portugueseText: Ola!
-  - englishText: 'Advance with caution,
-
-      You wont be able to come back!'
-    portugueseText: "Avan\xE7e com cuidado,\nVoc\xEA n\xE3o consiguir\xE1 retornar!"
+  - englishText: Back
+    portugueseText: Voltar

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - englishText: Cast any Element to break Obstacles
-    portugueseText: 
+    portugueseText: "Conjure qualquer Elemento para quebrar Obst\xE1culos"

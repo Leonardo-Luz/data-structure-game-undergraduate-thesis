@@ -15,7 +15,3 @@ MonoBehaviour:
   lines:
   - englishText: Are you sure you want to leave ?
     portugueseText: Tem Certeza que deseja sair ?
-  - englishText: Exit
-    portugueseText: Sair
-  - englishText: Cancel
-    portugueseText: Cancelar

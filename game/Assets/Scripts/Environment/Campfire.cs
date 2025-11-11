@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Campfire : MonoBehaviour
@@ -8,6 +9,7 @@ public class Campfire : MonoBehaviour
   [SerializeField] private Dialogue dialogue;
   [SerializeField] private Outline outline;
   [SerializeField] private DeathManager playerDeath;
+  [SerializeField] private bool startLit = false;
 
   private ProximityDetection proxDetect;
   private DialogueManager dialogueManager;
@@ -17,7 +19,6 @@ public class Campfire : MonoBehaviour
 
   private void Start()
   {
-    litCampfire.SetActive(false);
     proxDetect = GetComponent<ProximityDetection>();
     outline = GetComponent<Outline>();
 
@@ -31,17 +32,24 @@ public class Campfire : MonoBehaviour
     dialogueManager = FindFirstObjectByType<DialogueManager>();
 
     interactionBubble.SetActive(false);
+
+    if (startLit)
+    {
+      StartCoroutine(StartLitRoutine());
+    }
+    else
+    {
+      litCampfire.SetActive(false);
+    }
   }
 
   private void Update()
   {
-    if (!actived && proxDetect.isTargetInRange)
+    if (!actived && (proxDetect.isTargetInRange || startLit))
     {
       if (dialogue == null && Input.GetKeyDown(KeyCode.E))
       {
-        HealPlayer();
-        LitCampfire();
-        CleanupEvents();
+        OneTimeEvents();
       }
       else if (!dialogueManager.isActive && Input.GetKeyDown(KeyCode.E))
         dialogueManager.StartDialogue(dialogue);
@@ -52,7 +60,7 @@ public class Campfire : MonoBehaviour
 
   private void ProximityEnterHandler()
   {
-    if (!actived)
+    if (!actived && !startLit)
     {
       outline.isOutlined = true;
 
@@ -63,7 +71,7 @@ public class Campfire : MonoBehaviour
 
   private void ProximityExitHandler()
   {
-    if (!actived)
+    if (!actived && !startLit)
     {
       outline.isOutlined = false;
 
@@ -105,5 +113,13 @@ public class Campfire : MonoBehaviour
   {
     actived = true;
     dialogueManager.onDialogueEnd -= OneTimeEvents;
+  }
+
+  private IEnumerator StartLitRoutine()
+  {
+    yield return new WaitForSeconds(0.1f);
+    dialogueManager.onDialogueEnd += OneTimeEvents;
+    LitCampfire();
+    dialogueManager.StartDialogue(dialogue);
   }
 }

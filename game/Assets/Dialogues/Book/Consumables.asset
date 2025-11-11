@@ -13,59 +13,86 @@ MonoBehaviour:
   m_Name: Consumables
   m_EditorClassIdentifier: 
   lines:
-  - englishText: wip
-    portugueseText: wip
-  - englishText: 'Insert
-
-
-      Usage: press Q + a number from 1 to 3.
-
-      Does:
-      Inserts 2 of the same element at a defined inventory.'
-    portugueseText: 'Inserir
-
-
-      texto'
-  - englishText: 'Remove
-
-
-      Usage: press Q + a number from 1 to 3.
-
-      Does:
-      Removes a element from a defined inventory.'
-    portugueseText: 'Remover
-
-
-      texto'
+  - englishText: "Consumables\n\nDrop Chance: 10% chance of dropping a consumable
+      on enemy defeat.\n\nYou should test any consumables you find, there are no
+      illustrations of them in the alchemist\u2019s book, only descriptions of their
+      effects."
+    portugueseText: "Consum\xEDveis\n\nChance de Drop: 10% de chance de derrubar
+      um consum\xEDvel ao derrotar um inimigo.\n\nVoc\xEA deve testar os consum\xEDveis
+      que encontrar, n\xE3o h\xE1 ilustra\xE7\xF5es sobre eles no livro do alquimista,
+      apenas descri\xE7\xF5es de seus efeitos."
   - englishText: 'Sort
 
 
-      Usage: press Q.
+      Use: Press Q to use.
 
-      Does: Sorts all of your inventories
-      in a pre determined order.'
-    portugueseText: 'Remover
+      Effect: Sorts all inventories.
 
 
-      texto'
-  - englishText: 'Heal
+      Description:
+
+      Rearranges
+      the elemental flow between containers, restoring order to your mixtures.'
+    portugueseText: "Organizar\n\nUso: Pressione Q para usar.\nEfeito: Organiza todos
+      os invent\xE1rios.\n\nDescri\xE7\xE3o:\nReorganiza o fluxo elemental entre
+      os compartimentos, restaurando a ordem nas suas misturas."
+  - englishText: 'Insert
 
 
-      Usage: press Q.
+      Use: Press Q, then choose an inventory (1, 2, or
+      3).
 
-      Does: Heals 1 hp.'
-    portugueseText: 'Remover
-
-
-      texto'
-  - englishText: 'Mana Potion
+      Effect: Inserts 2 of the same random element into the selected inventory.
 
 
-      Usage: press Q.
+      Description:
 
-      Does: your mana becomes
-      infinite for a determined time.'
-    portugueseText: 'Remover
+      Summons
+      a duplicate reaction of raw elemental essence, useful for quick combinations.'
+    portugueseText: "Inserir\n\nUso: Pressione Q e escolha um invent\xE1rio (1, 2
+      ou 3).\nEfeito: Insere 2 elementos iguais (aleat\xF3rios) no invent\xE1rio
+      selecionado.\n\nDescri\xE7\xE3o:\nInvoca uma rea\xE7\xE3o duplicada de ess\xEAncia
+      elemental bruta, \xFAtil para combina\xE7\xF5es r\xE1pidas."
+  - englishText: 'Remove
 
 
-      texto'
+      Use: Press Q, then choose an inventory (1, 2, or
+      3).
+
+      Effect: Removes one specific element from the selected point.
+
+
+      Description:
+
+      Purges
+      unwanted material, leaving room for a cleaner reaction.'
+    portugueseText: "Remover\n\nUso: Pressione Q e escolha um invent\xE1rio (1, 2
+      ou 3).\nEfeito: Remove um elemento espec\xEDfico do ponto selecionado.\n\nDescri\xE7\xE3o:\nRemove
+      materiais indesejados, abrindo espa\xE7o para uma rea\xE7\xE3o mais pura."
+  - englishText: "Heal\n\nUse: Press Q to use.\nEffect: Restores 1 life point.\n\nDescription:\nA
+      common mixture, yet essential \u2014 mends minor wounds and restores vitality."
+    portugueseText: "Curar\n\nUso: Pressione Q para usar.\nEfeito: Restaura 1 ponto
+      de vida.\n\nDescri\xE7\xE3o:\nUma mistura comum, por\xE9m essencial, cura ferimentos
+      leves e restaura a vitalidade."
+  - englishText: 'Life Increase
+
+
+      Use: Press Q to use.
+
+      Effect: Increases
+      retry lives.
+
+
+      Description:
+
+      A rare elixir that grant another chance
+      at life.'
+    portugueseText: "Aumento de Vida\n\nUso: Pressione Q para usar.\nEfeito: Aumenta
+      as vidas de tentativa.\n\nDescri\xE7\xE3o:\nUm elixir raro que concede mais
+      uma chance de vida."
+  - englishText: "Mana Buff\n\nUse: Press Q to use.\nEffect: Makes mana infinite
+      for a short period.\n\nDescription:\nTemporarily unleashes the alchemist\u2019s
+      full potential, pure, unrestrained energy flows freely."
+    portugueseText: "Impulso de Mana\n\nUso: Pressione Q para usar.\nEfeito: Torna
+      a mana infinita por um curto per\xEDodo.\n\nDescri\xE7\xE3o:\nLibera temporariamente
+      todo o potencial do alquimista, energia pura e ilimitada flui livremente."

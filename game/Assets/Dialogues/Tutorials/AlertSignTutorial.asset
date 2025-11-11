@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - englishText: Caution!
-    portugueseText: Cuidade!
+    portugueseText: Cuidado!
   - englishText: This sign means that there's danger ahead...
     portugueseText: "Essa placa indica que h\xE1 perigo em frente..."
+  - englishText: Perhaps I should consult my book before moving on...
+    portugueseText: Talvez eu deva consultar meu livro antes de continuar...
+  - englishText: Press B to open the Book.
+    portugueseText: Pressione B para abrir o Livro.

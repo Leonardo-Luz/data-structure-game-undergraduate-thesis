@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: Spawn
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: "The rain won\u2019t slow me down. I\u2019ve tracked him this far,
+      and I won\u2019t stop now.\n\nPress E to continue"
+    portugueseText: "A chuva n\xE3o vai me deter. Segui o rastro dele at\xE9 aqui,
+      e n\xE3o vou parar agora.\n\nPressione E para continuar"
+  - englishText: That thief thought he could steal my research and vanish into the
+      night... he was wrong.
+    portugueseText: "Aquele ladr\xE3o achou que podia roubar minha pesquisa e desaparecer
+      na noite... mas se enganou"
+  - englishText: "The Philosopher\u2019s Stone was my creation, my proof to the Circle
+      of Alchemists. He may carry it now, but its power answers only to me"
+    portugueseText: "A Pedra Filosofal \xE9 minha cria\xE7\xE3o, minha prova diante
+      do C\xEDrculo dos Alquimistas. Ele pode carreg\xE1-la, mas seu poder responde
+      apenas a mim"
+  - englishText: His trail is fresh, even through the storm. I can feel his presence
+      ahead.
+    portugueseText: "O rastro ainda est\xE1 fresco, mesmo sob a tempestade. Consigo
+      sentir sua presen\xE7a adiante."
+  - englishText: He escaped to the right. I should keep going after him...
+    portugueseText: "Ele fugiu para a direita. Eu deveria continuar atr\xE1s dele.."

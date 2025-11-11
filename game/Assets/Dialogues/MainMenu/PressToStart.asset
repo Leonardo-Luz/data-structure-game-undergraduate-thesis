@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PressToStart
   m_EditorClassIdentifier: 
   lines:
-  - englishText: Press any key to start
-    portugueseText: "Pressione qualque tecla para come\xE7ar"
+  - englishText: Press "E" to start
+    portugueseText: "Pressione \"E\" Para Come\xE7ar"

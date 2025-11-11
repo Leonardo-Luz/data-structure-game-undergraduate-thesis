@@ -9,8 +9,8 @@ public class EnemyDamage : MonoBehaviour
   [SerializeField] private float invulnerabilityTimeout = 0.2f;
   [SerializeField] private bool randomizeStats = true;
   [SerializeField] private bool changeWeaknesses = false;
-  [SerializeField] private float  changeWeaknessesDelay;
-  [SerializeField] private Vector2  changeWeaknessesDelayRange = new Vector2(2f, 12f);
+  [SerializeField] private float changeWeaknessesDelay;
+  [SerializeField] private Vector2 changeWeaknessesDelayRange = new Vector2(2f, 12f);
   [SerializeField] private BoxCollider2D HitBox;
   [SerializeField] private BoxCollider2D HurtBox;
   [SerializeField] private float hitCooldown = 0.1f;
@@ -175,6 +175,7 @@ public class EnemyDamage : MonoBehaviour
           (weakness == Element.EARTH && collider.CompareTag("Earth")))
       {
         health.TakeDamage(collider.GetComponent<ProjectileController>().damage);
+        Score.Instance.AddCorrectInfusion();
         return;
       }
     }

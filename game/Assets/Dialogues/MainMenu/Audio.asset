@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
-  m_Name: Campfire
+  m_Name: Audio
   m_EditorClassIdentifier: 
   lines:
-  - englishText: This campifire will heal you and change your respawn to here after
-      u interact with it.
-    portugueseText: sofa
+  - englishText: Audio
+    portugueseText: Audio

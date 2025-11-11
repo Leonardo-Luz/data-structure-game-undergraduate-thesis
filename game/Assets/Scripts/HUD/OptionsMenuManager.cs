@@ -72,4 +72,3 @@ public class OptionsMenuManager : MonoBehaviour
     SetCanvasGroup(optionsGroup, false);
   }
 }
-
