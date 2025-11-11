@@ -57,8 +57,6 @@ Durante a jornada, o jogador enfrentará inimigos e desafios utilizando conceito
 | **Fraquezas**                  | Cada inimigo possui fraquezas específicas; o jogador deve combinar elementos corretos para causar dano efetivo. |
 | **Pontuação**                  | A pontuação final considera combinações corretas, combinações erradas, mortes e o tempo total para completar a fase. |
 
----
-
 ## Mecânicas Genéricas
 
 - Movimentação 2D  
