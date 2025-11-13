@@ -33,7 +33,43 @@ presença dos elementos alquímicos como mecanismo central de combate.
 
 \subsection*{Regras}
 
-\fixme{regras...}
+As regras do jogo definem as condições que orientam o comportamento do jogador
+e do sistema, estabelecendo os limites e critérios que estruturam a experiência
+interativa. Elas determinam as ações permitidas, as consequências de erros e
+acertos, e os parâmetros que conduzem à progressão ou ao término da fase.
+
+No contexto deste projeto, as regras estão intrinsecamente relacionadas aos
+objetivos educacionais e narrativos do jogo. O jogador deve explorar o
+ambiente, realizar combinações de elementos alquímicos e superar desafios
+seguindo um conjunto de condições previamente definidas. Para progredir, é
+necessário alcançar o final de cada fase, vencendo os obstáculos e inimigos
+dispostos ao longo do percurso.
+
+Entre as principais regras implementadas, destacam-se:
+
+\begin{itemize}
+  \item O jogador perde pontos de vida ao realizar combinações incorretas de
+    elementos alquímicos ou ao entrar em contato com inimigos e seus
+    respectivos projéteis.
+
+  \item Cada inventário possui um limite máximo de três elementos;
+
+  \item A conclusão da fase ocorre mediante a interação do jogador com um
+    objeto específico localizado ao final do nível;
+
+  \item O tempo total de conclusão influencia diretamente a pontuação final
+    obtida;
+
+  \item O jogador é penalizado por mortes e erros recorrentes, refletindo os
+    princípios de avaliação formativa e somativa;
+
+  \item Ao atingir zero pontos de vida, o jogador perde uma tentativa e retorna
+    ao ponto de controle anterior, recuperando integralmente sua vida;
+
+  \item Caso o jogador fique sem tentativas restantes e volte a atingir zero
+    pontos de vida, a fase é reiniciada, resultando na perda de todo o
+    progresso obtido.
+\end{itemize}
 
 \subsection*{Mecânicas}
 
@@ -75,6 +111,12 @@ coeso entre mecânica e estética. A \autoref{tab:elementos_jogo} descreve os
 objetos implementados e suas respectivas funções no contexto do jogo.
 
 \input{tables/elementos-jogo}
+
+Cabe destacar que nem todos os elementos desenvolvidos nesta etapa estão
+contemplados na \autoref{tab:elementos_jogo} acima. Alguns objetos secundários e recursos
+complementares, implementados com o objetivo de aprimorar a imersão e a fluidez
+da experiência, foram omitidos por não exercerem papel central na dinâmica do
+jogo.
 
 \subsection*{Pontuação}
 
