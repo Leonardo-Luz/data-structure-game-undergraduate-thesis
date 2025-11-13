@@ -27,7 +27,17 @@ MonoBehaviour:
       to form a mixture.
     portugueseText: "Usar o mesmo invent\xE1rio novamente extrai o elemento. Fa\xE7a
       isso duas vezes para formar uma mistura."
-  - englishText: "Once it\u2019s ready, I can press Enter to release the reaction."
-    portugueseText: "Quando estiver pronto, pressione Enter para liberar a rea\xE7\xE3o."
+  - englishText: Only elements of the same type can form a mixture, luckly this consumable
+      only creates elements of the same type.
+    portugueseText: "Somente elementos do mesmo tipo podem formar uma mistura, por
+      sorte este consum\xEDvel s\xF3 pode gerar elementos do mesmo tipo."
+  - englishText: Holding downwards also generates elements, but it consumes mana
+      and time...
+    portugueseText: "Segurar para baixo tamb\xE9m gera elementos, entretanto isso
+      consome mana e tempo..."
+  - englishText: Once the combination is ready, I can press Enter to release the
+      reaction.
+    portugueseText: "Quando a combina\xE7\xE3o estiver pronto, pressione Enter para
+      liberar a rea\xE7\xE3o."
   - englishText: That should be enough to deal with that slime.
     portugueseText: Isso deve bastar para lidar com aquela gosma.
