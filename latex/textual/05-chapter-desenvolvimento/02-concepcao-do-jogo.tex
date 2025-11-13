@@ -1,0 +1,145 @@
+\section{Concepção do Jogo}
+
+Esta seção apresenta o processo de concepção do jogo sério. Aqui são descritos
+os principais elementos que compõem o jogo, incluindo seus objetivos,
+narrativa, regras, mecânicas, elementos visuais, sistema de pontuação e
+feedback educacional, estabelecendo as bases conceituais para o desenvolvimento
+apresentado nas seções seguintes.
+
+\subsection*{Objetivos do Jogo}
+
+O Jogador tem como objetivo narrativo recuperar a sua pesquisa a respeito da
+pedra filosofal
+
+\subsubsection*{Gênero e Perspectiva}
+
+O jogo é um \textbf{platformer 2D} (jogo de plataforma em duas dimensões) com
+perspectiva \textit{side-scrolling}. Essa escolha baseia-se na familiaridade do
+público geral com clássicos como Super Mario Bros e Mega Man, facilitando a
+adoção do jogo e tornando a experiência intuitiva.
+
+\subsection*{Temática e Narrativa}
+
+A narrativa é ambientada em um universo de \textbf{alquimia} mística e
+medieval. O protagonista é um \textit{plague doctor} (doutor da peste) que teve
+sua pesquisa sobre a \textbf{pedra filosofal} roubada por um alquimista rival
+enquanto viajava para a capital para apresentá-la. Seu objetivo é recuperar a
+pesquisa, navegando por diferentes regiões e enfrentando adversários durante a
+sua jornada.
+
+Essa narrativa fornece contexto e motivação para as ações do jogador,
+aumentando o engajamento e criando imersão. O enredo também justifica a
+presença dos elementos alquímicos como mecanismo central de combate.
+
+\subsection*{Regras}
+
+\fixme{regras...}
+
+\subsection*{Mecânicas}
+
+A seguir, são aprofundadas as principais mecânicas desenvolvidas seguindo,
+majoritariamente, os requisitos funcionais previamente apresentados na
+\autoref{sec:req_func}, sendo divididas entre mecânicas centrais e mecânicas
+genéricas.
+
+\subsubsection*{Mecânicas Centrais}
+
+As mecânicas centrais correspondem aos elementos de jogabilidade diretamente
+relacionados aos objetivos principais do projeto e à aplicação dos conceitos de
+estrutura de dados. Elas representam o núcleo funcional do jogo, onde se
+concentram as interações que concretizam a proposta educacional do
+desenvolvimento. Na \autoref{tab:mecanicas_centrais}, a seguir, essas mecânicas
+são apresentadas e descritas, evidenciando como os princípios de estrutura de
+dados foram incorporados à dinâmica do jogo.
+
+\input{tables/mecanicas-centrais}
+
+\subsubsection*{Mecânicas Genéricas}
+
+As mecânicas genéricas compreendem o conjunto de funcionalidades fundamentais
+que sustentam a jogabilidade e garantem a coerência da experiência interativa.
+Elas formam a base sobre a qual as demais dinâmicas e desafios são construídos,
+assegurando que o jogador tenha controle responsivo e feedbacks claros de suas
+ações. Na \autoref{tab:mecanicas_genericas}, a seguir, essas mecânicas são
+apresentadas e descritas de forma a evidenciar seu papel na estrutura
+fundamental do jogo.
+
+\input{tables/mecanicas-genericas}
+
+\subsection*{Elementos do Jogo}
+
+Esta seção apresenta os principais elementos que compõem a estrutura e a
+experiência interativa do jogo. Cada componente foi projetado para contribuir
+com a jogabilidade, a narrativa e a ambientação, formando um ecossistema
+coeso entre mecânica e estética. A \autoref{tab:elementos_jogo} descreve os
+objetos implementados e suas respectivas funções no contexto do jogo.
+
+\input{tables/elementos-jogo}
+
+\subsection*{Pontuação}
+
+O sistema de pontuação foi desenvolvido para oferecer uma forma objetiva de
+mensurar o desempenho do jogador ao longo das partidas. Ao término de cada
+fase, o jogo apresenta um \textbf{feedback somativo} por meio de um relatório
+de desempenho que sintetiza os resultados obtidos. A pontuação total é
+calculada a partir de múltiplos fatores, como o número de combinações corretas
+e incorretas, mortes e tempo total de conclusão, permitindo avaliar tanto a
+eficiência quanto a precisão das ações realizadas.
+
+Esse cálculo é processado de forma automatizada, garantindo consistência na
+avaliação e eliminando subjetividades na análise do desempenho. A pontuação
+final é determinada a partir de uma combinação de fatores relacionados ao tempo
+de conclusão da fase, ao número de infusões corretas e incorretas, e à
+quantidade de mortes do jogador.
+
+A fórmula utilizada para o cálculo da pontuação final é expressa pela
+\autoref{eq:calc_pont}, em que cada componente contribui de forma ponderada
+para o resultado geral:
+
+\begin{equation}
+S = \max\!\left(0,\; (1000 - 10\,t) + (100\,c - 25\,e) - 150\,d \right)
+\label{eq:calc_pont}
+\end{equation}
+
+em que:
+
+\begin{itemize}
+  \item \(S\) representa a pontuação final obtida pelo jogador;
+  \item \(t\) é o tempo total de conclusão da fase (em segundos);
+  \item \(c\) é o número de infusões corretas realizadas;
+  \item \(e\) é o número de infusões incorretas;
+  \item \(d\) corresponde ao número de mortes ocorridas.
+\end{itemize}
+
+\subsection*{Feedback Educacional}
+
+O sistema de \textit{feedback} educacional foi concebido para reforçar o
+aprendizado de forma contínua e integrada à experiência de jogo. Sua
+implementação busca promover uma aprendizagem ativa, na qual o jogador recebe
+respostas imediatas às suas ações, sem comprometer a fluidez do
+\textit{gameplay}. Essa dinâmica permite que o processo de experimentação e
+correção ocorra de maneira natural, favorecendo a compreensão dos efeitos de
+cada escolha e das relações entre os conceitos de estrutura de dados
+representados nas mecânicas do jogo.
+
+Os diferentes tipos de \textit{feedback} foram projetados para atuar em
+múltiplos níveis de interação, variando de respostas visuais imediatas a
+avaliações formativas sutis, conforme sua função no processo de aprendizagem.
+Quando o jogador realiza uma combinação incorreta, o sistema apresenta efeitos
+sonoros e um \textbf{feedback visual de erro}, evidenciado por mudanças de cor
+no personagem e efeitos de penalidade, como a perda de pontos de vida. Esse
+retorno instantâneo sinaliza a falha sem interromper a continuidade da ação,
+permitindo que o jogador aprenda com o erro por meio da tentativa e erro.
+
+Por outro lado, ao executar combinações corretas de elementos alquímicos, o
+jogador recebe uma \textbf{avaliação formativa implícita}, expressa por efeitos
+sonoros e visuais que indicam sucesso na ação. Esse tipo de retorno atua como
+reforço positivo, incentivando a experimentação e consolidando o aprendizado
+por meio da prática direta.
+
+Complementando esses retornos imediatos, o \textbf{feedback somativo}
+apresentado ao final de cada fase, descrito na seção anterior,
+integra o processo avaliativo de forma global, permitindo ao jogador refletir
+sobre seu desempenho e identificar aspectos a melhorar. Assim, o sistema de
+\textit{feedback} atua de maneira articulada, combinando respostas instantâneas
+e avaliações finais para sustentar um ciclo contínuo de aprendizado.

@@ -1,0 +1,205 @@
+\subsection{Fase 3 - Desenvolvimento do Jogo Educacional} \label{sec:fase_5_desenvolvimento}
+
+Esta fase abrange as etapas práticas de implementação: levantamento de
+requisitos, concepção visual e narrativa, design de mecânicas e implementação
+técnica. Esta etapa será mais aprofundada no \autoref{cap:desenvolvimento}
+
+% \subsubsection*{A3.1 - Análise do Jogo e Levantamento de Requisitos}
+%
+% Os requisitos foram estruturados em duas categorias: funcionais e não-funcionais.
+%
+% \paragraph*{Requisitos Funcionais}
+%
+% Os requisitos funcionais definem as funcionalidades que o sistema deve
+% implementar. Esses requisitos estão detalhados no \autoref{apd:rf}
+% e incluem aspectos como manipulação de inventários, sistema de combate,
+% progresso do jogador, salvamento de partida e geração de feedback educacional.
+%
+% \paragraph*{Requisitos Não-Funcionais}
+%
+% Os requisitos não-funcionais especificam características de qualidade e
+% restrições técnicas. Esses requisitos estão detalhados no \autoref{apd:nrf}
+%  e abrangem aspectos como performance, compatibilidade, segurança,
+% mantibilidade e acessibilidade.
+%
+% \subsubsection*{A3.2 - Concepção do Jogo}
+%
+% \paragraph*{Gênero e Perspectiva}
+%
+% O jogo é um \textbf{platformer 2D} (jogo de plataforma em duas dimensões) com
+% perspectiva \textit{side-scrolling}. Essa escolha baseia-se na familiaridade do
+% público geral com clássicos como Super Mario Bros e Mega Man, facilitando a
+% adoção do jogo e tornando a experiência intuitiva.
+%
+% \paragraph*{Temática e Narrativa}
+%
+% A narrativa é ambientada em um universo de \textbf{alquimia} mística e
+% medieval. O protagonista é um \textit{plague doctor} (doutor da peste) que teve
+% sua pesquisa sobre a \textbf{pedra filosofal} roubada por um alquimista rival
+% enquanto viajava para a capital para apresentá-la. Seu objetivo é recuperar a
+% pesquisa, navegando por diferentes regiões e enfrentando adversários durante a
+% sua jornada.
+%
+% Essa narrativa fornece contexto e motivação para as ações do jogador,
+% aumentando o engajamento e criando imersão. O enredo também justifica a
+% presença dos elementos alquímicos como mecanismo central de combate.
+%
+% \paragraph*{Mecânicas Centrais}
+%
+% As mecânicas principais do jogo são:
+%
+% \begin{itemize}
+%   \item \textbf{Movimentação e Exploração}: o jogador controla o plague doctor, movendo-se horizontalmente pelos níveis, pulando e interagindo com o ambiente;
+%
+%   \item \textbf{Sistema de Inventários Estruturados}: o jogador possui três inventários independentes (pilha, fila e lista), cada um representando uma estrutura de dados específica. Os elementos alquímicos (fogo, água, ar, terra) são armazenados nesses inventários;
+%
+%   \item \textbf{Combinação de Elementos}: para atacar, o jogador deve remover elementos dos inventários e combiná-los corretamente. Por exemplo:
+%   \begin{itemize}
+%     \item Dois elementos fogo combinados geram um ataque de fogo;
+%     \item Dois elementos água combinados geram um ataque de água;
+%     \item A combinação respeitará as regras da estrutura de origem (LIFO para pilha, FIFO para fila, acesso livre para lista).
+%   \end{itemize}
+%
+%   \item \textbf{Vulnerabilidades de Inimigos}: cada inimigo possui vulnerabilidades específicas a um ou mais elementos. Ataques com o elemento correto causam dano;
+%
+%   \item \textbf{Consumíveis}: itens especiais encontrados durante o jogo auxiliam na progressão:
+%   \begin{itemize}
+%     \item \textbf{Ordenação}: ordena a estrutura de dados, permitindo reorganizar elementos;
+%     \item \textbf{Insert}: insere dois elementos iguais em um inventário específico;
+%     \item \textbf{Remove}: remove um elemento de um inventário específico;
+%     \item \textbf{Mana}: concede mana infinita por um tempo determinado;
+%     \item \textbf{Cura}: cura 1 ponto de vida;
+%     \item \textbf{Vida Extra}: aumenta a quantidade de tentativas em 1.
+%   \end{itemize}
+% \end{itemize}
+%
+% \subsubsection*{A3.3 - Design do Jogo}
+%
+% \paragraph*{Elementos Visuais e Artísticos}
+%
+% O jogo utiliza \textit{pixel art} como estilo visual, em homenagem aos
+% clássicos de 8 e 16 bits, facilitando a conexão com o público-alvo e permitindo
+% desenvolvimento mais ágil. Os sprites do protagonista, inimigos, objetos e
+% cenários foram criados em pixel art original, mantendo coerência visual e
+% legibilidade.
+%
+% A paleta de cores foi escolhida para refletir a temática do personagem
+% principal, seguindo majoritariamente tons de azul e roxo, tanto mais escuros
+% quanto pastéis.
+%
+% \paragraph*{Interface e Comunicação Visual}
+%
+% A interface foi projetada com princípios de \textbf{minimalismo} e
+% \textbf{clareza}, evitando sobrecarga visual:
+%
+% \begin{itemize}
+%   \item \textbf{Inventário Visual}: os inventários são exibidos na parte inferior à direita, mostrando os elementos armazenados em cada estrutura através de representações visuais claras;
+%
+%   \item \textbf{Feedback Visual de Erros}: quando uma combinação incorreta é realizada, o jogo exibe feedback visual (mudança de cor do jogador e efeito de penalidade) sem interromper a fluidez do \textit{gameplay};
+%
+%   \item \textbf{Indicadores de Vulnerabilidade}: inimigos exibem visualmente seus elementos de vulnerabilidade através de ícones, permitindo que o jogador identifique rapidamente a estratégia apropriada.
+% \end{itemize}
+%
+% \paragraph*{Sistema de Pontuação e Progressão}
+%
+% A pontuação é baseada em:
+%
+% \begin{itemize}
+%   \item \textbf{Eficiência}: quantos ataques bem-sucedidos foram realizados em relação ao total;
+%   \item \textbf{Tempo}: bônus por completar a fase rapidamente;
+%   \item \textbf{Sem Dano}: bônus adicional se o jogador completar a fase sem perder vidas.
+% \end{itemize}
+%
+% O progresso é salvo automaticamente em pontos de controle (checkpoints)
+% estrategicamente posicionados em cada fase, evitando frustração causada por
+% perda de progresso.
+%
+% \subsubsection*{A3.4 - Implementação Técnica}
+%
+% \paragraph*{Ferramentas e Tecnologias}
+%
+% \begin{itemize}
+%   \item \textbf{Motor de Jogo}: Unity 2022 LTS, selecionada por sua robustez, suporte multiplataforma e capacidade de criar jogos de performance eficiente;
+%
+%   \item \textbf{Linguagem de Programação}: C\#, linguagem nativa da Unity, utilizada para implementar toda a lógica do jogo, incluindo estruturas de dados e sistemas de \textit{gameplay};
+%
+%   \item \textbf{Criação de Assets Visuais}: GIMP (GNU Image Manipulation Program), software livre utilizado para criar e editar sprites em pixel art;
+%
+%   \item \textbf{Controle de Versão}: Git com repositório remoto, garantindo rastreamento de alterações e possibilidade de recuperação de versões anteriores.
+% \end{itemize}
+%
+% \paragraph*{Arquitetura de Código}
+%
+% As estruturas de dados (pilha, fila e lista) foram implementadas como classes
+% independentes em C\#, permitindo:
+%
+% \begin{itemize}
+%   \item Reaproveitamento de código entre diferentes contextos do jogo;
+%   \item Clareza didática: o código das estruturas reflete diretamente os conceitos ensinados;
+%   \item Testes unitários simplificados para validar o comportamento das estruturas.
+% \end{itemize}
+%
+% Cada classe implementa operações fundamentais:
+%
+% \begin{itemize}
+%   \item \textbf{Stack (Pilha)}: \texttt{Push()}, \texttt{Pop()}, \texttt{Peek()}. Respeitando a ordem LIFO.
+%
+%   \item \textbf{Queue (Fila)}: \texttt{Enqueue()}, \texttt{Dequeue()}, \texttt{Peek()}. Respeitando a ordem FIFO.
+%
+%   \item \textbf{List (Lista)}: \texttt{Add()}, \texttt{Insert()}, \texttt{RemoveAt()}, \texttt{Get()}. Permitindo acesso livre em qualquer posição.
+% \end{itemize}
+%
+% \paragraph*{Sistemas de Jogo Implementados}
+%
+% \begin{itemize}
+%   \item \textbf{Sistema de Movimento}: controle do personagem (esquerda, direita, pulo), colisão com plataformas e inimigos;
+%
+%   \item \textbf{Sistema de Combate}: detecção de combinações de elementos, validação contra regras de estruturas, cálculo de dano;
+%
+%   \item \textbf{Sistema de Inventário}: gerenciamento de elementos nos inventários, suporte a operações específicas de cada estrutura;
+%
+%   \item \textbf{Sistema de Vida}: rastreamento da vida do jogador, aplicação de penalidades, condição de derrota;
+%
+%   \item \textbf{Sistema de Progresso}: salvamento e carregamento de estado, gestão de fases desbloqueadas, registro de pontuação;
+%
+%   \item \textbf{Sistema de Feedback}: implementação de mensagens visuais, sonoras e textuais que reforçam o aprendizado.
+% \end{itemize}
+%
+% \subsubsection*{A3.5 - Testes do Jogo}
+%
+% Os testes foram conduzidos em múltiplas etapas:
+%
+% \paragraph*{Testes Funcionais}
+%
+% Testes para validar se todas as funcionalidades implementadas operam conforme
+% especificado:
+%
+% \begin{itemize}
+%   \item Operações de estruturas de dados (inserção, remoção, ordenação);
+%   \item Lógica de combate e detecção de vulnerabilidades;
+%   \item Sistema de salvamento e carregamento;
+%   \item Interface e feedback visual.
+% \end{itemize}
+%
+% \paragraph*{Testes Educacionais}
+%
+% Testes com usuários reais para validar a eficácia pedagógica:
+%
+% \begin{itemize}
+%   \item \textbf{Participantes}: estudantes do curso de Análise e Desenvolvimento de Sistemas (conhecimento prévio de programação), entusiastas de jogos (sem conhecimento específico de estruturas de dados) e pessoas leigas (sem conhecimento técnico);
+%
+%   \item \textbf{Instrumentos}: observação direta, questionários pós-jogo, análise de métricas de desempenho (tempo, tentativas, acertos);
+%
+%   \item \textbf{Focos de Avaliação}: compreensão implícita dos conceitos, engajamento, diversão, clareza das mecânicas, dificuldade progressiva.
+% \end{itemize}
+%
+% \paragraph*{Resultados Preliminares}
+%
+% Os testes iniciais indicaram:
+%
+% \begin{itemize}
+%   \item Boa compreensão dos mecanismos de estruturas de dados mesmo entre participantes sem conhecimento prévio;
+%   \item Engajamento sustentado com a temática alquímica e narrativa do \textit{plague doctor};
+%   \item Feedback visual e mecânicas intuitivas facilitando a adoção;
+%   \item Necessidade de ajustes na dificuldade de certas fases e clareza de alguns consumíveis.
+% \end{itemize}

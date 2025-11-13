@@ -1,0 +1,30 @@
+\begin{listing}[H]
+\caption{Algoritmo utilizado para calcular a pontuação}
+\begin{minted}[
+fontsize=\small,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+public class Score : MonoBehaviour
+{
+  // ...
+
+  private double CalculateFinalScore(double time)
+  {
+    double timeBonus = Mathf.Max(0, 1000 - (float)time * 10);
+    double infusionScore = (correctInfusions * 100) - (wrongInfusions * 25);
+    double deathPenalty = deaths * 150;
+
+    return Mathf.Max(0, (float)(timeBonus + infusionScore - deathPenalty));
+  }
+
+  // ...
+}
+\end{minted}
+\label{code:calc_pont}
+\end{listing}

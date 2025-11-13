@@ -1,0 +1,131 @@
+\section{Design do Jogo}
+
+Esta seção apresenta o processo de concepção visual e estrutural do jogo,
+abrangendo desde a definição estética dos elementos gráficos até a organização
+espacial e narrativa das fases. O design do jogo foi orientado pelos requisitos
+funcionais estabelecidos na etapa de desenvolvimento, buscando aliar clareza
+visual, coerência temática e funcionalidade interativa. São descritos os
+principais componentes visuais, como personagens, inimigos, cenários e
+interfaces, bem como a modelagem do nível inicial e dos diálogos que compõem a
+experiência lúdica e pedagógica proposta.
+
+\subsection*{Definir Game Engine}
+
+Dentre as diversas \textit{game engines} disponíveis atualmente, realizou-se uma
+análise comparativa considerando critérios como facilidade de uso,
+documentação, suporte multiplataforma, performance, comunidade ativa e
+adequação aos objetivos educacionais do projeto. A partir desses critérios,
+foram selecionadas três alternativas principais para avaliação: \textbf{Godot},
+\textbf{Unreal Engine} e \textbf{Unity}.
+
+\input{tables/game-engine-comp}
+
+A \textbf{Godot} apresenta-se como uma ferramenta de código aberto, leve e
+altamente personalizável, com uma comunidade em crescimento constante. Seu
+principal atrativo está na licença permissiva e na facilidade de prototipagem
+rápida. No entanto, limitações no desempenho gráfico e na maturidade de certos
+recursos, especialmente para exportações WebGL, podem representar desafios em
+projetos que demandam maior desempenho. \cite{godotmanual}
+
+A \textbf{Unreal Engine}, por outro lado, é reconhecida por seu poder gráfico e
+ferramentas robustas voltadas a produções de grande escala. Entretanto, sua
+curva de aprendizado mais acentuada, o tamanho considerável das compilações e a
+demanda por hardware mais potente a tornam menos adequada a projetos de caráter
+educacional ou voltados à execução em navegadores. \cite{unrealmanual}
+
+Por fim, a \textbf{Unity} destaca-se como uma solução equilibrada entre
+flexibilidade e desempenho. Sua arquitetura modular, ampla documentação,
+integração multiplataforma e suporte consolidado ao WebGL permitem o
+desenvolvimento de aplicações interativas com boa performance e fácil
+implantação em ambientes educacionais. Além disso, a curva de aprendizado mais
+suave e o vasto ecossistema de recursos contribuem para a agilidade no processo
+de prototipagem e implementação. \cite{unitymanual}
+
+Dessa forma, a \textit{Game Engine} selecionada para o desenvolvimento do
+projeto foi a \textbf{Unity}, por sua robustez, suporte multiplataforma e
+capacidade de criar jogos com desempenho eficiente, alinhando-se às
+necessidades tanto técnicas quanto pedagógicas desta pesquisa.
+
+\subsection*{Produzir imagens dos elementos do jogo}
+
+Nesta etapa, são apresentadas as representações visuais dos principais
+elementos descritos anteriormente na \autoref{tab:elementos_jogo}. As imagens
+ilustram a aparência, o estilo artístico e o papel de cada componente dentro do
+ambiente do jogo, complementando as descrições textuais. Essa visualização
+contribui para uma compreensão mais clara da composição estética e funcional do
+projeto, evidenciando as decisões de design que orientaram a criação dos
+personagens, cenários, inimigos e interfaces.
+
+A seguir, apresenta-se o personagem principal do jogo, responsável pelas misturas alquímicas e pela interação com o ambiente:
+\input{figures/jogador}
+
+O companheiro felino, que auxilia o jogador e integra o enredo, é mostrado a seguir:
+\input{figures/gato}
+
+A fogueira, que atua como ponto de controle e restauração do progresso, é ilustrada na imagem seguinte:
+\input{figures/fogueira}
+
+Os elementos alquímicos utilizados nas combinações que compõem as mecânicas centrais do jogo são apresentados abaixo:
+\input{figures/elementos_alquimicos}
+
+Da esquerda para a direita, os elementos são, respectivamente:
+\begin{enumerate}[label=\arabic*)]
+\item Ar;
+\item Fogo;
+\item Terra;
+\item Água;
+\end{enumerate}
+
+Os principais inimigos enfrentados durante a partida são mostrados na sequência:
+\input{figures/inimigos}
+
+Da esquerda para a direita, os inimigos são, respectivamente:
+\begin{enumerate}[label=\arabic*)]
+\item Gosma;
+\item Cogumelo;
+\item Olho Alado;
+\end{enumerate}
+
+A estrutura física do ambiente é composta por blocos modulares, responsáveis pela formação das plataformas e terrenos do cenário:
+\input{figures/tiles}
+
+As diferentes camadas de paralaxe, que compõem a profundidade visual do ambiente e reforçam a imersão, podem ser observadas, de forma sobreposta, na figura a seguir:
+\input{figures/parallaxes}
+
+Os consumíveis, que oferecem vantagens temporárias ou restauram atributos do jogador, são representados conforme a ilustração abaixo:
+\input{figures/consumiveis}
+
+Da esquerda para a direita, os consumíveis são, respectivamente:
+\begin{enumerate}[label=\arabic*)]
+\item Consumível de Inserção;
+\item Consumível de Remoção;
+\item Consumível de Ordenação;
+\item Consumível de Cura;
+\item Consumível de Mana;
+\item Consumível de Vida Extra;
+\end{enumerate}
+
+Por fim, a \textbf{HUD} apresenta as principais informações de jogabilidade, como inventário, indicadores de vida e botões de interação. A imagem a seguir exibe a interface numerada, cuja descrição detalhada é apresentada logo abaixo:
+\input{figures/hud}
+
+\begin{enumerate}[label=\arabic*)]
+\item Indicador de tentativas restantes;
+\item Pontos de vida do jogador;
+\item Botão de pausa;
+\item Livro de tutoriais;
+\item Espaço de consumível ativo;
+\item Ponteiro da pilha;
+\item Ponteiro da fila;
+\item Ponteiro da lista;
+\item Indicador da próxima inserção;
+\end{enumerate}
+
+\subsection*{Modelar o jogo}
+
+Nesta etapa, o processo de modelagem do jogo concentrou-se na definição do
+nível inicial e na estruturação dos diálogos que compõem a experiência
+narrativa e pedagógica. O objetivo foi estabelecer um ambiente introdutório que
+permitisse ao jogador compreender as mecânicas básicas, interagir com os
+principais elementos do cenário e familiarizar-se com a proposta do jogo.
+
+\input{figures/level-inicial}
