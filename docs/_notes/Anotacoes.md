@@ -1,5 +1,8 @@
 * mendeley, uzotero, faz as referências automaticamente.
 
+* Nicolas Flamel foi o suposto inventor da Pedra Filosofal.
+
+
 <!-- * Fazer o combate em turnos -->
 * se segurar um elemento/combinação ativa por um tempo determinado você toma overload (dano e perde os elementos/combinação)
 
