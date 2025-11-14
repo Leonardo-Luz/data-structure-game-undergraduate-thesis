@@ -1,0 +1,62 @@
+\begin{listing}[H]
+\caption{Trecho Simplificado do Algoritmo de Combate do Jogador}
+\begin{minted}[
+fontsize=\footnotesize,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+using UnityEngine;
+
+public class PlayerCombat : MonoBehaviour
+{
+  public IInventory[] inventories;
+
+  // Lista temporária contendo os elementos selecionados pelo jogador
+  // para compor uma combinação (conjuração).
+  public List<Element> castingList = new List<Element>();
+
+  private void Update()
+  {
+    HandleLinkedListSelection();
+    HandleCastingInput();
+  }
+
+  private void HandleLinkedListSelection()
+  {
+    // Responsável por alterar o elemento atualmente selecionado
+    // na Lista Encadeada.
+  }
+
+  private void HandleCastingInput()
+  {
+    // Adiciona elementos à conjuração conforme o inventário selecionado.
+    if (Input.GetKeyDown(KeyCode.Alpha1))
+      AddFromInventory(InventoryType.Stack);
+    else if (Input.GetKeyDown(KeyCode.Alpha2))
+      AddFromInventory(InventoryType.Queue);
+    else if (Input.GetKeyDown(KeyCode.Alpha3))
+      AddFromInventory(InventoryType.LinkedList);
+
+    // Finaliza a conjuração quando o jogador confirma a combinação.
+    else if (Input.GetKeyDown(KeyCode.Return)) FinishCasting();
+  }
+
+  private void AddFromInventory(InventoryType type)
+  {
+    // Remove um elemento da estrutura de dados correspondente
+    // (Pilha, Fila ou Lista Encadeada) e o adiciona à lista de conjuração.
+  }
+
+  private void FinishCasting()
+  {
+    // Executa a conjuração utilizando os elementos selecionados,
+  }
+}
+\end{minted}
+\label{code:combate}
+\end{listing}

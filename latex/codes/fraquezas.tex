@@ -1,0 +1,51 @@
+\begin{listing}[H]
+\caption{Trecho Simplificado do Algoritmo de Fraquezas dos Inimigos}
+\begin{minted}[
+fontsize=\footnotesize,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+using UnityEngine;
+
+public class EnemyDamage : MonoBehaviour
+{
+  private void Start()
+  {
+    weaknesses = GenerateRandomWeaknesses();
+  }
+
+  private Element[] GenerateRandomWeaknesses()
+  {
+    // Gera um conjunto de elementos
+    // que representam as fraquezas do inimigo.
+    // A seleção ocorre de forma aleatória,
+    // permitindo variação entre inimigos.
+  }
+
+  private void OnTriggerEnter2D(Collider2D collider)
+  {
+    // Verifica se o objeto que colidiu corresponde a algum elemento
+    // ao qual o inimigo possui fraqueza. Caso corresponda, aplica dano.
+    foreach (var weakness in weaknesses)
+    {
+      if ((weakness == Element.FIRE  && collider.CompareTag("Fire"))  ||
+          (weakness == Element.WATER && collider.CompareTag("Water")) ||
+          (weakness == Element.AIR   && collider.CompareTag("Air"))   ||
+          (weakness == Element.EARTH && collider.CompareTag("Earth")))
+      {
+        // Obtém o valor de dano do projétil e aplica ao inimigo.
+        int damage = collider.GetComponent<ProjectileController>().damage
+        health.TakeDamage(damage);
+        return;
+      }
+    }
+  }
+}
+\end{minted}
+\label{code:fraquezas}
+\end{listing}

@@ -1,10 +1,112 @@
 \section{Implementação do Jogo}
 
-Nesta seção é apresentada a implementação do jogo, realizada na \emph{game
-engine} \textbf{Unity}. São descritos o desenvolvimento dos elementos listados
-na \autoref{tab:elementos_jogo}, bem como a aplicação das mecânicas centrais e
-genéricas previamente definidas nas \autoref{tab:mecanicas_centrais} e
-\autoref{tab:mecanicas_genericas}, consolidando a transição do design
-conceitual para sua forma funcional dentro do ambiente de execução.
+Esta seção apresenta a implementação do jogo desenvolvido na \emph{game engine}
+\textbf{Unity}. Inicialmente, são contextualizados os principais conceitos
+técnicos da \emph{engine} utilizados como base para a construção dos sistemas
+implementados. Em seguida, \fixme{ descrevem-se os principais elementos
+  listados na \autoref{tab:elementos_jogo} e discute-se como as mecânicas
+  centrais e genéricas, definidas nas \autoref{tab:mecanicas_centrais} e
+\autoref{tab:mecanicas_genericas}, foram convertidas em funcionalidades
+operacionais }. Dessa forma, evidencia-se a transição do design conceitual para
+sua materialização prática, demonstrando como cada decisão de design contribuiu
+para a composição do sistema final.
 
-\fixme{Falar um pouco a respeito de como as estruturas de dados foram implementadas.}
+\subsection*{Conceitos Fundamentais da Unity}
+
+Antes de detalhar a implementação dos componentes do jogo, torna-se necessário
+contextualizar alguns conceitos fundamentais da Unity, os quais orientam a
+estruturação dos \emph{scripts}, a organização dos objetos e o comportamento do
+sistema em tempo de execução. A Unity adota um modelo arquitetural baseado em
+componentes, no qual cada objeto do jogo é composto por módulos independentes
+responsáveis por sua lógica, aparência, física ou interação.
+
+No centro desse modelo está a classe \texttt{MonoBehaviour}, da qual derivam a
+maioria dos scripts comportamentais. Ela define o ciclo de vida padrão utilizado
+pela \emph{engine}, permitindo que o desenvolvedor implemente métodos executados
+automaticamente em momentos específicos da execução. Entre esses métodos,
+destacam-se:
+
+\textbf{\texttt{Start()}}: Executado uma única vez na inicialização do objeto,
+sendo empregado para configurar estados iniciais, referências e variáveis de
+controle.
+
+\textbf{\texttt{Update()}}: Chamado a cada quadro (frame), sendo adequado para
+lógicas dependentes da taxa de atualização, como leitura de entrada, animações e
+verificações contínuas.
+
+\textbf{\texttt{FixedUpdate()}}: Executado em intervalos fixos,
+independentemente da taxa de quadros, sendo indicado para cálculos de física e
+interações que exigem maior estabilidade numérica.
+
+A Unity também integra um sistema de física robusto, por meio do componente
+\break\texttt{Rigidbody2D}, que permite que objetos sejam afetados por
+forças, gravidade e colisões. A combinação entre \texttt{Rigidbody2D} e
+colisores define como cada objeto interage fisicamente com o ambiente,
+possibilitando comportamentos essenciais para movimentação, detecção de
+obstáculos e mecânicas de combate.
+
+Esses conceitos estruturam toda a implementação do jogo e fundamentam a criação
+dos sistemas apresentados nas subseções seguintes.
+
+\subsection*{Implementação do Jogador}
+
+A implementação teve início pelo componente central da experiência: o jogador.
+Foram desenvolvidos diversos \emph{scripts} em \textbf{C\#}, responsáveis pelas
+mecânicas de movimentação, combate e interação com os inventários.
+
+A \autoref{code:movimentacao} apresenta o trecho referente à movimentação do
+jogador, no qual são aplicadas diretamente as funcionalidades do ciclo de vida
+da Unity e seus componentes físicos.
+
+\input{codes/movimentacao}
+
+Com o objetivo de estruturar e padronizar o funcionamento dos inventários,
+representados por diferentes estruturas de dados, foi desenvolvida a interface
+exibida no \autoref{code:interface_inventario}. Essa interface possibilita a
+manipulação genérica das estruturas, permitindo alterar tanto o tipo quanto a
+quantidade de inventários utilizados sem comprometer o restante do sistema.
+
+\input{codes/interface-inventario}
+
+Essa interface é utilizada no \autoref{code:combate}, responsável pela lógica de
+combate do jogador. Nesse módulo, as operações de ataque integram-se às
+operações de remoção e combinação dos inventários, conectando
+diretamente a mecânica de combate às representações das estruturas de dados.
+
+\input{codes/combate}
+
+A lógica de geração e inserção de elementos nos inventários, essencial para o
+funcionamento das mecânicas centrais, é apresentada no
+\autoref{code:geracao_elementos}.
+
+\input{codes/geracao-elementos}
+
+\subsection{Implementação dos Inimigos}
+
+A implementação dos inimigos envolveu a criação de sistemas de movimentação,
+detecção de colisões, aplicação de dano e controle de comportamentos específicos
+para cada tipo de criatura. Além disso, foi incorporado o sistema de fraquezas,
+que relaciona cada inimigo a tipos específicos de elementos mais eficazes contra
+ele, conforme exemplificado no \autoref{code:fraquezas}. Esse recurso integra
+o sistema de combate às estruturas de dados manipuladas pelo jogador.
+
+\input{codes/fraquezas}
+
+\subsection{Implementação da Pontuação}
+
+O cálculo da pontuação final ao concluir uma fase é apresentado no
+\autoref{code:calc_pont} e \break fundamenta-se na \autoref{eq:calc_pont}. O
+algoritmo considera o tempo total, o número de combinações corretas,
+combinações incorretas e mortes, consolidando a avaliação da performance do
+jogador de forma objetiva e alinhada às mecânicas do jogo.
+
+\input{codes/calculo_pontuacao}
+
+\subsection*{Outros Componentes}
+
+Além dos sistemas principais, diversos outros \emph{scripts} foram implementados
+para garantir um \emph{gameplay} fluido, estável e responsivo. Entre eles,
+incluem-se módulos para controle de efeitos sonoros, partículas, interface de
+usuário, indicadores visuais, carregamento de cenas e outras funcionalidades de
+suporte. Embora não sejam o foco central das mecânicas educacionais, esses
+componentes desempenham papel importante na polidez e na imersão da experiência.

@@ -1,7 +1,7 @@
 \begin{listing}[H]
 \caption{Algoritmo utilizado para calcular a pontuação}
 \begin{minted}[
-fontsize=\small,
+fontsize=\footnotesize,
 linenos,
 bgcolor=backcolor,
 tabsize=2,
@@ -16,10 +16,26 @@ public class Score : MonoBehaviour
 
   private double CalculateFinalScore(double time)
   {
+    // Calcula o bônus de tempo:
+    // começa em 1000 e reduz 10 pontos por segundo.
+    // Nunca permite que o valor fique negativo.
     double timeBonus = Mathf.Max(0, 1000 - (float)time * 10);
-    double infusionScore = (correctInfusions * 100) - (wrongInfusions * 25);
+
+    // Pontuação baseada no número de infusões corretas
+    // (cada uma vale 100 pontos).
+    double correctScore = (correctInfusions * 100);
+
+    // Penalidade por infusões erradas (cada erro tira 25 pontos).
+    double wrongScore = (wrongInfusions * 25);
+
+    // Soma da pontuação líquida relacionada às infusões.
+    double infusionScore = correctScore - wrongScore;
+
+    // Penalidade por mortes, cada morte reduz 150 pontos.
     double deathPenalty = deaths * 150;
 
+    // Calcula a pontuação final somando tudo
+    // e garantindo que não fique negativa.
     return Mathf.Max(0, (float)(timeBonus + infusionScore - deathPenalty));
   }
 

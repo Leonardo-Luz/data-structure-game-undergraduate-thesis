@@ -1,0 +1,53 @@
+\begin{listing}[H]
+\caption{Trecho Simplificado do Algoritmo de Movimentação do Jogador}
+\begin{minted}[
+fontsize=\footnotesize,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+using UnityEngine;
+
+public class PlayerMove : MonoBehaviour
+{
+    private Rigidbody2D rb;
+
+    private void FixedUpdate()
+    {
+        // Atualiza o movimento horizontal do jogador
+        Move(Input.GetAxis("Horizontal"));
+
+        // Inicia o salto se o jogador estiver no chão e pressionar o botão.
+        if (Input.GetButtonDown("Jump") && isGrounded)
+            Jump();
+        // Reduz a força do salto caso o botão seja solto durante a ascensão.
+        else if (Input.GetButtonUp("Jump") && !isGrounded)
+            CancelJump();
+    }
+
+    private void Jump()
+    {
+        // Aplica a velocidade vertical correspondente ao salto.
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+    }
+
+    private void CancelJump()
+    {
+        // Corta parte da velocidade vertical para permitir variação na altura
+        // do salto conforme o tempo de pressionamento do botão.
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+    }
+
+    private void Move(float input)
+    {
+        // Ajusta a velocidade horizontal do jogador de acordo com a entrada recebida.
+        rb.linearVelocity = new Vector2(input * speed, rb.linearVelocity.y);
+    }
+}
+\end{minted}
+\label{code:movimentacao}
+\end{listing}

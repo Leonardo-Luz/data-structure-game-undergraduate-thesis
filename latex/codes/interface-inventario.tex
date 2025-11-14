@@ -1,0 +1,27 @@
+\begin{listing}[H]
+\caption{Interface dos Inventários}
+\begin{minted}[
+fontsize=\footnotesize,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+public enum InventoryType { Stack, Queue, LinkedList }
+
+public interface IInventory
+{
+  public InventoryType Type { get; }
+  public int Count { get; }
+  public int MaxSize { get; }
+  public bool IsFull();
+  public void Clear();
+  public void Sort();
+  public Element[] ToArray();
+}
+\end{minted}
+\label{code:interface_inventario}
+\end{listing}

@@ -1,0 +1,57 @@
+\begin{listing}[H]
+\caption{Trecho Simplificado do Algoritmo de Geração de Elementos do Jogador}
+\begin{minted}[
+fontsize=\footnotesize,
+linenos,
+bgcolor=backcolor,
+tabsize=2,
+breaklines=true,
+numbersep=5pt,
+showspaces=false,
+showtabs=false,
+]{cs}
+using UnityEngine;
+
+public class GenerateElement : MonoBehaviour
+{
+  // Variáveis e configuração inicial do script
+
+  private void Update()
+  {
+    bool holdingDown = Input.GetAxis("Vertical") < 0;
+
+    // Quando o jogador mantém o comando para baixo enquanto está no chão,
+    // inicia o processo de carregamento da habilidade de geração.
+    if (holdingDown && grounded.IsGrounded())
+    {
+      chargeTimer += Time.deltaTime;
+      curMana -= Time.deltaTime;
+
+      // Quando o tempo acumulado atinge o valor de recarga (cooldown),
+      // tenta gerar um novo elemento.
+      if (chargeTimer >= cooldown)
+      {
+        TryGenerateElement();
+        chargeTimer = 0f;
+      }
+    }
+    // Caso o jogador não esteja carregando,
+    // a mana é regenerada até o limite máximo.
+    else if (curMana < maxMana)
+    {
+      curMana += Time.deltaTime * ManaRegen;
+    }
+  }
+
+  private bool TryGenerateElement()
+  {
+    // Tenta inserir um elemento aleatório
+    // em um dos inventários disponíveis.
+    // Se o inventário atual estiver cheio, tenta o próximo.
+    // Caso todos estejam indisponíveis,
+    // a geração é considerada malsucedida.
+  }
+}
+\end{minted}
+\label{code:geracao_elementos}
+\end{listing}

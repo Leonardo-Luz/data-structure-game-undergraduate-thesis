@@ -1,4 +1,5 @@
 \newcounter{frcount}
+
 \newcommand{\frvalue}{\ifnum\value{frcount}<10 0\fi\arabic{frcount}}
 \newcommand{\frid}{FR-\frvalue}
 
@@ -7,6 +8,7 @@
 
   \begin{table}[H]
     \caption{Requisito Funcional \frvalue}
+    \footnotesize
     \begin{tabular}{|p{3cm}|p{8cm}|p{3cm}|}
       \hline
       \rowcolor{headergray}
