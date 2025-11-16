@@ -2,8 +2,8 @@
 
 **Tema:** Desenvolvimento de um Jogo Sério para o Ensino de Conceitos de Estrutura de Dados
 
-* **Autor:** *Leonardo Luz Fachel*  
-* **Instituição:** *Instituto Federal do Rio Grande do Sul*  
+* **Autor:** *Leonardo Luz Fachel*
+* **Instituição:** *Instituto Federal do Rio Grande do Sul*
 * **Curso:** *Análise e Desenvolvimento de Sistemas*
 * **Ano:** *2025*
 
@@ -11,15 +11,19 @@
 * [Responda este Formulário após Jogar - WIP](#)
 * [TCC](latex/main.pdf)
 
+## Imagem
+
+![Game Image](./latex/images/hud_bk.png)
+
 ## Motivação
 
 > A ideia deste trabalho surgiu após observar, de forma holística, que a
 > disciplina de **Estrutura de Dados** era considerada uma das mais
-> desafiadoras do curso. Diversos alunos compartilhavam essa percepção.  
+> desafiadoras do curso. Diversos alunos compartilhavam essa percepção.
 >
 > A partir disso, foi realizada uma pesquisa para verificar se essa dificuldade
 > era comum em outras instituições de ensino. Os resultados confirmaram que
-> **Estrutura de Dados** é amplamente reconhecida como uma disciplina complexa.  
+> **Estrutura de Dados** é amplamente reconhecida como uma disciplina complexa.
 >
 > Diante desse cenário, buscou-se uma alternativa para tornar o aprendizado
 > mais **prático**, **interativo** e **motivador**, resultando no
@@ -37,13 +41,13 @@ disciplina.
 
 ## Detalhes do Jogo
 
-- **Tema:** Fantasia Medieval  
-- **Gênero:** Plataforma 2D  
+- **Tema:** Fantasia Medieval
+- **Gênero:** Plataforma 2D
 
 ### Enredo
 
-O jogo se passa em um mundo fantasioso onde **monstros** existem e **misturas alquímicas** são utilizadas como armas.  
-O personagem principal teve sua pesquisa sobre a **Pedra Filosofal** roubada por um alquimista rival e agora precisa recuperá-la.  
+O jogo se passa em um mundo fantasioso onde **monstros** existem e **misturas alquímicas** são utilizadas como armas.
+O personagem principal teve sua pesquisa sobre a **Pedra Filosofal** roubada por um alquimista rival e agora precisa recuperá-la.
 Durante a jornada, o jogador enfrentará inimigos e desafios utilizando conceitos de **Estrutura de Dados** para progredir.
 
 ## Mecânicas Centrais
@@ -59,15 +63,15 @@ Durante a jornada, o jogador enfrentará inimigos e desafios utilizando conceito
 
 ## Mecânicas Genéricas
 
-- Movimentação 2D  
-- Pulo Responsivo  
-- Corrida  
-- Pontos de Controle (Checkpoints)  
-- Tentativas Limitadas  
-- Pontos de Vida (HP)  
-- Mana  
-- Pulo Duplo Situacional  
-- Capacidade de Aparar Certos Ataques  
+- Movimentação 2D
+- Pulo Responsivo
+- Corrida
+- Pontos de Controle (Checkpoints)
+- Tentativas Limitadas
+- Pontos de Vida (HP)
+- Mana
+- Pulo Duplo Situacional
+- Capacidade de Aparar Certos Ataques
 
 ---
 
