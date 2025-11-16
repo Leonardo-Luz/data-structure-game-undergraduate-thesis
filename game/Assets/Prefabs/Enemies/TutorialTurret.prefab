@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: -45394356935198766}
   m_Layer: 8
   m_Name: TutorialTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

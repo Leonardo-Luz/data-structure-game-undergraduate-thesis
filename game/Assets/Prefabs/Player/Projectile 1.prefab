@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4b65b9c10f8accea976bce00482e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tangibilityTimeout: 0.03
+  tangibilityTimeout: 0.05
   deathTimeout: 0.05
   lifetime: 6
   damage: 1

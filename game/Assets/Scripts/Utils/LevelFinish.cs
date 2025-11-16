@@ -34,7 +34,7 @@ public class LevelFinish : MonoBehaviour
     outline.isOutlined = false;
   }
 
-  private void Update()
+  private void FixedUpdate()
   {
     if (levelEnding) return;
 

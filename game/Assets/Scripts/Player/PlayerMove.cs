@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
     health.OnDeath += () => rb.linearVelocity = Vector2.zero;
   }
 
-  private void Update()
+  private void FixedUpdate()
   {
     if (isLocked || pause.isPaused)
     {
@@ -108,8 +108,8 @@ public class PlayerMove : MonoBehaviour
 
       if (isLanding)
       {
-        if(lastVelocityY <= -5.5f)
-        audioController.PlayLandingAudio();
+        if (lastVelocityY <= -5.5f)
+          audioController.PlayLandingAudio();
         isLanding = false;
       }
 

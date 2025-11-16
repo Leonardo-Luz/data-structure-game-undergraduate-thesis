@@ -43,7 +43,7 @@ public class Turret : MonoBehaviour
         ammoBar.dontSpawn = true;
         ammoBar.DespawnBar();
       }
-      else if(randomizeStats) turretHealth.SetMaxHP(Mathf.RoundToInt(Random.Range(ammoRange.x, ammoRange.y)));
+      else if (randomizeStats) turretHealth.SetMaxHP(Mathf.RoundToInt(Random.Range(ammoRange.x, ammoRange.y)));
 
       turretHealth.OnDeath += OnTurretDestroyed;
     }
@@ -54,7 +54,7 @@ public class Turret : MonoBehaviour
     initialFirePointLocalPos = firePoint.localPosition;
   }
 
-  void Update()
+  void FixedUpdate()
   {
     if (player == null || turretHealth == null) return;
 

@@ -39,7 +39,7 @@ public class LanguageManager : MonoBehaviour
     }
     else
     {
-      return Language.English;
+      return Language.Portuguese;
     }
   }
 
