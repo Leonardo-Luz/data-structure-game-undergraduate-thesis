@@ -31679,8 +31679,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6356007799912103320, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356007799912103320, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
       propertyPath: m_MatchWidthOrHeight
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6356007799912103320, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -31689,6 +31693,10 @@ PrefabInstance:
     - target: {fileID: 6356007799912103320, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356007799912103320, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6419180144368522445, guid: e2ff503647245a1e690fbc82ad063caf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

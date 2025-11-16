@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
       if (doubleJump) doubleJump = false;
     }
 
-    bool isMidAir = rb.linearVelocity.y > 0;
+    bool isMidAir = rb.linearVelocity.y >= 0;
     if (Input.GetButtonUp("Jump") && isMidAir) CancelJump();
   }
 

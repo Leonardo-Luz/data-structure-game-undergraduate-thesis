@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: CreditsInside
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: "Development, Art & Narrative\nLeonardo Luz\n\nMusic\n\u201CDark
+      8-Bit Song\u201D \u2014 sauer2\nLicense: Creative Commons 0\nSource: opengameart.org/content/dark-8bit-song\n\nSound
+      Effects\n\nFootsteps (Boss Step)\nby LilMati \u2014 License: CC0\nSource: freesound.org/s/441364/\n\nBonus
+      Pickup\nby suntemple \u2014 License: CC0\nSource: freesound.org/s/253172/\n\nHit
+      Taken (8-bit Hurt)\nby timgormly \u2014 License: CC BY 4.0\nSource: freesound.org/s/170149/\n\nMagic
+      Cast (Spell 18 \u2014 8-Bit Era)\nby sample_able \u2014 License: CC BY 4.0\nSource:
+      freesound.org/s/744578/\n\nAccess Denied\nby suntemple \u2014 License: CC0\nSource:
+      freesound.org/s/249300/\n\nHeart Pickup / Healing (Retro)\nby ReincarnatedEchoes
+      \u2014 License: CC BY 4.0\nSource: freesound.org/s/644306/\n\nBasic Retro Jump\nby
+      CJspellsfish \u2014 License: CC0\nSource: freesound.org/s/727650/\n\nLanding
+      / Hit\nby TheLittleCrow \u2014 License: CC0\nSource: freesound.org/s/587384/\n\nText
+      Scroll (8-bit Wavering)\nby EVRetro \u2014 License: CC0\nSource: freesound.org/s/523411/\n\nUI
+      Click\nby mikemunkie \u2014 License: CC0\nSource: freesound.org/s/66878/\n\nAccomplished
+      (Retro)\nby suntemple \u2014 License: CC0\nSource: freesound.org/s/253177/\n\nYou
+      Lose (Retro)\nby suntemple \u2014 License: CC0\nSource: freesound.org/s/253174/\n\nLaser
+      Shot (Retro)\nby LilMati \u2014 License: CC0\nSource: freesound.org/s/523205/"
+    portugueseText: "Desenvolvimento, Arte & Narrativa\nLeonardo Luz\n\nM\xFAsica\n\u201CDark
+      8-Bit Song\u201D \u2014 sauer2\nLicen\xE7a: Creative Commons 0\nFonte: opengameart.org/content/dark-8bit-song\n\nEfeitos
+      Sonoros\n\nPassos (Boss Step)\npor LilMati \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/441364/\n\nColeta
+      de B\xF4nus\npor suntemple \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/253172/\n\nDano
+      Sofrido (8-bit Hurt)\npor timgormly \u2014 Licen\xE7a: CC BY 4.0\nFonte: freesound.org/s/170149/\n\nMagia
+      (Spell Cast \u2014 8-Bit Era)\npor sample_able \u2014 Licen\xE7a: CC BY 4.0\nFonte:
+      freesound.org/s/744578/\n\nAcesso Negado\npor suntemple \u2014 Licen\xE7a:
+      CC0\nFonte: freesound.org/s/249300/\n\nCora\xE7\xE3o / Cura (Retro)\npor ReincarnatedEchoes
+      \u2014 Licen\xE7a: CC BY 4.0\nFonte: freesound.org/s/644306/\n\nPulo Retro\npor
+      CJspellsfish \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/727650/\n\nAterrissagem
+      / Impacto\npor TheLittleCrow \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/587384/\n\nRolagem
+      de Texto (8-bit Wavering)\npor EVRetro \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/523411/\n\nClique
+      de UI\npor mikemunkie \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/66878/\n\nConquista
+      (Retro)\npor suntemple \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/253177/\n\nVoc\xEA
+      Perdeu (Retro)\npor suntemple \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/253174/\n\nTiro
+      Laser (Retro)\npor LilMati \u2014 Licen\xE7a: CC0\nFonte: freesound.org/s/523205/"
