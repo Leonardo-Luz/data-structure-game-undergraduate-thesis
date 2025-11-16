@@ -11,7 +11,7 @@
 * [Responda este Formulário após Jogar - WIP](#)
 * [TCC](latex/main.pdf)
 
-## Imagem
+## Jogo
 
 ![Game Image](./latex/images/hud_bk.png)
 
