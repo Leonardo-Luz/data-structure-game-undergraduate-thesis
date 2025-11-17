@@ -57,4 +57,16 @@ public class Fov : MonoBehaviour
     cineCam.Lens.OrthographicSize = isZoomedOut ? zoomedOutFov : zoomedInFov;
     targetAlpha = isZoomedOut ? 1f : 0f;
   }
+
+  public void RemoveZoom()
+  {
+    isZoomedOut = true;
+    cineCam.Lens.OrthographicSize = zoomedOutFov;
+    targetAlpha = 1f;
+  }
+
+  public void RemoveHUD()
+  {
+    targetAlpha = 0f;
+  }
 }

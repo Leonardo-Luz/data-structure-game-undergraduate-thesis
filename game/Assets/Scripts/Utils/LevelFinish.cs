@@ -8,10 +8,12 @@ public class LevelFinish : MonoBehaviour
   [SerializeField] private ProximityDetection proxDetect;
   [SerializeField] private GameObject interactionBubble;
   [SerializeField] private ToastManager toast;
+  [SerializeField] private Dialogue dialogueToast;
   [SerializeField] private Dialogue dialogue;
   [SerializeField] private int levelIndex = 0;
   [SerializeField] private PauseMenu pauseMenu;
   [SerializeField] private LevelMenuManager finishPanel;
+  [SerializeField] private DialogueManager dialogueManager;
 
   [Header("Audio")]
   [SerializeField] private AudioSource music;
@@ -34,17 +36,19 @@ public class LevelFinish : MonoBehaviour
     outline.isOutlined = false;
   }
 
-  private void FixedUpdate()
+  private void Update()
   {
     if (levelEnding) return;
 
-    if (proxDetect.isTargetInRange && Input.GetKeyDown(KeyCode.E))
+    if (dialogue && !dialogueManager.isActive && proxDetect.isTargetInRange && Input.GetKeyDown(KeyCode.E))
     {
-      levelEnding = true;
-      music.Stop();
-      sfx.Play();
-      StartCoroutine(LevelEndSequence());
+      dialogueManager.onDialogueEnd += Finish;
+      dialogueManager.StartDialogue(dialogue, false);
     }
+    else if (dialogue && dialogueManager.isActive && proxDetect.isTargetInRange && Input.GetKeyDown(KeyCode.E))
+      dialogueManager.NextLine();
+    else if (proxDetect.isTargetInRange && Input.GetKeyDown(KeyCode.E))
+      Finish();
   }
 
   private IEnumerator LevelEndSequence()
@@ -97,5 +101,13 @@ public class LevelFinish : MonoBehaviour
   public void ExitLevel()
   {
     GameManager.Instance.CompleteLevel(levelIndex);
+  }
+
+  private void Finish()
+  {
+    levelEnding = true;
+    music.Stop();
+    sfx.Play();
+    StartCoroutine(LevelEndSequence());
   }
 }

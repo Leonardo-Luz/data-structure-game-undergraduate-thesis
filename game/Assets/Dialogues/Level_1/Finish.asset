@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4715ca0346b54acb6883ad9aae5456, type: 3}
+  m_Name: Finish
+  m_EditorClassIdentifier: 
+  lines:
+  - englishText: "No sign of that scheming alchemist\u2026 Looks like he slipped
+      away again."
+    portugueseText: "Nenhum sinal daquele alquimista ardiloso\u2026 Parece que escapou
+      mais uma vez."
+  - englishText: Still, the trail is fresh. He cannot be far.
+    portugueseText: "Ainda assim, o rastro est\xE1 recente. Ele n\xE3o pode estar
+      longe."
+  - englishText: I should press on before the night grows colder.
+    portugueseText: "\xC9 melhor eu continuar antes que a noite esfrie ainda mais."
+  - englishText: <b>Obrigado por jogar a demo!</b>
+    portugueseText: <b>Thanks for playing the demo!</b>
+  - englishText: "Se puder, responda o <link=\"form\">formul\xE1rio</link>, isso
+      vai me ajudar a concluir meu TCC."
+    portugueseText: If you can, please fill out the <link="form">form</link>, it
+      will help me finish my thesis.
