@@ -76,6 +76,7 @@ public class Arena : MonoBehaviour
         GameObject enemy = Instantiate(we.enemyPrefab, we.spawnPoint.position, we.spawnPoint.rotation);
         aliveEnemies.Add(enemy);
         Health e = enemy.GetComponent<Health>();
+        if (e == null) e = enemy.GetComponentInChildren<Health>();
         if (e != null) e.OnDeath += () => aliveEnemies.Remove(enemy);
       }
       yield return new WaitUntil(() => aliveEnemies.Count == 0);
@@ -95,37 +96,37 @@ public class Arena : MonoBehaviour
 
   public void ArenaReset()
   {
-      // Stop the running coroutine so it doesn’t continue spawning
-      StopAllCoroutines();
+    // Stop the running coroutine so it doesn’t continue spawning
+    StopAllCoroutines();
 
-      // Destroy any enemies that are still alive
-      foreach (GameObject enemy in aliveEnemies)
+    // Destroy any enemies that are still alive
+    foreach (GameObject enemy in aliveEnemies)
+    {
+      if (enemy != null)
+        Destroy(enemy);
+    }
+    aliveEnemies.Clear();
+
+    // Reset state
+    currentWave = -1;
+    arenaActive = false;
+
+    // Disable arena walls
+    if (arenaWalls != null)
+      arenaWalls.enabled = false;
+
+    // Reset camera
+    if (arenaCam != null)
+    {
+      arenaCam.Priority = -1;
+      var confiner = arenaCam.GetComponent<CinemachineConfiner2D>();
+      if (confiner != null)
       {
-          if (enemy != null)
-              Destroy(enemy);
+        confiner.BoundingShape2D = null;
+        confiner.InvalidateBoundingShapeCache();
       }
-      aliveEnemies.Clear();
+    }
 
-      // Reset state
-      currentWave = -1;
-      arenaActive = false;
-
-      // Disable arena walls
-      if (arenaWalls != null)
-          arenaWalls.enabled = false;
-
-      // Reset camera
-      if (arenaCam != null)
-      {
-          arenaCam.Priority = -1;
-          var confiner = arenaCam.GetComponent<CinemachineConfiner2D>();
-          if (confiner != null)
-          {
-              confiner.BoundingShape2D = null;
-              confiner.InvalidateBoundingShapeCache();
-          }
-      }
-
-      Debug.Log("[Arena] Reset complete — waiting for player to re-enter.");
+    Debug.Log("[Arena] Reset complete — waiting for player to re-enter.");
   }
 }

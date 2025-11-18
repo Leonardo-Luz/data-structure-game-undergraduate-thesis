@@ -6260,6 +6260,8 @@ MonoBehaviour:
   health: {fileID: 5293218311512801015}
   player: {fileID: 3844223724373272237}
   livesTxt: {fileID: 0}
+  gameOver: {fileID: 0}
+  pauseMenu: {fileID: 0}
   respawnAnchor: {fileID: 0}
   lives: 1
 --- !u!1 &5490706220366956760

@@ -67,9 +67,9 @@ public class DeathManager : MonoBehaviour
     }
   }
 
-  public void IncreaseLifes()
+  public void IncreaseLifes(int increase = 1)
   {
-    lives++;
+    lives = lives + increase;
     livesTxt.text = "x" + lives;
   }
 

@@ -10,6 +10,7 @@ public class Campfire : MonoBehaviour
   [SerializeField] private Outline outline;
   [SerializeField] private DeathManager playerDeath;
   [SerializeField] private bool startLit = false;
+  [SerializeField] private int increaseTries = 1;
 
   private ProximityDetection proxDetect;
   private DialogueManager dialogueManager;
@@ -105,7 +106,7 @@ public class Campfire : MonoBehaviour
 
   private void IncreaseLifePlayer()
   {
-    playerDeath.IncreaseLifes();
+    playerDeath.IncreaseLifes(increaseTries);
     playerDeath.SetAnchor(transform);
   }
 

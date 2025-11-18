@@ -17,9 +17,10 @@ public class EnemyDamage : MonoBehaviour
   [SerializeField] private ConsumableObject consumablePrefab;
   [Range(0, 100)][SerializeField] private int dropChance = 20;
   [SerializeField] private float fallHeight = 3f;
+  [SerializeField] private ElementsIndicator indicator;
+  [SerializeField] private GameObject destroyTarget;
 
   private Health health;
-  private ElementsIndicator indicator;
 
   private Flick flick;
 
@@ -62,7 +63,7 @@ public class EnemyDamage : MonoBehaviour
       }
     }
 
-    indicator = GetComponentInChildren<ElementsIndicator>();
+    if (indicator == null) indicator = GetComponentInChildren<ElementsIndicator>();
     if (indicator != null)
     {
       indicator.followTarget = transform;
@@ -125,6 +126,12 @@ public class EnemyDamage : MonoBehaviour
     return shuffled.GetRange(0, rarity).ToArray();
   }
 
+  public void SetRandomWeaknesses()
+  {
+    weaknesses = GenerateRandomWeaknesses(out _);
+    indicator.SetElements(weaknesses);
+  }
+
   private void OnDestroy()
   {
     if (health != null)
@@ -138,7 +145,10 @@ public class EnemyDamage : MonoBehaviour
   private void DeathHandler()
   {
     if (Random.Range(0, 100) < dropChance) Instantiate(consumablePrefab, transform.position, Quaternion.identity);
-    Destroy(gameObject);
+    if (destroyTarget != null)
+      Destroy(destroyTarget);
+    else
+      Destroy(gameObject);
   }
 
   private void InvulnerabilityHandler()

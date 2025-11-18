@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   target: {fileID: 0}
-  followRange: 5
+  followRange: 12
   isStaggered: 0
 --- !u!114 &4510103737768993356
 MonoBehaviour:

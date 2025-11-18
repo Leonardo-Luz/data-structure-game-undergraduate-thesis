@@ -11,8 +11,9 @@ public class PatrollingEnemy : MonoBehaviour
   [SerializeField] private Transform groundCheck;
   [SerializeField] private LayerMask groundLayer;
   [SerializeField] private float groundCheckDistance = 0.5f;
-  [SerializeField] private float wallCheckDistance = 1f;
+  [SerializeField] public float wallCheckDistance = 1f;
   [SerializeField] private LayerMask obstacleLayer;
+  [SerializeField] private bool flipWithoutGround = true;
 
   private Rigidbody2D rb;
   private bool movingRight = true;
@@ -28,7 +29,7 @@ public class PatrollingEnemy : MonoBehaviour
     rb.linearVelocity = new Vector2((movingRight ? 1 : -1) * speed, rb.linearVelocity.y);
 
     RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-    if (groundInfo.collider == null)
+    if (groundInfo.collider == null && flipWithoutGround)
     {
       Flip();
     }
@@ -73,6 +74,12 @@ public class PatrollingEnemy : MonoBehaviour
   {
     speed = 0f;
     yield return new WaitForSeconds(staggerDuration);
+    speed = defaultSpeed;
+  }
+
+  public void IncreaseSpeed(float newSpeed)
+  {
+    defaultSpeed += newSpeed;
     speed = defaultSpeed;
   }
 }

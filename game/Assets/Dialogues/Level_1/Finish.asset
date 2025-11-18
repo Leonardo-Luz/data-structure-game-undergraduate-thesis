@@ -22,9 +22,9 @@ MonoBehaviour:
       longe."
   - englishText: I should press on before the night grows colder.
     portugueseText: "\xC9 melhor eu continuar antes que a noite esfrie ainda mais."
-  - englishText: <b>Obrigado por jogar a demo!</b>
-    portugueseText: <b>Thanks for playing the demo!</b>
-  - englishText: "Se puder, responda o <link=\"form\">formul\xE1rio</link>, isso
-      vai me ajudar a concluir meu TCC."
-    portugueseText: If you can, please fill out the <link="form">form</link>, it
-      will help me finish my thesis.
+  - englishText: <b>Thanks for playing the demo!</b>
+    portugueseText: <b>Obrigado por jogar a demo!</b>
+  - englishText: If you can, please fill out the <color="yellow"><u><link="form">form</link></u></color>,
+      it will help me finish my thesis
+    portugueseText: "Se puder, responda o <color=\"yellow\"><u><link=\"form\">formul\xE1rio</link></u></color>,
+      isso vai me ajudar a concluir meu TCC."
