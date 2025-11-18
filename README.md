@@ -7,9 +7,11 @@
 * **Curso:** *Análise e Desenvolvimento de Sistemas*
 * **Ano:** *2025*
 
-* [Jogue Agora](https://play.unity.com/en/games/98bb4067-113f-4850-84d7-1bd15b186e0f/alchemy-game)
-* [Responda este Formulário após Jogar - WIP](#)
-* [TCC](latex/main.pdf)
+## Links
+
+* [Jogo](https://play.unity.com/en/games/98bb4067-113f-4850-84d7-1bd15b186e0f/alchemy-game)
+* [Fomulário - Responda após jogar](https://docs.google.com/forms/d/e/1FAIpQLScJE77-LsAwbnhVnFLizIaPBTnZM4bP3fsYIUELnjJYgd2koA/viewform?usp=header)
+* [PDF do TCC](latex/main.pdf)
 
 ## Jogo
 

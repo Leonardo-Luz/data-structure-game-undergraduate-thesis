@@ -29,10 +29,10 @@ public class Score : MonoBehaviour
     levelStartTime = Time.time;
   }
 
-  public void AddCorrectInfusion()
+  public void AddCorrectInfusion(int combo = 1)
   {
     if (!levelEnded)
-      correctInfusions++;
+      correctInfusions += combo;
   }
 
   public void AddWrongInfusion()

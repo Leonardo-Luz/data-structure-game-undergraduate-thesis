@@ -184,8 +184,9 @@ public class EnemyDamage : MonoBehaviour
           (weakness == Element.AIR && collider.CompareTag("Air")) ||
           (weakness == Element.EARTH && collider.CompareTag("Earth")))
       {
-        health.TakeDamage(collider.GetComponent<ProjectileController>().damage);
-        Score.Instance.AddCorrectInfusion();
+        int combo = collider.GetComponent<ProjectileController>().damage;
+        health.TakeDamage(combo);
+        Score.Instance.AddCorrectInfusion(combo);
         return;
       }
     }

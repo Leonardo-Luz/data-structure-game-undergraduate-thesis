@@ -24,7 +24,7 @@ public class LinkOpener : MonoBehaviour, IPointerClickHandler
 
       if (linkInfo.GetLinkID() == "form")
       {
-        Application.OpenURL("https://github.com/Leonardo-Luz/data-structure-game-undergraduate-thesis");
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLScJE77-LsAwbnhVnFLizIaPBTnZM4bP3fsYIUELnjJYgd2koA/viewform?usp=dialog");
       }
     }
   }
