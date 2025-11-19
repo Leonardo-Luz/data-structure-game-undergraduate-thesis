@@ -51,83 +51,102 @@ necessidades tanto técnicas quanto pedagógicas desta pesquisa.
 Nesta etapa, são apresentadas as representações visuais dos principais
 elementos descritos anteriormente na \autoref{tab:elementos_jogo}. As imagens
 ilustram a aparência, o estilo artístico e o papel de cada componente dentro do
-ambiente do jogo, complementando as descrições textuais. Essa visualização
-contribui para uma compreensão mais clara da composição estética e funcional do
-projeto, evidenciando as decisões de design que orientaram a criação dos
-personagens, cenários, inimigos e interfaces.
+ambiente do jogo, complementando as descrições textuais e auxiliando na
+compreensão da composição estética e funcional do projeto.
 
-A seguir, apresenta-se o personagem principal do jogo, responsável pelas
-misturas alquímicas e pela interação com o ambiente:
+A \autoref{fig:jogador} apresenta o personagem principal, responsável pelas
+misturas alquímicas e pela interação com o ambiente. Seu design foi inspirado
+nos Médicos da Peste Negra.
 \input{figures/jogador}
 
-O companheiro felino, que auxilia o jogador e integra o enredo, é mostrado a
-seguir:
+O personagem mostrado na \autoref{fig:gato} atua como companheiro e guia do
+jogador, aparecendo de forma mística à sua frente. Sua concepção visual
+baseia-se no Gato de Cheshire da obra \emph{Alice no País das Maravilhas}
+\cite{cheshire_cat}.
 \input{figures/gato}
 
-A fogueira, que atua como ponto de controle e restauração do progresso, é
-ilustrada na imagem seguinte:
+A fogueira da \autoref{fig:fogueira}, que funciona como ponto de controle e
+restauração, segue a estética das fogueiras presentes em jogos do gênero
+\emph{soulslike}\footnote{O termo \emph{soulslike} refere-se a jogos inspirados
+em características da série \emph{Dark Souls}, como alta dificuldade, combate
+tático e progressão punitiva.}. O conceito geral foi inspirado por obras como
+\emph{Dark Souls} \cite{darksouls}.
 \input{figures/fogueira}
 
-Os elementos alquímicos que compõem as mecânicas centrais do jogo são, da
-esquerda para a direita, Ar, Fogo, Terra e Água, conforme ilustrado na imagem
-abaixo.
+Os elementos alquímicos Ar, Fogo, Terra e Água, apresentados na
+\autoref{fig:elementos_alquimicos}, foram baseados em símbolos tradicionais da
+alquimia medieval. \cite{alchemical_symbols}
 \input{figures/elementos_alquimicos}
 
-O objeto que marca o término da fase é uma bandeira, apresentada na imagem a
-seguir.
+O objeto que marca o fim da fase, representado na \autoref{fig:bandeira}, toma
+como referência elementos clássicos de jogos de plataforma, como a bandeira de
+\emph{Super Mario Bros.} \cite{super_mario} e o letreiro de conclusão de fase
+de \emph{Sonic the Hedgehog} \cite{sonic}.
 \input{figures/bandeira}
 
-Os principais inimigos enfrentados durante a partida são mostrados na
-sequência:
+Os principais inimigos enfrentados na fase estão ilustrados na
+\autoref{fig:inimigos}.
 \input{figures/inimigos}
 
-Da esquerda para a direita, os inimigos são, respectivamente:
+Da esquerda para a direita, são apresentados:
+{\footnotesize
 \begin{enumerate}[label=\arabic*)]
-\item Gosma;
-\item Cogumelo;
-\item Olho Alado;
+  \item Gosma, inspirada em criaturas similares presentes em franquias como
+    \emph{Final Fantasy} \cite{final_fantasy} e \emph{Dragon Quest}
+    \cite{dragon_quest};
+  \item Cogumelo, cuja estética remete a inimigos clássicos de \emph{Super
+    Mario Bros.} \cite{super_mario} e referências visuais de \emph{Hollow
+    Knight} \cite{hollow_knight};
+  \item Olho Alado, baseado em criaturas recorrentes de séries como \emph{The
+    Legend of Zelda} \cite{zelda} e \emph{Final Fantasy} \cite{final_fantasy}.
 \end{enumerate}
+}
 
-A estrutura física do ambiente é composta por blocos modulares, responsáveis
-pela formação das plataformas e terrenos do cenário:
+Os blocos modulares que compõem o terreno e as plataformas do cenário estão
+representados na \autoref{fig:tiles}.
 \input{figures/tiles}
 
-As diferentes camadas de paralaxe, que compõem a profundidade visual do
-ambiente e reforçam a imersão, podem ser observadas, de forma sobreposta, na
-figura a seguir:
+As diferentes camadas de paralaxe\footnote{Paralaxe é uma técnica de design
+visual em que camadas do cenário se movem em velocidades distintas, criando a
+ilusão de profundidade.} utilizadas para compor a profundidade visual do
+ambiente estão apresentadas na \autoref{fig:parallaxes}.
 \input{figures/parallaxes}
 
-Os consumíveis, que oferecem vantagens temporárias ou restauram atributos do
-jogador, são representados conforme a ilustração abaixo:
+Os consumíveis disponíveis ao jogador, responsáveis por fornecer vantagens
+temporárias ou restaurar atributos, são mostrados na \autoref{fig:consumiveis}.
 \input{figures/consumiveis}
 
-Da esquerda para a direita, os consumíveis são, respectivamente:
+Da esquerda para a direita, os consumíveis são:
+{\footnotesize
 \begin{enumerate}[label=\arabic*)]
-\item Consumível de Inserção;
-\item Consumível de Remoção;
-\item Consumível de Ordenação;
-\item Consumível de Cura;
-\item Consumível de Mana;
-\item Consumível de Vida Extra;
+  \item Consumível de Inserção;
+  \item Consumível de Remoção;
+  \item Consumível de Ordenação;
+  \item Consumível de Cura;
+  \item Consumível de Mana;
+  \item Consumível de Vida Extra.
 \end{enumerate}
+}
 
 Por fim, a \textbf{HUD} apresenta as principais informações de jogabilidade,
-como inventário, indicadores de vida e botões de interação. A imagem a seguir
-exibe a interface numerada, cuja descrição detalhada é apresentada logo abaixo:
+como inventário, vida, mana e botões de interação. A \autoref{fig:hud} mostra a
+interface numerada.
 \input{figures/hud}
 
+{\footnotesize
 \begin{enumerate}[label=\arabic*)]
-\item Indicador de tentativas restantes;
-\item Pontos de vida do jogador;
-\item Barra de Mana;
-\item Botão de pausa;
-\item Livro de tutoriais;
-\item Espaço de consumível ativo;
-\item Indicador da saída da pilha;
-\item Indicador da saída da fila;
-\item Indicador da saída da lista;
-\item Indicador da próxima inserção;
+  \item Indicador de tentativas restantes;
+  \item Pontos de vida do jogador;
+  \item Barra de mana;
+  \item Botão de pausa;
+  \item Livro de tutoriais;
+  \item Espaço do consumível ativo;
+  \item Indicador da saída da pilha;
+  \item Indicador da saída da fila;
+  \item Indicador da saída da lista;
+  \item Indicador da próxima inserção.
 \end{enumerate}
+}
 
 \subsection{Modelar o jogo}
 
