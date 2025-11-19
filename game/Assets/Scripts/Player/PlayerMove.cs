@@ -29,6 +29,8 @@ public class PlayerMove : MonoBehaviour
 
   private bool isGrounded;
   private bool isLanding;
+  private bool jumped = false;
+  private bool canceledJump = false;
 
   private bool doubleJump = false;
   public bool isLocked = false;
@@ -53,6 +55,26 @@ public class PlayerMove : MonoBehaviour
     playerCollisions.OnEnemyHit += health.TakeDamage;
 
     health.OnDeath += () => rb.linearVelocity = Vector2.zero;
+  }
+
+  private void Update()
+  {
+    bool isMidAir = rb.linearVelocity.y >= 0;
+    bool isCrouching = Input.GetAxis("Vertical") < 0 && isGrounded;
+
+    if(!jumped)
+      jumped = (
+          Input.GetButtonDown("Jump") &&
+          (
+             (isGrounded && !isCrouching && !playerCombat.isCasting) ||
+             (
+               !isGrounded &&
+               (doubleJump || (jumpToleranceTime <= jumpTolerance && rb.linearVelocity.y <= 0))
+             )
+          )
+      );
+
+    if(!canceledJump) canceledJump = Input.GetButtonUp("Jump") && isMidAir;
   }
 
   private void FixedUpdate()
@@ -137,11 +159,9 @@ public class PlayerMove : MonoBehaviour
     // INFO: Stops player movement when casting
     if (playerCombat.isCasting) rb.linearVelocity = Vector2.zero;
 
-    if (Input.GetButtonDown("Jump")
-        && ((isGrounded && !isCrouching && !playerCombat.isCasting) ||
-        (!isGrounded && (doubleJump || (jumpToleranceTime <= jumpTolerance && rb.linearVelocity.y <= 0))))
-    )
+    if (jumped)
     {
+      jumped = false;
       Jump();
 
       dustParticle.setScaleFactor(1f);
@@ -150,8 +170,11 @@ public class PlayerMove : MonoBehaviour
       if (doubleJump) doubleJump = false;
     }
 
-    bool isMidAir = rb.linearVelocity.y >= 0;
-    if (Input.GetButtonUp("Jump") && isMidAir) CancelJump();
+    if (canceledJump)
+    {
+      canceledJump = false;
+      CancelJump();
+    }
   }
 
   private void Flip(bool flipX)
