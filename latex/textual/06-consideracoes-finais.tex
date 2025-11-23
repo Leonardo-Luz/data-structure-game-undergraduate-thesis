@@ -1,16 +1,106 @@
 \chapter{Considerações Finais}
 
-% NOTE:
-% Descrever o que funcionou ou não, quais objetivos foram alcançados. Trabalhos futuros
+O desenvolvimento deste trabalho teve como propósito central a criação de um
+jogo sério destinado ao ensino de conceitos fundamentais de estruturas de dados
+de forma implícita, utilizando mecânicas lúdicas e interativas para
+potencializar o aprendizado. Essa proposta surge em resposta às dificuldades
+identificadas na literatura, como a natureza abstrata dos conceitos e a baixa
+motivação dos estudantes na disciplina de Estruturas de Dados
+\cite{mtaho2024difficulties}.
 
+A implementação do jogo seguiu a metodologia de desenvolvimento ENgAGED
+\cite{battistella2016engaged}, garantindo um processo estruturado que envolveu
+a definição dos requisitos funcionais e não funcionais, a concepção dos
+elementos do jogo, o desenvolvimento das mecânicas centrais e genéricas e, por
+fim, a avaliação preliminar utilizando uma adaptação do modelo MEEGA+
+\cite{meega2020}.
 
-% WARN: Retirado dos trabalhos correlatos
-% O trabalho proposto se diferencia ao incorporar múltiplas
-% estruturas de dados, incluindo, pilha, fila e lista encadeada, dentro de um
-% contexto lúdico e narrativo, com uma abordagem de ensino implícita, que
-% estimula o aprendizado por meio da exploração e resolução de desafios
-% integrados à mecânica do jogo.
-% O estilo plataformer e o gênero aventura também
-% representam uma inovação em relação aos estilos predominantes encontrados,
-% ampliando o potencial de engajamento e imersão dos jogadores.
+\fixme{No que se refere aos requisitos estabelecidos, dos 12 requisitos funcionais
+propostos, 90\% foram implementados integralmente. Entre os 9 requisitos não
+funcionais, 80\% foram atendidos de forma satisfatória}. Quanto ao conteúdo do
+jogo, apenas a fase inicial, considerada fundamental por introduzir os
+conceitos básicos de estruturas de dados, foi desenvolvida. As fases
+subsequentes, com foco maior no enredo e em estruturas de dados mais avançadas,
+são indicadas como continuidade natural deste trabalho e poderão expandir a
+complexidade pedagógica da experiência.
 
+A inovação deste projeto está na incorporação implícita de múltiplas estruturas
+de dados, como pilha, fila e lista encadeada, dentro de um contexto lúdico e
+narrativo que incentiva a aprendizagem por meio da exploração e da resolução de
+desafios. O estilo plataforma 2D e o gênero aventura, aliados ao tema de
+fantasia alquímica, ampliam o potencial de engajamento e imersão do jogador,
+diferenciando esta proposta de abordagens mais tradicionais em jogos
+educacionais.
+
+A \autoref{tab:cmp_jogos_relatos_v_jogo} apresenta uma comparação direta entre o
+jogo desenvolvido e os jogos identificados nos trabalhos relacionados. Observa-se
+que, enquanto a maioria dos jogos analisados adota formatos predominantemente
+focados em lógica e resolução de problemas no estilo \emph{Puzzle}, a presente
+proposta diferencia-se por integrar estruturas de dados em um contexto de ação
+e exploração, combinando uma abordagem implícita de ensino com um gênero pouco
+explorado nesse domínio: a aventura em plataforma 2D. Essa combinação reforça o
+potencial de engajamento e amplia a imersão e motivação.
+
+\input{tables/jogos-relatos-v-jogo-table}
+
+De forma complementar, a \autoref{tab:cmp_trabalhos_relatos_v_jogo} compara o
+projeto proposto com outros trabalhos acadêmicos que também abordam jogos
+sérios. Nota-se que, embora diversos trabalhos incluam algum tipo de
+estrutura de dados ou foco em lógica computacional, poucos integram múltiplas
+estruturas simultaneamente dentro de uma narrativa coesa. Além disso, enquanto
+muitos se concentram no ensino explícito, o presente trabalho aposta na
+aprendizagem implícita, característica alinhada à literatura que associa esse
+modelo ao aumento da motivação e à redução da carga cognitiva inicial.
+Esses elementos reforçam a originalidade e a contribuição prática do jogo como
+ferramenta complementar de ensino.
+
+\input{tables/trabalhos-relatos-v-jogo-table}
+
+\input{textual/06-chapter-consideracoes-finais/01-avaliacao}
+
+\section{Trabalhos Futuros} \label{sec:trabalhos_futuros}
+
+Alguns trabalhos previstos inicialmente não puderam ser concluídos dentro do
+escopo deste projeto. Sendo eles:
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\rowcolor{headergray}
+\textbf{Trabalho Futuro}          & \textbf{Descrição} \\
+\hline
+Execução da Unidade Instrucional  & Executar a fase 4 da metodologia ENgAGED, aplicando o jogo em contexto real de ensino e realizando coleta sistemática de dados. \\
+\hline
+Avaliação da Unidade Instrucional & Executar a fase 5 da metodologia ENgAGED, avaliando a eficácia pedagógica do jogo em sala de aula. \\
+\hline
+Fase 2 e 3                        & Concluir a narrativa do jogo, introduzindo o alquimista rival como chefão final e adicionando desafios pedagógicos complementares. \\
+\hline
+\end{tabular}
+\caption*{Fonte: Autor}
+\end{table}
+
+Além desses trabalhos pendentes, várias possibilidades de expansão podem
+enriquecer significativamente o projeto. Por se tratar de um jogo educativo
+baseado em aprendizagem implícita, o potencial de novas funcionalidades é
+amplo. Algumas possíveis evoluções incluem:
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\rowcolor{headergray}
+\textbf{Trabalho Futuro} & \textbf{Motivação} \\ \hline
+Versão mobile & Aumentar o alcance e acessibilidade do jogo, atingindo novos públicos como estudantes que utilizam dispositivos móveis. \\
+\hline
+Modo arena & Introduzir elementos arcade focados em repetição e treino, reforçando os conceitos de estruturas de dados por meio de desafios mais rápidos e diretos. \\
+\hline
+Modo PvP & Promover competitividade e interação social, ampliando o engajamento e permitindo explorar estratégias baseadas em diferentes estruturas de dados. \\
+\hline
+Novas estruturas de dados (árvores, grafos) & Tornar o jogo mais robusto pedagogicamente, abordando tópicos mais avançados da disciplina e ampliando o repertório de desafios disponíveis. \\
+\hline
+\end{tabular}
+\caption*{Fonte: Autor}
+\end{table}

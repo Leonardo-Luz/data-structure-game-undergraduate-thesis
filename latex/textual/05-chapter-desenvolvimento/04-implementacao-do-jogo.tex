@@ -1,13 +1,13 @@
-\section{Implementação do Jogo}
+\section{Implementação do Jogo} \label{sec:implementacao}
 
 Esta seção apresenta a implementação do jogo desenvolvido na \emph{game engine}
-\textbf{Unity}. Inicialmente, são contextualizados os principais conceitos
-técnicos da \emph{engine} utilizados como base para a construção dos sistemas
-implementados. Em seguida, \fixme{ descrevem-se os principais elementos
-  listados na \autoref{tab:elementos_jogo} e discute-se como as mecânicas
-  centrais e genéricas, definidas nas \autoref{tab:mecanicas_centrais} e
+\textbf{Unity}. Inicialmente, contextualizam-se os principais conceitos técnicos
+da \emph{engine}, que servem de base para a construção dos sistemas utilizados.
+Em seguida, descrevem-se os principais elementos listados na
+\autoref{tab:elementos_jogo} e discute-se como as mecânicas centrais e
+genéricas, apresentadas nas \autoref{tab:mecanicas_centrais} e
 \autoref{tab:mecanicas_genericas}, foram convertidas em funcionalidades
-operacionais }. Dessa forma, evidencia-se a transição do design conceitual para
+operacionais. Dessa forma, evidencia-se a transição do design conceitual para
 sua materialização prática, demonstrando como cada decisão de design contribuiu
 para a composição do sistema final.
 
@@ -102,7 +102,7 @@ jogador de forma objetiva e alinhada às mecânicas do jogo.
 
 \input{codes/calculo_pontuacao}
 
-\subsection*{Outros Componentes}
+\subsection{Outros Componentes}
 
 Além dos sistemas principais, diversos outros \emph{scripts} foram implementados
 para garantir um \emph{gameplay} fluido, estável e responsivo. Entre eles,
@@ -110,3 +110,20 @@ incluem-se módulos para controle de efeitos sonoros, partículas, interface de
 usuário, indicadores visuais, carregamento de cenas e outras funcionalidades de
 suporte. Embora não sejam o foco central das mecânicas educacionais, esses
 componentes desempenham papel importante na polidez e na imersão da experiência.
+
+\subsection{Síntese da Implementação}
+
+A \autoref{sec:implementacao} constituiu uma das etapas mais extensas e 
+detalhadas do projeto, na qual foram materializados todos os elementos concebidos 
+durante a \autoref{sec:concepcao_jogo}, bem como as mecânicas centrais e 
+genéricas definidas nessa fase, sempre em conformidade com os requisitos 
+funcionais e não funcionais estabelecidos. Nessa etapa, cada componente foi 
+desenvolvido, integrado e ajustado de forma progressiva, consolidando a base 
+técnica necessária para o funcionamento completo do jogo.
+
+Com a implementação concluída, tornou-se possível avançar para a etapa de
+testes, responsável por verificar o comportamento dos sistemas em execução,
+avaliar sua estabilidade e assegurar que as funcionalidades produzidas
+correspondessem aos objetivos educacionais e de jogabilidade pretendidos. A
+seção seguinte descreve como esses testes foram conduzidos ao longo do
+desenvolvimento.
