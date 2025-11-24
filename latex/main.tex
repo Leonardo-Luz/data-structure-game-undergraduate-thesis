@@ -9,6 +9,8 @@
   spanish,
   brazil,
   % sumario=tradicional,
+	% chapter=TITLE,
+	% section=TITLE,
 ]{abntex2}
 
 % Configuração do documento
@@ -28,6 +30,7 @@
 \imprimircapa
 \imprimirfolhaderosto*
 
+\input{pretextual/folha-de-aprovacao}
 \input{pretextual/agradecimentos}
 \input{pretextual/resumo}
 \input{pretextual/abstract}
@@ -48,10 +51,14 @@
 
 \bibliography{references}
 
-% \include{postextual/apendices/apendice-rf}
-% \include{postextual/apendices/apendice-nrf}
+\begin{apendicesenv}
+  \include{postextual/apendices/apendice-formulario}
+  \include{postextual/apendices/apendice-respostas}
+\end{apendicesenv}
 
-% \include{postextual/anexos/anexo-a}
+\begin{anexosenv}
+  \include{postextual/anexos/anexo-meega-perguntas}
+\end{anexosenv}
 
 \phantompart
 \printindex

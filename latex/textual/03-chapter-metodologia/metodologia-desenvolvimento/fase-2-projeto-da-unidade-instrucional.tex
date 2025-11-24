@@ -1,4 +1,4 @@
-\subsection{Fase 2 - Projeto da Unidade Instrucional}
+\subsection{Fase 2: Projeto da Unidade Instrucional} \label{subsec:fase_2}
 
 A segunda fase dedica-se ao design instrucional, definindo como os conteúdos
 serão apresentados, como será realizada a avaliação e quais estratégias
@@ -19,25 +19,38 @@ Essa abordagem de avaliação está alinhada ao construcionismo
 conhecimento através da exploração, tentativa e erro, em um ambiente seguro
 onde o fracasso é parte do processo de descoberta.
 
-\subsubsection*{A2.2 - Definição do Conteúdo e da Estratégia Instrucional}
+\subsubsection*{A2.2 – Definição do Conteúdo e da Estratégia Instrucional}
 
-O conteúdo é introduzido de forma gradual na primeira fase, seguindo um nível
-de dificuldade crescente. Desde o início, o jogador tem acesso a todas as
-funcionalidades do jogo; contudo, essas são apresentadas de maneira progressiva
-ao longo dessa etapa inicial, permitindo uma assimilação natural dos conceitos
-e mecânicas.
+Nesta atividade foram definidos o conteúdo educacional e o seu sequenciamento
+ao longo do jogo, considerando que a estratégia instrucional adotada é a
+Aprendizagem Baseada em Jogos \cite{coffey2009digital}. Assim, os conceitos são
+organizados de forma progressiva, acompanhando uma curva de complexidade
+crescente e integrando-se diretamente às mecânicas propostas.
 
-A estratégia instrucional priorizará o \textbf{aprendizado implícito}: os
-conceitos não são apresentados verbalmente ou textualmente, mas descobertos
-através da interação com as mecânicas do jogo. Dessa forma, a aprendizagem
-emerge da necessidade prática de resolver desafios.
+O conteúdo selecionado aborda operações fundamentais em estruturas de dados
+lineares. A progressão instrucional foi estruturada da seguinte forma:
+
+\begin{itemize}
+    \item \textbf{\emph{Push}, \emph{Enqueue} e Inserção em Lista}: introdução do conceito de inserção no topo de uma pilha, no final de uma fila e em uma lista encadeada;
+    \item \textbf{\emph{Pop}, \emph{Dequeue} e Remoção em Lista}: remoção do topo da pilha, do início da fila e de uma lista encadeada;
+    \item \textbf{Iteração em lista}: percorrer e acessar os elementos de forma sequencial de uma lista encadeada;
+\end{itemize}
+
+O sequenciamento desses conteúdos foi planejado para que cada conceito seja
+apresentado no momento em que sua aplicação se torna necessária para a
+resolução de desafios do jogo. Dessa forma, a aprendizagem ocorre de maneira
+contextualizada, permitindo ao jogador compreender os princípios das estruturas
+de dados a partir da experimentação e da interação com as mecânicas. A
+abordagem favorece a aprendizagem implícita, característica dos jogos
+educacionais, na qual o domínio conceitual emerge naturalmente da prática
+realizada durante o \emph{gameplay}.
 
 \subsubsection*{A2.3 - Decisão sobre Desenvolvimento ou Reutilização}
 
 Optou-se pelo \textbf{desenvolvimento original do jogo}. Essa decisão baseou-se em:
 
 \begin{itemize}
-  \item Inexistência de jogos disponíveis que integrem a mecânica de estruturas de dados de forma implicita com temática de alquimia e estilo visual de pixel art inspirado em clássicos como Mario e Mega Man;
+  \item Inexistência de jogos disponíveis que integrem, de forma implícita, mecânicas de estruturas de dados com uma temática fantasiosa e estilo visual em \emph{pixel art}\footnote{técnica e estética gráfica baseada na construção de imagens pixel a pixel.}.
   \item Necessidade de controle total sobre a implementação das estruturas de dados para garantir precisão pedagógica;
   \item Oportunidade de customizar completamente a narrativa, visual e mecânicas para alinhar com os objetivos educacionais específicos;
 \end{itemize}
@@ -46,14 +59,14 @@ Optou-se pelo \textbf{desenvolvimento original do jogo}. Essa decisão baseou-se
 
 O modelo de avaliação adotado segue o \textbf{MEEGA+} (Modelo para Avaliação de
 Jogos Educacionais) \cite{meega2020}, aplicado de forma adaptada ao contexto de jogos sérios. A
-avaliação considera quatro dimensões fundamentais:
+avaliação considera três dimensões fundamentais:
 
 \begin{itemize}
-\item \textbf{Usabilidade}: clareza da interface, facilidade de uso e compreensão das ações disponíveis;
-\item \textbf{Engajamento}: interesse sustentado, imersão e sensação de diversão durante a experiência de jogo;
-\item \textbf{Aprendizagem Percebida}: percepção do usuário quanto ao aprendizado obtido e à relação com os conceitos apresentados;
-\item \textbf{Experiência do Usuário}: satisfação geral e disposição do jogador em recomendar o jogo.
+  \item \textbf{Experiência do Usuário}: satisfação geral e disposição do jogador em recomendar o jogo.
+  \item \textbf{Usabilidade}: clareza da interface, facilidade de uso e compreensão das ações disponíveis;
+  \item \textbf{Conteúdo}: percepção do usuário quanto aos conceitos apresentados;
 \end{itemize}
 
-A descrição completa da metodologia, incluindo o instrumento adaptado do
-MEEGA+, encontra-se na \autoref{sec:metodologia_avaliacao}.
+A descrição completa da metodologia de avaliação utilizada, incluindo o
+instrumento adaptado do MEEGA+, encontra-se na
+\autoref{sec:metodologia_avaliacao}.

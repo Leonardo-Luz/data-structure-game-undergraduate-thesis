@@ -10,10 +10,7 @@
 \DeclareFontShape{T1}{qtm}{b}{sl}{<->ssub*qtm/b/it}{}
 
 % Customização Geral
-\linespread{1.25}
-
-\setlength{\parindent}{1.25cm}
-\setlength{\parskip}{0pt}
+% \linespread{1.25}
 
 \titleformat{\chapter}[block]
   {\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont}
@@ -25,6 +22,7 @@
   {\thesection}{1em}{\MakeUppercase}
 
 % This ensures the chapter has the same indentation as everything else in the summary.
+
 % \makeatletter
 % \renewcommand{\l@chapter}[2]{%
 %   \ifnum \c@tocdepth >\m@ne
@@ -61,7 +59,7 @@
   pdfauthor={\texorpdfstring{\@author}{Seu Nome}},
   pdfsubject={\texorpdfstring{\imprimirpreambulo}{Resumo do preâmbulo}},
   pdfcreator={LaTeX with abnTeX2},
-  pdfkeywords={trabalho de conclusão de curso, ifrs, campus osório, ads, análise e desenvolvimento de sistemas},
+  pdfkeywords={Jogo Sério}{Estruturas de Dados}{Aprendizagem Baseada em Jogos},
   colorlinks=true,
   linkcolor=blue,
   citecolor=blue,
@@ -70,6 +68,9 @@
   bookmarksdepth=4
 }
 \makeatother
+
+% \setlength{\parindent}{1.25cm}
+% \setlength{\parskip}{0pt}
 
 \setlength{\parindent}{1.3cm}
 \setlength{\parskip}{0.2cm}

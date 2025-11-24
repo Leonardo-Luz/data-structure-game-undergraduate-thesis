@@ -8,27 +8,31 @@ apresentado nas seções seguintes.
 
 \subsection*{Objetivos do Jogo}
 
-O Jogador tem como objetivo narrativo recuperar a sua pesquisa a respeito da
-pedra filosofal
+O jogador tem como objetivo narrativo principal recuperar sua pesquisa. Para
+alcançar esse propósito, deverá enfrentar diferentes inimigos e superar
+diversos obstáculos ao longo das fases, avançando até chegar ao chefe final e
+derrotá-lo.
 
 \subsubsection*{Gênero e Perspectiva}
 
-O jogo é um \textbf{platformer 2D}\footnote{Gênero de jogo plataforma em duas dimensões} com
-perspectiva \textit{side-scrolling}\footnote{Estilo de \emph{gameplay} onde o
-jogador se move horizontalmente e a tela o segue.}. Essa escolha baseia-se na
-familiaridade do público geral com clássicos como Super Mario Bros e Mega Man,
-facilitando a adoção do jogo e tornando a experiência intuitiva.
-
+O jogo é um \textbf{platformer 2D}\footnote{Gênero de jogo plataforma em duas
+dimensões} de fantasia e aventura com perspectiva
+\textit{side-scrolling}\footnote{Estilo de \emph{gameplay} onde o jogador se
+move horizontalmente e a tela o segue.}. Essa escolha baseia-se em clássicos
+como Super Mario Bros e Mega Man, facilitando a adoção do jogo e tornando a
+experiência intuitiva.
 
 \subsection*{Temática e Narrativa}
 
-A narrativa é ambientada em um universo de \textbf{alquimia} mística e
-medieval. O protagonista é um alquimista caracterizado como um doutor da peste
-que teve sua pesquisa sobre a \textbf{pedra filosofal} roubada por um
-alquimista rival enquanto viajava para a capital para apresentá-la ao Círculo
-dos Alquimistas (Grupo de estudiosos importantes). Seu objetivo é recuperar a
-pesquisa, navegando por diferentes regiões e enfrentando adversários durante a
-sua jornada.
+A narrativa é ambientada em um universo fantasioso de \textbf{alquimia} mística
+e medieval. O protagonista, um alquimista representado como um doutor da peste,
+tem sua pesquisa sobre a \textbf{pedra filosofal} roubada por um rival enquanto
+viajava para apresentá-la ao Círculo dos Alquimistas, um grupo de estudiosos
+de grande prestígio.
+
+Seu objetivo passa a ser recuperar essa pesquisa, atravessando diferentes
+regiões e enfrentando diversos adversários ao longo da jornada, acompanhado
+ocasionalmente por um gato que surge como aliado em momentos específicos.
 
 Essa narrativa fornece contexto e motivação para as ações do jogador,
 aumentando o engajamento e criando imersão. O enredo também justifica a
@@ -46,9 +50,7 @@ objetivos educacionais e narrativos do jogo. O jogador deve explorar o
 ambiente, realizar combinações de elementos alquímicos e superar desafios
 seguindo um conjunto de condições previamente definidas. Para progredir, é
 necessário alcançar o final de cada fase, vencendo os obstáculos e inimigos
-dispostos ao longo do percurso.
-
-Entre as principais regras implementadas, destacam-se:
+dispostos ao longo do percurso. Entre as principais regras implementadas, destacam-se:
 
 \begin{itemize}
   \item O jogador perde pontos de vida ao realizar combinações incorretas de
@@ -98,7 +100,7 @@ dados foram incorporados à dinâmica do jogo.
 As mecânicas genéricas compreendem o conjunto de funcionalidades fundamentais
 que sustentam a jogabilidade e garantem a coerência da experiência interativa.
 Elas formam a base sobre a qual as demais dinâmicas e desafios são construídos,
-assegurando que o jogador tenha controle responsivo e feedbacks claros de suas
+assegurando que o jogador tenha controle responsivo e \emph{feedbacks} claros de suas
 ações. Na \autoref{tab:mecanicas_genericas}, a seguir, essas mecânicas são
 apresentadas e descritas de forma a evidenciar seu papel na estrutura
 fundamental do jogo.
@@ -125,7 +127,7 @@ jogo.
 
 O sistema de pontuação foi desenvolvido para oferecer uma forma objetiva de
 mensurar o desempenho do jogador ao longo das partidas. Ao término de cada
-fase, o jogo apresenta um \textbf{feedback somativo} por meio de um relatório
+fase, o jogo apresenta um \emph{feedback} somativo por meio de um relatório
 de desempenho que sintetiza os resultados obtidos. A pontuação total é
 calculada a partir de múltiplos fatores, como o número de combinações corretas
 e incorretas, mortes e tempo total de conclusão, permitindo avaliar tanto a
@@ -142,7 +144,7 @@ A fórmula utilizada para o cálculo da pontuação final é expressa pela
 para o resultado geral:
 
 \begin{equation}
-S = (1000 - 10\,t) + (100\,c - 25\,e) - 150\,d
+S = (1000 - 10\,t) + ( (100\,c \cdot \,f ) - 25\,e) - 150\,d
 \label{eq:calc_pont}
 \end{equation}
 
@@ -152,6 +154,7 @@ em que:
   \item \(S\) representa a pontuação final obtida pelo jogador;
   \item \(t\) é o tempo total de conclusão da fase (em segundos);
   \item \(c\) é o número de infusões corretas realizadas;
+  \item \(f\) corresponde à complexidade da combinação.
   \item \(e\) é o número de infusões incorretas;
   \item \(d\) corresponde ao número de mortes ocorridas.
 \end{itemize}
@@ -171,7 +174,7 @@ Os diferentes tipos de \textit{feedback} foram projetados para atuar em
 múltiplos níveis de interação, variando de respostas visuais imediatas a
 avaliações formativas sutis, conforme sua função no processo de aprendizagem.
 Quando o jogador realiza uma combinação incorreta, o sistema apresenta efeitos
-sonoros e um \textbf{feedback visual de erro}, evidenciado por mudanças de cor
+sonoros e um \emph{feedback} visual de erro, evidenciado por mudanças de cor
 no personagem e efeitos de penalidade, como a perda de pontos de vida. Esse
 retorno instantâneo sinaliza a falha sem interromper a continuidade da ação,
 permitindo que o jogador aprenda com o erro por meio da tentativa e erro.
@@ -182,7 +185,7 @@ sonoros e visuais que indicam sucesso na ação. Esse tipo de retorno atua como
 reforço positivo, incentivando a experimentação e consolidando o aprendizado
 por meio da prática direta.
 
-Complementando esses retornos imediatos, o \textbf{feedback somativo}
+Complementando esses retornos imediatos, o \emph{feedback} somativo
 apresentado ao final de cada fase, descrito na seção anterior,
 integra o processo avaliativo de forma global, permitindo ao jogador refletir
 sobre seu desempenho e identificar aspectos a melhorar. Assim, o sistema de

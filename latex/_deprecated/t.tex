@@ -1,0 +1,98 @@
+\section{Metodologia de Desenvolvimento}
+\label{sec:metodologia-desenvolvimento}
+
+Para o desenvolvimento do jogo sério, adotou-se a metodologia ENgAGED
+(\textit{EducatioNAl GAme dEvelopment}), proposta por
+\citeonline{battistella2016engaged}. Esta metodologia foi selecionada por
+integrar sistematicamente os princípios de Design Instrucional (focado na
+aprendizagem) com o Design de Jogos (focado no entretenimento), mitigando o
+risco comum em jogos educacionais de priorizar o conteúdo em detrimento da
+diversão, ou vice-versa.
+
+O ciclo de vida do ENgAGED é composto por cinco fases distintas: Análise,
+Design, Desenvolvimento, Execução e Avaliação. A seguir, detalha-se
+como cada fase foi aplicada na concepção deste trabalho.
+
+\subsection{Fase 1: Análise da Unidade Instrucional}
+Nesta etapa preliminar, definiram-se o escopo pedagógico e o perfil dos aprendizes.
+
+\begin{itemize}
+    \item \textbf{Público-alvo:} Estudantes de graduação em cursos de Computação (Análise e Desenvolvimento de Sistemas, Ciência da Computação, etc.), majoritariamente jovens adultos familiarizados com a linguagem visual de jogos de plataforma retrô.
+    \item \textbf{Problema Educacional:} A dificuldade de abstração necessária para compreender o comportamento de estruturas de dados e a falta de motivação, conforme apontado por \citeonline{mtaho2024difficulties}.
+    \item \textbf{Objetivos de Aprendizagem:} Ao final da interação com o jogo, espera-se que o aluno seja capaz de:
+    \begin{enumerate}
+        \item Diferenciar visualmente e logicamente o comportamento LIFO (\textit{Last In, First Out}) e FIFO (\textit{First In, First Out});
+        \item Aplicar operações de inserção (\textit{push/enqueue}) e remoção (\textit{pop/dequeue}) para resolver problemas práticos;
+        \item Compreender a necessidade de ordenação de dados para otimização de buscas.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Fase 2: Projeto da Unidade Instrucional (Game Design)}
+Nesta fase, realizou-se o mapeamento dos conceitos teóricos para mecânicas de jogo, optando-se por uma abordagem de \textbf{aprendizagem implícita}. Em vez de apresentar código ou questionários explícitos, as estruturas de dados foram metaforizadas através da temática de Alquimia.
+
+A Tabela \ref{tab:mapeamento-mechanics} ilustra o mapeamento realizado entre o conceito pedagógico e a mecânica do jogo.
+
+\begin{table}[H]
+    \centering
+    \caption{Mapeamento Conceitual: Estruturas de Dados vs. Mecânicas de Jogo}
+    \label{tab:mapeamento-mechanics}
+    \begin{tabular}{|p{4cm}|p{4cm}|p{6cm}|}
+        \hline
+        \textbf{Estrutura de Dados} & \textbf{Elemento no Jogo} & \textbf{Comportamento Mecânico} \\ \hline
+        Pilha (Stack) & Bolsa de Poções (Inventário A) & O jogador só pode acessar e utilizar o último elemento coletado (topo). Para usar um item antigo, deve descartar os novos (LIFO). \\ \hline
+        Fila (Queue) & Esteira de Transmutação (Inventário B) & Os elementos são consumidos na ordem exata em que foram coletados. O primeiro a entrar é o primeiro a sair (FIFO). \\ \hline
+        Lista (List) & Grimório de Feitiços (Inventário C) & Permite acesso aleatório ou seleção de elementos específicos, representando a flexibilidade de listas e arrays. \\ \hline
+    \end{tabular}
+    \small{\\ Fonte: Autor.}
+\end{table}
+
+A narrativa coloca o jogador no papel de um alquimista (\textit{Plague Doctor}) que deve recuperar sua pesquisa sobre a pedra filosofal. O "ataque" ao inimigo só é efetivo se o jogador combinar elementos (ex: Fogo + Fogo) retirados corretamente de seus inventários, forçando o uso do raciocínio lógico sobre a estrutura de dados sem a necessidade de sintaxe de código.
+
+\subsection{Fase 3: Desenvolvimento do Jogo Educacional}
+A implementação técnica ocorreu utilizando a \textit{engine} Unity, escolhida por sua robustez no tratamento de física 2D e facilidade de exportação multiplataforma.
+
+Os requisitos técnicos priorizaram a fidelidade visual ao estilo \textit{pixel art} (referenciando clássicos como Mega Man) para gerar familiaridade e conforto nostálgico ao público-alvo. A codificação das estruturas de dados dentro do jogo (em C\#) espelha fielmente as implementações reais, garantindo que o comportamento do jogo seja tecnicamente preciso. O detalhamento técnico da implementação encontra-se no Capítulo \ref{cap:desenvolvimento}.
+
+\subsection{Fase 4 e 5: Execução e Avaliação}
+As fases finais do ENgAGED preconizam a aplicação do jogo em ambiente de sala de aula e a avaliação formal da aprendizagem (pré-teste e pós-teste). Devido às limitações de tempo do cronograma deste trabalho, realizou-se uma adaptação:
+
+\begin{itemize}
+    \item \textbf{Validação Técnica e de Experiência:} Em substituição à aplicação em larga escala, conduziu-se uma avaliação focada na Experiência do Jogador (PX) e Usabilidade, utilizando o modelo MEEGA+ \cite{meega2020}.
+    \item \textbf{Execução Controlada:} O jogo foi disponibilizado para um grupo de controle composto por discentes e profissionais da área de computação para coleta de \textit{feedback} qualiquantitativo.
+\end{itemize}
+
+A aplicação pedagógica formal (Fases 4 e 5 completas) é sugerida como trabalho futuro na Seção \ref{sec:trabalhos-futuros}.
+
+\section{Avaliação e Análise dos Resultados}
+\label{sec:avaliacao-resultados}
+
+A avaliação foi realizada com 11 participantes, majoritariamente com
+conhecimento prévio em desenvolvimento de software. A análise a seguir
+confronta os dados coletados (Tabelas \ref{tab:experiencia-jogador} e
+\ref{tab:usabilidade}) com os objetivos do projeto.
+
+\subsection{Análise da Experiência do Jogador}
+
+Os dados indicam uma recepção positiva quanto ao fator de entretenimento. A
+subdimensão \textbf{Diversão} obteve a maior média (4.73), com 90,9\% dos
+participantes atribuindo a nota máxima (Figura \ref{fig:diversao}). Isso valida
+a hipótese de que a estética \textit{pixel art} e o gênero plataforma são
+atrativos para o público-alvo.
+
+O \textbf{Engajamento} também apresentou resultados sólidos (média 4.55 para manutenção do interesse). Contudo, observa-se na subdimensão \textbf{Imersão} uma maior dispersão nas respostas (Desvio Padrão 1.04). A análise qualitativa sugere que a imersão foi ocasionalmente quebrada pela necessidade de gerenciar inventários complexos enquanto se lida com inimigos em tempo real, o que exige alta carga cognitiva.
+
+\subsection{Análise da Usabilidade e Operabilidade}
+
+Diferentemente da experiência estética, a usabilidade apresentou os pontos mais críticos da avaliação, exigindo uma análise rigorosa dos dados.
+
+\begin{itemize}
+    \item \textbf{Aprendibilidade (Média 3.55, DP 1.12):} A Figura \ref{fig:aprendibilidade} demonstra uma polarização. Enquanto 36,4\% consideraram muito fácil (nota 5), uma parcela significativa (45,5\%) avaliou entre notas 2 e 3. Isso indica que a abordagem implícita, embora inovadora, carece de um tutorial mais robusto nas fases iniciais para explicar a relação entre os inventários e as mecânicas de ataque.
+    
+    \item \textbf{Operabilidade (Média 3.27, DP 0.90):} Este foi o indicador mais baixo de toda a avaliação. A Figura \ref{fig:operabilidade} mostra que nenhum participante atribuiu nota 1, mas a concentração de votos na nota 3 e 4, somada aos comentários qualitativos, revela problemas na resposta dos controles (especialmente a mecânica de pulo e a troca rápida de inventários).
+\end{itemize}
+
+Essa discrepância entre a alta diversão (4.73) e a baixa operabilidade (3.27) sugere que, embora o conceito e a arte do jogo sejam cativantes (\textit{Design Atraente} com média 4.82), a execução técnica dos controles precisa de refinamento para evitar frustração mecânica que não contribui para o aprendizado.
+
+\subsection{Análise do Conteúdo Pedagógico}
+
+Apesar das dificuldades de controle, a percepção do valor educacional foi alta. A Relevância dos conceitos obteve média 4.45. Mais importante, a aceitação da \textbf{abordagem implícita} (Média 4.27) valida o objetivo central do TCC: provar que é possível representar estruturas de dados abstratas através de mecânicas de jogo concretas sem recorrer a aulas expositivas dentro do software.

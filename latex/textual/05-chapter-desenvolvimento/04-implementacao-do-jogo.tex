@@ -102,14 +102,63 @@ jogador de forma objetiva e alinhada às mecânicas do jogo.
 
 \input{codes/calculo_pontuacao}
 
+Após a implementação dos \emph{scripts} centrais responsáveis pelas mecânicas do jogo
+foram desenvolvidos também diversos sistemas de suporte que garantem a
+experiência completa do usuário. Esses sistemas não interferem diretamente nas
+regras do jogo, mas desempenham um papel essencial na qualidade visual, sonora,
+narrativa e de usabilidade da aplicação. A seguir, são apresentados esses
+subsistemas, suas finalidades e os principais aspectos de sua implementação.
+
+\subsection*{Implementação da \emph{Pixel Perfect Camera}}
+
+Para garantir uma apresentação visual coerente com a estética de \emph{pixel
+art}, foi utilizada a dependência \emph{Pixel Perfect Camera}, disponibilizada
+pela própria Unity e integrada ao sistema de câmeras da \emph{Cinemachine}.
+Essa combinação permite preservar a nitidez dos pixels em diferentes resoluções
+de tela, evitando distorções, desalinhamentos ou artefatos visuais. Além disso,
+a configuração aplicada assegura um enquadramento estável e responsivo,
+mantendo a consistência estética independentemente da escala do monitor do
+usuário.
+
+\subsection*{Implementação dos diálogos e seu controlador}
+
+Foi desenvolvido um sistema dedicado para gerenciamento de diálogos, composto
+por um controlador central responsável por exibir textos, avançar as falas e
+sincronizar elementos visuais associados. O sistema permite a criação de
+diálogos multilineares, apresentação progressiva do texto (\emph{typewriter
+effect}) e ativação de eventos específicos no inicio e ao fim das falas. A
+arquitetura adotada facilita a expansão futura do número de diálogos e
+possibilita sua reutilização em diferentes cenas.
+
+\subsection*{Implementação do controlador de idiomas}
+
+Implementou-se também um controlador de idiomas responsável por gerenciar a
+localização do jogo. Esse sistema altera dinamicamente os textos da interface
+(HUD), diálogos e demais elementos textuais conforme o idioma selecionado pelo
+jogador. Atualmente, estão disponíveis os idiomas português e inglês;
+entretanto, o controlador foi estruturado para permitir a adição simples de
+novas línguas.
+
+\subsection*{Implementação do controlador de sons}
+
+Foi criado um controlador de sons que organiza e gerencia os diferentes canais
+de áudio do jogo. A estrutura divide o áudio em três categorias: volume
+principal (\emph{master}), música e efeitos sonoros (SFX\footnote{\emph{Sound
+Effects}}). Cada categoria pode ser ajustada individualmente, permitindo ao
+jogador personalizar sua experiência sonora. Além disso, o controlador
+centraliza a reprodução de sons contextuais do jogo, garantindo consistência e
+facilitando a manutenção do sistema.
+
+
 \subsection{Outros Componentes}
 
-Além dos sistemas principais, diversos outros \emph{scripts} foram implementados
-para garantir um \emph{gameplay} fluido, estável e responsivo. Entre eles,
-incluem-se módulos para controle de efeitos sonoros, partículas, interface de
+Além dos sistemas principais, diversos outros \emph{scripts} foram
+implementados para garantir um \emph{gameplay} fluido, estável e responsivo.
+Entre eles, incluem-se módulos para controle de partículas, interface de
 usuário, indicadores visuais, carregamento de cenas e outras funcionalidades de
 suporte. Embora não sejam o foco central das mecânicas educacionais, esses
-componentes desempenham papel importante na polidez e na imersão da experiência.
+componentes desempenham papel importante na polidez e na imersão da
+experiência.
 
 \subsection{Síntese da Implementação}
 
