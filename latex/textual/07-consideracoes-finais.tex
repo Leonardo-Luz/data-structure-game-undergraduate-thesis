@@ -1,0 +1,144 @@
+\chapter{Considerações Finais} \label{cap:consideracoes_finais}
+
+O desenvolvimento deste trabalho teve como objetivo central a criação de um
+jogo sério destinado ao ensino de conceitos fundamentais de estruturas de dados
+de forma implícita, utilizando mecânicas lúdicas e interativas para
+potencializar o aprendizado. Essa proposta surgiu em resposta às dificuldades
+identificadas na literatura, como a natureza abstrata dos conceitos e a baixa
+motivação dos estudantes na disciplina de Estruturas de Dados
+\cite{mtaho2024difficulties}.
+
+A implementação do jogo seguiu a metodologia de desenvolvimento \emph{ENgAGED}
+\cite{battistella2016engaged}, garantindo um processo estruturado que envolveu
+a definição da estratégia instrucional baseada na Aprendizagem Baseada em Jogos
+\cite{coffey2009digital}, a concepção dos elementos do jogo e o desenvolvimento das
+mecânicas centrais e genéricas.
+
+\section{Resultados}
+
+Quanto ao desenvolvimento técnico, no que se refere aos requisitos
+estabelecidos, dos 16 requisitos funcionais propostos, 94\% foram implementados
+integralmente. Entre os 13 requisitos não funcionais, 93\% foram atendidos de
+forma satisfatória. O conteúdo da fase inicial foi concluído, introduzindo com
+sucesso os conceitos de Pilha, Fila e Lista Encadeada através da mecânica de
+gerenciamento de inventário.
+
+A validação preliminar, realizada com 11 participantes utilizando o modelo
+MEEGA+ \cite{meega2020} de forma adaptada, indicou uma recepção positiva da
+abordagem proposta:
+\begin{itemize}
+    \item \textbf{Experiência do Jogador:} Os índices de engajamento e diversão
+      foram elevados, com médias superiores a 4.5 na escala Likert, validando o
+      potencial lúdico da ferramenta.
+    \item \textbf{Conteúdo:} A representação dos conceitos obteve média de
+      4.45, sugerindo que a metáfora visual dos inventários foi eficaz para o
+      ensino implícito.
+    \item \textbf{Usabilidade:} A estética foi o ponto mais elogiado (4.82),
+      enquanto a operabilidade apresentou a menor média (3.27), evidenciando a
+      necessidade de ajustes nos controles e na curva de aprendizado.
+\end{itemize}
+
+A principal inovação deste projeto reside na incorporação implícita de
+múltiplas estruturas de dados dentro de um contexto narrativo de fantasia.
+Diferente de abordagens tradicionais, o jogo não pausa a ação para explicar o
+conceito; o jogador deve internalizar a regra da estrutura para sobreviver aos
+desafios de combate.
+
+\section{Comparativo com Trabalhos Relacionados}
+
+A \autoref{tab:cmp_jogos_relatos_v_jogo} apresenta uma comparação direta entre
+o jogo desenvolvido e os jogos identificados na revisão bibliográfica.
+Observa-se que, enquanto a maioria dos jogos analisados adota formatos focados
+estritamente em lógica (\emph{Puzzle}), a presente proposta diferencia-se por
+integrar estruturas de dados em um gênero de Plataforma 2D com fantasia e
+aventura. Essa escolha de design visa reduzir a carga cognitiva inicial e
+aumentar a imersão.
+
+\input{tables/jogos-relatos-v-jogo-table}
+
+De forma complementar, a \autoref{tab:cmp_trabalhos_relatos_v_jogo} compara o
+projeto com outros trabalhos acadêmicos. Nota-se que poucos trabalhos integram
+múltiplas estruturas simultaneamente em uma narrativa coesa com ensino
+implícito.
+
+\input{tables/trabalhos-relatos-v-jogo-table}
+
+\section{Limitações do Estudo}
+
+Apesar dos resultados promissores, o trabalho apresenta limitações decorrentes
+de restrições e de tempo e escopo, bem como desafios técnicos identificados
+durante a validação.
+
+\begin{itemize}
+    \item \textbf{Escopo de Conteúdo:} Devido ao tempo hábil para o
+      desenvolvimento dos \emph{assets} e programação, apenas a primeira fase
+      do jogo foi implementada. Isso restringiu a cobertura pedagógica à
+      introdução das estruturas, deixando de fora a conclusão do arco
+      narrativo.
+    \item \textbf{Validação Metodológica:} A avaliação realizou-se em caráter
+      de piloto com um grupo amostral reduzido. As fases 4 e 5 da metodologia
+      ENgAGED, que preveem a aplicação em sala de aula, não puderam ser
+      realizadas. Isso limita a generalização dos dados sobre a eficácia
+      pedagógica.
+    \item \textbf{Aspectos Técnicos:} A geração procedural de elementos (RNG)
+      apresentou problemas de balanceamento, ocasionalmente criando situações
+      de travamento que frustraram os jogadores.
+\end{itemize}
+
+\section{Trabalhos Futuros} \label{sec:trabalhos_futuros}
+
+O desenvolvimento deste jogo sério cumpriu os objetivos fundamentais
+estabelecidos para a fase de concepção e implementação do protótipo. No
+entanto, devido a restrições de cronograma, algumas etapas previstas na
+metodologia ENgAGED não puderam ser concluídas no escopo atual. A
+\autoref{tab:tf_incompletos} detalha estas etapas, que são essenciais para a
+validação pedagógica formal da ferramenta.
+
+\input{tables/trabalhos-futuros-incompletos}
+
+Além das etapas metodológicas pendentes, a avaliação realizada com os usuários
+(descrita no \autoref{cap:avaliacao}) forneceu \emph{insights} valiosos sobre
+aspectos técnicos e de design que necessitam de refinamento. A
+\autoref{tab:tf_feedback} sintetiza as melhorias prioritárias identificadas a
+partir da análise qualitativa dos testes.
+
+\input{tables/trabalhos-futuros-feedback}
+
+Por fim, visando expandir o ciclo de vida do jogo e seu potencial de
+engajamento, foram mapeadas oportunidades de evolução que extrapolam o escopo
+original. Estas ideias, apresentadas na \autoref{tab:tf_ideias}, buscam
+modernizar a acessibilidade e ampliar a profundidade pedagógica da ferramenta.
+
+\input{tables/trabalhos-futuros-ideias}
+
+A implementação destes trabalhos futuros visa permitir que o jogo evolua de um
+protótipo funcional para uma ferramenta educacional robusta, capaz de atender a
+diferentes perfis de aprendizes. Com essas perspectivas de continuidade
+estabelecidas, encerra-se este estudo, apresentando as conclusões finais na
+\autoref{sec:conclusao} a seguir.
+
+\section{Conclusão} \label{sec:conclusao}
+
+O desenvolvimento deste trabalho atingiu seu objetivo principal ao projetar e
+implementar um jogo sério do gênero plataforma 2D que ensina conceitos de
+estruturas de dados de forma implícita. A proposta inovou ao utilizar uma
+temática de fantasia e alquimia para contextualizar o aprendizado,
+diferenciando-se das abordagens tradicionais baseadas em \emph{puzzles}
+isolados ou questionários gamificados.
+
+A validação do protótipo demonstrou que é possível mapear operações abstratas
+de memória (inserção e remoção em Pilhas, Filas e Listas) para mecânicas
+concretas de gerenciamento de inventário e combate. Os resultados obtidos
+indicam que essa abordagem favorece o engajamento e a motivação, mitigando a
+barreira inicial causada pela natureza abstrata da disciplina de Estruturas de
+Dados.
+
+Embora limitações técnicas relacionadas à aleatoriedade e aos controles tenham
+sido identificadas, elas não invalidam a eficácia da metáfora pedagógica
+construída. Pelo contrário, apontam caminhos claros para o refinamento da
+ferramenta. Assim, conclui-se que o projeto entrega uma contribuição relevante
+ao fugir dos modelos convencionais de jogos educativos, provando que o gênero
+plataforma 2D pode ser eficaz para o ensino de computação. O jogo estabelece,
+portanto, um precedente para o desenvolvimento de ferramentas motivadoras que
+priorizam a experiência do jogador sem sacrificar a fidelidade do conteúdo
+técnico.

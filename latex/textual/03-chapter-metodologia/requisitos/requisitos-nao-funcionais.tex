@@ -31,17 +31,86 @@
 \subsection{Requisitos Não-Funcionais} \label{sec:req_nao_func}
 
 Os requisitos não-funcionais especificam características de qualidade e
-restrições técnicas. Esses requisitos abrangem aspectos como performance,
-compatibilidade, segurança, mantibilidade e acessibilidade.
-
-\fixme{referencia os requisitos no texto}
+restrições técnicas que o sistema deve atender para garantir boa experiência de
+uso, desempenho adequado e facilidade de manutenção. Esses requisitos abrangem
+aspectos como performance, compatibilidade, usabilidade, estabilidade,
+acessibilidade e organização interna do código. As tabelas compreendidas entre
+\ref{tab:requisito_nao_funcional_01} e \ref{tab:requisito_nao_funcional_13}
+apresentam esses requisitos de forma estruturada, permitindo uma visão clara
+das qualidades esperadas do sistema.
 
 \nfr{Frames por segundo estáveis}{Performance}
 {
-O sistema deve se manter em um taxa de atualização constante e acima de 30 frames por segundo.
+O sistema deve manter uma taxa de atualização constante e acima de 30 frames
+por segundo durante a jogabilidade.
 }
 
-\nfr{Múltiplos idiomas}{Usabilidade}
+\nfr{Tempo de carregamento reduzido}{Performance}
 {
-O sistema deve possuir tradução para o português e para o inglês.
+O sistema deve apresentar tempos de carregamento curtos ao trocar de fases ou
+acessar menus.
+}
+
+\nfr{Alta responsividade}{Usabilidade}
+{
+O sistema deve responder de forma imediata às ações do jogador, garantindo
+precisão na execução de comandos.
+}
+
+\nfr{Controles intuitivos}{Usabilidade}
+{
+O sistema deve oferecer controles claros e de fácil aprendizagem, favorecendo a
+acessibilidade a novos jogadores.
+}
+
+\nfr{Acessibilidade}{Usabilidade}
+{
+O sistema deve fornecer opções que facilitem o acesso a jogadores com
+necessidades específicas, incluindo personalização de controles.
+}
+
+\nfr{Tratamento de erros}{Confiabilidade}
+{
+O sistema deve tratar erros de forma adequada, exibindo mensagens informativas
+e evitando encerramentos inesperados.
+}
+
+\nfr{Estabilidade}{Confiabilidade}
+{
+O sistema deve operar sem travamentos ou falhas críticas que comprometam o
+andamento da partida.
+}
+
+\nfr{Persistência de dados}{Confiabilidade}
+{
+O sistema deve salvar o progresso do jogador de maneira consistente, evitando
+perda de dados.
+}
+
+\nfr{Compatibilidade entre plataformas}{Compatibilidade}
+{
+O sistema deve ser compatível com os sistemas operacionais Linux e Windows.
+}
+
+\nfr{Expansão de fases}{Manutenibilidade}
+{
+O sistema deve permitir a fácil adição de novas fases por meio de estruturas
+internas organizadas.
+}
+
+\nfr{Qualidade do código}{Manutenibilidade}
+{
+O código deve ser escrito de forma clara, modular e documentada, facilitando
+manutenção e evolução futura.
+}
+
+\nfr{Estilo visual}{Estética}
+{
+O sistema deve manter um estilo visual coerente baseado em \emph{pixel art} 2D.
+}
+
+\nfr{Design sonoro}{Estética}
+{
+O sistema deve incluir efeitos sonoros e trilhas musicais adequadas ao tema e
+às ações do jogador.
 }

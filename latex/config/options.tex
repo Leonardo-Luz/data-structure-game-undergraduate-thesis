@@ -23,21 +23,21 @@
 
 % This ensures the chapter has the same indentation as everything else in the summary.
 
-% \makeatletter
-% \renewcommand{\l@chapter}[2]{%
-%   \ifnum \c@tocdepth >\m@ne
-%     \addpenalty{-\@highpenalty}%
-%     \addvspace{1.0em \@plus\p@}%
-%     \noindent
-%     \bfseries
-%     \ifnum \c@secnumdepth >\m@ne
-%       \@dottedtocline{0}{0em}{5em}{\MakeTextUppercase{#1}}{\bfseries #2}%
-%     \else
-%       \@dottedtocline{0}{5em}{0em}{\MakeUppercase{#1}}{\normalfont #2}%
-%     \fi
-%   \fi
-% }
-% \makeatother
+\makeatletter
+\renewcommand{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \noindent
+    \bfseries
+    \ifnum \c@secnumdepth >\m@ne
+      \@dottedtocline{0}{0em}{5em}{\MakeTextUppercase{#1}}{\bfseries #2}%
+    \else
+      \@dottedtocline{0}{5em}{0em}{\MakeUppercase{#1}}{\normalfont #2}%
+    \fi
+  \fi
+}
+\makeatother
 
 %Configurações do pacote listings
 %New colors defined below

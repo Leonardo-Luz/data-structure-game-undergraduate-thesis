@@ -31,19 +31,111 @@
 
 \subsection{Requisitos Funcionais} \label{sec:req_func}
 
-Os requisitos funcionais definem as funcionalidades que o sistema deve
-implementar. Esses requisitos incluem aspectos como manipulação de inventários,
-sistema de combate, progresso do jogador, salvamento de partida e geração de
-feedback educacional.
-
-\fixme{referencia os requisitos no texto}
+Os requisitos funcionais descrevem as operações e comportamentos que o sistema
+deve oferecer para atender aos objetivos propostos. Eles englobam aspectos como
+manipulação de inventários, mecânicas de combate, progressão do jogador,
+gerenciamento de estados do jogo e geração de \emph{feedback} educativo. As
+tabelas compreendidas entre \ref{tab:requisito_funcional_01} e
+\ref{tab:requisito_funcional_16} apresentam esses requisitos de forma
+organizada, oferecendo uma visão objetiva e estruturada das funcionalidades
+essenciais do sistema.
 
 \fr{Ponto de controle}{Médio}
 {
-O sistema deve possuir um ponto de controle no meio de cada fase, onde o usuário poderá retornar caso falhe.
+O sistema deve possuir um ponto de controle no meio de cada fase, onde o
+usuário poderá retornar caso falhe.
 }
 
 \fr{Manipular inventários}{Alta}
 {
-O sistema deve permitir que os usuários manipulem seus inventários por meio de ações.
+O sistema deve permitir que os usuários manipulem seus inventários por meio de
+ações específicas.
+}
+
+\fr{Movimentação do personagem}{Alta}
+{
+O sistema deve permitir que o personagem do jogador mova-se para a esquerda e
+para a direita, pule, realize pulo duplo situacional e responda a parâmetros
+físicos como gravidade, aceleração e altura de salto.
+}
+
+\fr{Progressão de fases}{Médio}
+{
+O sistema deve apresentar fases com ponto inicial e final claramente definidos,
+permitindo ao jogador avançar progressivamente entre elas.
+}
+
+\fr{Obstáculos de fase}{Médio}
+{
+As fases devem conter obstáculos que dificultem o progresso do jogador, como
+lacunas, objetos quebráveis e inimigos posicionados estrategicamente.
+}
+
+\fr{Inimigos com comportamento}{Alta}
+{
+O sistema deve incluir inimigos com comportamentos específicos, como patrulhar,
+perseguir e atacar. Cada inimigo deve possuir pontos de vida e pode ser
+derrotado pelo jogador.
+}
+
+\fr{Consumíveis}{Médio}
+{
+O sistema deve incluir consumíveis que proporcionem efeitos temporários, como
+aumento de velocidade de movimento ou aceleração do processo de fabricação de
+elementos.
+}
+
+\fr{Concluir fase}{Alta}
+{
+O sistema deve indicar claramente quando uma fase for concluída, por exemplo ao
+alcançar o ponto final da área jogável.
+}
+
+\fr{Encerrar partida}{Alta}
+{
+O sistema deve encerrar a partida quando o jogador perder todos os pontos de
+vida ou exceder o limite de tentativas.
+}
+
+\fr{Pontuação}{Médio}
+{
+O sistema deve registrar a pontuação do jogador com base no tempo de conclusão
+da fase e outros critérios relevantes.
+}
+
+\fr{Menu principal}{Alta}
+{
+O sistema deve possuir um menu principal com opções para iniciar um novo jogo,
+acessar as configurações e sair.
+}
+
+\fr{Menu de pausa}{Alta}
+{
+O sistema deve possuir um menu de pausa acessível durante a jogabilidade,
+contendo opções para retomar a partida, voltar ao menu principal e acessar
+configurações.
+}
+
+\fr{Configurações}{Médio}
+{
+O sistema deve permitir que o jogador ajuste configurações como volume,
+dificuldade e esquema de controles.
+}
+
+\fr{Ranking}{Baixa}
+{
+O sistema deve armazenar e exibir pontuações máximas alcançadas pelos
+jogadores.
+}
+
+\fr{Interface durante a partida}{Alta}
+{
+O sistema deve exibir na tela informações relevantes ao jogador, como
+pontuação, vidas, saúde, mana e outros elementos essenciais.
+}
+
+\fr{\emph{Feedback} visual}{Alta}
+{
+O sistema deve fornecer \emph{feedback} visual para ações realizadas, como animações
+de pulo, dano recebido, coleta de itens e interação com o ambiente.
 }
